@@ -9,7 +9,6 @@
   "author": "Lance Ball <lanceball@gmail.com> (http://lanceball.com)",
   "license": "Apache 2",
   "dependencies": {
-    "git": "^0.1.5",
     "metalsmith": "^2.1.0",
     "metalsmith-asciidoc": "^1.1.0",
     "metalsmith-branch": "0.0.4",
@@ -23,6 +22,8 @@
     "metalsmith-templates": "^0.7.0",
     "metalsmith-watch": "^1.0.1",
     "moment": "^2.10.6",
+    "nodegit": "^0.5.0",
+    "rmdir": "^1.1.0",
     "then-jade": "^2.4.1"
   }
 }
