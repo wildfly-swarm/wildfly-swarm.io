@@ -1,5 +1,3 @@
-var Git = require("nodegit");
-
 var metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
