@@ -1,0 +1,13 @@
+---
+title: Some Title
+template: index.jade
+---
+
+
+= WildFly Swarm
+
+This is the website for the WildFly Swarm project.
+
+More to come, shortly. Pleaase stay tuned.
+
+Foo!

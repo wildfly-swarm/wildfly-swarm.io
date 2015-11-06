@@ -1,0 +1,82 @@
+var metalsmith = require('metalsmith'),
+    branch = require('metalsmith-branch'),
+    collections = require('metalsmith-collections'),
+    excerpts = require('metalsmith-excerpts'),
+    asciidoc = require('metalsmith-asciidoc'),
+    markdown = require('metalsmith-markdown'),
+    less = require('metalsmith-less'),
+    permalinks = require('metalsmith-permalinks'),
+    serve = require('metalsmith-serve'),
+    templates = require('metalsmith-templates'),
+    watch = require('metalsmith-watch'),
+    msIf = require('metalsmith-if'),
+    moment = require('moment'),
+    fs = require('fs');
+
+function serveAndWatch() {
+  return process.argv.length > 2 && process.argv[2] === 'serve';
+}
+
+var siteBuild = metalsmith(__dirname)
+      .metadata(JSON.parse(fs.readFileSync('./site.json', 'utf8')))
+      .source('./src')
+      .destination('./build')
+
+      // Write pages in asciidoc or markdown
+      .use(asciidoc())
+      .use(markdown())
+
+      // use less for css
+      .use(less())
+
+      // For the blog index page
+      .use(excerpts())
+      .use(collections({
+        posts: {
+          pattern: 'posts/**.html',
+          sortBy: 'publishDate',
+          reverse: true
+        }
+      }))
+
+      // URL rewriting for permalinks
+      .use(branch('posts/**.html')
+           .use(permalinks({
+             pattern: 'posts/:title',
+             relative: false
+           })))
+      .use(branch('!posts/**.html')
+           .use(branch('!index.md').use(permalinks({
+             relative: false
+           }))))
+
+      // Jade templates
+      .use(templates({
+        engine: 'jade',
+        moment: moment
+      }))
+
+      // when we run as `node build serve` we'll serve the site and watch
+      // the files for changes. Note: This does not reload when templates
+      // change, only when the content changes
+      .use(msIf(
+        serveAndWatch(),
+        serve({
+          port: 8080,
+          verbose: true
+      })))
+      .use(msIf(
+        serveAndWatch(),
+        watch({
+          pattern: '**/*',
+          livereload: serveAndWatch()
+        })))
+
+      .build(function (err) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log('Site build complete!');
+        }
+      });
