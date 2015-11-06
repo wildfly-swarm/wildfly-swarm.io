@@ -9,6 +9,7 @@
   "author": "Lance Ball <lanceball@gmail.com> (http://lanceball.com)",
   "license": "Apache 2",
   "dependencies": {
+    "git": "^0.1.5",
     "metalsmith": "^2.1.0",
     "metalsmith-asciidoc": "^1.1.0",
     "metalsmith-branch": "0.0.4",

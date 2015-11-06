@@ -13,70 +13,81 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
-function serveAndWatch() {
-  return process.argv.length > 2 && process.argv[2] === 'serve';
+
+build();
+
+if (process.argv.length > 2 && process.argv[2] === 'publish') {
+  publish();
 }
 
-var siteBuild = metalsmith(__dirname)
-      .metadata(JSON.parse(fs.readFileSync('./site.json', 'utf8')))
-      .source('./src')
-      .destination('./build')
+function build() {
+  var serveAndWatch = process.argv.length > 2 && process.argv[2] === 'serve';
+  metalsmith(__dirname)
+    .metadata(JSON.parse(fs.readFileSync('./site.json', 'utf8')))
+    .source('./src')
+    .destination('./build')
 
-      // Write pages in asciidoc or markdown
-      .use(asciidoc())
-      .use(markdown())
+    // Write pages in asciidoc or markdown
+    .use(asciidoc())
+    .use(markdown())
 
-      // use less for css
-      .use(less())
+    // use less for css
+    .use(less())
 
-      // For the blog index page
-      .use(excerpts())
-      .use(collections({
-        posts: {
-          pattern: 'posts/**.html',
-          sortBy: 'publishDate',
-          reverse: true
-        }
-      }))
+    // For the blog index page
+    .use(excerpts())
+    .use(collections({
+      posts: {
+        pattern: 'posts/**.html',
+        sortBy: 'publishDate',
+        reverse: true
+      }
+    }))
 
-      // URL rewriting for permalinks
-      .use(branch('posts/**.html')
-           .use(permalinks({
-             pattern: 'posts/:title',
-             relative: false
-           })))
-      .use(branch('!posts/**.html')
-           .use(branch('!index.md').use(permalinks({
-             relative: false
-           }))))
+    // URL rewriting for permalinks
+    .use(branch('posts/**.html')
+         .use(permalinks({
+           pattern: 'posts/:title',
+           relative: false
+         })))
+    .use(branch('!posts/**.html')
+         .use(branch('!index.md').use(permalinks({
+           relative: false
+         }))))
 
-      // Jade templates
-      .use(templates({
-        engine: 'jade',
-        moment: moment
-      }))
+    // Jade templates
+    .use(templates({
+      engine: 'jade',
+      moment: moment
+    }))
 
-      // when we run as `node build serve` we'll serve the site and watch
-      // the files for changes. Note: This does not reload when templates
-      // change, only when the content changes
-      .use(msIf(
-        serveAndWatch(),
-        serve({
-          port: 8080,
-          verbose: true
+    // when we run as `node build serve` we'll serve the site and watch
+    // the files for changes. Note: This does not reload when templates
+    // change, only when the content changes
+    .use(msIf(
+      serveAndWatch,
+      serve({
+        port: 8080,
+        verbose: true
+    })))
+    .use(msIf(
+      serveAndWatch,
+      watch({
+        pattern: '**/*',
+        livereload: serveAndWatch
       })))
-      .use(msIf(
-        serveAndWatch(),
-        watch({
-          pattern: '**/*',
-          livereload: serveAndWatch()
-        })))
 
-      .build(function (err) {
-        if (err) {
-          console.log(err);
-        }
-        else {
-          console.log('Site build complete!');
-        }
-      });
+    .build(function (err) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log('Site build complete!');
+      }
+    });
+}
+
+function publish() {
+  var git = require('git');
+
+}
