@@ -9,6 +9,17 @@ This is the content for the WildFly Swarm web site.
 
 ## Develop the Site
 
+Write content in asciidoc or markdown, your choice. Open an issue if you want
+to write content in some other format.
+
+Put blog posts in `src/posts`. Name the files, whatever you want. You can add
+front matter to the file to set the title, publish date, etc. Permalinks are
+created for the content based on the title of the document.
+
+For styling, the site uses [Bootstrap CSS](http://getbootstrap.com) for styling
+and layouts. Add additional styling and overrides to `src/css/site.css`. For
+templates, we use [HarpJS](http://harpjs.com/).
+
 To build the site and run a simple web server, watching for changes to files.
 Note: changes to layouts require a restart.
 
