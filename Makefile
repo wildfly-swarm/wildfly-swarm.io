@@ -4,6 +4,9 @@ build: node_modules
 serve: node_modules
 	node build serve
 
+deploy: node_modules
+	node build publish
+
 node_modules: package.json
 	npm install
 
