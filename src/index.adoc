@@ -1,6 +1,6 @@
 ---
-title: Some Title
-template: index.jade
+title: Just Enough App Server
+layout: index.jade
 ---
 
 

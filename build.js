@@ -2,12 +2,12 @@ var metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
     excerpts = require('metalsmith-excerpts'),
+    layouts = require('metalsmith-layouts'),
     asciidoc = require('metalsmith-asciidoc'),
     markdown = require('metalsmith-markdown'),
     less = require('metalsmith-less'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
-    templates = require('metalsmith-templates'),
     watch = require('metalsmith-watch'),
     msIf = require('metalsmith-if'),
     moment = require('moment'),
@@ -21,9 +21,13 @@ if (process.argv.length > 2 && process.argv[2] === 'publish') {
 }
 
 function build() {
-  var serveAndWatch = process.argv.length > 2 && process.argv[2] === 'serve';
+  var serveAndWatch = process.argv.length > 2 && process.argv[2] === 'serve',
+      metadata = JSON.parse(fs.readFileSync('./site.json', 'utf8'));
+
+  metadata.devMode = serveAndWatch;
+
   metalsmith(__dirname)
-    .metadata(JSON.parse(fs.readFileSync('./site.json', 'utf8')))
+    .metadata(metadata)
     .source('./src')
     .destination('./build')
 
@@ -56,7 +60,7 @@ function build() {
          }))))
 
     // Jade templates
-    .use(templates({
+    .use(layouts({
       engine: 'jade',
       moment: moment
     }))

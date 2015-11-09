@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type' context='text/html; charset=utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name='description' content='WildFly Swarm Official Website')
+
+    block head
+      block title
+        title= title ? title + " | " + site.title : site.title
+        
+      block styles
+        link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap.min.css')
+        link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap-responsive.min.css')
+        link(rel='stylesheet' media='screen' href='/css/site.css')
+
+  body
+    block body
+      block masthead
+        #layout-main.container-narrow
+          .masthead
+            block navbar
+              nav.navbar.navbar-default.navbar-fixed-top
+                .container
+              ul.nav.nav-pills.pull-right
+                li.active
+                  a(href='/') Home
+                li
+                  a(href='/posts') Blog
+            h3.muted WildFly Swarm
+        block main
+
+    block scripts
+      if devMode
+        script(src="http://localhost:35729/livereload.js")
+      script(src='/lib/bootstrap/js/bootstrap.min.js')

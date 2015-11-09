@@ -1,5 +1,5 @@
 ---
 title: WildFly Swarm Blog Posts
-template: posts.jade
+layout: posts.jade
 paginate: posts
 ---

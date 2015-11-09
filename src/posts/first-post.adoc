@@ -3,7 +3,7 @@ title: First WildFly Swarm Blog Post
 publishDate: 2015-11-05
 modifyDate: 2015-11-05
 author: Lance Ball
-template: post.jade
+layout: post.jade
 ---
 
 This is an example post to see how this all works.
