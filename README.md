@@ -37,7 +37,7 @@ Here is an example post.
 
 For styling, the site uses [Bootstrap CSS](http://getbootstrap.com) for styling
 and layouts. Add additional styling and overrides to `src/css/site.css`. For
-templates, we use [HarpJS](http://harpjs.com/).
+templates, we use [Jade](http://jade-lang.com/).
 
 To build the site and run a simple web server, watching for changes to files.
 Note: changes to layouts require a restart.
