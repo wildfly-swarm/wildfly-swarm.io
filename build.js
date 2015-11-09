@@ -16,10 +16,6 @@ var metalsmith = require('metalsmith'),
 
 build();
 
-if (process.argv.length > 2 && process.argv[2] === 'publish') {
-  publish();
-}
-
 function build() {
   var serveAndWatch = process.argv.length > 2 && process.argv[2] === 'serve',
       metadata = JSON.parse(fs.readFileSync('./site.json', 'utf8'));
@@ -84,21 +80,35 @@ function build() {
     .build(function (err) {
       if (err) {
         console.log(err);
+        throw err;
       }
       else {
         console.log('Site build complete.');
+      }
+    }).then(function() {
+      if (process.argv.length > 2 && process.argv[2] === 'publish') {
+        publish();
       }
     });
 }
 
 function publish() {
 
-  var ghpages = require('gh-pages');
-  var path = require('path');
+  var ghpages = require('gh-pages'),
+      path = require('path'),
+      options = {
+        user: {
+          name: 'Project:Odd CI',
+          email: 'ci@torquebox.org'
+        },
+        dotfiles: true
+      };
 
-  ghpages.publish(path.join(__dirname, 'build'), { dotfiles: true }, function(err) {
-    if (err)
-      console.error("Cannot publish. " + err);
+  ghpages.publish(path.join(__dirname, 'build'), options, function(err) {
+    if (err) {
+      console.error("Cannot publish site. " + err);
+      throw err;
+    }
     else
       console.log('Site published.');
   });
