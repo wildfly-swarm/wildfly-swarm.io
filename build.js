@@ -84,10 +84,9 @@ function build() {
       }
       else {
         console.log('Site build complete.');
-      }
-    }).then(function() {
-      if (process.argv.length > 2 && process.argv[2] === 'publish') {
-        publish();
+        if (process.argv.length > 2 && process.argv[2] === 'publish') {
+          publish();
+        }
       }
     });
 }
