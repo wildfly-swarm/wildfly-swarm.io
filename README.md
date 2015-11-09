@@ -14,7 +14,26 @@ to write content in some other format.
 
 Put blog posts in `src/posts`. Name the files, whatever you want. You can add
 front matter to the file to set the title, publish date, etc. Permalinks are
-created for the content based on the title of the document.
+created for the content based on the title of the document. Typically posts
+should use the `post.jade` layout.
+
+Here is an example post.
+
+    ---
+    title: Swarm Buzz
+    publishDate: 2015-11-07
+    modifyDate: 2015-11-09
+    author: Joseph Stinger
+    layout: post.jade
+    ---
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+    in aliquet eros, vel posuere mi. Suspendisse a orci eu sapien
+    accumsan ullamcorper. Nunc scelerisque, purus vitae aliquam
+    aliquam, nibh elit ornare leo, eu aliquam sapien tortor iaculis
+    arcu. In eu mattis augue. Donec porttitor leo eu venenatis
+    posuere. Nulla facilisi. Nullam fringilla bibendum blandit.
+
 
 For styling, the site uses [Bootstrap CSS](http://getbootstrap.com) for styling
 and layouts. Add additional styling and overrides to `src/css/site.css`. For
