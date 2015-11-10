@@ -1,12 +1,11 @@
 //- Layout for individual blog posts
 
-extends layout
+extends main
 
-block main
-  .page-header
-    article#article
-      h1= title
-      div.post-meta By #{author} | Published #{moment(publishDate).format("M.D.YYYY")}
-        if modifyDate && moment(publishDate).isBefore(modifyDate)
-          span Updated #{moment(modifyDate).format("M.D.YYYY")}
-      div!= contents
+block content
+  article#article
+    h1= title
+    div.post-meta By #{author} | Published #{moment(publishDate).format("M.D.YYYY")}
+      if modifyDate && moment(publishDate).isBefore(modifyDate)
+        span Updated #{moment(modifyDate).format("M.D.YYYY")}
+    div!= contents

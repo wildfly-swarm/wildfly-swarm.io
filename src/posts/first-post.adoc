@@ -1,29 +1,24 @@
 ---
-title: First WildFly Swarm Blog Post
-publishDate: 2015-11-05
-modifyDate: 2015-11-05
-author: Lance Ball
+title: Swarm Buzz
+publishDate: 2015-11-07
+modifyDate: 2015-11-09
+author: Joseph Stinger
 layout: post.jade
+
+gist: lance/bdceac5f307f50723d78
 ---
 
-== Something
+One of the easiest ways to include source code in your WildFly
+Swarm blog posts is by using the `metalsmith-gist` plugin. You
+don't need to know anything about the plugin to use it though,
+so don't worry.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non
-risus maximus, accumsan augue eget, auctor magna.
+To use the plugin, just add a `gist` property to the front matter
+of your file. Then you can insert the gist anywhere you like in
+the body of the file. Like so:
 
-Sed egestas urna nec
-urna consequat, ut vestibulum risus scelerisque. Praesent ac elit
-ligula. Fusce blandit aliquam eros eu euismod. Aenean nulla risus,
-egestas nec condimentum eget, euismod sed augue. Nam tincidunt turpis
-tortor, at malesuada sapien blandit sed. Duis consectetur posuere
-tortor in consequat.
+gist:lance/bdceac5f307f50723d78
 
-Ut ut tincidunt dui. Duis lobortis felis rutrum,
-scelerisque lorem ut, fermentum odio. Cras finibus nisi ut dui
-consequat, eget finibus magna ultricies. Curabitur congue metus sit
-amet dolor malesuada tincidunt. Suspendisse potenti. Phasellus
-sollicitudin diam in hendrerit viverra. Donec varius, lectus a auctor
-condimentum, odio orci mattis nisi, eu volutpat tortor tellus et
-quam. Donec sed nulla fermentum, molestie augue a, mattis metus.
-
-
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+in aliquet eros, vel posuere mi. Suspendisse a orci eu sapien
+accumsan ullamcorper. Nunc scelerisque, purus vitae aliquam

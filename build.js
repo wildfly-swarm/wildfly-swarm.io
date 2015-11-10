@@ -10,6 +10,9 @@ var metalsmith = require('metalsmith'),
     serve = require('metalsmith-serve'),
     watch = require('metalsmith-watch'),
     msIf = require('metalsmith-if'),
+    feed = require('metalsmith-feed'),
+    drafts = require('metalsmith-drafts'),
+    gist = require('metalsmith-gist'),
     moment = require('moment'),
     fs = require('fs');
 
@@ -33,6 +36,12 @@ function build() {
 
     // use less for css
     .use(less())
+
+    // Hide draft posts
+    .use(drafts())
+
+    // Make it easy to insert gists into your posts
+    .use(gist())
 
     // For the blog index page
     .use(excerpts())
@@ -60,6 +69,9 @@ function build() {
       engine: 'jade',
       moment: moment
     }))
+
+    // RSS Feed
+    .use(feed({collection: 'posts', pubDate: new Date()}))
 
     // when we run as `node build serve` we'll serve the site and watch
     // the files for changes. Note: This does not reload when templates

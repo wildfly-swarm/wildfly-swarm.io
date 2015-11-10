@@ -25,7 +25,19 @@ Here is an example post.
     modifyDate: 2015-11-09
     author: Joseph Stinger
     layout: post.jade
+    gist: lance/0cfd8539d5c395b43f16
     ---
+
+    One of the easiest ways to include source code in your WildFly
+    Swarm blog posts is by using the `metalsmith-gist` plugin. You
+    don't need to know anything about the plugin to use it though,
+    so don't worry.
+
+    To use the plugin, just add a `gist` property to the front matter
+    of your file. Then you can insert the gist anywhere you like in
+    the body of the file. Like so:
+
+    gist: lance/0cfd8539d5c395b43f16
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
     in aliquet eros, vel posuere mi. Suspendisse a orci eu sapien
@@ -34,6 +46,8 @@ Here is an example post.
     arcu. In eu mattis augue. Donec porttitor leo eu venenatis
     posuere. Nulla facilisi. Nullam fringilla bibendum blandit.
 
+If you want to include source code in your posts, one of the easiest ways to
+do this is by using gist.
 
 For styling, the site uses [Bootstrap CSS](http://getbootstrap.com) for styling
 and layouts. Add additional styling and overrides to `src/css/site.css`. For

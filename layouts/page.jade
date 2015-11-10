@@ -1,6 +1,7 @@
 //- This is the layout for individual pages like /documentation and /getting-started
 
-extends layout
+extends main
 
-block main
-  .page-header!= contents
+block content
+  != contents
+    
