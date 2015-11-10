@@ -1,24 +1,20 @@
 ---
-title: First WildFly Swarm Blog Post
-publishDate: 2015-11-05
-modifyDate: 2015-11-05
+title: How to do the WildFly Swarm Shuffle
+publishDate: 2015-11-10
+modifyDate: 2015-11-10
 author: Lance Ball
 layout: post.jade
 ---
 
-== Something
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non
-risus maximus, accumsan augue eget, auctor magna.
-
-Sed egestas urna nec
+risus maximus, accumsan augue eget, auctor magna. Sed egestas urna nec
 urna consequat, ut vestibulum risus scelerisque. Praesent ac elit
 ligula. Fusce blandit aliquam eros eu euismod. Aenean nulla risus,
 egestas nec condimentum eget, euismod sed augue. Nam tincidunt turpis
 tortor, at malesuada sapien blandit sed. Duis consectetur posuere
-tortor in consequat.
+tortor in consequat. Ut ut tincidunt dui.
 
-Ut ut tincidunt dui. Duis lobortis felis rutrum,
+Duis lobortis felis rutrum,
 scelerisque lorem ut, fermentum odio. Cras finibus nisi ut dui
 consequat, eget finibus magna ultricies. Curabitur congue metus sit
 amet dolor malesuada tincidunt. Suspendisse potenti. Phasellus

@@ -1,35 +1,64 @@
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
+body {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
 
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
+a {
+    color: #E9821F;
+}
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
+a:hover {
+    color: #464646;
+}
 
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
+h1, h2, h3, h4, h5 {
+    color: #262626;
+}
+
+.h1, h1 {
+    font-size: 32px;
+}
+
+.h2, h2 {
+    font-size: 28px;
+}
+
+.h3, h3 {
+    font-size: 22px;
+}
+
+.navbar-brand img.icon {
+    display: inline;
+    float: left;
+    padding-right: 6px;
+    margin-top: -6px;
+}
+
+.jumbotron {
+    margin: 40px 0 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.page-header {    
+    padding-bottom: 20px;
+}
+
+.page-header.posts .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.post-preview h2.post-title {
+    font-size: 24px;
+}
+
+.post-meta {
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+footer .panel {
+    color: #939393;
+    font-size: 10px;
+}

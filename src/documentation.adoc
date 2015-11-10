@@ -1,0 +1,9 @@
+---
+title: WildFly Swarm Documentation
+lastUpdate: 2015-11-10
+layout: page.jade
+---
+
+== Documentation
+
+This is the documentation page.

@@ -1,0 +1,9 @@
+---
+title: Getting Started
+lastUpdate: 2015-11-10
+layout: page.jade
+---
+
+== Getting Started
+
+This is the getting started page.

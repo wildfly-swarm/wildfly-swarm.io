@@ -1,0 +1,9 @@
+---
+title: WildFly Swarm Community
+lastUpdate: 2015-11-10
+layout: page.jade
+---
+
+== Community
+
+This is the community page.

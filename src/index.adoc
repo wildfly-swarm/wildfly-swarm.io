@@ -3,11 +3,8 @@ title: Just Enough App Server
 layout: index.jade
 ---
 
+WildFly Swarm allows you to build JavaEE based microservices with
+just enough of the application server to support whatever subset
+of the traditional JavaEE APIs your application requires.
 
-= WildFly Swarm
-
-This is the website for the WildFly Swarm project.
-
-More to come, shortly. Pleaase stay tuned.
-
-Foo!
+== Example

@@ -1,36 +1,63 @@
+//- This is the main layout typically this is not specified in your pages,
+//- but inherited by other layouts such as page.jade and post.jade.
 doctype html
 html
+  link(rel="icon" href="/favicon.ico")
   head
-    meta(http-equiv='Content-Type' context='text/html; charset=utf-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(name='description' content='WildFly Swarm Official Website')
 
-    block head
-      block title
-        title= title ? title + " | " + site.title : site.title
+    block title
+      title= title ? title + " | " + site.title : site.title
         
-      block styles
-        link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap.min.css')
-        link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap-responsive.min.css')
-        link(rel='stylesheet' media='screen' href='/css/site.css')
+    block styles
+      link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap.min.css')
+      link(rel='stylesheet' media='screen' href='/css/site.css')
 
   body
     block body
-      block masthead
-        #layout-main.container-narrow
-          .masthead
-            block navbar
-              nav.navbar.navbar-default.navbar-fixed-top
-                .container
-              ul.nav.nav-pills.pull-right
-                li.active
-                  a(href='/') Home
-                li
-                  a(href='/posts') Blog
-            h3.muted WildFly Swarm
-        block main
+    block navbar
+      nav.navbar.navbar-default.navbar-fixed-top
+        .container
+          .navbar-header
+            button(type='button' class='navbar-toggle collapsed' data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+              span.sr-only
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a(href='/').navbar-brand
+              img(src='/images/swarm_icon_32x32.png').icon
+              span WildFly Swarm
+          #navbar.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/posts') Blog
+              li
+                a(href='/getting-started') Getting Started
+              li
+                a(href='/documentation') Documentation
+              li
+                a(href='/community') Community
+              li
+                a(href='https://github.com/wildfly-swarm/wildfly-swarm') GitHub
+
+    .container
+      block main
+
+    .container
+      block footer      
+        footer
+          .panel.panel-default
+            .panel-body.
+              &copy; Copyright 2015 Red Hat, Inc.
+              |
+              WildFly Swarm is Open Source Software
 
     block scripts
       if devMode
         script(src="http://localhost:35729/livereload.js")
+
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
       script(src='/lib/bootstrap/js/bootstrap.min.js')
