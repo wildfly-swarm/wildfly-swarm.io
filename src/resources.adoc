@@ -1,0 +1,11 @@
+---
+title: Resources
+lastUpdate: 2015-11-10
+layout: page.jade
+---
+
+== Resources
+
+=== Presentations
+
+https://github.com/wildfly-swarm/wildfly-swarm-presentations

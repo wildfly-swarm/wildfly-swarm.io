@@ -4,6 +4,26 @@ lastUpdate: 2015-11-10
 layout: page.jade
 ---
 
-== Documentation
+=== Users Guide
 
-This is the documentation page.
+https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/
+
+If you are new to WildFly Swarm, this is the best place to start. Learn
+what WildFly Swarm is and how to use it to build your first Java EE
+Microservice.
+
+=== Configuration API
+
+http://wildfly-swarm.github.io/wildfly-config-api/
+
+If you want to customize the configuration for any of the WildFly subsystems
+in your application, take a look at the Configuration API. This is a typed
+representation of all of the configuration optionsn you might find in a
+typical `standalone.xml` file.
+
+=== Source Code
+
+https://github.com/wildfly-swarm/wildfly-swarm
+
+Sometimes the best documentation is the source code. Read the source
+and become a WildFly Swarm Jedi Master.

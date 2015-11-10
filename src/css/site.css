@@ -40,7 +40,8 @@ h1, h2, h3, h4, h5 {
     text-align: center;
 }
 
-.page-header {    
+.page-header {
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 
