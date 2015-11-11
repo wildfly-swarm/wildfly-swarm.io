@@ -5,7 +5,10 @@ extends main
 block content
   article#article
     h1= title
-    div.post-meta By #{author} | Published #{moment(publishDate).format("M.D.YYYY")}
+    - publishDate.setUTCHours(5)
+    - modifyDate.setUTCHours(5)
+    
+    div.post-meta By #{author} | Published #{moment(publishDate).calendar()}
       if modifyDate && moment(publishDate).isBefore(modifyDate)
-        span Updated #{moment(modifyDate).format("M.D.YYYY")}
+        span  | Updated #{moment(modifyDate).calendar()}
     div!= contents

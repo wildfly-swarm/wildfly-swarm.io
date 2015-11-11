@@ -16,6 +16,14 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
+moment.locale('en', {
+  calendar : {
+    lastDay : '[Yesterday, ] MMM Do',
+    sameDay : '[Today, ] MMM Do',
+    lastWeek : '[last] dddd[, ] MMM Do',
+    sameElse : 'll'
+  }
+});
 
 build();
 
