@@ -10,7 +10,7 @@ This is the content for the WildFly Swarm web site.
 ## Develop the Site
 
 Write content in asciidoc or markdown, your choice. Open an issue if you want
-to write content in some other format.
+to write content in some other format. Test
 
 Put blog posts in `src/posts`. Name the files, whatever you want. You can add
 front matter to the file to set the title, publish date, etc. Permalinks are
