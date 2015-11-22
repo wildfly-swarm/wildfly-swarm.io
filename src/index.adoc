@@ -1,9 +1,9 @@
 ---
-title: Just Enough App Server
+title: Cloud Native Java EE
 layout: index.jade
 ---
 
-WildFly Swarm allows you to build JavaEE based microservices with
+WildFly Swarm allows you to build Java EE based microservices with
 just enough of the application server to support whatever subset
 of the traditional JavaEE APIs your application requires.
 
