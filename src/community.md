@@ -13,4 +13,4 @@ on Freenode or our Google Group.
 
 * **[#wildfly-swarm on Freenode](http://webchat.freenode.net/?channels=wildfly-swarm)**
    (with [logging](http://transcripts.jboss.org/channel/irc.freenode.org/%23wildfly-swarm/))
-* **Google Group**
+* **[Google Group](https://groups.google.com/forum/#!forum/wildfly-swarm)**
