@@ -1,6 +1,7 @@
 body {
     padding-top: 20px;
     padding-bottom: 40px;
+    background-color: #f2f2f2;
 }
 
 a {
@@ -12,7 +13,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5 {
-    color: #262626;
+    color: #626262;
 }
 
 .h1, h1 {
@@ -27,6 +28,10 @@ h1, h2, h3, h4, h5 {
     font-size: 22px;
 }
 
+.navbar-default {
+    background-color: #f3f3f3;
+}
+
 .navbar-brand img.icon {
     display: inline;
     float: left;
@@ -38,6 +43,7 @@ h1, h2, h3, h4, h5 {
     margin: 40px 0 20px;
     padding: 10px;
     text-align: center;
+    background-color: #fff;
 }
 
 .page-header {
@@ -60,6 +66,7 @@ h1, h2, h3, h4, h5 {
 }
 
 footer .panel {
+    background-color: #efefef;
     color: #939393;
     font-size: 10px;
 }

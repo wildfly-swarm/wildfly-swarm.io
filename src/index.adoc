@@ -3,8 +3,23 @@ title: Cloud Native Java EE
 layout: index.jade
 ---
 
+== Java EE Microservices
+
 WildFly Swarm allows you to build Java EE based microservices with
 just enough of the application server to support whatever subset
-of the traditional JavaEE APIs your application requires.
+of the traditional Java EE APIs your application requires.
 
-== Example
+Specify at build time just what bits of the AS you need.  The result
+is a single self-contained _uberjar_. This jar contains your
+application, the portions of WildFly required to support it, an
+internal Maven repository of dependencies, plus a shim to bootstrap it
+all.
+
+A single executable that has no external dependencies and fits nicely
+into your CI work chain. Run it like so...
+
+    $ java -jar myApp-swarm.jar
+
+Interested?
+https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/[Learn More...]
+
