@@ -1,10 +1,53 @@
 ---
-title: Cloud Native Java EE
+title: Rightsize your Java EE Applications
 layout: index.jade
 ---
 
-WildFly Swarm allows you to build Java EE based microservices with
-just enough of the application server to support whatever subset
-of the traditional JavaEE APIs your application requires.
+== WildFly Swarm
+Offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
+platform to "java -jar" your application. However, it's all much, much cooler than that ...
+
+== Features and Benefits
+* Develop services using the feature richness and maturity of the enterprise Java industry standard - Java EE
+* Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
+  that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
+* Generate uber-jar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any Java EE compatible
+  application server.
+* Use built-in service discovery, or use external service registries. You choose.
+* Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
+* Integrates with upstream Red Hat projects for single sign-on http://keycloak.jboss.org/[(KeyCloak)],
+  monitoring http://www.hawkular.org/[(Hawkular)], data grid http://www.infinispan.org[(InfiniSpan)], and more
+  broadly, Platform as a Service https://www.openshift.com/[(OpenShift)]
 
 == Example
+
+Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need. The following example
+assumes a simple JAX-RS RESTful application.
+
+[source,xml]
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-jaxrs</artifactId>
+</dependency>
+
+To create an uber-jar, configure the plugin:
+
+[source,xml]
+<plugin>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-plugin</artifactId>
+  <executions>
+    <execution>
+      <goals>
+        <goal>package</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
+
+Deploy the generated .war to any Java EE compatible application server, or run the uber jar:
+[source, bash]
+java -jar MyApp.jar
+
+To try out the many WildFly Swarm examples, clone the https://github.com/wildfly-swarm/wildfly-swarm-examples[wildfly-swarm-examples]
+repository.
