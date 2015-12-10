@@ -6,6 +6,13 @@ layout: page.jade
 
 == Resources
 
-=== Presentations
+=== Presentation Documents
 
 https://github.com/wildfly-swarm/wildfly-swarm-presentations
+
+=== Recorded Presentations
+
+* JavaOne 2015 - Ken Finnigan - https://www.youtube.com/watch?v=S9XP8S85XaI#t=9h09m17s[Java EE 7 Applications as a Microservice with WildFly Swarm] (60 Minutes)
+* JavaOne 2015 - Ken Finnigan - https://developers.redhat.com/video/youtube/RsaKmBTgEhM/[WildFly Swarm and Netflix OSS: The Perfect Union?] (16 Minutes)
+* JavaOne 2015 - Ken Finnigan - https://developers.redhat.com/video/youtube/i1aiUaa8RZ8/[Java EE 7 Applications as a Microservice with WildFly Swarm] (23 Minutes)
+* 2015 - George Gastaldi - https://asciinema.org/a/19697[JBoss Forge WildFly Swarm Addon] (Screencast, 90 seconds)
