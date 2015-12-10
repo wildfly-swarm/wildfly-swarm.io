@@ -12,6 +12,11 @@ a:hover {
     color: #464646;
 }
 
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
 h1, h2, h3, h4, h5 {
     color: #626262;
 }
@@ -69,4 +74,22 @@ footer .panel {
     background-color: #efefef;
     color: #939393;
     font-size: 10px;
+}
+
+.sidebar ul {
+    margin: 10px;
+    padding: 0px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #dadada;
+    padding: 1ex;
+}
+
+.sidebar ul li.last {
+    border: none;
+}
+
+.sidebar.panel {
+    background-color: #eaeaea;
 }
