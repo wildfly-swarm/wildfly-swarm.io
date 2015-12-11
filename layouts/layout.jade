@@ -17,6 +17,8 @@ html
     block styles
       link(rel='stylesheet' media='screen' href='/lib/bootstrap/css/bootstrap.min.css')
       link(rel='stylesheet' media='screen' href='/css/site.css')
+      link(rel='stylesheet' media='screen' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600')
+      link(rel='stylesheet' media='screen' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
 
   body
     block body
@@ -48,14 +50,11 @@ html
     .container
       block main
 
-    .container
-      block footer      
-        footer
-          .panel.panel-default
-            .panel-body.
-              &copy; Copyright 2015 Red Hat, Inc.
-              |
-              WildFly Swarm is Open Source Software
+
+    block footer
+      footer(id='footer')
+        div.footer
+          p(class='text-center') &copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software
 
     block scripts
       if devMode

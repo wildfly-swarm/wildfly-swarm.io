@@ -3,23 +3,63 @@ title: Rightsize your Java EE Applications
 layout: index.jade
 ---
 
-== WildFly Swarm
-Offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
+[pass]
+++++
+<p class=text-center>
+Swarm offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
 platform to "java -jar" your application. However, it's all much, much cooler than that ...
+</p>
+++++
 
-== Features and Benefits
-* Develop services using the feature richness and maturity of the enterprise Java industry standard - Java EE
-* Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
-  that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
-* Generate uber-jar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any Java EE compatible
-  application server.
-* Use built-in service discovery, or use external service registries. You choose.
-* Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
-* Integrates with upstream Red Hat projects for single sign-on http://keycloak.jboss.org/[(KeyCloak)],
-  monitoring http://www.hawkular.org/[(Hawkular)], data grid http://www.infinispan.org[(InfiniSpan)], and more
-  broadly, Platform as a Service https://www.openshift.com/[(OpenShift)]
+[pass]
+++++
 
-== Example
+<div class="row main-container gray-background">
+<h2 class="text-center">Features and Benefits</h2>
+<div class="row">
+  <div class="col-md-4">
+  <p>
+    <h3><i class="fa fa-industry"></i> Mature</h3>
+    Develop services using the feature richness and maturity of the enterprise Java industry standard - Java EE
+    </p>
+  </div>
+  <div class="col-md-4">
+  <p>
+    <h3><i class="fa fa-cubes"></i> Flexible</h3>
+    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
+    that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
+    </p>
+  </div>
+  <div class="col-md-4">
+    <p>
+    <h3><i class="fa fa-check"></i> Straightforward</h3>
+      Generate uber-jar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any Java EE compatible application server.
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
+    Use built-in service discovery, or use external service registries. You choose.
+  </div>
+  <div class="col-md-4">
+    <h3><i class="fa fa-wrench"></i> Practical</h3>
+    Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
+  </div>
+  <div class="col-md-4">
+    <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
+    Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
+    monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
+    broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
+  </div>
+</div>
+</div>
+++++
+
+[pass]
+++++
+<h2 class="text-center">Example</h2>
+++++
 
 Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need. The following example
 assumes a simple JAX-RS RESTful application.
@@ -49,5 +89,9 @@ Deploy the generated .war to any Java EE compatible application server, or run t
 [source, bash]
 java -jar MyApp.jar
 
-To try out the many WildFly Swarm examples, clone the https://github.com/wildfly-swarm/wildfly-swarm-examples[wildfly-swarm-examples]
-repository.
+[pass]
+++++
+<p style="margin-bottom:50px">
+<a href="https://github.com/wildfly-swarm/wildfly-swarm-examples" class="btn btn-white">More Examples</a>
+</p>
+++++
