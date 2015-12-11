@@ -5,6 +5,7 @@ var metalsmith = require('metalsmith'),
     layouts = require('metalsmith-layouts'),
     asciidoc = require('metalsmith-asciidoc'),
     markdown = require('metalsmith-markdown'),
+    jade = require('metalsmith-jade'),
     less = require('metalsmith-less'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
@@ -41,6 +42,7 @@ function build() {
     // Write pages in asciidoc or markdown
     .use(asciidoc())
     .use(markdown())
+    .use(jade())
 
     // use less for css
     .use(less())
