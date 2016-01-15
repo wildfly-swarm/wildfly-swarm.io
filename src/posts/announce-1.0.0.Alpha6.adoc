@@ -1,0 +1,134 @@
+---
+title: Announcement 1.0.0.Alpha6
+publishDate: 2016-01-15
+modifyDate: 2016-01-15
+author: The WildFly Swarm Team
+layout: post.jade
+draft:true
+---
+
+== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular 
+WildFly Java Application Server in order to support _just enough app-server_
+for microservice type applications.
+
+Each portion of the app-server is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+== What's New in 1.0.0.Alpha6?
+
+There's quite a bit new stuff in this release, including support for
+applications that might want:
+
+* WildFly 10.0.0.CR5 as a base
+* Ribbon-to-the-Curb so your single-page apps can enjoys its benefits
+* Swagger
+* Java Batch/JBeret support
+* WebServices
+* WildFly Management API (`jboss-cli` support)
+
+Additionally, we've begun building WildFly Swarm-ified servers which
+can either be added (as fractions) into your own service, or executed
+standalone from artifacts that are addressable through Maven coordinates.
+
+Also, we've improvied our testing game, both in terms of how WildFly Swarm
+itself is tested, and the facilities we provide to make testing your own
+applications with WildFly Swarm.
+
+These include changes to the Maven `wildfly-swarm-plugin` to allow
+
+* `wildfly-swarm:start` to start an application for integration-testing
+  (used in the `pre-integration-test` Maven lifecycle phase)
+* `wildfly-swarm:stop` the opposite of `:start`
+
+== Important Changes
+
+In addition to the new features and bug-fixes, there are some notable changes
+that you will need to undertake for your application since 1.0.0.Alpha5.
+
+=== Simplified Maven `artifactId`
+
+In previous versions of WildFly Swarm, all artifacts had a `groupId` of
+`org.wildfly.swarm` and an `artifactId` of `wildfly-swarm-something`.
+
+We've simplified the `artifactId` to the bare name of the piece, avoiding
+the repetition of `wildfly-swarm-` as a prefix.
+
+For instance, if you had dependencies of:
+
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-undertow</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-weld</artifactId>
+    </dependency>
+
+starting with 1.0.0.Alpha6, they should be simplified to:
+
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>undertow</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>weld</artifactId>
+    </dependency>
+
+=== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+* Ben Browning
+* Ben Tomasini
+* Bernard Tison
+* Bob McWhirter
+* James Perkins
+* John D. Ament
+* Ken Finnigan
+* Lance Ball
+* Paris Apostolopoulos
+* Thomas Meyer
+* Toby Crawley
+* Yoshimasa Tanabe
+* John Clingan
+* John Hovell
+
+*Examples*
+
+* Heiko Braun
+* Ben Browning
+* Bob McWhirter
+* Ken Finnigan
+* Kylin Soong
+* Lance Ball
+* Mark Little
+* Toby Crawley
+* William Antônio Siqueira
+* Yoshimasa Tanabe
+* Helio Frota
+
+*Documentation*
+
+* Bob McWhirter
+* James Perkins
+* Lance Ball
+* Toby Crawley
+
+*Random other Thanks*
+
+* John Mazzitelli (Hawkular)
+* Peter Palaga (Hawkular)
+* Stian Thorgersen (Keycloak)
+* David M. Lloyd (JBoss Modules)
+* Tomaz Cerar (WildFly)
+* Roland Huß (Docker/Maven)
+* Stuart Douglas (Infinispan)
+* Paul Ferraro (Infinispan)
+* Bruno Georges (Boss, Presentations)
+* Lance Ball (Presentations)
