@@ -10,6 +10,7 @@ var metalsmith = require('metalsmith'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
     watch = require('metalsmith-watch'),
+    redirect = require('metalsmith-redirect'),
     msIf = require('metalsmith-if'),
     feed = require('metalsmith-feed'),
     drafts = require('metalsmith-drafts'),
@@ -98,6 +99,10 @@ function build() {
         pattern: '**/*',
         livereload: serveAndWatch
       })))
+
+    .use(redirect({
+      '/documentation/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/'
+    }))
 
     .build(function (err) {
       if (err) {
