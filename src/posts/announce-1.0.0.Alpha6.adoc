@@ -85,11 +85,13 @@ insert jirastuff here
 
 === Resources
 
-Per usual, we tend to hang out on irc://irc.freenode.net/#wildfly-swarm[IRC].
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
 We've moved all bug and feature-tracking to http://issues.jboss.org/browse/SWARM[JIRA].
 
 Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples[a GitHub repository].
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1.0.0.Alpha6[available].
 
 === Thank you, Contributors!
 
