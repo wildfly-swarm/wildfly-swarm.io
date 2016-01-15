@@ -1,5 +1,5 @@
 ---
-title: Rightsize your Java EE Applications
+title: Rightsize your JavaEE Applications
 layout: index.jade
 ---
 
@@ -10,7 +10,7 @@ layout: index.jade
 
 ++++
 <p class=text-center>
-Swarm offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
+Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
 platform to "java -jar" your application. However, it's all much, much cooler than that ...
 </p>
 ++++
@@ -24,20 +24,20 @@ platform to "java -jar" your application. However, it's all much, much cooler th
   <div class="col-md-4">
   <p>
     <h3><i class="fa fa-industry"></i> Mature</h3>
-    Develop services using the feature richness and maturity of the enterprise Java industry standard - Java EE
+    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
     </p>
   </div>
   <div class="col-md-4">
   <p>
     <h3><i class="fa fa-cubes"></i> Flexible</h3>
-    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
+    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
     that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
     </p>
   </div>
   <div class="col-md-4">
     <p>
     <h3><i class="fa fa-check"></i> Straightforward</h3>
-      Generate uber-jar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any Java EE compatible application server.
+      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
     </p>
   </div>
 </div>
@@ -74,7 +74,7 @@ assumes a simple JAX-RS RESTful application.
   <artifactId>wildfly-swarm-jaxrs</artifactId>
 </dependency>
 
-To create an uber-jar, configure the plugin:
+To create an uberjar, configure the plugin:
 
 [source,xml]
 <plugin>
@@ -89,7 +89,7 @@ To create an uber-jar, configure the plugin:
   </executions>
 </plugin>
 
-Deploy the generated .war to any Java EE compatible application server, or run the uber jar:
+Deploy the generated .war to any JavaEE compatible application server, or run the uberjar:
 [source, bash]
 java -jar MyApp.jar
 
