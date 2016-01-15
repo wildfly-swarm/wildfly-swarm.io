@@ -23,7 +23,8 @@ There's quite a bit new stuff in this release, including support for
 applications that might want:
 
 * WildFly 10.0.0.CR5 as a base
-* Ribbon-to-the-Curb so your single-page apps can enjoys its benefits
+* `ribbon.js` so your single-page apps can enjoys the benefits of Ribbon-based
+  discovery from the browser.
 * Swagger
 * Java Batch/JBeret support
 * WebServices
@@ -77,6 +78,18 @@ starting with 1.0.0.Alpha6, they should be simplified to:
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>weld</artifactId>
     </dependency>
+
+=== Changelog
+
+insert jirastuff here
+
+=== Resources
+
+Per usual, we tend to hang out on irc://irc.freenode.net/#wildfly-swarm[IRC].
+
+We've moved all bug and feature-tracking to http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples[a GitHub repository].
 
 === Thank you, Contributors!
 
