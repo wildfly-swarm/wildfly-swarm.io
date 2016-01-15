@@ -34,7 +34,7 @@ Additionally, we've begun building WildFly Swarm-ified servers which
 can either be added (as fractions) into your own service, or executed
 standalone from artifacts that are addressable through Maven coordinates.
 
-Also, we've improvied our testing game, both in terms of how WildFly Swarm
+Also, we've improved our testing game, both in terms of how WildFly Swarm
 itself is tested, and the facilities we provide to make testing your own
 applications with WildFly Swarm.
 
