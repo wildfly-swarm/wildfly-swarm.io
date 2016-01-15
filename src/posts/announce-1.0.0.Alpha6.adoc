@@ -132,3 +132,6 @@ We appreciate all of our contributors since the last release:
 * Paul Ferraro (Infinispan)
 * Bruno Georges (Boss, Presentations)
 * Lance Ball (Presentations)
+* Andrew L. Rubinger (Shrinkwrap/Arquillian)
+* Aslak Knutsen (Shrinkwrap)
+* Ralf Battenfeld (Shrinkwrap Descriptors)
