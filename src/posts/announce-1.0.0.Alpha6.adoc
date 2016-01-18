@@ -81,7 +81,9 @@ starting with 1.0.0.Alpha6, they should be simplified to:
 
 === Changelog
 
-insert jirastuff here
+Release notes for 1.0.0.Alpha6 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329354[here].
+
+As a result of our move from GitHub issues to JIRA, some issues that are marked as part of the 1.0.0.Alpha6 release were actually part of prior releases. Apologies for any confusion that may cause when viewing the Release notes.
 
 === Resources
 
