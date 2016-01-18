@@ -12,7 +12,7 @@ Microservice.
 
 The latest version (against HEAD):
 
-https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/
+* link:/documentation/HEAD[LATEST]
 
 Previous releases:
 
