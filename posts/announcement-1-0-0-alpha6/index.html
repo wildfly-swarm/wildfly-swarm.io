@@ -1,0 +1,311 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Alpha6 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Alpha6</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Jan 18th</div><div><div class="sect1">
+<h2 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+WildFly Java Application Server in order to support <em>just enough app-server</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_s_new_in_1_0_0_alpha6">What&#8217;s New in 1.0.0.Alpha6?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There&#8217;s quite a bit new stuff in this release, including support for
+applications that might want:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WildFly 10.0.0.CR5 as a base</p>
+</li>
+<li>
+<p><code>ribbon.js</code> so your single-page apps can enjoys the benefits of Ribbon-based
+discovery from the browser.</p>
+</li>
+<li>
+<p>Swagger</p>
+</li>
+<li>
+<p>Java Batch/JBeret support</p>
+</li>
+<li>
+<p>WebServices</p>
+</li>
+<li>
+<p>WildFly Management API (<code>jboss-cli</code> support)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additionally, we&#8217;ve begun building WildFly Swarm-ified servers which
+can either be added (as fractions) into your own service, or executed
+standalone from artifacts that are addressable through Maven coordinates.</p>
+</div>
+<div class="paragraph">
+<p>Also, we&#8217;ve improved our testing game, both in terms of how WildFly Swarm
+itself is tested, and the facilities we provide to make testing your own
+applications with WildFly Swarm.</p>
+</div>
+<div class="paragraph">
+<p>These include changes to the Maven <code>wildfly-swarm-plugin</code> to allow</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>wildfly-swarm:start</code> to start an application for integration-testing
+(used in the <code>pre-integration-test</code> Maven lifecycle phase)</p>
+</li>
+<li>
+<p><code>wildfly-swarm:stop</code> the opposite of <code>:start</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_important_changes">Important Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to the new features and bug-fixes, there are some notable changes
+that you will need to undertake for your application since 1.0.0.Alpha5.</p>
+</div>
+<div class="sect2">
+<h3 id="_simplified_maven_code_artifactid_code">Simplified Maven <code>artifactId</code></h3>
+<div class="paragraph">
+<p>In previous versions of WildFly Swarm, all artifacts had a <code>groupId</code> of
+<code>org.wildfly.swarm</code> and an <code>artifactId</code> of <code>wildfly-swarm-something</code>.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve simplified the <code>artifactId</code> to the bare name of the piece, avoiding
+the repetition of <code>wildfly-swarm-</code> as a prefix.</p>
+</div>
+<div class="paragraph">
+<p>For instance, if you had dependencies of:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;wildfly-swarm-undertow&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;wildfly-swarm-weld&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>starting with 1.0.0.Alpha6, they should be simplified to:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;undertow&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;weld&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changelog">Changelog</h3>
+<div class="paragraph">
+<p>Release notes for 1.0.0.Alpha6 are available <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&amp;version=12329354">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>As a result of our move from GitHub issues to JIRA, some issues that are marked as part of the 1.0.0.Alpha6 release were actually part of prior releases. Apologies for any confusion that may cause when viewing the Release notes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources">Resources</h3>
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve moved all bug and feature-tracking to <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="http://github.com/wildfly-swarm/wildfly-swarm-examples" class="bare">http://github.com/wildfly-swarm/wildfly-swarm-examples</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1.0.0.Alpha6">available</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_thank_you_contributors">Thank you, Contributors!</h3>
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ben Browning</p>
+</li>
+<li>
+<p>Ben Tomasini</p>
+</li>
+<li>
+<p>Bernard Tison</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>James Perkins</p>
+</li>
+<li>
+<p>John D. Ament</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Lance Ball</p>
+</li>
+<li>
+<p>Paris Apostolopoulos</p>
+</li>
+<li>
+<p>Thomas Meyer</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe</p>
+</li>
+<li>
+<p>John Clingan</p>
+</li>
+<li>
+<p>John Hovell</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ben Browning</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Kylin Soong</p>
+</li>
+<li>
+<p>Lance Ball</p>
+</li>
+<li>
+<p>Mark Little</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>William Antônio Siqueira</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe</p>
+</li>
+<li>
+<p>Helio Frota</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>James Perkins</p>
+</li>
+<li>
+<p>Lance Ball</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Random other Thanks</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>John Mazzitelli (Hawkular)</p>
+</li>
+<li>
+<p>Peter Palaga (Hawkular)</p>
+</li>
+<li>
+<p>Stian Thorgersen (Keycloak)</p>
+</li>
+<li>
+<p>David M. Lloyd (JBoss Modules)</p>
+</li>
+<li>
+<p>Tomaz Cerar (WildFly)</p>
+</li>
+<li>
+<p>Roland Huß (Docker/Maven)</p>
+</li>
+<li>
+<p>Stuart Douglas (Infinispan)</p>
+</li>
+<li>
+<p>Paul Ferraro (Infinispan)</p>
+</li>
+<li>
+<p>Bruno Georges (Boss, Presentations)</p>
+</li>
+<li>
+<p>Lance Ball (Presentations)</p>
+</li>
+<li>
+<p>Andrew L. Rubinger (Shrinkwrap/Arquillian)</p>
+</li>
+<li>
+<p>Aslak Knutsen (Shrinkwrap)</p>
+</li>
+<li>
+<p>Ralf Battenfeld (Shrinkwrap Descriptors)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li class="last"><a href="https://issues.jboss.org/projects/SWARM/issues/SWARM-80?filter=allopenissues">Issue Tracker</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');</script></body></html>
