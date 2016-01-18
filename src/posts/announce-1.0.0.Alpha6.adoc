@@ -1,10 +1,9 @@
 ---
 title: Announcement 1.0.0.Alpha6
-publishDate: 2016-01-15
-modifyDate: 2016-01-15
+publishDate: 2016-01-18
+modifyDate: 2016-01-18
 author: The WildFly Swarm Team
 layout: post.jade
-draft:true
 ---
 
 == What is WildFly Swarm?
