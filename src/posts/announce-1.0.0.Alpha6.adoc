@@ -22,7 +22,7 @@ There's quite a bit new stuff in this release, including support for
 applications that might want:
 
 * WildFly 10.0.0.CR5 as a base
-* `ribbon.js` so your single-page apps can enjoys the benefits of Ribbon-based
+* `ribbon.js` so your single-page apps can enjoy the benefits of Ribbon-based
   discovery from the browser.
 * Swagger
 * Java Batch/JBeret support
@@ -30,7 +30,7 @@ applications that might want:
 * WildFly Management API (`jboss-cli` support)
 
 Additionally, we've begun building WildFly Swarm-ified servers which
-can either be added (as fractions) into your own service, or executed
+can either be added as fractions into your own service, or executed
 standalone from artifacts that are addressable through Maven coordinates.
 
 Also, we've improved our testing game, both in terms of how WildFly Swarm
