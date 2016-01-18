@@ -10,11 +10,7 @@ If you are new to WildFly Swarm, this is the best place to start. Learn
 what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
 
-The latest version (against HEAD):
-
 * link:/documentation/HEAD[LATEST]
-
-Previous releases:
 
 * link:/documentation/1-0-0-Alpha6[1.0.0.Alpha6]
 
