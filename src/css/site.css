@@ -19,11 +19,11 @@ ul {
     padding: 0px;
 }
 
-article ul {
+#content ul {
     list-style: disc inside;
 }
-
-article ul > li > :first-child {
+    
+#content ul > li > :first-child {
     display: inline;
 }
 
@@ -87,6 +87,7 @@ footer .panel {
 }
 
 .sidebar ul {
+    list-style: none !important;
     margin: 10px;
     padding: 0px;
 }
