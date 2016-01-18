@@ -23,6 +23,10 @@ article ul {
     list-style: disc inside;
 }
 
+article ul > li > :first-child {
+    display: inline;
+}
+
 h1, h2, h3, h4, h5 {
     color: #343434;
 }
