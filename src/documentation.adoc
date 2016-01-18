@@ -6,11 +6,18 @@ layout: page.jade
 
 === Users Guide
 
-https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/
-
 If you are new to WildFly Swarm, this is the best place to start. Learn
 what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
+
+The latest version (against HEAD):
+
+https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/
+
+Previous releases:
+
+* link:/documentation/1-0-0-Alpha6[1.0.0.Alpha6]
+
 
 === Configuration API
 
