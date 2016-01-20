@@ -112,7 +112,7 @@ Public properties that have changed are:
 
 |jboss.socket.binding.port-offset
 |swarm.port.offset
-.
+
 |jboss.default.multicast.address
 |swarm.default.multicast.address
 
