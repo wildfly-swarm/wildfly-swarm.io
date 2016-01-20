@@ -82,8 +82,8 @@ starting with 1.0.0.Alpha6, they should be simplified to:
 
 In the name of consistency, we've adjusted the names of the system
 properties we use. Before, we had a mix of `jboss.\*`, `swarm.*`, and
-`wildfly.swarm.\*` properties - those now are all `swarm.*` properties, and
-(in one case), the property was made less verbose.
+`wildfly.swarm.\*` properties - those now are all `swarm.*` properties, and,
+in one case, the property was made less verbose.
 
 Public properties that have changed are:
 
