@@ -78,6 +78,55 @@ starting with 1.0.0.Alpha6, they should be simplified to:
       <artifactId>weld</artifactId>
     </dependency>
 
+=== Renamed Properties
+
+In the name of consistency, we've adjusted the names of the system
+properties we use. Before, we had a mix of `jboss.\*`, `swarm.*`, and
+`wildfly.swarm.\*` properties - those now are all `swarm.*` properties, and
+(in one case), the property was made less verbose.
+
+Public properties that have changed are:
+
+[cols=2, options="header"]
+|===
+|Old
+|New
+
+|wildfly.swarm.context.path
+|swarm.context.path
+
+|wildfly.swarm.environment
+|swarm.environment
+
+|wildfly.swarm.ribbon.context.path
+|swarm.ribbon.context.path
+
+|jboss.bind.address
+|swarm.bind.address
+
+|jboss.http.port
+|swarm.http.port
+
+|jboss.https.port
+|swarm.https.port
+
+|jboss.socket.binding.port-offset
+|swarm.port.offset
+.
+|jboss.default.multicast.address
+|swarm.default.multicast.address
+
+|jboss.management.http.port
+|swarm.management.http.port
+
+|jboss.management.https.port
+|swarm.management.https.port
+
+|===
+
+So if you were using any of the old properties, you'll need to adjust
+accordingly.
+
 === Changelog
 
 Release notes for 1.0.0.Alpha6 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329354[here].
