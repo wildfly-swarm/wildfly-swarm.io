@@ -27,6 +27,10 @@ ul {
     display: inline;
 }
 
+#content td, #content th {
+    padding: 3px;
+}
+
 h1, h2, h3, h4, h5 {
     color: #343434;
 }

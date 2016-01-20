@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Alpha6 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Alpha6</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Jan 18th</div><div><div class="sect1">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Alpha6 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Alpha6</h1><div class="post-meta">By The WildFly Swarm Team | Published last Monday,  Jan 18th</div><div><div class="sect1">
 <h2 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -115,6 +115,77 @@ the repetition of <code>wildfly-swarm-</code> as a prefix.</p>
   &lt;artifactId&gt;weld&lt;/artifactId&gt;
 &lt;/dependency&gt;</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_renamed_properties">Renamed Properties</h3>
+<div class="paragraph">
+<p>In the name of consistency, we&#8217;ve adjusted the names of the system
+properties we use. Before, we had a mix of <code>jboss.*</code>, <code>swarm.*</code>, and
+<code>wildfly.swarm.*</code> properties - those now are all <code>swarm.*</code> properties, and
+(in one case), the property was made less verbose.</p>
+</div>
+<div class="paragraph">
+<p>Public properties that have changed are:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Old</th>
+<th class="tableblock halign-left valign-top">New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly.swarm.context.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.context.path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly.swarm.environment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildfly.swarm.ribbon.context.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.ribbon.context.path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.bind.address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.bind.address</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.http.port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.http.port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.https.port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.https.port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.socket.binding.port-offset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.port.offset
+.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.default.multicast.address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.default.multicast.address</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.management.http.port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.management.http.port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss.management.https.port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swarm.management.https.port</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>So if you were using any of the old properties, you&#8217;ll need to adjust
+accordingly.</p>
 </div>
 </div>
 <div class="sect2">
