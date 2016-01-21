@@ -70,7 +70,7 @@ In swarm we take a slightly different approach. The runtime capabilities are rep
 shipped as maven artifacts. The inclusion of the dependencies in your build file determines what functionality will be available to your application.
 Many of these fractions provide 'extensions' to the wildfly runtime, but the details to integrate these are hidden behind the wildfly-swarm maven plugin.
 
-The current implementation to support declarative configuration retains this pattern. You have too declare maven dependencies on fractions
+The current implementation to support declarative configuration retains this pattern. You have to declare maven dependencies on fractions
 to express what runtime capabilities your application requires and the swarm plugin does the assembly and put's everything where it needs to be.
 
 When we parse external XML configurations, we basically ignore the `<extensions/>` section of the file and all subsystem declarations
@@ -80,11 +80,13 @@ and should simplify migration from wildfly to wildfly-swarm.
 === Caveats and gotchas
 
 As described before, the parser simply logs warning messages for subsystems that are declared in the XML,
-but that don't have a corresponding fraction dependency. But it's advised to remove the part's you don't need.
+but don't have a corresponding fraction dependency. It's advised to remove the part's you don't need.
+
 The relation between fractions and subsystems is not well documented at the moment, which would be a precursor to successfully trim the XML.
 
 Some subsystem don't have corresponding fractions or the fractions have not yet been modified
-to support declarative configuration, but we work on improving both cases. +++<u>The current supported fractions are</u>+++:
+to support declarative configuration, but we work on improving both cases.
++++<u>These fractions currently support declarative configuration</u>+++:
 
 * Datasources
 * EE
