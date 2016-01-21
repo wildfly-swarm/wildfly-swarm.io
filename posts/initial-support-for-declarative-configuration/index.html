@@ -1,0 +1,160 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Initial support for declarative configuration | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Initial support for declarative configuration</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Jan 21st</div><div><div class="sect2">
+<h3 id="_programmatic_and_declarative_configuration">Programmatic and declarative configuration</h3>
+<div class="paragraph">
+<p>The common and only way to configure wildfly-swarm nodes was to use the Java API.
+With the inclusion of <a href="https://issues.jboss.org/browse/SWARM-14">SWARM-14</a>, external, declarative configuration of wildfly-swarm nodes becomes possible.</p>
+</div>
+<div class="paragraph">
+<p>Typically you would rely on the <a href="https://github.com/wildfly-swarm/wildfly-config-api">config-api</a> to configure any of the subsystems the container leverages:</p>
+</div>
+<div class="listingblock">
+<div class="title">Java API (i.e. Main.java)</div>
+<div class="content">
+<pre>return new DatasourcesFraction()
+    .jdbcDriver("h2", (d) -&gt; {
+        d.driverDatasourceClassName("org.h2.Driver");
+        d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
+        d.driverModuleName("com.h2database.h2");
+    })
+    .dataSource("ExampleDS", (ds) -&gt; {
+        ds.driverName("h2");
+        ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
+        ds.userName("sa");
+        ds.password("sa");
+    });</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the additional support for declarative configuration, you can push the subsystem configurations into an external XML file.
+If you have previous experience with <a href="http://wildfly.org">Wildfly</a> itself, then this should be familiar to you:</p>
+</div>
+<div class="listingblock">
+<div class="title">XML Configuration (i.e. standalone.xml)</div>
+<div class="content">
+<pre>[...]
+&lt;subsystem xmlns="urn:jboss:domain:datasources:4.0"&gt;
+     &lt;datasources&gt;
+        &lt;datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true"&gt;
+            &lt;connection-url&gt;jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE&lt;/connection-url&gt;
+            &lt;driver&gt;h2&lt;/driver&gt;
+                &lt;security&gt;
+                    &lt;user-name&gt;sa&lt;/user-name&gt;
+                    &lt;password&gt;sa&lt;/password&gt;
+                &lt;/security&gt;
+            &lt;/datasource&gt;
+            &lt;drivers&gt;
+            &lt;driver name="h2" module="com.h2database.h2"&gt;
+                &lt;datasource-class&gt;org.h2.Driver&lt;/datasource-class&gt;
+                    &lt;xa-datasource-class&gt;org.h2.jdbcx.JdbcDataSource&lt;/xa-datasource-class&gt;
+                 &lt;/driver&gt;
+            &lt;/drivers&gt;
+    &lt;/datasources&gt;
+&lt;/subsystem&gt;
+[...]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relation_of_fractions_and_wildfly_extensions">Relation of fractions and wildfly extensions</h3>
+<div class="paragraph">
+<p>If you migrate from wildfly to swarm you would typically already have a <code>standalone.xml</code> file.
+Maybe you already configured and tested your services using a regular wildfly installation
+or because you are in the process of decomposing a larger application into a set of services based on swarm.</p>
+</div>
+<div class="paragraph">
+<p>The top of 'standalone.xml' file contains a series of <code>&lt;extension module="&#8230;&#8203;"/&gt;</code> elements.
+In wildfly these are used to determine the capabilities provided by the runtime.
+I.e. whether messaging or datasources are supported and the corresponding services and API&#8217;s are available.</p>
+</div>
+<div class="paragraph">
+<p>In swarm we take a slightly different approach. The runtime capabilities are represented by fractions,
+shipped as maven artifacts. The inclusion of the dependencies in your build file determines what functionality will be available to your application.
+Many of these fractions provide 'extensions' to the wildfly runtime, but the details to integrate these are hidden behind the wildfly-swarm maven plugin.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation to support declarative configuration retains this pattern. You have too declare maven dependencies on fractions
+to express what runtime capabilities your application requires and the swarm plugin does the assembly and put&#8217;s everything where it needs to be.</p>
+</div>
+<div class="paragraph">
+<p>When we parse external XML configurations, we basically ignore the <code>&lt;extensions/&gt;</code> section of the file and all subsystem declarations
+for which we don&#8217;t find any matching fractions. This lenient approach allows you to focus on those parts of the XML configuration that matters
+and should simplify migration from wildfly to wildfly-swarm.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_caveats_and_gotchas">Caveats and gotchas</h3>
+<div class="paragraph">
+<p>As described before, the parser simply logs warning messages for subsystems that are declared in the XML,
+but that don&#8217;t have a corresponding fraction dependency. But it&#8217;s advised to remove the part&#8217;s you don&#8217;t need.
+The relation between fractions and subsystems is not well documented at the moment, which would be a precursor to successfully trim the XML.</p>
+</div>
+<div class="paragraph">
+<p>Some subsystem don&#8217;t have corresponding fractions or the fractions have not yet been modified
+to support declarative configuration, but we work on improving both cases. <u>The current supported fractions are</u>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Datasources</p>
+</li>
+<li>
+<p>EE</p>
+</li>
+<li>
+<p>IO</p>
+</li>
+<li>
+<p>JAXRS</p>
+</li>
+<li>
+<p>JCA</p>
+</li>
+<li>
+<p>Logging</p>
+</li>
+<li>
+<p>Naming</p>
+</li>
+<li>
+<p>Remoting</p>
+</li>
+<li>
+<p>Security</p>
+</li>
+<li>
+<p>Transactions</p>
+</li>
+<li>
+<p>Undertow</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A much bigger challenge is that the XML configuration doesn&#8217;t provide defaults that have been verified within the swarm context.
+When leveraging the Java API to configure the fractions, you implicitly rely on default configuration values that the swarm team has build into each fraction.
+However when you migrate from wildfly and carry over the standalone.xml that&#8217;s not the case. As a result some things may work differently
+or not at all.</p>
+</div>
+<div class="paragraph">
+<p>When you run into problems, get in touch with us on IRC.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_road_ahead">The road ahead</h3>
+<div class="paragraph">
+<p>First of all we will extend support for declarative configurations to other fractions.
+With regard to this we will also work to improve <a href="https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/">the documentation</a>, in particular focusing on the changes needed
+to successfully migrate from wildfly using an existing standalone.xml.</p>
+</div>
+<div class="paragraph">
+<p>In addition to this, we&#8217;ll investigate ways to leverage the <code>&lt;extension/&gt;</code> and <code>&lt;subsystem/&gt;</code> elements that might be given in
+and XML file, to determine what fractions need to be packaged with your application. But this is an area with a lot of uncertainty,
+in particular around the question whether the XML is an appropriate vehicle to express the dependencies between fractions, modules, subsystems ,etc.</p>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li class="last"><a href="https://issues.jboss.org/projects/SWARM/issues/SWARM-80?filter=allopenissues">Issue Tracker</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');</script></body></html>
