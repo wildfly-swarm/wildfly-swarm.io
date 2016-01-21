@@ -34,7 +34,6 @@ If you have previous experience with http://wildfly.org[Wildfly] itself, then th
 
 .XML Configuration (i.e. standalone.xml)
 ----
-[...]
 <subsystem xmlns="urn:jboss:domain:datasources:4.0">
      <datasources>
         <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
@@ -53,7 +52,21 @@ If you have previous experience with http://wildfly.org[Wildfly] itself, then th
             </drivers>
     </datasources>
 </subsystem>
-[...]
+----
+
+The notable change to container API is an extended constructor that allows you to reference an XML configuration file:
+----
+    // reference a configuration file
+    URL xmlConfig = cl.getResource("standalone.xml");
+
+    // launch the container pointing it to the XML file
+    Container container = new Container(false, xmlConfig);
+
+    // add the fractions needed
+    container.fraction(new DatasourcesFraction());
+
+    // Start the container
+    container.start();
 ----
 
 === Relation of fractions and wildfly extensions
