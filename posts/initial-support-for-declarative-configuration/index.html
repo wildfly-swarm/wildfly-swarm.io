@@ -31,8 +31,7 @@ If you have previous experience with <a href="http://wildfly.org">Wildfly</a> it
 <div class="listingblock">
 <div class="title">XML Configuration (i.e. standalone.xml)</div>
 <div class="content">
-<pre>[...]
-&lt;subsystem xmlns="urn:jboss:domain:datasources:4.0"&gt;
+<pre>&lt;subsystem xmlns="urn:jboss:domain:datasources:4.0"&gt;
      &lt;datasources&gt;
         &lt;datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true"&gt;
             &lt;connection-url&gt;jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE&lt;/connection-url&gt;
@@ -49,8 +48,25 @@ If you have previous experience with <a href="http://wildfly.org">Wildfly</a> it
                  &lt;/driver&gt;
             &lt;/drivers&gt;
     &lt;/datasources&gt;
-&lt;/subsystem&gt;
-[...]</pre>
+&lt;/subsystem&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The notable change to container API is an extended constructor that allows you to reference an XML configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    // reference a configuration file
+    URL xmlConfig = cl.getResource("standalone.xml");
+
+    // launch the container pointing it to the XML file
+    Container container = new Container(false, xmlConfig);
+
+    // add the fractions needed
+    container.fraction(new DatasourcesFraction());
+
+    // Start the container
+    container.start();</pre>
 </div>
 </div>
 </div>
