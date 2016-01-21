@@ -72,7 +72,7 @@ shipped as maven artifacts. The inclusion of the dependencies in your build file
 Many of these fractions provide 'extensions' to the wildfly runtime, but the details to integrate these are hidden behind the wildfly-swarm maven plugin.</p>
 </div>
 <div class="paragraph">
-<p>The current implementation to support declarative configuration retains this pattern. You have too declare maven dependencies on fractions
+<p>The current implementation to support declarative configuration retains this pattern. You have to declare maven dependencies on fractions
 to express what runtime capabilities your application requires and the swarm plugin does the assembly and put&#8217;s everything where it needs to be.</p>
 </div>
 <div class="paragraph">
@@ -85,12 +85,15 @@ and should simplify migration from wildfly to wildfly-swarm.</p>
 <h3 id="_caveats_and_gotchas">Caveats and gotchas</h3>
 <div class="paragraph">
 <p>As described before, the parser simply logs warning messages for subsystems that are declared in the XML,
-but that don&#8217;t have a corresponding fraction dependency. But it&#8217;s advised to remove the part&#8217;s you don&#8217;t need.
-The relation between fractions and subsystems is not well documented at the moment, which would be a precursor to successfully trim the XML.</p>
+but don&#8217;t have a corresponding fraction dependency. It&#8217;s advised to remove the part&#8217;s you don&#8217;t need.</p>
+</div>
+<div class="paragraph">
+<p>The relation between fractions and subsystems is not well documented at the moment, which would be a precursor to successfully trim the XML.</p>
 </div>
 <div class="paragraph">
 <p>Some subsystem don&#8217;t have corresponding fractions or the fractions have not yet been modified
-to support declarative configuration, but we work on improving both cases. <u>The current supported fractions are</u>:</p>
+to support declarative configuration, but we work on improving both cases.
+<u>These fractions currently support declarative configuration</u>:</p>
 </div>
 <div class="ulist">
 <ul>
