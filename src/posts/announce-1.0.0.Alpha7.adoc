@@ -1,0 +1,100 @@
+---
+title: Announcement 1.0.0.Alpha7
+publishDate: 2016-02-01
+modifyDate: 2016-02-01
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular 
+WildFly Java Application Server in order to support _just enough app-server_
+for microservice type applications.
+
+Each portion of the app-server is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+== What's New in 1.0.0.Alpha7?
+
+There's slightly less stuf in this release since 1.0.0.Alpha6, but then
+again, it marks our new trend of fortnightly releases.
+
+* link:/posts/initial-support-for-declarative-configuration/[Declarative Configuration]
+* Swagger UI
+* Generalize service-discovery topology SPI
+* Service-discovery via link:http://consul.io/[Consul]
+
+== Important Changes
+
+In addition to the new features and bug-fixes, there are some notable changes
+that you will need to undertake for your application since 1.0.0.Alpha6.
+
+=== Topology
+
+We've split topology bits away from the Ribbon support.  That includes
+replacing `ribbon-webapp` with `topology-webapp` and changing the 
+Javascript to `topology.js`.
+
+=== Changelog
+
+Release notes for 1.0.0.Alpha7 are available ##INSERT LINK##
+
+=== Staffing
+
+As you may know, the development of WildFly Swarm is supported by
+http://redhat.com/[Red Hat].  Ken Finnigan has joined the project
+as co-lead, and Heiko Braun has moved over from WildFly proper 
+to help us bridge the gaps.
+
+Welcome aboard!
+
+=== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+We've moved all bug and feature-tracking to http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Alpha7[available].
+
+=== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+* Ben Browning
+* Bob McWhirter
+* George Gastaldi
+* Heiko Braun
+* James Perkins
+* John Hovell
+* Ken Finnigan
+* Lance Ball
+* Mark Little
+* Toby Crawley
+* Helio Frota
+
+*Examples*
+
+* Ben Browning
+* Bob McWhirter
+* Heiko Braun
+* Ken Finnigan
+* Lance Ball
+* Mark Little
+* Toby Crawley
+
+*Documentation*
+
+* Ben Browning
+* Bob McWhirter
+* William Antônio Siqueira
+
+*Random other Thanks*
+
+* Bruno Georges (Boss, Presentations)
