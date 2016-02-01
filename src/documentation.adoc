@@ -12,6 +12,7 @@ Microservice.
 
 * link:/documentation/HEAD[LATEST]
 
+* link:/documentation/1-0-0-Alpha8[1.0.0.Alpha8]
 * link:/documentation/1-0-0-Alpha6[1.0.0.Alpha6]
 
 

@@ -101,6 +101,7 @@ function build() {
     .use(redirect({
       '/documentation/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/',
       '/documentation/1-0-0-Alpha6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha6/',
+      '/documentation/1-0-0-Alpha8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha8/',
     }))
 
     .build(function (err) {
