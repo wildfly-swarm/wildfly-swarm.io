@@ -9,7 +9,7 @@ draft: true
 
 == What is WildFly Swarm?
 
-WildFly Swarm is the decomposition and reconstitution of the popular 
+WildFly Swarm is the decomposition and reconstitution of the popular
 WildFly Java Application Server in order to support _just enough app-server_
 for microservice type applications.
 
@@ -40,8 +40,21 @@ that you will need to undertake for your application since 1.0.0.Alpha6.
 === Topology
 
 We've split topology bits away from the Ribbon support.  That includes
-replacing `ribbon-webapp` with `topology-webapp` and changing the 
+replacing `ribbon-webapp` with `topology-webapp` and changing the
 Javascript to `topology.js`.
+
+=== Migration Gotcha!
+
+If you're migrating an existing WildFly Swarm application to 1.0.0.Alpha7 and
+have a custom `main()` that adds a driver or datasource, pay close attention!
+
+Previously our examples were calling `driverDatasourceClassName()` to set the
+class name on the JDBC Driver object of the `DatasourcesFraction`. This was done
+in error, and now causes an issue because IronJacamar, in WildFly, is now
+correctly setting the datasource class name where as it was not previously.
+
+When setting a JBDS Driver class, now use `driverClassName()` instead
+of `driverDatasourceClassName()`.
 
 === Changelog
 
@@ -51,7 +64,7 @@ Release notes for 1.0.0.Alpha7 are available ##INSERT LINK##
 
 As you may know, the development of WildFly Swarm is supported by
 http://redhat.com/[Red Hat].  Ken Finnigan has joined the project
-as co-lead, and Heiko Braun has moved over from WildFly proper 
+as co-lead, and Heiko Braun has moved over from WildFly proper
 to help us bridge the gaps.
 
 Welcome aboard!
