@@ -1,5 +1,5 @@
 ---
-title: Announcement 1.0.0.Alpha7
+title: Announcement 1.0.0.Alpha8
 publishDate: 2016-02-01
 modifyDate: 2016-02-01
 author: The WildFly Swarm Team
@@ -17,7 +17,7 @@ Each portion of the app-server is referred to as a _fraction_, which many times
 maps to a `subsystem` from WildFly, but also may include other discrete chunks
 of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
 
-== What's New in 1.0.0.Alpha7?
+== What's New in 1.0.0.Alpha8?
 
 There's slightly less stuf in this release since 1.0.0.Alpha6, but then
 again, it marks our new trend of fortnightly releases.
@@ -30,6 +30,11 @@ again, it marks our new trend of fortnightly releases.
 * `Container.createDefaultDeployment()` is now public, and can be used
    from your custom `main()` as a basis for a custom deployment.
 * Update Keycloak to 1.8.0.Final
+
+== What happened to 1.0.0.Alpha7?
+
+Bob and Maven had a spat.  Mistakes were made. We don't like the number 7
+anyhow.
 
 == Important Changes
 
@@ -45,7 +50,7 @@ Javascript to `topology.js`.
 
 === Migration Gotcha!
 
-If you're migrating an existing WildFly Swarm application to 1.0.0.Alpha7 and
+If you're migrating an existing WildFly Swarm application to 1.0.0.Alpha8 and
 have a custom `main()` that adds a driver or datasource, pay close attention!
 
 Previously our examples were calling `driverDatasourceClassName()` to set the
@@ -58,7 +63,7 @@ of `driverDatasourceClassName()`.
 
 === Changelog
 
-Release notes for 1.0.0.Alpha7 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329396[here].
+Release notes for 1.0.0.Alpha8 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329396[here].
 
 === Staffing
 
@@ -77,7 +82,7 @@ We've moved all bug and feature-tracking to http://issues.jboss.org/browse/SWARM
 
 Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples.
 
-Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Alpha7[available].
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Alpha8[available].
 
 === Thank you, Contributors!
 
