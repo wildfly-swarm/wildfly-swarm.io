@@ -22,12 +22,14 @@ of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
 There's slightly less stuf in this release since 1.0.0.Alpha6, but then
 again, it marks our new trend of fortnightly releases.
 
+* Based upon WildFly 10.0.0.Final
 * link:/posts/initial-support-for-declarative-configuration/[Declarative Configuration] (`standalone.xml`)
 * Swagger UI
 * Generalize service-discovery topology SPI
 * Service-discovery via link:http://consul.io/[Consul]
 * `Container.createDefaultDeployment()` is now public, and can be used
    from your custom `main()` as a basis for a custom deployment.
+* Update Keycloak to 1.8.0.Final
 
 == Important Changes
 
