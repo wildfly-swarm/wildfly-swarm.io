@@ -26,11 +26,14 @@ again, it marks our new trend of fortnightly releases.
 * Swagger UI
 * Generalize service-discovery topology SPI
 * Service-discovery via link:http://consul.io/[Consul]
+* `Container.createDefaultDeployment()` is now public, and can be used
+   from your custom `main()` as a basis for a custom deployment.
 
 == Important Changes
 
 In addition to the new features and bug-fixes, there are some notable changes
 that you will need to undertake for your application since 1.0.0.Alpha6.
+
 
 === Topology
 
@@ -71,13 +74,13 @@ We appreciate all of our contributors since the last release:
 * Bob McWhirter
 * George Gastaldi
 * Heiko Braun
+* Helio Frota
 * James Perkins
 * John Hovell
 * Ken Finnigan
 * Lance Ball
 * Mark Little
 * Toby Crawley
-* Helio Frota
 
 *Examples*
 
@@ -93,6 +96,7 @@ We appreciate all of our contributors since the last release:
 
 * Ben Browning
 * Bob McWhirter
+* Toby Crawley
 * William Antônio Siqueira
 
 *Random other Thanks*
