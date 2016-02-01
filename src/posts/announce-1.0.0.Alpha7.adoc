@@ -58,7 +58,7 @@ of `driverDatasourceClassName()`.
 
 === Changelog
 
-Release notes for 1.0.0.Alpha7 are available ##INSERT LINK##
+Release notes for 1.0.0.Alpha7 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329396[here].
 
 === Staffing
 
