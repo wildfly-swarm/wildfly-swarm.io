@@ -12,7 +12,7 @@
     "gh-pages": "^0.5.0",
     "jade": "^1.11.0",
     "metalsmith": "^2.1.0",
-    "@projectodd/metalsmith-asciidoc": "1.1.1",
+    "metalsmith-asciidoc": "git://github.com/projectodd/metalsmith-asciidoc.git",
     "metalsmith-branch": "0.0.4",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-drafts": "0.0.1",
