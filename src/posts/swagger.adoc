@@ -4,7 +4,6 @@ publishDate: 2016-02-04
 modifyDate: 2016-02-04
 author: Lance Ball
 layout: post.jade
-draft: true
 ---
 
 == Swagger Support for JAX-RS Applications
