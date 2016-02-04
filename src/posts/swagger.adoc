@@ -9,7 +9,7 @@ draft: true
 
 == Swagger Support for JAX-RS Applications
 
-With the release of 1.0.0-Alpha7, WildFly Swarm has introduced support
+With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
 for Swagger, a simple but powerful JSON representation of your REST
 APIs.
 
@@ -208,7 +208,7 @@ only the index.html file.
 
 So there you have it! Simple and straightforward support for Swagger
 is now in WildFly Swarm. Yay!  But, the Swagger fraction is brand
-spanking new, and we know there are shortcomings here an there. For example,
+spanking new, and we know there are shortcomings here and there. For example,
 we are still working on supporting Swagger alongside CDI.
 
 So, yeah, it's new and there may be creaks and groans as folks start
