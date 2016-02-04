@@ -1,0 +1,258 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>WildFly Swarm's Got Swagger | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>WildFly Swarm's Got Swagger</h1><div class="post-meta">By Lance Ball | Published Today,  Feb 4th</div><div><div class="sect1">
+<h2 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
+for Swagger, a simple but powerful JSON representation of your REST
+APIs.</p>
+</div>
+<div class="paragraph">
+<p>In simple terms, Swagger is a JSON representation of a RESTful API,
+typically made available over HTTP at <code>/swagger.json</code>. This JSON
+document contains information about your APIs, including names, paths,
+endpoints, parameters, descriptions, keywords, expected responses, and
+more.</p>
+</div>
+<div class="paragraph">
+<p>Per the <a href="https://github.com/OAI/OpenAPI-Specification">Open API
+Specification</a>, the goal of Swagger is to "define a standard,
+language-agnostic interface to REST APIs which allows both humans and
+computers to discover and understand the capabilities of the service
+without access to source code, documentation, or through network
+traffic inspection".</p>
+</div>
+<div class="paragraph">
+<p>If this is your first encounter with Swagger, I suggest you head on
+over to the <a href="http://swagger.io/">Swagger website</a> to learn more about
+Swagger itself, and what it can do for you.</p>
+</div>
+<div class="sect2">
+<h3 id="_usage">Usage</h3>
+<div class="paragraph">
+<p>Using the Swagger fraction is quite simple. First, you&#8217;ll need to enable
+it in your application by adding it to your <code>pom.xml</code> file like so.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;swagger&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This causes WildFly Swarm to pull in all of the Swagger dependencies which
+are subsequently bundled with your application in the <code>-swarm.jar</code> file.
+The next thing you will need to do is add the Swagger annotations to your
+JAX-RS resources.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resource_annotations">Resource Annotations</h3>
+<div class="paragraph">
+<p>In order to generate the <code>swagger.json</code> document, you will need to use
+the Swagger annotations to declare properties of your API. The minimum
+requirement here is the use of <code>@Api</code> and <code>@ApiOperation</code> to declare a
+resource and an operation on that resource. Without at least these two
+annotations present, no output will be generated for <code>swagger.json</code>.</p>
+</div>
+<div class="paragraph">
+<p>From the Swagger documentation, here is an example of a <code>pet</code> resource
+that has a single operation.</p>
+</div>
+<div class="listingblock">
+<div class="title">Java PetResource.java</div>
+<div class="content">
+<pre>@Path("/pet")
+@Api(value = "pet", authorizations = {
+      @Authorization(value="sampleoauth", scopes = {})
+    })
+@Produces({"application/json", "application/xml"})
+public class PetResource {
+
+     @GET
+     @Path("/findByStatus")
+     @ApiOperation(value = "Finds Pets by status",
+        notes = "Multiple status values can be provided with comma seperated strings",
+        response = Pet.class,
+        responseContainer = "List")
+     public Response findPetsByStatus() {
+         // lookup...
+     }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These annotations would result in a <code>swagger.json</code> file which looks something like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">JSON swagger.json</div>
+<div class="content">
+<pre>{
+  "/pet/findByStatus": {
+  "get": {
+    "tags": [
+      "pet"
+    ],
+    "summary": "Finds Pets by status",
+    "description": "Multiple status values can be provided with comma seperated strings",
+    "responses": {
+      "200": {
+        "description": "successful operation",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pet"
+          }
+        }
+      },
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is a lot that the Swagger annotations provide you for
+documenting the details of your API. WildFly Swarm makes all of these
+available to your application by simply including the <code>swagger</code>
+fraction in your <code>pom.xml</code> as shown above. I highly recommend you take
+a look at the
+<a href="https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X">Swagger
+Annotations documentation</a> for more information on the Swagger annotations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>The <code>swagger</code> fraction has reasonable defaults. Out of the box, zero configuration
+is required. WildFly Swarm will examine your application, and have Swagger recursively
+scan the top level package for JAX-RS resources. However, if you would like more
+control of the configuration and want to customize the <code>swagger.json</code> output, you
+can do this too. You&#8217;ll need to provide a <code>Main.java</code> in your application, and
+then use the ShrinkWrap API to customize the fraction configuration.</p>
+</div>
+<div class="paragraph">
+<p>An example.</p>
+</div>
+<div class="listingblock">
+<div class="title">JAVA Main.java</div>
+<div class="content">
+<pre>public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        // Create a new container
+        Container container = new Container();
+
+        // Create a SwaggerArchive using ShrinkWrap API
+        SwaggerArchive archive = ShrinkWrap.create(SwaggerArchive.class, "swagger-app.war");
+
+        // Now we can use the SwaggerArchive to fully customize the JSON output
+        archive.setVersion("1.0"); // our API version
+        archive.setContact("Scott Tiger &lt;scott@tiger.com&gt;");  // set contact info
+        archive.setLicense("MIT"); // set license
+
+        // Finally tell swagger where our resources are
+        archive.setResourcePackages("io.hipster.api.resources");
+
+
+        // Make the SwaggerArchive JAX-RS friendly and add our api package
+        JAXRSArchive deployment = archive.as(JAXRSArchive.class)
+                                      .addPackage("io.hipster.api");
+
+
+        // Make sure all dependencies are satisfied, and deploy that sucker
+        deployment.addAllDependencies();
+        container
+                .fraction(LoggingFraction.createDefaultLoggingFraction())
+                .start()
+                .deploy(deployment);
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_swagger_ui">Swagger UI</h3>
+<div class="paragraph">
+<p>The Swagger folks were nice enough to create an HTML5/CSS/JavaScript
+client side application that can be used to document, query and
+examine a Swagger capable API.  WildFly Swarm provides an easily
+deployable and customizable version of this application via the
+<code>swagger-ui</code> server.</p>
+</div>
+<div class="paragraph">
+<p>You can grab the server from maven and run it out of the box like so.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The maven coordinates for this jar file are:</p>
+</div>
+<div class="listingblock">
+<div class="title">XML</div>
+<div class="content">
+<pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm.servers&lt;/groupId&gt;
+  &lt;artifactId&gt;swagger-ui&lt;/artifactId&gt;
+  &lt;classifier&gt;swarm&lt;/classifier&gt;
+&lt;/dependency&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>swagger-ui</code> layout, colors and design are all pretty nice out of the
+box. But of course it&#8217;s customizable. If you want to change any of the
+content served by <code>swagger-ui</code>, you can do this by providing a pointer to
+it on the command line.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar ./my-custom-resources.jar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, I&#8217;m providing a <code>.jar</code> file, but the command line argument
+provided here can also be a path to a directory on disk, or even a GAV specifying
+the maven coordinates of a published <code>.jar</code> or <code>.war</code> file.</p>
+</div>
+<div class="paragraph">
+<p>The jar file provided (or the directory on disk) will be overlaid on
+to the resources provided by <code>swagger-ui</code>. For example, to customize the
+main page, provide an index.html file at the root of the jar or war
+file, or in the top level of the directory provided. Here we are customizing
+only the index.html file.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ jar tvf my-custom-project.jar
+  0 Mon Feb 01 11:42:08 EST 2016 META-INF/
+ 68 Mon Feb 01 11:42:08 EST 2016 META-INF/MANIFEST.MF
+312 Mon Feb 01 11:41:58 EST 2016 index.html</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conclusion_and_caveats">Conclusion and Caveats</h3>
+<div class="paragraph">
+<p>So there you have it! Simple and straightforward support for Swagger
+is now in WildFly Swarm. Yay!  But, the Swagger fraction is brand
+spanking new, and we know there are shortcomings here and there. For example,
+we are still working on supporting Swagger alongside CDI.</p>
+</div>
+<div class="paragraph">
+<p>So, yeah, it&#8217;s new and there may be creaks and groans as folks start
+to try it out. Please feel free to provide feedback or ask questions
+if you do. We&#8217;re always happy to hear about experiences our community
+is having. Talk to us on freenode at #wildfly-swarm, or in our
+<a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a>.</p>
+</div>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li><a href="https://issues.jboss.org/projects/SWARM/issues?filter=allopenissues">Issue Tracker</a></li><li class="last"><a href="https://projectodd.ci.cloudbees.com/view/WildFly%20Swarm/">Continuous Integration</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');</script></body></html>
