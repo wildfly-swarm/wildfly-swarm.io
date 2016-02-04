@@ -1,0 +1,218 @@
+---
+title: WildFly Swarm's Got Swagger
+publishDate: 2016-02-04
+modifyDate: 2016-02-04
+author: Lance Ball
+layout: post.jade
+
+---
+
+== Swagger Support for JAX-RS Applications
+
+With the release of 1.0.0-Alpha7, WildFly Swarm has introduced support
+for Swagger, a simple but powerful JSON representation of your REST
+APIs.
+
+In simple terms, Swagger is a JSON representation of a RESTful API,
+typically made available over HTTP at `/swagger.json`. This JSON
+document contains information about your APIs, including names, paths,
+endpoints, parameters, descriptions, keywords, expected responses, and
+more.
+
+Per the https://github.com/OAI/OpenAPI-Specification[Open API
+Specification], the goal of Swagger is to "define a standard,
+language-agnostic interface to REST APIs which allows both humans and
+computers to discover and understand the capabilities of the service
+without access to source code, documentation, or through network
+traffic inspection". 
+
+If this is your first encounter with Swagger, I suggest you head on
+over to the http://swagger.io/[Swagger website] to learn more about
+Swagger itself, and what it can do for you.
+
+
+=== Usage
+
+Using the Swagger fraction is quite simple. First, you'll need to enable
+it in your application by adding it to your `pom.xml` file like so.
+
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>swagger</artifactId>
+    </dependency>
+
+This causes WildFly Swarm to pull in all of the Swagger dependencies which
+are subsequently bundled with your application in the `-swarm.jar` file.
+The next thing you will need to do is add the Swagger annotations to your
+JAX-RS resources.
+
+=== Resource Annotations
+
+In order to generate the `swagger.json` document, you will need to use
+the Swagger annotations to declare properties of your API. The minimum
+requirement here is the use of `@Api` and `@ApiOperation` to declare a
+resource and an operation on that resource. Without at least these two
+annotations present, no output will be generated for `swagger.json`.
+
+From the Swagger documentation, here is an example of a `pet` resource
+that has a single operation.
+
+.Java PetResource.java
+-----
+@Path("/pet")
+@Api(value = "pet", authorizations = {
+      @Authorization(value="sampleoauth", scopes = {})
+    })
+@Produces({"application/json", "application/xml"})
+public class PetResource {
+
+     @GET
+     @Path("/findByStatus")
+     @ApiOperation(value = "Finds Pets by status",
+        notes = "Multiple status values can be provided with comma seperated strings",
+        response = Pet.class,
+        responseContainer = "List")
+     public Response findPetsByStatus() {
+         // lookup...
+     }
+}
+-----
+
+These annotations would result in a `swagger.json` file which looks something like this:
+
+.JSON swagger.json
+----
+{
+  "/pet/findByStatus": {
+  "get": {
+    "tags": [
+      "pet"
+    ],
+    "summary": "Finds Pets by status",
+    "description": "Multiple status values can be provided with comma seperated strings",
+    "responses": {
+      "200": {
+        "description": "successful operation",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pet"
+          }
+        }
+      },
+}
+----
+
+There is a lot that the Swagger annotations provide you for
+documenting the details of your API. WildFly Swarm makes all of these
+available to your application by simply including the `swagger`
+fraction in your `pom.xml` as shown above. I highly recommend you take
+a look at the
+https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X[Swagger
+Annotations documentation] for more information on the Swagger annotations.
+
+=== Configuration
+
+The `swagger` fraction has reasonable defaults. Out of the box, zero configuration
+is required. WildFly Swarm will examine your application, and have Swagger recursively
+scan the top level package for JAX-RS resources. However, if you would like more
+control of the configuration and want to customize the `swagger.json` output, you
+can do this too. You'll need to provide a `Main.java` in your application, and
+then use the ShrinkWrap API to customize the fraction configuration.
+
+An example.
+
+.JAVA Main.java
+----
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        // Create a new container
+        Container container = new Container();
+
+        // Create a SwaggerArchive using ShrinkWrap API
+        SwaggerArchive archive = ShrinkWrap.create(SwaggerArchive.class, "swagger-app.war");
+
+        // Now we can use the SwaggerArchive to fully customize the JSON output
+        archive.setVersion("1.0"); // our API version
+        archive.setContact("Scott Tiger <scott@tiger.com>");  // set contact info
+        archive.setLicense("MIT"); // set license
+
+        // Finally tell swagger where our resources are
+        archive.setResourcePackages("io.hipster.api.resources");
+
+
+        // Make the SwaggerArchive JAX-RS friendly and add our api package
+        JAXRSArchive deployment = archive.as(JAXRSArchive.class)
+                                      .addPackage("io.hipster.api");
+
+
+        // Make sure all dependencies are satisfied, and deploy that sucker
+        deployment.addAllDependencies();
+        container
+                .fraction(LoggingFraction.createDefaultLoggingFraction())
+                .start()
+                .deploy(deployment);
+    }
+}
+----
+
+=== Swagger UI
+
+The Swagger folks were nice enough to create an HTML5/CSS/JavaScript
+client side application that can be used to document, query and
+examine a Swagger capable API.  WildFly Swarm provides an easily
+deployable and customizable version of this application via the
+`swagger-ui` server.
+
+You can grab the server from maven and run it out of the box like so.
+
+    $ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar
+
+The maven coordinates for this jar file are:
+
+.XML
+----
+<dependency>
+  <groupId>org.wildfly.swarm.servers</groupId>
+  <artifactId>swagger-ui</artifactId>
+  <classifier>swarm</classifier>
+</dependency>
+----
+
+The `swagger-ui` layout, colors and design are all pretty nice out of the
+box. But of course it's customizable. If you want to change any of the
+content served by `swagger-ui`, you can do this by providing a pointer to
+it on the command line.
+
+    $ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar ./my-custom-resources.jar
+
+In this example, I'm providing a `.jar` file, but the command line argument
+provided here can also be a path to a directory on disk, or even a GAV specifying
+the maven coordinates of a published `.jar` or `.war` file.
+
+The jar file provided (or the directory on disk) will be overlaid on
+to the resources provided by `swagger-ui`. For example, to customize the
+main page, provide an index.html file at the root of the jar or war
+file, or in the top level of the directory provided. Here we are customizing
+only the index.html file.
+
+    $ jar tvf my-custom-project.jar
+      0 Mon Feb 01 11:42:08 EST 2016 META-INF/
+     68 Mon Feb 01 11:42:08 EST 2016 META-INF/MANIFEST.MF
+    312 Mon Feb 01 11:41:58 EST 2016 index.html
+
+=== Conclusion and Caveats
+
+So there you have it! Simple and straightforward support for Swagger
+is now in WildFly Swarm. Yay!  But, the Swagger fraction is brand
+spanking new, and we know there are shortcomings here an there. For example,
+we are still working on supporting Swagger alongside CDI.
+
+So, yeah, it's new and there may be creaks and groans as folks start
+to try it out. Please feel free to provide feedback or ask questions
+if you do. We're always happy to hear about experiences our community
+is having. Talk to us on freenode at \#wildfly-swarm, or in our
+https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group].
