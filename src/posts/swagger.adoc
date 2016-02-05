@@ -168,7 +168,7 @@ deployable and customizable version of this application via the
 
 You can grab the server from maven and run it out of the box like so.
 
-    $ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar
+    $ java -jar swagger-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar
 
 The maven coordinates for this jar file are:
 
@@ -186,7 +186,7 @@ box. But of course it's customizable. If you want to change any of the
 content served by `swagger-ui`, you can do this by providing a pointer to
 it on the command line.
 
-    $ java -jar swarm-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar ./my-custom-resources.jar
+    $ java -jar swagger-ui-1.0.0.Alpha9-SNAPSHOT-swarm.jar ./my-custom-resources.jar
 
 In this example, I'm providing a `.jar` file, but the command line argument
 provided here can also be a path to a directory on disk, or even a GAV specifying
