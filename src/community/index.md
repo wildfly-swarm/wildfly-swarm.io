@@ -7,7 +7,7 @@ layout: page.jade
 ## Community
 
 WildFly Swarm is open source software with a vibrant community. Our community values
-contributions from all its members, as such we have a [Code of Conduct](/code-of-conduct). If you are
+contributions from all its members, as such we have a [Code of Conduct](/community/code-of-conduct). If you are
 getting started and have questions, would like to contribute to the development
 of the project, or just want to chat with other users and developers, join us
 on Freenode or our Google Group.
