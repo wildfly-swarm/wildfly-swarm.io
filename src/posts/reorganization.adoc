@@ -1,0 +1,124 @@
+---
+title: Reorganization
+publishDate: 2016-02-23
+modifyDate: 2016-02-23
+author: WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+After some hearty discussion out at face-to-face meeting in Newcastle, UK,
+along with continuing that discussion on our https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group],
+we've decided to split apart our monolithic repository into reasonable slices.
+
+Part of the motivation for this split related to how we version things.  Since
+WildFly Swarm is a fairly quickly-moving project, at least in the near term,
+there would always be some components in `alpha` or `beta` phase, preventing
+the entirety from being released as `final`.  Especially given that WildFly Swarm
+is an integration project, the upstream components we integrate with all have
+varying release schedules, and timing a collective release can be difficult.
+
+To that end, each of the repositories below is roughly linked with its
+upstream components and can produce independently-versioned bits of
+WildFly Swarm.  Now, a release of *WildFly Swarm* will actually be composed
+of a matrix of releases of the various sub-components, not necessarily matching
+in version numbering.
+
+Since a multitude of versions can certainly make life more difficult for
+consumers, we've added a BOM strategy (see _Practical Changes_ below).
+
+== The New Bits
+
+=== http://github.com/wildfly-swarm/wildfly-swarm[wildfly-swarm]
+
+The collective aggregating BOM project which represents the publicly-versioned
+collective of all other independently-versioned bits that make up a release
+of _WildFly Swarm_
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-parent[wildfly-swarm-parent]
+
+This repository contains the root `pom.xml` used as a parent POM for all other
+things.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-core[wildfly-swarm-core]
+
+This repository contains 80% of the bits that used to live in the monolithic
+repository.  It consists of or `bootstrap`, `container` and most anything 
+that we get from upstream WildFly, including `jax-rs` (and its variants),
+`undertow`, `infinispan` and `jsf`.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-netflix[wildfly-swarm-netflix]
+
+This repository contains the bits to support Ribbon, Hystrix, etc, from NetflixOSS.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-logstash[wildfly-swarm-logstash]
+
+This repository contains the Logstash components for using the ELK stack with
+your applications.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-jolokia[wildfly-swarm-jolokia]
+
+This repository contains the Jolokia fraction to easily add Jolokia to your
+applications.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-swagger[wildfly-swarm-swagger]
+
+This repository contains the application adapter to expose `swagger.json` along
+with the `swagger-webapp` for serving the fancy UI.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-topology[wildfly-swarm-topology]
+
+This repository contains the SPI for our topology infrastructure.  Typically not
+used directly (unless you're attempting to add another topology implementation.)
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-topology-webapp[wildfly-swarm-topology-webapp]
+
+This repository contains the Javascript/web-app portion for exposing the topology
+to the browser.  This *may* become merged with the repository above in short order.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-topology-jgroups[wildfly-swarm-topology-jgroups]
+
+This repository contains the topology implementation based upon WildFly's JGroups
+subsystem.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-topology-consul[wildfly-swarm-topology-consul]
+
+This repository contains the topology implementation based upon Hashicorp's
+Consul registry.
+
+=== http://github.com/wildfly-swarm/wildfly-swarm-servers[wildfly-swarm-servers]
+
+This repository contains mostly just `pom.xml` files for constructing ready-to-use
+`-swarm.jar` versions of servers from the above repositories.
+
+== Practical Changes
+
+As mentioned in the introduction above, we now provide a BOM which can completely
+eleminate headaches involved in multiple components having multiple versions.
+
+To use our BOM, simply add the following to your own POM:
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>bom</artifactId>
+        <version>${version.wildfly.swarm}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+Once you have done this, you can avoid having to specify any other `<version>`
+tags for any _WildFly Swarm_-related components.
+
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jaxrs</artifactId>
+    </dependency>
+  </dependencies>
+
+Our http://github.com/wildfly-swarm/wildfly-swarm-examples[wildfly-swarm-examples] repository
+makes use of the BOM now.
