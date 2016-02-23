@@ -94,7 +94,7 @@ This repository contains mostly just `pom.xml` files for constructing ready-to-u
 == Practical Changes
 
 As mentioned in the introduction above, we now provide a BOM which can completely
-eleminate headaches involved in multiple components having multiple versions.
+eliminate headaches involved in multiple components having multiple versions.
 
 To use our BOM, simply add the following to your own POM:
 
