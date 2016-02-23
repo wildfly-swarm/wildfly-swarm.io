@@ -1,0 +1,166 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Reorganization | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Reorganization</h1><div class="post-meta">By WildFly Swarm Team | Published Today,  Feb 23rd</div><div><div class="paragraph">
+<p>After some hearty discussion at our face-to-face meeting in Newcastle, UK,
+along with continuing that discussion on our <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a>,
+we&#8217;ve decided to split apart our monolithic repository into reasonable slices.</p>
+</div>
+<div class="paragraph">
+<p>Part of the motivation for this split is related to how we version things.  Since
+WildFly Swarm is a fairly quickly-moving project, at least in the near term,
+there would always be some components in <code>alpha</code> or <code>beta</code> phase, preventing
+the entirety from being released as <code>final</code>.  Especially given that WildFly Swarm
+is an integration project, the upstream components we integrate with all have
+varying release schedules, and timing a collective release can be difficult.</p>
+</div>
+<div class="paragraph">
+<p>To that end, each of the repositories below is roughly linked with its
+upstream components and can produce independently-versioned bits of
+WildFly Swarm.  Now, a release of <strong>WildFly Swarm</strong> will actually be composed
+of a matrix of releases of the various sub-components, not necessarily matching
+in version numbering.</p>
+</div>
+<div class="paragraph">
+<p>Since a multitude of versions can certainly make life more difficult for
+consumers, we&#8217;ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
+</div>
+<div class="sect1">
+<h2 id="_the_new_bits">The New Bits</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_wildfly_swarm_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm">wildfly-swarm</a></h3>
+<div class="paragraph">
+<p>The collective aggregating BOM project which represents the publicly-versioned
+collective of all other independently-versioned bits that make up a release
+of <em>WildFly Swarm</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_parent_wildfly_swarm_parent_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-parent">wildfly-swarm-parent</a></h3>
+<div class="paragraph">
+<p>This repository contains the root <code>pom.xml</code> used as a parent POM for all other
+things.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_core_wildfly_swarm_core_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-core">wildfly-swarm-core</a></h3>
+<div class="paragraph">
+<p>This repository contains 80% of the bits that used to live in the monolithic
+repository.  It consists of <code>bootstrap</code>, <code>container</code> and most anything
+that we get from upstream WildFly, including <code>jax-rs</code> (and its variants),
+<code>undertow</code>, <code>infinispan</code> and <code>jsf</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_netflix_wildfly_swarm_netflix_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-netflix">wildfly-swarm-netflix</a></h3>
+<div class="paragraph">
+<p>This repository contains the bits to support Ribbon, Hystrix, etc, from NetflixOSS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_logstash_wildfly_swarm_logstash_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-logstash">wildfly-swarm-logstash</a></h3>
+<div class="paragraph">
+<p>This repository contains the Logstash components for using the ELK stack with
+your applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_jolokia_wildfly_swarm_jolokia_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-jolokia">wildfly-swarm-jolokia</a></h3>
+<div class="paragraph">
+<p>This repository contains the Jolokia fraction to easily add Jolokia to your
+applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_swagger_wildfly_swarm_swagger_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-swagger">wildfly-swarm-swagger</a></h3>
+<div class="paragraph">
+<p>This repository contains the application adapter to expose <code>swagger.json</code> along
+with the <code>swagger-webapp</code> for serving the fancy UI.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_topology_wildfly_swarm_topology_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-topology">wildfly-swarm-topology</a></h3>
+<div class="paragraph">
+<p>This repository contains the SPI for our topology infrastructure.  Typically not
+used directly (unless you&#8217;re attempting to add another topology implementation.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_topology_webapp_wildfly_swarm_topology_webapp_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-topology-webapp">wildfly-swarm-topology-webapp</a></h3>
+<div class="paragraph">
+<p>This repository contains the Javascript/web-app portion for exposing the topology
+to the browser.  This <strong>may</strong> become merged with the repository above in short order.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_topology_jgroups_wildfly_swarm_topology_jgroups_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-topology-jgroups">wildfly-swarm-topology-jgroups</a></h3>
+<div class="paragraph">
+<p>This repository contains the topology implementation based upon WildFly&#8217;s JGroups
+subsystem.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_topology_consul_wildfly_swarm_topology_consul_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-topology-consul">wildfly-swarm-topology-consul</a></h3>
+<div class="paragraph">
+<p>This repository contains the topology implementation based upon Hashicorp&#8217;s
+Consul registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_href_http_github_com_wildfly_swarm_wildfly_swarm_servers_wildfly_swarm_servers_a"><a href="http://github.com/wildfly-swarm/wildfly-swarm-servers">wildfly-swarm-servers</a></h3>
+<div class="paragraph">
+<p>This repository contains projects for constructing ready-to-use
+<code>-swarm.jar</code> versions of servers for <code>keycloak</code> and <code>swagger-ui</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_practical_changes">Practical Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned in the introduction above, we now provide a BOM which can completely
+eliminate headaches involved in multiple components having multiple versions.</p>
+</div>
+<div class="paragraph">
+<p>To use our BOM, simply add the following to your own POM:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependencyManagement&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+      &lt;artifactId&gt;bom&lt;/artifactId&gt;
+      &lt;version&gt;${version.wildfly.swarm}&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have done this, you can avoid having to specify any other <code>&lt;version&gt;</code>
+tags for any <em>WildFly Swarm</em>-related components.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxrs&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Our <a href="http://github.com/wildfly-swarm/wildfly-swarm-examples">wildfly-swarm-examples</a> repository
+makes use of the BOM now.</p>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li><a href="https://issues.jboss.org/projects/SWARM/issues?filter=allopenissues">Issue Tracker</a></li><li class="last"><a href="https://projectodd.ci.cloudbees.com/view/WildFly%20Swarm/">Continuous Integration</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');</script></body></html>
