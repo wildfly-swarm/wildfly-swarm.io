@@ -7,7 +7,7 @@ layout: post.jade
 draft: true
 ---
 
-After some hearty discussion out at face-to-face meeting in Newcastle, UK,
+After some hearty discussion at our face-to-face meeting in Newcastle, UK,
 along with continuing that discussion on our https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group],
 we've decided to split apart our monolithic repository into reasonable slices.
 
