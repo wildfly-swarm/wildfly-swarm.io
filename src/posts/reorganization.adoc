@@ -43,7 +43,7 @@ things.
 === http://github.com/wildfly-swarm/wildfly-swarm-core[wildfly-swarm-core]
 
 This repository contains 80% of the bits that used to live in the monolithic
-repository.  It consists of or `bootstrap`, `container` and most anything 
+repository.  It consists of `bootstrap`, `container` and most anything 
 that we get from upstream WildFly, including `jax-rs` (and its variants),
 `undertow`, `infinispan` and `jsf`.
 
