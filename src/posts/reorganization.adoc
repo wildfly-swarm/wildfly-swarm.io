@@ -4,7 +4,6 @@ publishDate: 2016-02-23
 modifyDate: 2016-02-23
 author: WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 After some hearty discussion at our face-to-face meeting in Newcastle, UK,
@@ -43,7 +42,7 @@ things.
 === http://github.com/wildfly-swarm/wildfly-swarm-core[wildfly-swarm-core]
 
 This repository contains 80% of the bits that used to live in the monolithic
-repository.  It consists of `bootstrap`, `container` and most anything 
+repository.  It consists of `bootstrap`, `container` and most anything
 that we get from upstream WildFly, including `jax-rs` (and its variants),
 `undertow`, `infinispan` and `jsf`.
 
