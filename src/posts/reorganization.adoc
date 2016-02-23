@@ -88,8 +88,8 @@ Consul registry.
 
 === http://github.com/wildfly-swarm/wildfly-swarm-servers[wildfly-swarm-servers]
 
-This repository contains mostly just `pom.xml` files for constructing ready-to-use
-`-swarm.jar` versions of servers from the above repositories.
+This repository contains projects for constructing ready-to-use
+`-swarm.jar` versions of servers for `keycloak` and `swagger-ui`.
 
 == Practical Changes
 
