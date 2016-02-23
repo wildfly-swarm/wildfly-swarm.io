@@ -1,0 +1,125 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Contributing to WildFly Swarm | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><h1 id="contributing-to-wildfly-swarm">Contributing to WildFly Swarm</h1>
+<p>We welcome contributions of any kind to WildFly Swarm from everyone.</p>
+<p>We expect all contributors and users to follow our <a href="/community/code-of-conduct">Code of Conduct</a> when communicating through project channels.
+These include, but are not limited to: irc, issues, code, Google Group discussions.</p>
+<p>Building WildFly Swarm requires Java 8 or newer and Maven 3.2.5 or newer.</p>
+<blockquote>
+<p>If you are on Fedora, the Maven 3.2.5 build won&#39;t work, as it uses an older version of Aether that was replaced in the
+official Maven 3.2.5 release. You&#39;ll need to manually install <a href="https://maven.apache.org/download.cgi">Maven</a>.</p>
+</blockquote>
+<h2 id="one-time-setup">One time setup</h2>
+<h3 id="create-a-github-account">Create a GitHub account</h3>
+<p>If you don&#39;t have one already, head to <a href="http://github.com/">http://github.com/</a></p>
+<h3 id="fork-a-repository">Fork a repository</h3>
+<p>Fork a WildFly Swarm repository, such as <a href="https://github.com/wildfly-swarm/wildfly-swarm-core">https://github.com/wildfly-swarm/wildfly-swarm-core</a>,
+or whichever repository contains the code/docs that you wish to change, into your GitHub account.</p>
+<h3 id="clone-your-newly-forked-repository-onto-your-local-machine">Clone your newly forked repository onto your local machine</h3>
+<pre><code class="lang-bash">git clone git@github.com:[your username]/wildfly-swarm-core.git
+cd wildfly-swarm-core
+</code></pre>
+<h3 id="add-a-remote-reference-to-upstream">Add a remote reference to upstream</h3>
+<p>This makes it easy to pull down changes in the project over time</p>
+<pre><code class="lang-bash">git git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
+</code></pre>
+<h3 id="setup-your-ide-for-the-code-style-format-of-the-project">Setup your IDE for the code style format of the project</h3>
+<p>Currently we have code styles defined for Intellij. Please follow the steps in <a href="https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md">the README</a>
+on how to set them up.</p>
+<h3 id="setup-commit-message-template">Setup commit message template</h3>
+<p>We have defined a template for commit messages to help with clarity of any change that is made, thus making it easier for
+anyone not familiar with existing code to understand the impacts of a change.</p>
+<p>Run the following:</p>
+<pre><code class="lang-bash">git config commit.template ./support/gitcommit-template.txt
+</code></pre>
+<h2 id="development-process">Development Process</h2>
+<p>This is the typical process you would follow to submit any changes to our GitHub repositories.</p>
+<h3 id="pulling-updates-from-upstream">Pulling updates from upstream</h3>
+<pre><code class="lang-bash">git pull --rebase upstream master
+</code></pre>
+<blockquote>
+<p>Note that --rebase will automatically move your local commits, if you have any, on top of the latest branch you pull from.
+If you don&#39;t have any commits it is safe to leave off, but for safety it doesn&#39;t hurt to use it each time just in case you
+have a commit you&#39;ve forgotten about!</p>
+</blockquote>
+<h3 id="discuss-your-planned-changes-if-you-want-feedback-">Discuss your planned changes (if you want feedback)</h3>
+<ul>
+<li>Google Group - <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">https://groups.google.com/forum/#!forum/wildfly-swarm</a></li>
+<li>IRC - irc://irc.freenode.org/wildfly-swarm</li>
+</ul>
+<h3 id="make-sure-there-is-a-jira-for-the-work">Make sure there is a JIRA for the work</h3>
+<p>Either assign an existing JIRA to yourself, or create a new one at <a href="https://issues.jboss.org/browse/SWARM">https://issues.jboss.org/browse/SWARM</a>.</p>
+<h3 id="create-a-simple-topic-branch-to-isolate-your-work-recommended-">Create a simple topic branch to isolate your work (recommended)</h3>
+<pre><code class="lang-bash">git checkout -b my_cool_feature
+</code></pre>
+<p>If working on several changes it once, it may be beneficial to use the JIRA issue as the branch name.</p>
+<h3 id="make-the-changes">Make the changes</h3>
+<p>Make whatever code changes, including new tests to verify your change, are necessary and ensure that the build and tests pass:</p>
+<pre><code class="lang-bash">mvn clean install
+</code></pre>
+<blockquote>
+<p>If you&#39;re making non code changes, the above step is not required.</p>
+</blockquote>
+<h3 id="commit-changes">Commit changes</h3>
+<p>Add whichever files were changed into &#39;staging&#39; before performing a commit:</p>
+<pre><code class="lang-bash">git commit
+</code></pre>
+<p>During the commit process you will need to replace the various parts of the template that we added as part of the one time setup.</p>
+<p>Here is some information to help:</p>
+<ul>
+<li>Subject - Short and concise, preferably less than 50 characters</li>
+<li>Motivation - Describe the purpose of the commit, along with any associated JIRA issue</li>
+<li>Modifications - What code has changed, and why?</li>
+<li>Result - How does this commit affect the behaviour or usage</li>
+</ul>
+<h3 id="rebase-changes-against-master">Rebase changes against master</h3>
+<p>Once all your commits for the issue have been made against your local topic branch, we need to rebase it against master in
+upstream to ensure that your commits are added on top of the current state of master.  This will make it easier to incorporate
+your changes into the master branch, especially if there has been any significant time passed since you rebased at the beginning.</p>
+<pre><code class="lang-bash">git pull --rebase upstream master
+</code></pre>
+<h3 id="push-to-your-repo">Push to your repo</h3>
+<p>Now that you&#39;ve sync&#39;d your topic branch with upstream, it&#39;s time to push it to your GitHub repo.</p>
+<pre><code class="lang-bash">git push origin my_cool_feature
+</code></pre>
+<h3 id="getting-your-changes-merged-into-upstream-a-pull-request">Getting your changes merged into upstream, a pull request</h3>
+<p>Now your updates are in your GitHub repo, you will need to notify the project that you have code/docs for inclusion.</p>
+<ul>
+<li>Send a pull request, by clicking the pull request link while in your repository fork</li>
+<li>Copy the URL of the pull request</li>
+<li>In the associated JIRA, click on the &quot;Workflow&quot; menu item and choose &quot;Link Pull Request&quot;.  Paste the previously copied link
+and supply any additional comments.</li>
+<li>As part of the review you may see an automated test run comment on your pull request.</li>
+<li>After review a maintainer will merge your pull request, update/resolve associated JIRAs, and reply when complete</li>
+<li>Lastly, switch back to master from your topic branch and pull the updates</li>
+</ul>
+<pre><code class="lang-bash">git checkout master
+git pull upstream master
+</code></pre>
+<ul>
+<li>You may also choose to update your origin on GitHub as well</li>
+</ul>
+<pre><code class="lang-bash">git push origin
+</code></pre>
+<h3 id="some-tips">Some tips</h3>
+<p>Here are some tips on increasing the chance that your pull request is accepted:</p>
+<ul>
+<li>Include tests that fail without your code, and pass with it</li>
+<li>Update any associated documentation, or add new documentation. This will require a separate pull request as the documentation
+is in a separate repository</li>
+<li>Follow the existing <a href="/community/code-style.md">code style</a> of the project</li>
+</ul>
+<h2 id="updating-user-guide">Updating User Guide</h2>
+<p>If you&#39;d like to contribute to the <a href="https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/">User Guide</a> of
+WildFly Swarm, you can do so in the following ways:</p>
+<ol>
+<li>Submit a pull request to <a href="https://github.com/wildfly-swarm/wildfly-swarm-users-guide">https://github.com/wildfly-swarm/wildfly-swarm-users-guide</a></li>
+<li>Signup at <a href="http://gitbooks.io">http://gitbooks.io</a> and use their web editor</li>
+<li>Install the GitBooks desktop application</li>
+</ol>
+<p>If you want to use options 2 or 3 just let us know, as we will need to add your <a href="http://gitbooks.io">http://gitbooks.io</a> id to the user guide for editing.</p>
+</div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li><a href="https://issues.jboss.org/projects/SWARM/issues?filter=allopenissues">Issue Tracker</a></li><li class="last"><a href="https://projectodd.ci.cloudbees.com/view/WildFly%20Swarm/">Continuous Integration</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2015 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');</script></body></html>
