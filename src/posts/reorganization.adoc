@@ -11,7 +11,7 @@ After some hearty discussion at our face-to-face meeting in Newcastle, UK,
 along with continuing that discussion on our https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group],
 we've decided to split apart our monolithic repository into reasonable slices.
 
-Part of the motivation for this split related to how we version things.  Since
+Part of the motivation for this split is related to how we version things.  Since
 WildFly Swarm is a fairly quickly-moving project, at least in the near term,
 there would always be some components in `alpha` or `beta` phase, preventing
 the entirety from being released as `final`.  Especially given that WildFly Swarm
