@@ -1,6 +1,6 @@
 ---
 title: Contributing to WildFly Swarm
-lastUpdate: 2016-02-23
+lastUpdate: 2016-02-25
 layout: page.jade
 ---
 
@@ -9,7 +9,7 @@ layout: page.jade
 We welcome contributions of any kind to WildFly Swarm from everyone.
 
 We expect all contributors and users to follow our
-[Code of Conduct](/community/code-of-conduct) when communicating through
+**[Code of Conduct](/community/code-of-conduct)** when communicating through
 project channels. These include, but are not limited to: irc, issues, code,
 Google Group discussions.
 
@@ -24,6 +24,29 @@ Building WildFly Swarm requires Java 8 or newer and Maven 3.2.5 or newer.
 ### Create a GitHub account
 
 If you don't have one already, head to http://github.com/
+
+### Setup your IDE for the code style format of the project
+
+Currently we have code styles defined for Intellij. Please follow the steps in [the README](https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md)
+on how to set them up.
+
+### Download commit message template
+
+We have defined a template for commit messages to help with clarity of any
+change that is made, thus making it easier for anyone not familiar with
+existing code to understand the impacts of a change.
+
+Run the following:
+```bash
+curl http://wildfly-swarm.io/community/gitcommit-template.txt -o ~/.wildflyswarm-gitmessage.txt
+```
+
+An alternative with `wget`:
+```bash
+wget http://wildfly-swarm.io/community/gitcommit-template.txt -O ~/.wildflyswarm-gitmessage.txt
+```
+
+## Per repository setup
 
 ### Fork a repository
 
@@ -46,31 +69,12 @@ This makes it easy to pull down changes in the project over time
 git git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
 ```
 
-### Setup your IDE for the code style format of the project
-
-Currently we have code styles defined for Intellij. Please follow the steps in [the README](https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md)
-on how to set them up.
-
 ### Setup commit message template
-
-We have defined a template for commit messages to help with clarity of any
-change that is made, thus making it easier for anyone not familiar with
-existing code to understand the impacts of a change.
 
 Run the following:
 ```bash
-curl http://wildfly-swarm.io/community/gitcommit-template.txt -o ~/.gitmessage.txt
-git config commit.template ~/.gitmessage.txt
+git config commit.template ~/.wildflyswarm-gitmessage.txt
 ```
-
-An alternative with `wget`:
-```bash
-wget http://wildfly-swarm.io/community/gitcommit-template.txt -O ~/.gitmessage.txt
-git config commit.template ~/.gitmessage.txt
-```
-
-> Note that the above command will need to be executed in each directory
-> containing a cloned repository of WildFly Swarm.
 
 ## Development Process
 
