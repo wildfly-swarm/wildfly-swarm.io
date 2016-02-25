@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Contributing to WildFly Swarm | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><h1 id="contributing-to-wildfly-swarm">Contributing to WildFly Swarm</h1>
 <p>We welcome contributions of any kind to WildFly Swarm from everyone.</p>
 <p>We expect all contributors and users to follow our
-<a href="/community/code-of-conduct">Code of Conduct</a> when communicating through
+<strong><a href="/community/code-of-conduct">Code of Conduct</a></strong> when communicating through
 project channels. These include, but are not limited to: irc, issues, code,
 Google Group discussions.</p>
 <p>Building WildFly Swarm requires Java 8 or newer and Maven 3.2.5 or newer.</p>
@@ -13,6 +13,20 @@ You&#39;ll need to manually install <a href="https://maven.apache.org/download.c
 <h2 id="one-time-setup">One time setup</h2>
 <h3 id="create-a-github-account">Create a GitHub account</h3>
 <p>If you don&#39;t have one already, head to <a href="http://github.com/">http://github.com/</a></p>
+<h3 id="setup-your-ide-for-the-code-style-format-of-the-project">Setup your IDE for the code style format of the project</h3>
+<p>Currently we have code styles defined for Intellij. Please follow the steps in <a href="https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md">the README</a>
+on how to set them up.</p>
+<h3 id="download-commit-message-template">Download commit message template</h3>
+<p>We have defined a template for commit messages to help with clarity of any
+change that is made, thus making it easier for anyone not familiar with
+existing code to understand the impacts of a change.</p>
+<p>Run the following:</p>
+<pre><code class="lang-bash">curl http://wildfly-swarm.io/community/gitcommit-template.txt -o ~/.wildflyswarm-gitmessage.txt
+</code></pre>
+<p>An alternative with <code>wget</code>:</p>
+<pre><code class="lang-bash">wget http://wildfly-swarm.io/community/gitcommit-template.txt -O ~/.wildflyswarm-gitmessage.txt
+</code></pre>
+<h2 id="per-repository-setup">Per repository setup</h2>
 <h3 id="fork-a-repository">Fork a repository</h3>
 <p>Fork a WildFly Swarm repository, such as <a href="https://github.com/wildfly-swarm/wildfly-swarm-core">https://github.com/wildfly-swarm/wildfly-swarm-core</a>,
 or whichever repository contains the code/docs that you wish to change, into
@@ -25,25 +39,10 @@ cd wildfly-swarm-core
 <p>This makes it easy to pull down changes in the project over time</p>
 <pre><code class="lang-bash">git git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
 </code></pre>
-<h3 id="setup-your-ide-for-the-code-style-format-of-the-project">Setup your IDE for the code style format of the project</h3>
-<p>Currently we have code styles defined for Intellij. Please follow the steps in <a href="https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md">the README</a>
-on how to set them up.</p>
 <h3 id="setup-commit-message-template">Setup commit message template</h3>
-<p>We have defined a template for commit messages to help with clarity of any
-change that is made, thus making it easier for anyone not familiar with
-existing code to understand the impacts of a change.</p>
 <p>Run the following:</p>
-<pre><code class="lang-bash">curl http://wildfly-swarm.io/community/gitcommit-template.txt -o ~/.gitmessage.txt
-git config commit.template ~/.gitmessage.txt
+<pre><code class="lang-bash">git config commit.template ~/.wildflyswarm-gitmessage.txt
 </code></pre>
-<p>An alternative with <code>wget</code>:</p>
-<pre><code class="lang-bash">wget http://wildfly-swarm.io/community/gitcommit-template.txt -O ~/.gitmessage.txt
-git config commit.template ~/.gitmessage.txt
-</code></pre>
-<blockquote>
-<p>Note that the above command will need to be executed in each directory
-containing a cloned repository of WildFly Swarm.</p>
-</blockquote>
 <h2 id="development-process">Development Process</h2>
 <p>This is the typical process you would follow to submit any changes to our
 GitHub repositories.</p>
