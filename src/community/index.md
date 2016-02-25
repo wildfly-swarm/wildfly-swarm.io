@@ -1,16 +1,23 @@
 ---
 title: Community
-lastUpdate: 2015-11-10
+lastUpdate: 2016-02-24
 layout: page.jade
 ---
 
 ## Community
 
 WildFly Swarm is open source software with a vibrant community. Our community values
-contributions from all its members, as such we have a [Code of Conduct](/community/code-of-conduct). If you are
-getting started and have questions, would like to contribute to the development
-of the project, or just want to chat with other users and developers, join us
-on Freenode or our Google Group.
+contributions from all its members, as such we have a
+[Code of Conduct](/community/code-of-conduct).
+
+If you are interested in contributing to WildFly Swarm, that's great! We love
+contributions! To help make it easier getting started, we have
+[instructions](/community/contributing) on how to setup your environment and
+submit changes for review.
+
+If you are getting started and have questions, would like to contribute
+to the development of the project, or just want to chat with other users and
+developers, join us on Freenode or our Google Group.
 
 * **[#wildfly-swarm on Freenode](http://webchat.freenode.net/?channels=wildfly-swarm)**
    (with [logging](http://transcripts.jboss.org/channel/irc.freenode.org/%23wildfly-swarm/))

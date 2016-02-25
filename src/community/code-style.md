@@ -12,12 +12,12 @@ Currently we have code styles that can be imported for the following IDEs:
 
 The above styles are an embodiment, hopefully, of the following rules:
 
-  * Spacing/Tabs
-    * Java - 4 spaces
-    * XML, and other file types - 2 spaces
-    * No tab characters
-  * Java Imports
-    * No '*' imports unless it's for static members
+    * Spacing/Tabs
+        * Java - 4 spaces
+        * XML, and other file types - 2 spaces
+        * No tab characters
+    * Java Imports
+        * No '*' imports unless it's for static members
 
 Here are some code examples of what the settings mean:
 
@@ -25,9 +25,6 @@ Here are some code examples of what the settings mean:
 @Annotation(param1 = "value1", param2 = "value2")
 @SuppressWarnings({"ALL"})
 public class Foo<T extends Bar & Abba, U> {
-    int[] X = new int[]{1, 3, 5, 6, 7, 87, 1213, 2};
-
-    int[] empty = new int[]{};
 
     public void foo(int x, int y) {
         Runnable r = () -> {
@@ -59,6 +56,10 @@ public class Foo<T extends Bar & Abba, U> {
         }
         while (true);
     }
+
+    int[] X = new int[]{1, 3, 5, 6, 7, 87, 1213, 2};
+
+    int[] empty = new int[]{};
 
     void bar() {
         {
