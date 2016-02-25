@@ -4,25 +4,16 @@
 <li><a href="https://github.com/wildfly-swarm/wildfly-swarm-parent/blob/master/ide-configs/idea/README.md">Intellij</a></li>
 </ul>
 <p>The above styles are an embodiment, hopefully, of the following rules:</p>
-<ul>
-<li>Spacing/Tabs<ul>
-<li>Java - 4 spaces</li>
-<li>XML, and other file types - 2 spaces</li>
-<li>No tab characters</li>
-</ul>
-</li>
-<li>Java Imports<ul>
-<li>No &#39;*&#39; imports unless it&#39;s for static members</li>
-</ul>
-</li>
-</ul>
-<p>Here are some code examples of what the settings mean:</p>
+<pre><code>* Spacing/Tabs
+    * Java - 4 spaces
+    * XML, and other file types - 2 spaces
+    * No tab characters
+* Java Imports
+    * No &#39;*&#39; imports unless it&#39;s for static members
+</code></pre><p>Here are some code examples of what the settings mean:</p>
 <pre><code class="lang-java">@Annotation(param1 = &quot;value1&quot;, param2 = &quot;value2&quot;)
 @SuppressWarnings({&quot;ALL&quot;})
 public class Foo&lt;T extends Bar &amp; Abba, U&gt; {
-    int[] X = new int[]{1, 3, 5, 6, 7, 87, 1213, 2};
-
-    int[] empty = new int[]{};
 
     public void foo(int x, int y) {
         Runnable r = () -&gt; {
@@ -54,6 +45,10 @@ public class Foo&lt;T extends Bar &amp; Abba, U&gt; {
         }
         while (true);
     }
+
+    int[] X = new int[]{1, 3, 5, 6, 7, 87, 1213, 2};
+
+    int[] empty = new int[]{};
 
     void bar() {
         {
