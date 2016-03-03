@@ -1,6 +1,6 @@
 ---
 title: Contributing to WildFly Swarm
-lastUpdate: 2016-02-25
+lastUpdate: 2016-03-03
 layout: page.jade
 ---
 
@@ -192,6 +192,7 @@ Here are some tips on increasing the chance that your pull request is accepted:
  * Update any associated documentation, or add new documentation. This will
  require a separate pull request as the documentation is in a separate repository
  * Follow the existing [code style](/community/code-style) of the project
+ * Ensure that required license headers are in place by running `mvn verify -Plicense`
 
 ## Updating User Guide
 
