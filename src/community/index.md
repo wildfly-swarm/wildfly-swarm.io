@@ -13,7 +13,9 @@ contributions from all its members, as such we have a
 If you are interested in contributing to WildFly Swarm, that's great! We love
 contributions! To help make it easier getting started, we have a
 **[contribution guide](/community/contributing)** on how to setup your environment and
-submit changes for review.
+submit changes for review. You can find some ways to get started with contributing
+by picking an issue marked `getting-started` from
+**[here](https://issues.jboss.org/browse/SWARM-312?jql=labels%20%3D%20getting-started)**.
 
 If you are getting started and have questions, would like to contribute
 to the development of the project, or just want to chat with other users and
