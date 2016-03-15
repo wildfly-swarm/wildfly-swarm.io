@@ -4,6 +4,7 @@ publishDate: 2016-03-15
 modifyDate: 2016-03-15
 author: The WildFly Swarm Team
 layout: post.jade
+draft: true
 ---
 
 == What is WildFly Swarm?
