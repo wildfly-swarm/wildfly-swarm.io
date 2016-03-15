@@ -79,7 +79,7 @@ Through the work of Heiko Braun, we no longer spend ages scanning the classpath
 at boot-time, and rather have pre-computed indexes, which makes the initial
 startup of a _swarmified_ application significantly faster.
 
-=== Project Auto-detection
+=== Fraction Auto-detection
 
 While the typical usage of WildFly Swarm still involves using our BOM
 and specifying dependencies, if you're coming from a project that already
@@ -155,19 +155,24 @@ brittle, we've codified the SPI for fraction authors in `org.wildfly.swarm:spi`.
 Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329890&versions=12329883&versions=12329959&versions=12329958&versions=12329899&versions=12329884&versions=12329886&versions=12329887&versions=12329795&versions=12329898&versions=12329896&versions=12329793&versions=12329817&versions=12329885&versions=12329822&versions=12329819&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
 
 ++++
-<h4>Feature Request</h4>
 <ul>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-252">SWARM-252</a> ] Spring integration</li>
-</ul>
-
-<h4>Bug</h4>
-<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-213">SWARM-213</a> ] A simple .war project without any changes should select the right fractions.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-224">SWARM-224</a> ] swarmtool should expose bundleDependencies</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-236">SWARM-236</a> ] Remove string methods that have enum versions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-245">SWARM-245</a> ] Create swagger-webapp-server</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-247">SWARM-247</a> ] Improve load balancing for ribbon-webapp</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-250">SWARM-250</a> ] Swagger should scan top level packages in the deployment</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-252">SWARM-252</a> ] Spring integration</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-268">SWARM-268</a> ] Simplify HTTPS configuration</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-295">SWARM-295</a> ] Prevent FractionList from reading a file repeatedly</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-298">SWARM-298</a> ] java.lang.ClassNotFoundException: org.wildfly.swarm.undertow.descriptors.WebXmlAsset from Module "org.wildfly.swarm.keycloak:api"</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-300">SWARM-300</a> ] Restructure repositories</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-306">SWARM-306</a> ] Support different versions within FractionList</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-307">SWARM-307</a> ] Extract plugins from core into wildfly-swarm.git</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-309">SWARM-309</a> ] ARQ protocol ignores setup actions</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-320">SWARM-320</a> ] CNFE for org.jboss.arquillian.test.spi.TestResult</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-323">SWARM-323</a> ] NPE in ServiceActivatorArchiveImpl with no archive suffix</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-324">SWARM-324</a> ] Improve the RuntimeServer bootstrap performance</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-325">SWARM-325</a> ] ribbon-secured example does not work.</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-326">SWARM-326</a> ] NetflixOSS Ribon example buttons not working</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-335">SWARM-335</a> ] Integration Tests are not running in -examples</li>
@@ -175,24 +180,6 @@ Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/Conf
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-341">SWARM-341</a> ] Topology endpoint without scheme breaks browser call</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-344">SWARM-344</a> ] Error parsing undertow handlers conf</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-346">SWARM-346</a> ] Ribbon example broken, topology.js not found</li>
-</ul>
-
-<h4>Task</h4>
-<ul>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-224">SWARM-224</a> ] swarmtool should expose bundleDependencies</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-300">SWARM-300</a> ] Restructure repositories</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-307">SWARM-307</a> ] Extract plugins from core into wildfly-swarm.git</li>
-</ul>
-
-<h4>Enhancement</h4>
-<ul>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-213">SWARM-213</a> ] A simple .war project without any changes should select the right fractions.</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-236">SWARM-236</a> ] Remove string methods that have enum versions</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-245">SWARM-245</a> ] Create swagger-webapp-server</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-250">SWARM-250</a> ] Swagger should scan top level packages in the deployment</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-268">SWARM-268</a> ] Simplify HTTPS configuration</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-306">SWARM-306</a> ] Support different versions within FractionList</li>
-  <li>[ <a href="https://issues.jboss.org/browse/SWARM-324">SWARM-324</a> ] Improve the RuntimeServer bootstrap performance</li>
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-350">SWARM-350</a> ] Replace the word "Container" with "Swarm".</li>
 </ul>
 ++++
