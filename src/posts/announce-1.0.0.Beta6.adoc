@@ -204,23 +204,23 @@ We appreciate all of our contributors since the last release:
 
 *Core*
 
-Heiko Braun
-Toby Crawley
-Thomas Diesler
-Ken Finnigan
-George Gastaldi
-Bob McWhirter
+- Heiko Braun
+- Toby Crawley
+- Thomas Diesler
+- Ken Finnigan
+- George Gastaldi
+- Bob McWhirter
 
 *Examples*
 
-Toby Crawley
-Ken Finnigan
-Bob McWhirter
-Lukáš Vlček
+- Toby Crawley
+- Ken Finnigan
+- Bob McWhirter
+- Lukáš Vlček
 
 *Documentation*
 
-Toby Crawley
-Ken Finnigan
-Bob McWhirter
+- Toby Crawley
+- Ken Finnigan
+- Bob McWhirter
 
