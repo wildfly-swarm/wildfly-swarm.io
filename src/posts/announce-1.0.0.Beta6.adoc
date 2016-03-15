@@ -192,7 +192,7 @@ Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/Conf
 
 Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
-All bug and feature-tracking to http://issues.jboss.org/browse/SWARM[JIRA].
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
 
 Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples.
 
