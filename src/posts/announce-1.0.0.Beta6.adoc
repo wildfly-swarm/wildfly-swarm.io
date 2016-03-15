@@ -1,0 +1,222 @@
+---
+title: Announcement 1.0.0.Beta6
+publishDate: 2016-03-15
+modifyDate: 2016-03-15
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular 
+WildFly Java Application Server in order to support _just enough app-server_
+for microservice type applications.
+
+Each portion of the app-server is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+== What's New in 1.0.0.Beta6?
+
+Continuing in our trend of announcing versions that are arbitrarily 
+larger than our last release, we're happy to announce *1.0.0.Beta6*.
+
+As usual, beware the Ides of March.
+
+=== Repository Reorganization
+
+As noted link:/posts/reorganization/[previously], we've broken the codebase
+into discerete chunks, each with its own release cycle.  _This_ release represents
+a real of the aggregating BOM, which encompasses all of the components.
+
+=== About that BOM
+
+Since _WildFly Swarm_ now is actually a collection of components, each with
+their own unique snowflake of a version number, we have a BOM that we recommend
+in order to tie it all together in your app.  
+
+If you're using Maven, in your own `pom.xml`, you would have:
+
+[source,xml]
+----
+<properties>
+  <version.swarm>1.0.0.Beta6</version.swarm>
+</properties>
+
+...
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>bom</artifactId>
+      <version>${version.swarm}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+----
+
+And then, to pick any particular fraction for use within your app, you can
+specify the dependency without a version:
+
+[source,xml]
+----
+<dependencies>
+  <dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>undertow</artifactId>
+  </dependency>
+</dependencies>
+----
+
+
+=== Faster Boot-times
+
+Through the work of Heiko Braun, we no longer spend ages scanning the classpath
+at boot-time, and rather have pre-computed indexes, which makes the initial
+startup of a _swarmified_ application significantly faster.
+
+=== Project Auto-detection
+
+While the typical usage of WildFly Swarm still involves using our BOM
+and specifying dependencies, if you're coming from a project that already
+has a `<packaging>war</packaging>` build that works, all you need to do
+is add our plugin.
+
+[source,xml]
+----
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-plugin</artifactId>
+      <version>${version.swarm}</version>
+      <configuration>
+        ....
+      </configuration>
+      <executions>
+        <execution>
+          <id>package</id>
+          <goals>
+            <goal>package</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+----
+
+The plugin will scan your project for applicable packages (`javax.servlet` etc)
+being used, and will implicitly bring in the WildFly Swarm dependencies you need
+in order to package up the `-swarm.jar` version of your existing `.war` file.
+
+=== Spring Framework Support
+
+Just as WildFly has always been the best place to run Spring applications, we want
+to ensure that WildFly Swarm continues that tradition.
+
+We now have a `org.wildfly.swarm:spring` fraction that can help you out.
+
+=== Yo dawg, we heard you like WildFly Swarm, so we put a Swarm in your Swarm, so you can Swarm while you Swarm.
+
+In previous releases, you could either provide your own class with a `main()` or use
+`org.wildfly.swarm.Swarm` as your main.  Usually, within your own `main()` you would create
+an instance of `Container` and configure it.
+
+While you can continue to do that, you can actually just instantiate `org.wildfly.swarm.Swarm`
+as it now extends the familiar `Container`:
+
+[source,java]
+----
+public static void main(String...args) {
+  Swarm swarm = new Swarm()
+                      .fraction(...)
+                      .fraction(...);
+
+  swarm.start();
+  swarm.deploy(...);
+  
+}
+----
+
+
+=== SPI
+
+We're starting to see an interest in other folks writing fractions for WildFly Swarm
+(we hope to ship a Camel fraction in our next release).  To make this easier and less
+brittle, we've codified the SPI for fraction authors in `org.wildfly.swarm:spi`.
+
+=== Changelog
+
+Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329890&versions=12329883&versions=12329959&versions=12329958&versions=12329899&versions=12329884&versions=12329886&versions=12329887&versions=12329795&versions=12329898&versions=12329896&versions=12329793&versions=12329817&versions=12329885&versions=12329822&versions=12329819&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
+
+++++
+<h4>Feature Request</h4>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-252">SWARM-252</a> ] Spring integration</li>
+</ul>
+
+<h4>Bug</h4>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-247">SWARM-247</a> ] Improve load balancing for ribbon-webapp</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-295">SWARM-295</a> ] Prevent FractionList from reading a file repeatedly</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-298">SWARM-298</a> ] java.lang.ClassNotFoundException: org.wildfly.swarm.undertow.descriptors.WebXmlAsset from Module "org.wildfly.swarm.keycloak:api"</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-309">SWARM-309</a> ] ARQ protocol ignores setup actions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-320">SWARM-320</a> ] CNFE for org.jboss.arquillian.test.spi.TestResult</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-323">SWARM-323</a> ] NPE in ServiceActivatorArchiveImpl with no archive suffix</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-325">SWARM-325</a> ] ribbon-secured example does not work.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-326">SWARM-326</a> ] NetflixOSS Ribon example buttons not working</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-335">SWARM-335</a> ] Integration Tests are not running in -examples</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-340">SWARM-340</a> ] Pull out fraction SPI to separate GAVs and repository</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-341">SWARM-341</a> ] Topology endpoint without scheme breaks browser call</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-344">SWARM-344</a> ] Error parsing undertow handlers conf</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-346">SWARM-346</a> ] Ribbon example broken, topology.js not found</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-224">SWARM-224</a> ] swarmtool should expose bundleDependencies</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-300">SWARM-300</a> ] Restructure repositories</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-307">SWARM-307</a> ] Extract plugins from core into wildfly-swarm.git</li>
+</ul>
+
+<h4>Enhancement</h4>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-213">SWARM-213</a> ] A simple .war project without any changes should select the right fractions.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-236">SWARM-236</a> ] Remove string methods that have enum versions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-245">SWARM-245</a> ] Create swagger-webapp-server</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-250">SWARM-250</a> ] Swagger should scan top level packages in the deployment</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-268">SWARM-268</a> ] Simplify HTTPS configuration</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-306">SWARM-306</a> ] Support different versions within FractionList</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-324">SWARM-324</a> ] Improve the RuntimeServer bootstrap performance</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-350">SWARM-350</a> ] Replace the word "Container" with "Swarm".</li>
+</ul>
+++++
+
+
+=== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+We've moved all bug and feature-tracking to http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Alpha6[available].
+
+=== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+*Examples*
+
+*Documentation*
+
+*Random other Thanks*
+
