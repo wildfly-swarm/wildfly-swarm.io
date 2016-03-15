@@ -4,7 +4,6 @@ publishDate: 2016-03-15
 modifyDate: 2016-03-15
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == What is WildFly Swarm?
@@ -28,7 +27,7 @@ As usual, beware the Ides of March.
 
 As noted link:/posts/reorganization/[previously], we've broken the codebase
 into discerete chunks, each with its own release cycle.  _This_ release represents
-a real of the aggregating BOM, which encompasses all of the components.
+a release of the aggregating BOM, which encompasses all of the components.
 
 === About that BOM
 
@@ -122,6 +121,8 @@ to ensure that WildFly Swarm continues that tradition.
 We now have a `org.wildfly.swarm:spring` fraction that can help you out.
 
 === Yo dawg, we heard you like WildFly Swarm, so we put a Swarm in your Swarm, so you can Swarm while you Swarm.
+
+image:/images/dawg.jpg[]
 
 In previous releases, you could either provide your own class with a `main()` or use
 `org.wildfly.swarm.Swarm` as your main.  Usually, within your own `main()` you would create
