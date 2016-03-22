@@ -1,0 +1,12 @@
+//- This is the layout for the /generator page
+
+extends page
+
+block custom-scripts
+  script(src='/lib/jszip/jszip.min.js')
+  script(src='/lib/jszip/FileSaver.min.js')
+  script(src='/lib/typeahead/typeahead.bundle.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js')
+  //- TODO: Change this URL with the one published in Maven central
+  script(src='https://projectodd.ci.cloudbees.com/job/wildfly-swarm/ws/fraction-list/target/classes/fraction-list.js')
+  script(src='/js/generator-controller.js')
