@@ -66,7 +66,7 @@ cd wildfly-swarm-core
 This makes it easy to pull down changes in the project over time
 
 ```bash
-git git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
+git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
 ```
 
 ### Setup commit message template
