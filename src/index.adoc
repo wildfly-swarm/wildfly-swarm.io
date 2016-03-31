@@ -91,7 +91,7 @@ To create an uberjar, configure the plugin:
 
 Deploy the generated .war to any JavaEE compatible application server, or run the uberjar:
 [source, bash]
-java -jar MyApp.jar
+java -jar MyApp-swarm.jar
 
 [pass]
 ++++
