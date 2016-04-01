@@ -17,14 +17,12 @@ Microservice.
 * link:/documentation/1-0-0-Alpha6[1.0.0.Alpha6]
 
 
-=== Configuration API
+=== API Documentation
 
-http://wildfly-swarm.github.io/wildfly-config-api/
+http://wildfly-swarm.github.io/wildfly-swarm/
 
-If you want to customize the configuration for any of the WildFly subsystems
-in your application, take a look at the Configuration API. This is a typed
-representation of all of the configuration optionsn you might find in a
-typical `standalone.xml` file.
+We provide consolidated documentation for our public API.
+
 
 === Source Code
 
