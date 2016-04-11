@@ -69,8 +69,6 @@ Which is then accessible at http://localhost:8080/health.
 
 We now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don't want fractions to be auto-detected) to be added in your build descriptor. Check it out at http://wildfly-swarm.io/generator
 
-[TODO!]
-
 === Changelog
 
 Release notes for 1.0.0.Beta7 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330156&versions=12329794&versions=12329900&versions=12329901&versions=12329791&versions=12329975&versions=12329902&versions=12329796&versions=12330153&versions=12330152&versions=12329789&versions=12330151&versions=12330076&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
