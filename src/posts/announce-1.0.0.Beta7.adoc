@@ -67,7 +67,7 @@ Which is then accessible at http://localhost:8080/health.
 
 === Project Generator
 
-We now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don't want fractions to be auto-detected) to be added in your build descriptor. Check it out at http://wildfly-swarm.io/generator
+Thanks to George Gastaldi, we now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don't want fractions to be auto-detected) to be added in your build descriptor. Check it out at http://wildfly-swarm.io/generator
 
 === Changelog
 
