@@ -146,15 +146,34 @@ We appreciate all of our contributors since the last release:
 - George Gastaldi
 - Bob McWhirter
 
+*Non Core*
+
+- Heiko Braun
+- Toby Crawley
+- Jim Crossley
+- Ken Finnigan
+- George Gastaldi
+- Bob McWhirter
+- Christian Posta
+- sassko
+- Harald Wellmann
+
 *Examples*
 
-- Toby Crawley
+- Heiko Braun
+- Ben Browning
 - Ken Finnigan
 - Bob McWhirter
-- Lukáš Vlček
+- Jeff Mesnil
 
 *Documentation*
 
-- Toby Crawley
+- Heiko Braun
+- Antonino Cucchiara
 - Ken Finnigan
+- George Gastaldi
+- Mark Little
 - Bob McWhirter
+- Summers Pittman
+- Christian Posta
+- Harald Wellmann
