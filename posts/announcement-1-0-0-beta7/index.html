@@ -1,0 +1,330 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Beta7 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator">Generator <span class="badge">new!</span></a></li><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="page-header"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Beta7</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Apr 12th</div><div><div class="sect1">
+<h2 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+WildFly Java Application Server in order to support <em>just enough app-server</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_s_new_in_1_0_0_beta7">What&#8217;s New in 1.0.0.Beta7?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Some new fractions</p>
+</li>
+<li>
+<p>Hibernate Search</p>
+</li>
+<li>
+<p>JAX-RS Validator</p>
+</li>
+<li>
+<p>HTTP endpoints are not reachable until a deployment is complete</p>
+</li>
+<li>
+<p>Static content can be updated in a running instance</p>
+</li>
+<li>
+<p>Removed our custom JAX-RS exception mapper for <code>favicon.ico</code> and replaced it with an Undertow handler</p>
+</li>
+<li>
+<p>Numerous fixes for Ribbon, Hystrix and their examples</p>
+</li>
+<li>
+<p>Ability to provide a Hystrix Events Stream from your application</p>
+</li>
+<li>
+<p>We now publish <a href="http://wildfly-swarm.github.io/wildfly-swarm/1.0.0.Beta7/apidocs/index.html">consolidated javadocs</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="__code_weld_code_renamed_to_code_cdi_code"><code>weld</code> renamed to <code>cdi</code></h3>
+<div class="paragraph">
+<p>To clear some naming up we&#8217;ve renamed the <code>weld</code> fraction to <code>cdi</code>, and as part of that
+change <code>jaxrs-weld</code> is also now <code>jaxrs-cdi</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you use auto-detection you won&#8217;t need to change anything, but if you specify
+WildFly Swarm dependencies in <code>pom.xml</code> you will need to make this change.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_addalldependencies_behavior">addAllDependencies() behavior</h3>
+<div class="paragraph">
+<p>Previous to this release calling <code>myArchive.addAllDependencies()</code> would include the WildFly Swarm dependencies
+into WEB-INF/lib, as well as any other Maven dependencies of the project.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately that behavior was causing lots of class path problems, so we&#8217;ve now
+modified the default behavior such that WildFly Swarm dependencies are no longer
+included. It is still possible to replicate the previous behavior, if desired,
+by calling <code>myArchive.addAllDependencies(true)</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_health_endpoints">Health Endpoints</h3>
+<div class="paragraph">
+<p>You can now add health checks to your endpoints!</p>
+</div>
+<div class="paragraph">
+<p>For instance, we can add the following to a JAX-RS Resource:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@GET
+@Path("/health")
+@Produces(MediaType.TEXT_PLAIN)
+@Health
+public String firstHealthCheckMethod() {
+  return "Healthy";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which is then accessible at <a href="http://localhost:8080/health" class="bare">http://localhost:8080/health</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_project_generator">Project Generator</h3>
+<div class="paragraph">
+<p>Thanks to George Gastaldi, we now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don&#8217;t want fractions to be auto-detected) to be added in your build descriptor. Check it out at <a href="http://wildfly-swarm.io/generator" class="bare">http://wildfly-swarm.io/generator</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changelog">Changelog</h3>
+<div class="paragraph">
+<p>Release notes for 1.0.0.Beta7 are available <a href="https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330156&amp;versions=12329794&amp;versions=12329900&amp;versions=12329901&amp;versions=12329791&amp;versions=12329975&amp;versions=12329902&amp;versions=12329796&amp;versions=12330153&amp;versions=12330152&amp;versions=12329789&amp;versions=12330151&amp;versions=12330076&amp;sections=all&amp;style=html&amp;selectedProjectId=12317020&amp;reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&amp;Next=Next">here</a>.</p>
+</div>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-10">SWARM-10</a> ] Combined javadoc for -swarm and config-api</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-121">SWARM-121</a> ] Enable messaging to cluster</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-189">SWARM-189</a> ] HTTP endpoint should not be reachable before deployment is finished</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-230">SWARM-230</a> ] Static content not reloaded on local change when running org.wildfly.swarm.Swarm</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-267">SWARM-267</a> ] Hystrix Metrics Event Stream </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-297">SWARM-297</a> ] Use ShrinkWrap descriptor for web.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-305">SWARM-305</a> ] Provide RESTful endpoints for common runtime data </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-321">SWARM-321</a> ] Upgrade to Keycloak 1.9.1.Final</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-327">SWARM-327</a> ] Unable to create an exception mapper for javax.ws.rs.NotFoundException</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-328">SWARM-328</a> ] Hibernate-Search Fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-332">SWARM-332</a> ] addContextParam fails with ClassCastException</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-333">SWARM-333</a> ] System#setProperty fails for swarm.http.port</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-338">SWARM-338</a> ] All fractions should have a wildfly-swarm-bootstrap.conf</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-355">SWARM-355</a> ] Wildfly Swarm Maven Plugin does not use proxy configured in settings.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-358">SWARM-358</a> ] Ribbon archive auto advertise a service by virtue of Maven dependency presence</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-363">SWARM-363</a> ] Ability to specify the name of the deployment archive without a main()</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-366">SWARM-366</a> ] Using Template API with a ResponseValidator in Ribbon Example seems to have classpath problems</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-368">SWARM-368</a> ] Missing resteasy-validator-provider-11 in bom</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-369">SWARM-369</a> ] Add jaxrs-validator fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-373">SWARM-373</a> ] JBoss Modules is unable to find timestamped SNAPSHOT versions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-374">SWARM-374</a> ] Jackson APIs are not available from jaxrs fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-377">SWARM-377</a> ] -modules dependencies are not being pulled based on BOM versions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-380">SWARM-380</a> ] Autodetect batch-jberet fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-382">SWARM-382</a> ] mvn install fails when using HttpResponseStatus because class is missing</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-383">SWARM-383</a> ] WARArchive.addAllDependencies() may create invalid libraries</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-384">SWARM-384</a> ] Autodetect mail fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-385">SWARM-385</a> ] Generated JAX-RS application should not take precedence</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-386">SWARM-386</a> ] addAllDependencies() add unncessary libraries</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-388">SWARM-388</a> ] Running a main() in Intellij fails with ClassNotFoundException</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-390">SWARM-390</a> ] Parallel artifact downloads</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-393">SWARM-393</a> ] Adapt the JSON generated in fraction-plugin to contain the necessary info for the generator</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-394">SWARM-394</a> ] mvn wildfly-swarm:run does not destroy the process when executed in an embedded maven environment</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-398">SWARM-398</a> ] Plugin selects older versions of Fractions when using Auto detection</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-399">SWARM-399</a> ] Ability to depend on sun.jdk module without bringing in non JDK Services</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-402">SWARM-402</a> ] Add request-controller subsystem</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-403">SWARM-403</a> ] FractionAnalyzer#detectNeededFractions should return the container fraction only if no other fractions are detected</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-404">SWARM-404</a> ] mvn wildfly-swarm:run should gracefully shutdown when interrupted</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-406">SWARM-406</a> ] Wildfly Swarm plugin does not auto-detect the necessary fractions for javax.json and javax.xml.bind</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-407">SWARM-407</a> ] CNFE for javax/validation/constraints/Size with Swagger</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-408">SWARM-408</a> ] FractionAnalyzer#detectNeededFractions should remove fractions that depend on each other</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-409">SWARM-409</a> ] Move the location of exposed-components.json to a repository root</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-410">SWARM-410</a> ] Rename 'weld' fraction to 'cdi'</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-413">SWARM-413</a> ] JSF fraction detection does not work for subpackages </li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_resources">Resources</h3>
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="http://github.com/wildfly-swarm/wildfly-swarm-examples" class="bare">http://github.com/wildfly-swarm/wildfly-swarm-examples</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1-0-0-Beta7">available</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_thank_you_contributors">Thank you, Contributors!</h3>
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Non Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Jim Crossley</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Christian Posta</p>
+</li>
+<li>
+<p>sassko</p>
+</li>
+<li>
+<p>Harald Wellmann</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ben Browning</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Jeff Mesnil</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Antonino Cucchiara</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Mark Little</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Summers Pittman</p>
+</li>
+<li>
+<p>Christian Posta</p>
+</li>
+<li>
+<p>Harald Wellmann</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li><a href="https://issues.jboss.org/projects/SWARM/issues?filter=allopenissues">Issue Tracker</a></li><li class="last"><a href="https://projectodd.ci.cloudbees.com/view/WildFly%20Swarm/">Continuous Integration</a></li></ul></div></div></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+
+</script><script src="//www.redhat.com/j/s_code.js"></script><script>(function() {
+
+  // Load the path name, without it's inital /
+  var arr = location.pathname.substr(1, location.pathname.length)
+      .toLowerCase().split('/');
+
+  // If the path ends in index.html or whitespace, trim the array 
+  if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
+     arr.pop();
+  }
+
+  /*
+  * Assign values to Adobe Analytics properties
+  */
+  s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
+  s.server = "wildflyswarm" // The server is ???
+  s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+  s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
+  s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
+
+  // Pad the array as needed, so we can shift away later
+  for (var i = arr.length; i < 3; i++) {
+      arr[i] = "";
+  }
+
+  s.prop14 = s.eVar27 = arr.shift(); // prop14/eVar27 is the first minor section (normally /{minor_section_1})
+  s.prop15 = s.eVar28 = arr.shift(); // prop15/eVar28 is the second minor section (normally /a/{minor_section_2})
+  s.prop16 = s.eVar29 = arr.shift(); // prop16/eVar29 is the third minor section (normally /a/b/{minor_section_3})
+  s.prop21 = s.eVar18 = encodeURI(location.hostname+location.pathname).toLowerCase(); // prop21/eVar18 is the URL, less any query strings or fragments
+
+  })();
+</script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script></body></html>
