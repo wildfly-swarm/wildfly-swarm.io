@@ -200,7 +200,7 @@ createRestEndpoint = function() {
   cls += '  @GET\n'
   cls += '  @Produces("text/plain")\n'
   cls += '  public Response doGet() {\n'
-  cls += '    return Response.ok("Hello from Wildfly Swarm!").build();\n'
+  cls += '    return Response.ok("Hello from WildFly Swarm!").build();\n'
   cls += '  }\n'
   cls += '}'
 
