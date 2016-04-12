@@ -27,6 +27,7 @@ of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
 * Removed our custom JAX-RS exception mapper for `favicon.ico` and replaced it with an Undertow handler
 * Numerous fixes for Ribbon, Hystrix and their examples
 * Ability to provide a Hystrix Events Stream from your application
+* We now publish http://wildfly-swarm.github.io/wildfly-swarm/1.0.0.Beta7/apidocs/index.html[consolidated javadocs]
 
 === `weld` renamed to `cdi`
 
