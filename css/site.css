@@ -166,3 +166,71 @@ footer.div {
 .title {
     font-weight: BOLD;
 }
+
+.tag {
+    background-color: #e9821f;
+    border-radius: 0.25em;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    margin: 0.2em;
+    padding: 0.4em 0.7em;
+}
+
+#search, .twitter-typeahead, .tt-hint {
+    width: 100%;
+}
+.tt-query {
+    width: 100%;
+}
+.tt-query, .tt-hint {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    height: 34px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+}
+#search:focus {
+    border: 2px solid #0097cf;
+}
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999;
+}
+.tt-menu {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 12px 0;
+    padding: 8px 0;
+    width: 100%;
+}
+.tt-suggestion {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+.tt-suggestion:hover {
+    background-color: #0097cf;
+    color: #fff;
+    cursor: pointer;
+}
+.tt-suggestion.tt-cursor {
+    background-color: #0097cf;
+    color: #fff;
+}
+.flex-display {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.flex-display .row{
+    margin-right: 1px
+}
