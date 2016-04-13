@@ -3,11 +3,12 @@
 extends main
 
 block content
+
   article#article
     h1= title
     - publishDate.setUTCHours(5)
     - modifyDate.setUTCHours(5)
-    
+
     div.post-meta By #{author} | Published #{moment(publishDate).calendar()}
       if modifyDate && moment(publishDate).isBefore(modifyDate)
         span  | Updated #{moment(modifyDate).calendar()}

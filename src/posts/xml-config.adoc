@@ -11,6 +11,10 @@ layout: post.jade
 The common and only way to configure wildfly-swarm nodes was to use the Java API.
 With the inclusion of https://issues.jboss.org/browse/SWARM-14[SWARM-14], external, declarative configuration of wildfly-swarm nodes becomes possible.
 
+++++
+<!-- more -->
+++++
+
 Typically you would rely on the https://github.com/wildfly-swarm/wildfly-config-api[config-api] to configure any of the subsystems the container leverages:
 
 .Java API (i.e. Main.java)
@@ -129,8 +133,3 @@ to successfully migrate from wildfly using an existing standalone.xml.
 In addition to this, we'll investigate ways to leverage the `<extension/>` and `<subsystem/>` elements that might be given in
 and XML file, to determine what fractions need to be packaged with your application. But this is an area with a lot of uncertainty,
 in particular around the question whether the XML is an appropriate vehicle to express the dependencies between fractions, modules, subsystems ,etc.
-
-
-
-
-

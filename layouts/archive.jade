@@ -1,0 +1,27 @@
+extends main
+
+block content
+  div.page-header
+    h2 Blog
+  .posts
+    each post in collections.posts
+        each file in pagination.files
+          if post.title == file.title
+            h2.page-header
+              div!=post.title
+              div.small(style='text-transform:none!important')
+                time.timestamp(datetime=post.publishDate)= moment(post.publishDate).format('MMMM D, YYYY')
+            div!=post.excerpt
+            p
+              a.btn.btn-default(href='/'+post.path)!= "Read More"
+            hr.noshade
+
+    nav.navigation.cf
+      if pagination.previous
+        a.btn.pull-right.btn-primary(href='/' + pagination.previous.path)
+          | Newer <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          i.icon-right-dir
+      if pagination.next
+        a.btn.pull-left.btn-primary(href='/' + pagination.next.path)
+          i.icon-left-dir
+          |   <i class="fa fa-chevron-left" aria-hidden="true"></i> Older

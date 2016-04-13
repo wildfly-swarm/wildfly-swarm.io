@@ -6,15 +6,19 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-== What is WildFly Swarm?
+=== What is WildFly Swarm?
 
-WildFly Swarm is the decomposition and reconstitution of the popular 
+WildFly Swarm is the decomposition and reconstitution of the popular
 WildFly Java Application Server in order to support _just enough app-server_
 for microservice type applications.
 
 Each portion of the app-server is referred to as a _fraction_, which many times
 maps to a `subsystem` from WildFly, but also may include other discrete chunks
 of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+++++
+<!-- more -->
+++++
 
 == What's New in 1.0.0.Alpha6?
 

@@ -1,17 +1,15 @@
 //- Layout for the blog index page at http://wildfly-swarm.io/posts/
 
-//- This is the layout for individual pages like /documentation and /getting-started
-
 extends main
 
 block content
+  div.page-header
+    h2 Blog
   .posts
-    .row
-      #posts
-        each post in collections.posts
-          .post-preview
-            h2.post-title
-              a(href='/'+post.path)!= post.title
-            div.post-excerpt!= post.excerpt
-
-
+    each post in collections.posts
+      .post-preview
+        h2.page-header
+          a(href='/'+post.path)!= post.title
+        div.post-excerpt!= post.excerpt
+        p
+          a(href='/'+post.path)!= "> Read More"

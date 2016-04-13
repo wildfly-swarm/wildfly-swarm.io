@@ -4,7 +4,13 @@ lastUpdate: 2015-11-10
 layout: page.jade
 ---
 
-=== Users Guide
+++++
+<div class="page-header">
+  <h2>Documentation</a>
+</div>
+++++
+
+=== User Guide
 
 If you are new to WildFly Swarm, this is the best place to start. Learn
 what WildFly Swarm is and how to use it to build your first Java EE

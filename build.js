@@ -1,8 +1,9 @@
 var metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
-    excerpts = require('metalsmith-excerpts'),
+    excerpts = require('metalsmith-better-excerpts'),
     layouts = require('metalsmith-layouts'),
+    pagination = require('metalsmith-pagination'),
     asciidoc = require('metalsmith-asciidoc'),
     markdown = require('metalsmith-markdown'),
     jade = require('metalsmith-jade'),
@@ -55,7 +56,10 @@ function build() {
     .use(gist())
 
     // For the blog index page
-    .use(excerpts())
+    .use(excerpts({
+      pruneLength: 500,
+       stripTags: false,
+    }))
     .use(collections({
       posts: {
         pattern: 'posts/**.html',
@@ -63,6 +67,23 @@ function build() {
         reverse: true
       }
     }))
+
+    .use(
+      pagination({
+        'collections.posts': {
+          perPage: 3,
+          layout: 'archive.jade',
+          first: 'archive.html',
+          path: 'archive/:num/index.html',
+          filter: function (page) {
+            return !page.private
+          },
+          pageMetadata: {
+            title: 'Archive'
+          }
+        }
+      })
+    )
 
     // URL rewriting for permalinks
     .use(branch('posts/**.html')

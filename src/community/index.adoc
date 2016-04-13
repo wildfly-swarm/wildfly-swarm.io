@@ -1,0 +1,102 @@
+---
+title: Community
+lastUpdate: 2016-03-03
+layout: plain-page.jade
+---
+
+++++
+<section class="section">
+<div class="container">
+
+<div class="page-header">
+  <h2>Community</h2>
+</div>
+++++
+
+WildFly Swarm is open source software with a vibrant community. Our community values
+contributions from all its members, as such we have a
+link:/community/code-of-conduct[Code of Conduct].
+
+++++
+<blockquote>
+If you are interested in contributing to WildFly Swarm, that's great! We love
+contributions! To help make it easier getting started, we have a
+link:/community/contributing[contribution guide] on how to setup your environment and
+submit changes for review. You can find some ways to get started with contributing
+by picking an <a href="https://issues.jboss.org/browse/SWARM-312?jql=labels%20%3D%20getting-started">
+issue marked `getting-started` from here</a>.
+</blockquote>
+++++
+
+If you are getting started and have questions, would like to contribute
+to the development of the project, or just want to chat with other users and
+developers, join us on Freenode or our Google Group.
+
+++++
+</div>
+</section>
+++++
+
+[pass]
+++++
+<section class="section alt">
+<div class="container">
+
+    <div class="page-header">
+      <h2>Get In Touch</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+      <div class="well">
+      <p>
+        <h3>IRC - Chat</h3>
+        Most of the discussions happen on IRC. Jump in, ask questions, contribute:<br/>
+
+        <a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on Freenode</a>
+        </p>
+      </div>
+      </div>
+      <div class="col-md-4">
+      <div class="well">
+      <p>
+        <h3>Discussion Group</h3>
+        The <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a> is good place for more elaborate questions,
+        ideas that don't fit IRC and in general require more context.
+        </p>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+      <div class="well">
+        <p>
+        <h3>Twitter</h3>
+          The latest and most recent updates can be found on Twitter:
+          <a href="http://twitter.com/wildflyswarm">@wildflyswarm</a>
+        </p>
+      </div>
+      </div>
+
+    </div>
+
+</div>
+</section>
+++++
+
+[pass]
+++++
+
+<section class="section">
+<div class="container">
+
+<div class="page-header">
+  <h2>
+    <a class="twitter-timeline" href="https://twitter.com/wildflyswarm" data-widget-id="677243276056010754" height="400" width="100%" data-chrome="nofooter">Tweets by @wildflyswarm</a>
+  </h2>
+</div>
+
+</div>
+</section>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+++++

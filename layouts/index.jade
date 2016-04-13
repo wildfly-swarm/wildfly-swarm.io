@@ -3,9 +3,11 @@
 extends layout
 
 block main
-  div.jumbotron
-    img(src='images/swarm_logo.png' alt='WildFly Swarm Logo').img-responsive
-    p.lead Rightsize Your Services
-  
-  div.row-fluid
-    div!= contents
+  section.section
+    .container
+      div.jumbotron
+        img(src='images/swarm_logo.png' alt='WildFly Swarm Logo').img-responsive
+        p.lead Rightsize Your Services
+
+    div.row-fluid
+      div!= contents

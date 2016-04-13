@@ -1,5 +1,5 @@
 ---
-title: Reorganization
+title: Planned Repository Changes
 publishDate: 2016-02-23
 modifyDate: 2016-02-23
 author: WildFly Swarm Team
@@ -25,6 +25,10 @@ in version numbering.
 
 Since a multitude of versions can certainly make life more difficult for
 consumers, we've added a BOM strategy (see _Practical Changes_ below).
+
+++++
+<!-- more -->
+++++
 
 == The New Bits
 
