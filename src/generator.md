@@ -59,7 +59,7 @@ Rightsize your Java EE microservice in a few clicks
 	</div>	
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">View all available dependencies</a>
+			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? 'Hide' :'View'}} all available dependencies</a>
 		</div>		
 	</div>
 	<div class="flex-display">
