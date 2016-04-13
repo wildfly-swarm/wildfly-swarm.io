@@ -42,7 +42,7 @@
         </div>
     </div><br>    <div class="row">
         <div class="col-sm-12 col-md-12">
-            <p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">View all available dependencies</a>
+            <p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? &#39;Hide&#39; :&#39;View&#39;}} all available dependencies</a>
         </div><br>    </div>
     <div class="flex-display">
         <div class="row" ng-repeat="category in categories" ng-if="viewDeps">
