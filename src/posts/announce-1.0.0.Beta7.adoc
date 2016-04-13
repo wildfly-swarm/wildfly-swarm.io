@@ -54,16 +54,26 @@ For instance, we can add the following to a JAX-RS Resource:
 
 [source,java]
 ----
-@GET
-@Path("/health")
-@Produces(MediaType.TEXT_PLAIN)
-@Health
-public String firstHealthCheckMethod() {
-  return "Healthy";
+@Path("/app")
+public class HealthCheckResource {
+
+ @GET
+ @Path("/diskSpace")
+ @Health
+ public HealthStatus checkDiskspace() {
+    File path = new File(".");
+    long freeBytes = path.getFreeSpace();
+    long threshold = 1024 * 1024 * 100; // 100mb
+    return freeBytes>threshold ?
+      HealthStatus.up() :
+      HealthStatus.down().withAttribute("freebytes", freeBytes);
+ }
 }
 ----
 
-Which is then accessible at http://localhost:8080/health.
+Which is then accessible at http://localhost:8080/health/app/diskSpace.
+
+For further on information on the API, security, etc, please consult https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/advanced/monitoring.html[the userguide]
 
 === Project Generator
 
