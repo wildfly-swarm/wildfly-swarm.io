@@ -8,7 +8,7 @@ layout: generator.jade
 
 Rightsize your Java EE microservice in a few clicks
 
-<form name="form" class="container-fluid" ng-app="swarm-generator-app" ng-controller="swarm-generator"> 
+<form name="form" ng-app="swarm-generator-app" ng-controller="swarm-generator"> 
 	<div class="row">
 		<div class="col-sm-12 col-md-6">
 			<div class="form-group">
