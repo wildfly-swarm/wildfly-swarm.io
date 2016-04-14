@@ -50,7 +50,7 @@ Rightsize your Java EE microservice in a few clicks
 		<div class="col-sm-12 col-md-12">
 			<h3>Instructions</h3>
 			<ol>
-				<li>Click on the Generate button to download the <i>swarm-example.zip</i> file</li>
+				<li>Click on the Generate button to download the <i>{{getZipFileName(model)}}</i> file</li>
 				<li>Unzip the file in a directory of your choice</li>
 				<li>Run <code>mvn wildfly-swarm:run</code> in the unzipped directory</li>
 				<li ng-if="showInstructions(model)">Go to <a href="http://localhost:8080/rest/hello">http://localhost:8080/rest/hello</a> and you should see the following message: <pre>Hello from WildFly Swarm!</pre></li>

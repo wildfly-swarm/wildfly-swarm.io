@@ -19,7 +19,11 @@ angular.module('swarm-generator-app',[])
     configureSearchEngine(allFractions);
 
     $scope.generate = function(model) {
-       saveAs(createZip(model), "swarm-example.zip");
+       saveAs(createZip(model), $scope.getZipFileName(model));
+    }
+
+    $scope.getZipFileName = function(model) {
+      return (model.artifactId || 'demo') + '.zip';
     }
 
     $scope.viewDeps = false;
