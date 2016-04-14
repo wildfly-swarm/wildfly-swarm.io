@@ -23,7 +23,7 @@ angular.module('swarm-generator-app',[])
     }
 
     $scope.getZipFileName = function(model) {
-      return (model.artifactId || 'swarm-example') + '.zip';
+      return (model.artifactId || 'demo') + '.zip';
     }
 
     $scope.viewDeps = false;
