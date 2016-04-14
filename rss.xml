@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 14 Apr 2016 13:48:44 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 14 Apr 2016 13:48:41 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 14 Apr 2016 13:52:16 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 14 Apr 2016 13:52:10 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_s_new">What’s New?</h3>
 <div class="ulist">
 <ul>
@@ -32,7 +32,7 @@
 </li>
 </ul>
 </div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_repository_reorganization">Repository Reorganization</h3>
+<h3 id="_impact_of_the_repository_reorganization">Impact of the repository reorganization</h3>
 <div class="paragraph">
 <p>Continuing in our trend of announcing versions that are arbitrarily
 larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</strong>.</p>
@@ -42,10 +42,10 @@ larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</str
 </div>
 <div class="paragraph">
 <p>As noted <a href="/posts/reorganization/">previously</a>, we’ve broken the codebase
-into discerete chunks, each with its own release cycle.  <em>This</em> release represents
+into discrete chunks, each with its own release cycle.  <em>This</em> release represents
 a released version of the aggregating BOM, which encompasses all of the various
 released components.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Planned Repository Changes]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Reorganization]]></title><description><![CDATA[<div class="paragraph">
 <p>After some hearty discussion at our face-to-face meeting in Newcastle, UK,
 along with continuing that discussion on our <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a>,
 we’ve decided to split apart our monolithic repository into reasonable slices.</p>
@@ -68,7 +68,7 @@ in version numbering.</p>
 <div class="paragraph">
 <p>Since a multitude of versions can certainly make life more difficult for
 consumers, we’ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/planned-repository-changes</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/planned-repository-changes</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h3>
 <div class="paragraph">
 <p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
