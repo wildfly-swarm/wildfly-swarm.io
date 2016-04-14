@@ -8,7 +8,7 @@ block content
         each file in pagination.files
           if post.title == file.title
             h2.page-header
-              div!=post.title
+              a(href='/'+post.path)!= post.title
               div.small(style='text-transform:none!important')
                 time.timestamp(datetime=post.publishDate)= moment(post.publishDate).format('MMMM D, YYYY')
             div!=post.excerpt
