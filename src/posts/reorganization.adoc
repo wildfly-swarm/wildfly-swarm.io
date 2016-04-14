@@ -1,5 +1,5 @@
 ---
-title: Planned Repository Changes
+title: Reorganization
 publishDate: 2016-02-23
 modifyDate: 2016-02-23
 author: WildFly Swarm Team

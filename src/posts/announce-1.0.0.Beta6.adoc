@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== Repository Reorganization
+=== Impact of the repository reorganization
 
 Continuing in our trend of announcing versions that are arbitrarily
 larger than our last release, we're happy to announce *1.0.0.Beta6*.
@@ -14,7 +14,7 @@ larger than our last release, we're happy to announce *1.0.0.Beta6*.
 As usual, beware the Ides of March.
 
 As noted link:/posts/reorganization/[previously], we've broken the codebase
-into discerete chunks, each with its own release cycle.  _This_ release represents
+into discrete chunks, each with its own release cycle.  _This_ release represents
 a released version of the aggregating BOM, which encompasses all of the various
 released components.
 
