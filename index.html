@@ -1,49 +1,80 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Rightsize your JavaEE Applications | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator">Generator <span class="badge">new!</span></a></li><li><a href="/posts">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><div id="content" class="container"><div class="jumbotron"><img src="images/swarm_logo.png" alt="WildFly Swarm Logo" class="img-responsive"><p class="lead">Rightsize Your Services</p></div><div class="row-fluid"><div><style>#forkongithub a{background:#F37F18;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1.3rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#F37F18;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:240px;position:absolute;top:40px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/wildfly-swarm">Fork me on GitHub</a></span>
-<p class=text-center>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Rightsize your JavaEE Applications | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator">Generator <span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="jumbotron"><img src="images/swarm_logo.png" alt="WildFly Swarm Logo" class="img-responsive"><p class="lead">Rightsize Your Services</p></div></div><div class="row-fluid"><div><style>#forkongithub a{background:#F37F18;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1.3rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#F37F18;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:240px;position:absolute;top:40px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/wildfly-swarm">Fork me on GitHub</a></span>
+<section class="section">
+<div class="container">
+
+<p>
 Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
-platform to "java -jar" your application. However, it's all much, much cooler than that ...
+server runtime to "java -jar" your application. However, it's all much, much cooler than that ...
 </p>
-<div class="row main-container gray-background">
-<h2 class="text-center">Features and Benefits</h2>
+
+</div>
+</section>
+<section class="section alt">
+<div class="container">
+<div class="page-header">
+  <h2>Features and Benefits</h2>
+</div>
 <div class="row">
   <div class="col-md-4">
+  <div class="well">
   <p>
     <h3><i class="fa fa-industry"></i> Mature</h3>
     Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
     </p>
   </div>
+  </div>
   <div class="col-md-4">
+  <div class="well">
   <p>
     <h3><i class="fa fa-cubes"></i> Flexible</h3>
     Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
     that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
     </p>
   </div>
+  </div>
+
   <div class="col-md-4">
+  <div class="well">
     <p>
     <h3><i class="fa fa-check"></i> Straightforward</h3>
       Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
     </p>
   </div>
+  </div>
+
 </div>
 <div class="row">
   <div class="col-md-4">
+    <div class="well">
     <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
     Use built-in service discovery, or use external service registries. You choose.
+    </div>
   </div>
   <div class="col-md-4">
+    <div class="well">
     <h3><i class="fa fa-wrench"></i> Practical</h3>
     Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
+    </div>
   </div>
   <div class="col-md-4">
+    <div class="well">
     <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
     Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
     monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
     broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
+    </div>
   </div>
 </div>
 </div>
-<h2 class="text-center">Example</h2>
+</section>
+<section class="section">
+<div class="container">
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="page-header">
+    <h2>Example</h2>
+    </div>
 <div class="paragraph">
 <p>Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need. The following example
 assumes a simple JAX-RS RESTful application.</p>
@@ -83,8 +114,30 @@ assumes a simple JAX-RS RESTful application.</p>
 </div>
 </div>
 <p style="margin-bottom:50px">
-<a href="https://github.com/wildfly-swarm/wildfly-swarm-examples" class="btn btn-white">More Examples</a>
-</p></div></div></div><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<a href="https://github.com/wildfly-swarm/wildfly-swarm-examples" class="btn btn-primary">More Examples</a>
+</p>
+
+  </div>
+
+  <div class="col-md-6">
+    <div class="page-header">
+    <h2>Getting Started</h2>
+    </div>
+    <h3>Generate Project</h3>
+    <p>The most simple way to get is started is using the project generator.
+    Simply chose the capabilities you need and we generate a maven project for you, that you can download and use.
+    </p>
+    <p><a href="/generator" class="btn btn-primary">Create a Project</a></p>
+
+    <h3>Documentation</h3>
+    <p>The userguide contains much information to get started and to answer more advanced questions.
+    <p><a href="/documentation/HEAD" class="btn btn-primary">Read The Docs</a></p>
+
+  </div>
+
+  </div>
+</div>
+</section></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
@@ -98,7 +151,7 @@ ga('send', 'pageview');
   var arr = location.pathname.substr(1, location.pathname.length)
       .toLowerCase().split('/');
 
-  // If the path ends in index.html or whitespace, trim the array 
+  // If the path ends in index.html or whitespace, trim the array
   if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
      arr.pop();
   }
