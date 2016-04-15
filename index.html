@@ -10,64 +10,6 @@ server runtime to "java -jar" your application. However, it's all much, much coo
 </section>
 <section class="section alt">
 <div class="container">
-<div class="page-header">
-  <h2>Features and Benefits</h2>
-</div>
-<div class="row">
-  <div class="col-md-4">
-  <div class="well">
-  <p>
-    <h3><i class="fa fa-industry"></i> Mature</h3>
-    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
-    </p>
-  </div>
-  </div>
-  <div class="col-md-4">
-  <div class="well">
-  <p>
-    <h3><i class="fa fa-cubes"></i> Flexible</h3>
-    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
-    that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
-    </p>
-  </div>
-  </div>
-
-  <div class="col-md-4">
-  <div class="well">
-    <p>
-    <h3><i class="fa fa-check"></i> Straightforward</h3>
-      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
-    </p>
-  </div>
-  </div>
-
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
-    Use built-in service discovery, or use external service registries. You choose.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-wrench"></i> Practical</h3>
-    Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
-    Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
-    monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
-    broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="container">
 
 <div class="row">
   <div class="col-md-6">
@@ -75,8 +17,9 @@ server runtime to "java -jar" your application. However, it's all much, much coo
     <h2>Example</h2>
     </div>
 <div class="paragraph">
-<p>Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need. The following example
-assumes a simple JAX-RS RESTful application.</p>
+<p>Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need
+(or don&#8217;t add anything at all and the plugin will auto-detect for you).
+The following example assumes a simple JAX-RS RESTful application.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -135,6 +78,64 @@ assumes a simple JAX-RS RESTful application.</p>
   </div>
 
   </div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="page-header">
+  <h2>Features and Benefits</h2>
+</div>
+<div class="row">
+  <div class="col-md-4">
+  <div class="well">
+  <p>
+    <h3><i class="fa fa-industry"></i> Mature</h3>
+    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
+    </p>
+  </div>
+  </div>
+  <div class="col-md-4">
+  <div class="well">
+  <p>
+    <h3><i class="fa fa-cubes"></i> Flexible</h3>
+    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
+    that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
+    </p>
+  </div>
+  </div>
+
+  <div class="col-md-4">
+  <div class="well">
+    <p>
+    <h3><i class="fa fa-check"></i> Straightforward</h3>
+      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
+    </p>
+  </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
+    Use built-in service discovery, or use external service registries. You choose.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-wrench"></i> Practical</h3>
+    Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
+    Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
+    monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
+    broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
+    </div>
+  </div>
+</div>
 </div>
 </section></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
