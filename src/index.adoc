@@ -20,68 +20,6 @@ server runtime to "java -jar" your application. However, it's all much, much coo
 ++++
 <section class="section alt">
 <div class="container">
-<div class="page-header">
-  <h2>Features and Benefits</h2>
-</div>
-<div class="row">
-  <div class="col-md-4">
-  <div class="well">
-  <p>
-    <h3><i class="fa fa-industry"></i> Mature</h3>
-    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
-    </p>
-  </div>
-  </div>
-  <div class="col-md-4">
-  <div class="well">
-  <p>
-    <h3><i class="fa fa-cubes"></i> Flexible</h3>
-    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
-    that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
-    </p>
-  </div>
-  </div>
-
-  <div class="col-md-4">
-  <div class="well">
-    <p>
-    <h3><i class="fa fa-check"></i> Straightforward</h3>
-      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
-    </p>
-  </div>
-  </div>
-
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
-    Use built-in service discovery, or use external service registries. You choose.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-wrench"></i> Practical</h3>
-    Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="well">
-    <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
-    Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
-    monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
-    broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
-    </div>
-  </div>
-</div>
-</div>
-</section>
-++++
-
-[pass]
-++++
-<section class="section">
-<div class="container">
 
 <div class="row">
   <div class="col-md-6">
@@ -144,6 +82,68 @@ java -jar MyApp-swarm.jar
   </div>
 
   </div>
+</div>
+</section>
+++++
+
+[pass]
+++++
+<section class="section">
+<div class="container">
+<div class="page-header">
+  <h2>Features and Benefits</h2>
+</div>
+<div class="row">
+  <div class="col-md-4">
+  <div class="well">
+  <p>
+    <h3><i class="fa fa-industry"></i> Mature</h3>
+    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
+    </p>
+  </div>
+  </div>
+  <div class="col-md-4">
+  <div class="well">
+  <p>
+    <h3><i class="fa fa-cubes"></i> Flexible</h3>
+    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
+    that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
+    </p>
+  </div>
+  </div>
+
+  <div class="col-md-4">
+  <div class="well">
+    <p>
+    <h3><i class="fa fa-check"></i> Straightforward</h3>
+      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
+    </p>
+  </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-sitemap"></i> Service Oriented</h3>
+    Use built-in service discovery, or use external service registries. You choose.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-wrench"></i> Practical</h3>
+    Built-in support for third party apps and frameworks like Logstash and NetFlix OSS projects like Hystrix and Ribbon.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+    <h3><i class="fa fa-puzzle-piece"></i> Integrated</h3>
+    Integrates with upstream Red Hat projects for single sign-on <a href="http://keycloak.jboss.org/">KeyCloak</a>,
+    monitoring <a href="http://www.hawkular.org/">Hawkular</a>, data grid <a href="http://www.infinispan.org">InfiniSpan</a>, and more
+    broadly, Platform as a Service <a href="https://www.openshift.com/">OpenShift</a>.
+    </div>
+  </div>
+</div>
 </div>
 </section>
 ++++
