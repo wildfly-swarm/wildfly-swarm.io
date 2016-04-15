@@ -4,8 +4,8 @@ layout: index.jade
 ---
 
 ++++
-<section class="section">
-<div class="container">
+<section class="section alt">
+<div class="container lead">
 
 <p>
 Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
@@ -18,7 +18,7 @@ server runtime to "java -jar" your application. However, it's all much, much coo
 
 [pass]
 ++++
-<section class="section alt">
+<section class="section">
 <div class="container">
 
 <div class="row">
@@ -88,7 +88,7 @@ java -jar MyApp-swarm.jar
 
 [pass]
 ++++
-<section class="section">
+<section class="section alt">
 <div class="container">
 <div class="page-header">
   <h2>Features and Benefits</h2>
