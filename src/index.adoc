@@ -90,8 +90,9 @@ server runtime to "java -jar" your application. However, it's all much, much coo
     </div>
 ++++
 
-Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need. The following example
-assumes a simple JAX-RS RESTful application.
+Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need 
+(or don't add anything at all and the plugin will auto-detect for you). 
+The following example assumes a simple JAX-RS RESTful application.
 
 [source,xml]
 <dependency>
