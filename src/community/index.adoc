@@ -50,7 +50,7 @@ developers, join us on Freenode or our Google Group.
       <div class="col-md-4">
       <div class="well">
       <p>
-        <h3>IRC - Chat</h3>
+        <h3><i class="fa fa-comments-o" aria-hidden="true"></i> IRC - Chat</h3>
         Most of the discussions happen on IRC. Jump in, ask questions, contribute:<br/>
 
         <a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on Freenode</a>
@@ -60,9 +60,9 @@ developers, join us on Freenode or our Google Group.
       <div class="col-md-4">
       <div class="well">
       <p>
-        <h3>Discussion Group</h3>
+        <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> Discussion Group</h3>
         The <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a> is good place for more elaborate questions,
-        ideas that don't fit IRC and in general require more context.
+        ideas that don't fit IRC or those that require more context.
         </p>
       </div>
       </div>
@@ -70,7 +70,7 @@ developers, join us on Freenode or our Google Group.
       <div class="col-md-4">
       <div class="well">
         <p>
-        <h3>Twitter</h3>
+        <h3><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</h3>
           The latest and most recent updates can be found on Twitter:
           <a href="http://twitter.com/wildflyswarm">@wildflyswarm</a>
         </p>
