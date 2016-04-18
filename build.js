@@ -103,7 +103,18 @@ function build() {
     }))
 
     // RSS Feed
-    .use(feed({collection: 'posts', pubDate: new Date()}))
+    .use(feed(
+          {
+            collection: 'posts',
+            pubDate: new Date(),
+            postDescription: function(file) {
+              // Ugly hack to set publish date on RSS feed.
+              // See https://issues.jboss.org/browse/SWARM-441 and https://github.com/hurrymaplelad/metalsmith-feed/issues/13
+              file.date = file.publishDate;
+              return file.less || file.excerpt || file.contents;
+            }
+          }
+    ))
 
     // when we run as `node build serve` we'll serve the site and watch
     // the files for changes. Note: This does not reload when templates
