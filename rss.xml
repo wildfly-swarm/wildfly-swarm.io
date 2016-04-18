@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Mon, 18 Apr 2016 13:25:16 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 18 Apr 2016 13:25:13 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Mon, 18 Apr 2016 17:12:25 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 18 Apr 2016 17:12:22 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_s_new">What’s New?</h3>
 <div class="ulist">
 <ul>
@@ -31,7 +31,7 @@
 <p>We now publish <a href="http://wildfly-swarm.github.io/wildfly-swarm/1.0.0.Beta7/apidocs/index.html">consolidated javadocs</a></p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 12 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_impact_of_the_repository_reorganization">Impact of the repository reorganization</h3>
 <div class="paragraph">
 <p>Continuing in our trend of announcing versions that are arbitrarily
@@ -45,7 +45,7 @@ larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</str
 into discrete chunks, each with its own release cycle.  <em>This</em> release represents
 a released version of the aggregating BOM, which encompasses all of the various
 released components.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Reorganization]]></title><description><![CDATA[<div class="paragraph">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 15 Mar 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Reorganization]]></title><description><![CDATA[<div class="paragraph">
 <p>After some hearty discussion at our face-to-face meeting in Newcastle, UK,
 along with continuing that discussion on our <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a>,
 we’ve decided to split apart our monolithic repository into reasonable slices.</p>
@@ -68,7 +68,7 @@ in version numbering.</p>
 <div class="paragraph">
 <p>Since a multitude of versions can certainly make life more difficult for
 consumers, we’ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h3>
 <div class="paragraph">
 <p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
@@ -94,7 +94,7 @@ traffic inspection".</p>
 <p>If this is your first encounter with Swagger, I suggest you head on
 over to the <a href="http://swagger.io/">Swagger website</a> to learn more about
 Swagger itself, and what it can do for you.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</guid><dc:creator><![CDATA[Lance Ball]]></dc:creator></item><item><title><![CDATA[Announcement 1.0.0.Alpha8]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</guid><dc:creator><![CDATA[Lance Ball]]></dc:creator><pubDate>Thu, 04 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha8]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_s_new">What’s New?</h3>
 <div class="paragraph">
 <p>There’s slightly less stuf in this release since 1.0.0.Alpha6, but then
@@ -125,12 +125,12 @@ from your custom <code>main()</code> as a basis for a custom deployment.</p>
 <p>Update Keycloak to 1.8.0.Final</p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Initial support for declarative configuration]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 01 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Initial support for declarative configuration]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_programmatic_and_declarative_configuration">Programmatic and declarative configuration</h3>
 <div class="paragraph">
 <p>The common and only way to configure wildfly-swarm nodes was to use the Java API.
 With the inclusion of <a href="https://issues.jboss.org/browse/SWARM-14">SWARM-14</a>, external, declarative configuration of wildfly-swarm nodes becomes possible.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item><item><title><![CDATA[Announcement 1.0.0.Alpha6]]></title><description><![CDATA[<div class="sect2">
+</div>]]></description><link>https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 21 Jan 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha6]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
 <div class="paragraph">
 <p>WildFly Swarm is the decomposition and reconstitution of the popular
@@ -141,4 +141,4 @@ for microservice type applications.</p>
 <p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 18 Jan 2016 05:00:00 GMT</pubDate></item></channel></rss>
