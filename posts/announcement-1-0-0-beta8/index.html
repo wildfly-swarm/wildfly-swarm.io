@@ -16,9 +16,6 @@
 <p>Support for expressions in config API (i..e ${database.connection.url})</p>
 </li>
 <li>
-<p>Many changes to the way how dependencies are detected</p>
-</li>
-<li>
 <p>Introduce a MySQL JPA fraction</p>
 </li>
 </ul>
@@ -27,7 +24,7 @@
 <div class="sect2">
 <h3 id="_http_port_blocks_until_deployment_is_finished">HTTP port blocks until deployment is finished</h3>
 <div class="paragraph">
-<p>The HTTP endpoints now accept and hold connection until the deplyments are finished.
+<p>The HTTP endpoints now accept and hold connection until the deployments are finished.
 This prevents the situation that did lead to a 404 when you&#8217;ve try to access the HTTP before the service is fully available.</p>
 </div>
 </div>
@@ -55,8 +52,8 @@ swarm:
 </div>
 </div>
 <div class="paragraph">
-<p>The properties can be accessed from subsystem, fraction and application level configuration and it allow you
-to bootstrap the container with a flag indicating which properties should be used in a specific environment.</p>
+<p>The properties can be accessed from subsystem, fraction and application level configuration and allow you
+to bootstrap the container with a flag indicating which properties should be used in a specific environment (<code>-Dswarm.project.stage=&lt;name&gt;</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">JaxrsResource.java</div>
