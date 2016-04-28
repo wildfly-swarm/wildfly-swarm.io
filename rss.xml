@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Mon, 18 Apr 2016 17:12:25 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 18 Apr 2016 17:12:22 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 28 Apr 2016 09:58:28 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 28 Apr 2016 09:58:26 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta8]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_s_new">What’s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP port blocks until deployment is finished</p>
+</li>
+<li>
+<p>Support for external, environment specific properties</p>
+</li>
+<li>
+<p>Support for @ConfigValue injection in CDI contexts</p>
+</li>
+<li>
+<p>Support for expressions in config API (i..e ${database.connection.url})</p>
+</li>
+<li>
+<p>Many changes to the way how dependencies are detected</p>
+</li>
+<li>
+<p>Introduce a MySQL JPA fraction</p>
+</li>
+</ul>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 28 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_s_new">What’s New?</h3>
 <div class="ulist">
 <ul>

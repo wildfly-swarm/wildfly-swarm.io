@@ -1,0 +1,386 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Beta8 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Beta8</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Apr 28th</div><div><div class="sect1">
+<h2 id="_what_s_new">What&#8217;s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP port blocks until deployment is finished</p>
+</li>
+<li>
+<p>Support for external, environment specific properties</p>
+</li>
+<li>
+<p>Support for @ConfigValue injection in CDI contexts</p>
+</li>
+<li>
+<p>Support for expressions in config API (i..e ${database.connection.url})</p>
+</li>
+<li>
+<p>Many changes to the way how dependencies are detected</p>
+</li>
+<li>
+<p>Introduce a MySQL JPA fraction</p>
+</li>
+</ul>
+</div>
+<!-- more -->
+<div class="sect2">
+<h3 id="_http_port_blocks_until_deployment_is_finished">HTTP port blocks until deployment is finished</h3>
+<div class="paragraph">
+<p>The HTTP endpoints now accept and hold connection until the deplyments are finished.
+This prevents the situation that did lead to a 404 when you&#8217;ve try to access the HTTP before the service is fully available.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_environment_specific_properties">Environment specific properties</h3>
+<div class="paragraph">
+<p>It&#8217;s now possible to extract environment specific properties into an external file:</p>
+</div>
+<div class="listingblock">
+<div class="title">project-stages.yml</div>
+<div class="content">
+<pre>logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 10
+---
+project:
+    stage: development
+logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 50</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The properties can be accessed from subsystem, fraction and application level configuration and it allow you
+to bootstrap the container with a flag indicating which properties should be used in a specific environment.</p>
+</div>
+<div class="listingblock">
+<div class="title">JaxrsResource.java</div>
+<div class="content">
+<pre>@ApplicationScoped
+@Configured
+public class JaxrsResource {
+
+    @ConfigValue("email.from")
+    String emailFrom;
+
+    @ConfigValue("application.timeout.ms")
+    Integer timeoutMS;
+
+    @ConfigValue("application.compoment.debug")
+    Boolean debugEnabled;
+
+    [...]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Detailed information can be found in the <a href="https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/configuration/index.html">User Guide</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SWARM-465: Undeprecated FractionDescriptor methods</p>
+</li>
+<li>
+<p>SWARM-456: Add missing properties to FractionDescriptor</p>
+</li>
+<li>
+<p>SWARM-415  System property to eagerly open HTTP listeners.</p>
+</li>
+<li>
+<p>SWARM-447: Expose StageConfig in CDI context through @ConfigValue</p>
+</li>
+<li>
+<p>SWARM-348: Introduce StageConfig</p>
+</li>
+<li>
+<p>SWARM-445 Covariant returns for Swarm methods.</p>
+</li>
+<li>
+<p>Make fraction detection configurable [SWARM-372]</p>
+</li>
+<li>
+<p>SWARM-411 Add all dependencies to the fraction analyzer</p>
+</li>
+<li>
+<p>SWARM-411 Allow for fraction scanning of multiple sources</p>
+</li>
+<li>
+<p>SWARM-311 introduce MySQL JPA fraction</p>
+</li>
+<li>
+<p>SWARM-416 Unique sorted entries for wildfly-swarm-application.conf</p>
+</li>
+<li>
+<p>SWARM-348: Introduce StageConfig</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SWARM-447: Added an example how to reference stage config values within CDI contexts</p>
+</li>
+<li>
+<p>SWARM-248: Examples for project stage and xml configuration</p>
+</li>
+<li>
+<p>[SWARM-429] Add example for camel-jms</p>
+</li>
+<li>
+<p>[SWARM-428] Add example for camel-cxf-jaxws</p>
+</li>
+<li>
+<p>[SWARM-427] Add example for camel-cxf-jaxrs</p>
+</li>
+<li>
+<p>[SWARM-426] Add example for camel-cdi</p>
+</li>
+<li>
+<p>[SWARM-444] Add example for camel-core</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Config API</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SWARM-442: Introduce expression support</p>
+</li>
+<li>
+<p>SWARM-409 Publish exposed-components.json from the top level</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Plugins</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SWARM-448, ensure transitives of a provided dependency are also marked as provided</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Assorted</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SWARM-443 make TopologyProxyService use HttpHandler interface.</p>
+</li>
+<li>
+<p>SWARM-376 Hystrix Events Stream Support</p>
+</li>
+<li>
+<p>SWARM-456: Setting new FractionDescriptor properties from JSON</p>
+</li>
+<li>
+<p>SWARM-372 Expose modal fraction detection</p>
+</li>
+<li>
+<p>SWARM-411 Detect fractions for jar-based projects in run task</p>
+</li>
+<li>
+<p>SWARM-435 Integrate camel with the swarm umbrella</p>
+</li>
+<li>
+<p>SWARM-111 Allow a main when running a war app</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.Beta8" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.Beta8</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1-0-0-Beta8">available</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Eddú Meléndez</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Tomas Remes</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe</p>
+</li>
+<li>
+<p>emag</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Non Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Tomas Remes</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Riccardo Merolla</p>
+</li>
+<li>
+<p>salaboy</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>emag</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+
+</script><script src="//www.redhat.com/j/s_code.js"></script><script>(function() {
+
+  // Load the path name, without it's inital /
+  var arr = location.pathname.substr(1, location.pathname.length)
+      .toLowerCase().split('/');
+
+  // If the path ends in index.html or whitespace, trim the array
+  if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
+     arr.pop();
+  }
+
+  /*
+  * Assign values to Adobe Analytics properties
+  */
+  s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
+  s.server = "wildflyswarm" // The server is ???
+  s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+  s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
+  s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
+
+  // Pad the array as needed, so we can shift away later
+  for (var i = arr.length; i < 3; i++) {
+      arr[i] = "";
+  }
+
+  s.prop14 = s.eVar27 = arr.shift(); // prop14/eVar27 is the first minor section (normally /{minor_section_1})
+  s.prop15 = s.eVar28 = arr.shift(); // prop15/eVar28 is the second minor section (normally /a/{minor_section_2})
+  s.prop16 = s.eVar29 = arr.shift(); // prop16/eVar29 is the third minor section (normally /a/b/{minor_section_3})
+  s.prop21 = s.eVar18 = encodeURI(location.hostname+location.pathname).toLowerCase(); // prop21/eVar18 is the URL, less any query strings or fragments
+
+  })();
+</script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script></body></html>
