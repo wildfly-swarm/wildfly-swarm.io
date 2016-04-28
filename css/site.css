@@ -89,7 +89,7 @@ h1, h2 {
 }
 
 .alt .page-header {
-    border-color: #d0d0d0;
+    border-color: #eeeeee;
 }
 
 .post-excerpt {
@@ -117,6 +117,7 @@ h1, h2 {
 .btn-primary, .btn-primary:active
 {
 	background-color: #6b6b6b;
+  border-color: #333;
 }
 
 
@@ -293,7 +294,7 @@ footer.div {
 .section.alt {
 	background-color: #ffc266;
 	/*
-	logo colors : 
+	logo colors :
 	gray = #6b6b6b
 	orange = #faa425
 	*/
