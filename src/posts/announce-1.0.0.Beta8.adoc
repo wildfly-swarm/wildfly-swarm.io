@@ -11,7 +11,6 @@ layout: post.jade
 * Support for external, environment specific properties
 * Support for @ConfigValue injection in CDI contexts
 * Support for expressions in config API (i..e ${database.connection.url})
-* Many changes to the way how dependencies are detected
 * Introduce a MySQL JPA fraction
 
 ++++
@@ -19,7 +18,7 @@ layout: post.jade
 ++++
 
 === HTTP port blocks until deployment is finished
-The HTTP endpoints now accept and hold connection until the deplyments are finished.
+The HTTP endpoints now accept and hold connection until the deployments are finished.
 This prevents the situation that did lead to a 404 when you've try to access the HTTP before the service is fully available.
 
 
@@ -42,8 +41,8 @@ swarm:
   port:
     offset: 50
 ----
-The properties can be accessed from subsystem, fraction and application level configuration and it allow you
-to bootstrap the container with a flag indicating which properties should be used in a specific environment.
+The properties can be accessed from subsystem, fraction and application level configuration and allow you
+to bootstrap the container with a flag indicating which properties should be used in a specific environment (`-Dswarm.project.stage=<name>`).
 
 .JaxrsResource.java
 ----
