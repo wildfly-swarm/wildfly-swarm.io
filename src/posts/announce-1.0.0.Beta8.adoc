@@ -1,0 +1,166 @@
+---
+title: Announcement 1.0.0.Beta8
+publishDate: 2016-04-28
+modifyDate: 2016-04-28
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== What's New?
+* HTTP port blocks until deployment is finished
+* Support for external, environment specific properties
+* Support for @ConfigValue injection in CDI contexts
+* Support for expressions in config API (i..e ${database.connection.url})
+* Many changes to the way how dependencies are detected
+* Introduce a MySQL JPA fraction
+
+++++
+<!-- more -->
+++++
+
+=== HTTP port blocks until deployment is finished
+The HTTP endpoints now accept and hold connection until the deplyments are finished.
+This prevents the situation that did lead to a 404 when you've try to access the HTTP before the service is fully available.
+
+
+=== Environment specific properties
+It's now possible to extract environment specific properties into an external file:
+
+.project-stages.yml
+----
+logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 10
+---
+project:
+    stage: development
+logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 50
+----
+The properties can be accessed from subsystem, fraction and application level configuration and it allow you
+to bootstrap the container with a flag indicating which properties should be used in a specific environment.
+
+.JaxrsResource.java
+----
+@ApplicationScoped
+@Configured
+public class JaxrsResource {
+
+    @ConfigValue("email.from")
+    String emailFrom;
+
+    @ConfigValue("application.timeout.ms")
+    Integer timeoutMS;
+
+    @ConfigValue("application.compoment.debug")
+    Boolean debugEnabled;
+
+    [...]
+}
+----
+Detailed information can be found in the https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/configuration/index.html[User Guide]
+
+
+== Changelog
+
+*Core*
+
+- SWARM-465: Undeprecated FractionDescriptor methods
+- SWARM-456: Add missing properties to FractionDescriptor
+- SWARM-415  System property to eagerly open HTTP listeners.
+- SWARM-447: Expose StageConfig in CDI context through @ConfigValue
+- SWARM-348: Introduce StageConfig
+- SWARM-445 Covariant returns for Swarm methods.
+- Make fraction detection configurable [SWARM-372]
+- SWARM-411 Add all dependencies to the fraction analyzer
+- SWARM-411 Allow for fraction scanning of multiple sources
+- SWARM-311 introduce MySQL JPA fraction
+- SWARM-416 Unique sorted entries for wildfly-swarm-application.conf
+- SWARM-348: Introduce StageConfig
+
+*Examples*
+
+- SWARM-447: Added an example how to reference stage config values within CDI contexts
+- SWARM-248: Examples for project stage and xml configuration
+- [SWARM-429] Add example for camel-jms
+- [SWARM-428] Add example for camel-cxf-jaxws
+- [SWARM-427] Add example for camel-cxf-jaxrs
+- [SWARM-426] Add example for camel-cdi
+- [SWARM-444] Add example for camel-core
+
+*Config API*
+
+- SWARM-442: Introduce expression support
+- SWARM-409 Publish exposed-components.json from the top level
+
+*Plugins*
+
+- SWARM-448, ensure transitives of a provided dependency are also marked as provided
+
+*Assorted*
+
+- SWARM-443 make TopologyProxyService use HttpHandler interface.
+- SWARM-376 Hystrix Events Stream Support
+- SWARM-456: Setting new FractionDescriptor properties from JSON
+- SWARM-372 Expose modal fraction detection
+- SWARM-411 Detect fractions for jar-based projects in run task
+- SWARM-435 Integrate camel with the swarm umbrella
+- SWARM-111 Allow a main when running a war app
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.Beta8.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Beta8[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+- Bob McWhirter
+- Eddú Meléndez
+- George Gastaldi
+- Heiko Braun
+- Ken Finnigan
+- Toby Crawley
+- Tomas Remes
+- Yoshimasa Tanabe
+- emag
+
+*Non Core*
+
+- Bob McWhirter
+- Heiko Braun
+- Ken Finnigan
+- Tomas Remes
+- Thomas Diesler
+- Riccardo Merolla
+- salaboy
+
+*Examples*
+
+- Bob McWhirter
+- George Gastaldi
+- Heiko Braun
+- Ken Finnigan
+- Thomas Diesler
+- Toby Crawley
+- emag
+
+*Documentation*
+
+- George Gastaldi
+- Heiko Braun
+- Ken Finnigan
+- Toby Crawley
