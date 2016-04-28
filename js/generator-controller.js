@@ -8,7 +8,7 @@ angular.module('swarm-generator-app',[])
     $scope.showInstructions = isJAXRSSelected;
 
     $scope.model = {
-        swarmVersion: "1.0.0.Beta7",
+        swarmVersion: "1.0.0.Beta8",
         groupId: "com.example",
         artifactId: "demo",
         fractions : function(fractions) {
@@ -123,10 +123,11 @@ createPOM = function(model) {
   pom += '  <packaging>war</packaging>\n'
   pom += '\n'
   pom += '  <properties>\n'
+  pom += '    <version.wildfly.swarm>'+model.swarmVersion+'</version.wildfly.swarm>\n'
   pom += '    <maven.compiler.source>1.8</maven.compiler.source>\n'
   pom += '    <maven.compiler.target>1.8</maven.compiler.target>\n'
+  pom += '    <failOnMissingWebXml>false</failOnMissingWebXml>\n'
   pom += '    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n'
-  pom += '    <version.wildfly.swarm>'+model.swarmVersion+'</version.wildfly.swarm>\n'
   pom += '  </properties>\n'
   pom += '\n'
   pom += '  <dependencyManagement>\n'
@@ -144,13 +145,6 @@ createPOM = function(model) {
   pom += '  <build>\n'
   pom += '    <finalName>'+artifactId+'</finalName>\n'
   pom += '    <plugins>\n'
-  pom += '      <plugin>\n'
-  pom += '        <artifactId>maven-war-plugin</artifactId>\n'
-  pom += '        <version>2.6</version>\n'
-  pom += '        <configuration>\n'
-  pom += '          <failOnMissingWebXml>false</failOnMissingWebXml>\n'
-  pom += '        </configuration>\n'
-  pom += '      </plugin>\n'
   pom += '      <plugin>\n'
   pom += '        <groupId>org.wildfly.swarm</groupId>\n'
   pom += '        <artifactId>wildfly-swarm-plugin</artifactId>\n'
