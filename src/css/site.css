@@ -288,22 +288,12 @@ footer.div {
     margin-right: 1px
 }
 
-/*
-	replace mesh glyph with orange from logo color scheme
+/* logo colors :       
+   gray = #6b6b6b orange = #faa425 
 */
 .section.alt {
-	background-color: #ffc266;
-	/*
-	logo colors :
-	gray = #6b6b6b
-	orange = #faa425
-	*/
-	/*
-    background-image: url("/images/mesh.png");
-    background-size: 256px 256px;
-    background-repeat: repeat;
-    */
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
+   background-color: #ffc266;
+   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
 }
 
 .section {
