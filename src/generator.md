@@ -8,26 +8,22 @@ layout: generator.jade
 
 Rightsize your Java EE microservice in a few clicks
 
-<form name="form" ng-app="swarm-generator-app" ng-controller="swarm-generator"> 
+<form name="form" ng-app="swarm-generator-app" ng-controller="swarm-generator">
 	<div class="row">
 		<div class="col-sm-12 col-md-6">
 			<div class="form-group">
 				<label class="control-label" for="groupId">Group ID</label>
 				<input type="text" name="groupId" ng-model="model.groupId" class="form-control" id="groupId" tabindex="1" placeholder="com.example">
 			</div>
+			<div class="swarm-generator-form">
 			<div class="form-group">
 				<label class="control-label" for="artifactId">Artifact ID</label>
 				<input type="text" name="artifactId" ng-model="model.artifactId" class="form-control" id="artifactId" tabindex="2" placeholder="demo">
-			</div>			
-		</div>
-		<div class="col-sm-12 col-md-6">
-			<div class="form-group">
-				<br/>
-				<br/>				
-				<button role="button" class="btn btn-lg btn-primary" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
 			</div>
-		</div>				
-	</div>	
+				<button role="button" class="btn btn-lg btn-primary" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
+			</div><!-- swarm-generator-form -->
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<div class="form-group has-feedback">
@@ -56,7 +52,7 @@ Rightsize your Java EE microservice in a few clicks
 				<li ng-if="showInstructions(model)">Go to <a href="http://localhost:8080/rest/hello">http://localhost:8080/rest/hello</a> and you should see the following message: <pre>Hello from WildFly Swarm!</pre></li>
 			</ol>
 		</div>
-	</div>	
+	</div>
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? 'Hide' :'View'}} all available dependencies</a>

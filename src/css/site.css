@@ -288,8 +288,8 @@ footer.div {
     margin-right: 1px
 }
 
-/* logo colors :       
-   gray = #6b6b6b orange = #faa425 
+/* logo colors :
+   gray = #6b6b6b orange = #faa425
 */
 .section.alt {
    background-color: #ffc266;
@@ -326,4 +326,24 @@ code {
 
 .badge {
   margin:2px;
+}
+
+/*
+This is a "ugly" solution to position the "Generate Project" btn besides the "Artifact ID" input.
+When the times come to change this form this needs to be reviewed.
+There is no other way to do it since its not following a standard strcuture for a form.
+*/
+
+  .swarm-generator-form{
+    margin-bottom: 20px;
+  }
+@media (min-width:  992px) {
+  .swarm-generator-form{
+    position: relative;
+  }
+  .swarm-generator-form button{
+    position: absolute;
+    bottom: 0;
+    right: -200px;
+  }
 }
