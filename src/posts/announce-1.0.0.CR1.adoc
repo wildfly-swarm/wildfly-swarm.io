@@ -8,7 +8,6 @@ draft: true
 ---
 
 == What's New?
-* ?
 
 === CLI Support
 
@@ -25,7 +24,7 @@ gain access to things like `-D`, `-c` and `-b` among others.
 
 === Enhanced `standalone.xml` support
 
-On the heals of the CLI support above, which gives you the ability
+On the heels of the CLI support above, which gives you the ability
 to pass a `standalone.xml` using the `-c` option, WildFly Swarm now
 also supports passing a _partial_ `standalone.xml`.  Previously, you
 had to decide if you were using `standalone.xml` or configuration
@@ -35,6 +34,14 @@ Now, if you pass a `standalone.xml`, it's configuration will win, but
 anything not configured through XML can still be configured through
 the normal Java API, or through the defaults provided by WildFly Swarm
 fractions.
+
+=== SwarmTool
+
+SwarmTool provides a command-line tool for turning an existing WAR
+into a `-swarm.jar` without requiring Maven or Gradle, only Java. For
+installation and usage instructions, see the
+https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/getting-started/tooling/swarmtool.html[User's
+Guide].
 
 ++++
 <!-- more -->
