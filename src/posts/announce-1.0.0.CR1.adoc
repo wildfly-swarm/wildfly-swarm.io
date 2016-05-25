@@ -1,0 +1,109 @@
+---
+title: Announcement 1.0.0.CR1
+publishDate: 2016-05-25
+modifyDate: 2016-05-25
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== What's New?
+* ?
+
+++++
+<!-- more -->
+++++
+
+
+
+== Changelog
+
+
+Release notes for 1.0.0.CR1 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329397&versions=12329891&versions=12330676&versions=12330158&versions=12330160&versions=12330161&versions=12330154&versions=12330163&versions=12330162&versions=12330411&versions=12329788&versions=12330164&versions=12329787&versions=12330405&versions=12330155&versions=12330159&versions=12330410&versions=12330404&versions=12329897&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
+
+++++
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-6">SWARM-6</a> ] swarmtool should support setting fully-qualified fractions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-8">SWARM-8</a> ] swarmtool should be documented in gitbooks</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-178">SWARM-178</a> ] add tests to swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-230">SWARM-230</a> ] Static content not reloaded on local change when running org.wildfly.swarm.Swarm</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-265">SWARM-265</a> ] Add resource-adapters subsystem from WildFly</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-289">SWARM-289</a> ] JavaFX as a dependency with scope=runtime fails to work</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-294">SWARM-294</a> ] Tool that can take an existing WAR and Swarmify it</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-299">SWARM-299</a> ] Missing dependency causes XmlPullParserException</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-302">SWARM-302</a> ] Expose maven plugin configuration as -D'able properties</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-304">SWARM-304</a> ] Ability to set all parts of module definition in jboss-deployment-structure.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-312">SWARM-312</a> ] JPA Fraction for PostgreSQL</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-342">SWARM-342</a> ] Create a DatasourceArchive so that examples don't need to use JARArchive directly.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-349">SWARM-349</a> ] The two flavors of getImplicitDeployments() in the ServerConfiguration SPI is error-prone and confusing</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-354">SWARM-354</a> ] Consider having our main pass along sysprops</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-364">SWARM-364</a> ] Ability to use a custom datasource without a custom Main()</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-391">SWARM-391</a> ] Support for RAR archive deployments</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-405">SWARM-405</a> ] mvn wildfly-swarm:run should gracefully shutdown when interrupted from an embedded maven runtime</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-425">SWARM-425</a> ] Add examples for wildfly-camel</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-431">SWARM-431</a> ] Add example for camel-mail</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-434">SWARM-434</a> ] Allow Swarmed JARs to be executable</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-460">SWARM-460</a> ] NoClassDefFoundError: io/undertow/servlet/ServletExtension in Beta7 and Beta8</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-463">SWARM-463</a> ] Allow standalone.xml to represent partial configuration of the container</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-464">SWARM-464</a> ] addPackage() on JAXRSArchive doesn't seem to add the classes in that package</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-466">SWARM-466</a> ] Keycloak v1.9.4.Final</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-468">SWARM-468</a> ] Expose setting main from swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-469">SWARM-469</a> ] Expose adding module dirs to swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-470">SWARM-470</a> ] Expose setting additional repos in swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-471">SWARM-471</a> ] Expose option to create executable jar in swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-472">SWARM-472</a> ] Incorrect service teardown order</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-473">SWARM-473</a> ] Support more CLI options to default Swarm jars</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-476">SWARM-476</a> ] Expose remaining jackson libraries from resteasy</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-483">SWARM-483</a> ] camel-cdi throws NCDFE with WAR deployment</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-484">SWARM-484</a> ] Show external configuration of a datasource</li>
+</ul>
+++++
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR1.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-CR1[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+- emag
+- Heiko Braun
+- Toby Crawley
+- John D. Ament
+- Ken Finnigan
+- George Gastaldi
+- Martin Kouba
+- Bob McWhirter
+
+*Non Core*
+
+- Heiko Braun
+- Ken Finnigan
+- George Gastaldi
+- Bob McWhirter
+
+*Examples*
+
+- Ralf Battenfeld
+- Heiko Braun
+- Thomas Diesler
+- Ken Finnigan
+- Bob McWhirter
+- James Netherton
+- Tomas Remes
+
+*Documentation*
+
+- George Gastaldi
+- Heiko Braun
+- Ken Finnigan
+- Toby Crawley

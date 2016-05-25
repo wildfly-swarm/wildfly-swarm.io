@@ -136,7 +136,8 @@ function build() {
       '/documentation/1-0-0-Alpha8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha8/',
       '/documentation/1-0-0-Beta6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Beta6/',
       '/documentation/1-0-0-Beta7': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/c38f5393fe4313665f197b1f01bc73727e6a21c5/',
-      '/documentation/1-0-0-Beta8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/eee1f5ba4dd4f13855cbe98addd365ba29033810/',  
+      '/documentation/1-0-0-Beta8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/eee1f5ba4dd4f13855cbe98addd365ba29033810/',
+      '/documentation/1-0-0-CR1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/',  
     }))
 
     .build(function (err) {

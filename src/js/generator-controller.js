@@ -8,7 +8,7 @@ angular.module('swarm-generator-app',[])
     $scope.showInstructions = isJAXRSSelected;
 
     $scope.model = {
-        swarmVersion: "1.0.0.Beta8",
+        swarmVersion: "1.0.0.CR1",
         groupId: "com.example",
         artifactId: "demo",
         fractions : function(fractions) {
@@ -37,7 +37,7 @@ extractCategories = function(fractions) {
   fractions.forEach(function (fraction) {
     fraction.category = fraction.category || fraction.tags.split(",")[0] || "General";
     if (fraction.category && categories.indexOf(fraction.category) == -1) {
-      categories.push(fraction.category);  
+      categories.push(fraction.category);
     }
   });
   return categories.sort();
@@ -52,7 +52,7 @@ configureSearchEngine = function(fractions) {
     },
     cache: false
   });
-  
+
   updateSearchEngine(searchEngine, fractions);
 
   $('.typeahead').typeahead({
@@ -74,13 +74,13 @@ configureSearchEngine = function(fractions) {
       updateSearchEngine(searchEngine, fractions.filter(function(item){return !item.selected;}));
       // Update AngularJS model
       angular.element($('#search')).scope().$apply();
-  });  
+  });
 }
 
 updateSearchEngine = function (searchEngine, fractions) {
   searchEngine.clear();
   searchEngine.add(fractions);
-} 
+}
 
 createZip = function(model) {
   var pom = createPOM(model);
@@ -88,7 +88,7 @@ createZip = function(model) {
   var projectRoot = zip.folder(model.artifactId || "demo");
   projectRoot.file("pom.xml", pom);
   var srcJavaFolder = projectRoot.folder("src").folder("main").folder("java");
-  if (isJAXRSSelected(model)) {    
+  if (isJAXRSSelected(model)) {
     var restFolder = srcJavaFolder.folder("com").folder("example").folder("rest");
     restFolder.file("HelloWorldEndpoint.java", createRestEndpoint());
     restFolder.file("RestApplication.java", createRestApplication());
@@ -98,14 +98,14 @@ createZip = function(model) {
 
 isJAXRSSelected = function(model) {
   var selectedFractions = model.fractions();
-  var result = (selectedFractions.length == 0); 
+  var result = (selectedFractions.length == 0);
   for (i=0;i<selectedFractions.length;i++) {
     if (selectedFractions[i].name === 'JAX-RS') {
       result = true;
-    } 
+    }
   }
   return result;
-} 
+}
 
 createPOM = function(model) {
   var groupId = model.groupId || "com.example";
@@ -161,7 +161,7 @@ createPOM = function(model) {
   pom += '  </build>\n'
   pom += '\n'
   pom += '  <dependencies>\n'
-  pom += '    <!-- Java EE 7 dependency -->\n'  
+  pom += '    <!-- Java EE 7 dependency -->\n'
   pom += '    <dependency>\n'
   pom += '      <groupId>javax</groupId>\n'
   pom += '      <artifactId>javaee-api</artifactId>\n'
@@ -174,7 +174,7 @@ createPOM = function(model) {
     pom += '    <dependency>\n'
     pom += '      <groupId>' + fraction.groupId + '</groupId>\n'
     pom += '      <artifactId>' + fraction.artifactId + '</artifactId>\n'
-    pom += '    </dependency>\n'    
+    pom += '    </dependency>\n'
   });
 
   pom += '  </dependencies>\n'
