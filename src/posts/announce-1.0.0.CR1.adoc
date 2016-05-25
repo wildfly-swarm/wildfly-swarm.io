@@ -10,6 +10,32 @@ draft: true
 == What's New?
 * ?
 
+=== CLI Support
+
+Your `-swarm.jar`s now support basic command-line options to make on-the-go
+changes easier.  In the event you're already using `org.wildfly.swarm.Swarm`
+as your main entry-point (or otherwise haven't specified a `main(...)`), you
+can see what's available by 
+
+    java -jar myapp-swarm.jar --help
+
+If you have a custom `main(...)`, just start passing your `String...args`
+to the constructor of `Swarm` (or `Container`) and your application will
+gain access to things like `-D`, `-c` and `-b` among others.
+
+=== Enhanced `standalone.xml` support
+
+On the heals of the CLI support above, which gives you the ability
+to pass a `standalone.xml` using the `-c` option, WildFly Swarm now
+also supports passing a _partial_ `standalone.xml`.  Previously, you
+had to decide if you were using `standalone.xml` or configuration
+through the Java API.
+
+Now, if you pass a `standalone.xml`, it's configuration will win, but
+anything not configured through XML can still be configured through
+the normal Java API, or through the defaults provided by WildFly Swarm
+fractions.
+
 ++++
 <!-- more -->
 ++++
