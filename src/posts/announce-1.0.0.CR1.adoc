@@ -4,10 +4,20 @@ publishDate: 2016-05-25
 modifyDate: 2016-05-25
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == What's New?
+* CLI Support
+* Enhanced `standalone.xml` support
+* SwarmTool
+* Resource Adapter archives
+* JPA fraction with PostgreSQL
+* Examples with WildFly Camel
+* Datasource configuration settable by properties
+
+++++
+<!-- more -->
+++++
 
 === CLI Support
 
@@ -43,14 +53,8 @@ installation and usage instructions, see the
 https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/getting-started/tooling/swarmtool.html[User's
 Guide].
 
-++++
-<!-- more -->
-++++
-
-
 
 == Changelog
-
 
 Release notes for 1.0.0.CR1 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329397&versions=12329891&versions=12330676&versions=12330158&versions=12330160&versions=12330161&versions=12330154&versions=12330163&versions=12330162&versions=12330411&versions=12329788&versions=12330164&versions=12329787&versions=12330405&versions=12330155&versions=12330159&versions=12330410&versions=12330404&versions=12329897&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
 
