@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== What's New?
+== What's New?
 
 * Some new fractions
   * Hibernate Search
@@ -22,7 +22,7 @@ layout: post.jade
 <!-- more -->
 ++++
 
-=== `weld` renamed to `cdi`
+== `weld` renamed to `cdi`
 
 To clear some naming up we've renamed the `weld` fraction to `cdi`, and as part of that
 change `jaxrs-weld` is also now `jaxrs-cdi`.
@@ -30,7 +30,7 @@ change `jaxrs-weld` is also now `jaxrs-cdi`.
 If you use auto-detection you won't need to change anything, but if you specify
 WildFly Swarm dependencies in `pom.xml` you will need to make this change.
 
-=== addAllDependencies() behavior
+== addAllDependencies() behavior
 
 Previous to this release calling `myArchive.addAllDependencies()` would include the WildFly Swarm dependencies
 into WEB-INF/lib, as well as any other Maven dependencies of the project.
@@ -40,7 +40,7 @@ modified the default behavior such that WildFly Swarm dependencies are no longer
 included. It is still possible to replicate the previous behavior, if desired,
 by calling `myArchive.addAllDependencies(true)`.
 
-=== Health Endpoints
+== Health Endpoints
 
 You can now add health checks to your endpoints!
 
@@ -69,11 +69,11 @@ Which is then accessible at http://localhost:8080/health/app/diskSpace.
 
 For further on information on the API, security, etc, please consult https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/advanced/monitoring.html[the userguide]
 
-=== Project Generator
+== Project Generator
 
 Thanks to George Gastaldi, we now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don't want fractions to be auto-detected) to be added in your build descriptor. Check it out at http://wildfly-swarm.io/generator
 
-=== Changelog
+== Changelog
 
 Release notes for 1.0.0.Beta7 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330156&versions=12329794&versions=12329900&versions=12329901&versions=12329791&versions=12329975&versions=12329902&versions=12329796&versions=12330153&versions=12330152&versions=12329789&versions=12330151&versions=12330076&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
 
@@ -126,7 +126,7 @@ Release notes for 1.0.0.Beta7 are available https://issues.jboss.org/secure/Conf
 ++++
 
 
-=== Resources
+== Resources
 
 Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
@@ -136,7 +136,7 @@ Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples
 
 Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Beta7[available].
 
-=== Thank you, Contributors!
+== Thank you, Contributors!
 
 We appreciate all of our contributors since the last release:
 

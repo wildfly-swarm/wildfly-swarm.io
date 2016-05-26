@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== Impact of the repository reorganization
+== Impact of the repository reorganization
 
 Continuing in our trend of announcing versions that are arbitrarily
 larger than our last release, we're happy to announce *1.0.0.Beta6*.
@@ -22,7 +22,7 @@ released components.
 <!-- more -->
 ++++
 
-=== About that BOM
+== About that BOM
 
 Since _WildFly Swarm_ now is actually a collection of components, each with
 their own unique snowflake of a version number, we have a BOM that we recommend
@@ -65,13 +65,13 @@ specify the dependency without a version:
 ----
 
 
-=== Faster Boot-times
+== Faster Boot-times
 
 Through the work of Heiko Braun, we no longer spend ages scanning the classpath
 at boot-time, and rather have pre-computed indexes, which makes the initial
 startup of a _swarmified_ application significantly faster.
 
-=== Fraction Auto-detection
+== Fraction Auto-detection
 
 While the typical usage of WildFly Swarm still involves using our BOM
 and specifying dependencies, if you're coming from a project that already
@@ -106,14 +106,14 @@ The plugin will scan your project for applicable packages (`javax.servlet` etc)
 being used, and will implicitly bring in the WildFly Swarm dependencies you need
 in order to package up the `-swarm.jar` version of your existing `.war` file.
 
-=== Spring Framework Support
+== Spring Framework Support
 
 Just as WildFly has always been the best place to run Spring applications, we want
 to ensure that WildFly Swarm continues that tradition.
 
 We now have a `org.wildfly.swarm:spring` fraction that can help you out.
 
-=== Yo dawg, we heard you like WildFly Swarm, so we put a Swarm in your Swarm, so you can Swarm while you Swarm.
+== Yo dawg, we heard you like WildFly Swarm, so we put a Swarm in your Swarm, so you can Swarm while you Swarm.
 
 image:/images/dawg.jpg[]
 
@@ -138,13 +138,13 @@ public static void main(String...args) {
 ----
 
 
-=== SPI
+== SPI
 
 We're starting to see an interest in other folks writing fractions for WildFly Swarm
 (we hope to ship a Camel fraction in our next release).  To make this easier and less
 brittle, we've codified the SPI for fraction authors in `org.wildfly.swarm:spi`.
 
-=== Changelog
+== Changelog
 
 Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329890&versions=12329883&versions=12329959&versions=12329958&versions=12329899&versions=12329884&versions=12329886&versions=12329887&versions=12329795&versions=12329898&versions=12329896&versions=12329793&versions=12329817&versions=12329885&versions=12329822&versions=12329819&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
 
@@ -179,7 +179,7 @@ Release notes for 1.0.0.Beta6 are available https://issues.jboss.org/secure/Conf
 ++++
 
 
-=== Resources
+== Resources
 
 Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
@@ -189,7 +189,7 @@ Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples
 
 Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Beta6[available].
 
-=== Thank you, Contributors!
+== Thank you, Contributors!
 
 We appreciate all of our contributors since the last release:
 

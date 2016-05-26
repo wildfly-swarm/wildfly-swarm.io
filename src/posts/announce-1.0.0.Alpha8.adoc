@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== What's New?
+== What's New?
 
 There's slightly less stuf in this release since 1.0.0.Alpha6, but then
 again, it marks our new trend of fortnightly releases.
@@ -54,11 +54,11 @@ correctly setting the datasource class name where as it was not previously.
 When setting a JBDS Driver class, now use `driverClassName()` instead
 of `driverDatasourceClassName()`.
 
-=== Changelog
+== Changelog
 
 Release notes for 1.0.0.Alpha8 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12329396[here].
 
-=== Staffing
+== Staffing
 
 As you may know, the development of WildFly Swarm is supported by
 http://redhat.com/[Red Hat].  Ken Finnigan has joined the project
@@ -67,7 +67,7 @@ to help us bridge the gaps.
 
 Welcome aboard!
 
-=== Resources
+== Resources
 
 Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
@@ -77,7 +77,7 @@ Examples are available in http://github.com/wildfly-swarm/wildfly-swarm-examples
 
 Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Alpha8[available].
 
-=== Thank you, Contributors!
+== Thank you, Contributors!
 
 We appreciate all of our contributors since the last release:
 
