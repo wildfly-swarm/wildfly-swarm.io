@@ -1,5 +1,6 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Beta7 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Beta7</h1><div class="post-meta">By The WildFly Swarm Team | Published Apr 12, 2016</div><div><div class="sect2">
-<h3 id="_what_s_new">What&#8217;s New?</h3>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.Beta7 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.Beta7</h1><div class="post-meta">By The WildFly Swarm Team | Published Apr 12, 2016</div><div><div class="sect1">
+<h2 id="_what_s_new">What&#8217;s New?</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -33,8 +34,10 @@
 </div>
 <!-- more -->
 </div>
-<div class="sect2">
-<h3 id="__code_weld_code_renamed_to_code_cdi_code"><code>weld</code> renamed to <code>cdi</code></h3>
+</div>
+<div class="sect1">
+<h2 id="__code_weld_code_renamed_to_code_cdi_code"><code>weld</code> renamed to <code>cdi</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To clear some naming up we&#8217;ve renamed the <code>weld</code> fraction to <code>cdi</code>, and as part of that
 change <code>jaxrs-weld</code> is also now <code>jaxrs-cdi</code>.</p>
@@ -44,8 +47,10 @@ change <code>jaxrs-weld</code> is also now <code>jaxrs-cdi</code>.</p>
 WildFly Swarm dependencies in <code>pom.xml</code> you will need to make this change.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_addalldependencies_behavior">addAllDependencies() behavior</h3>
+</div>
+<div class="sect1">
+<h2 id="_addalldependencies_behavior">addAllDependencies() behavior</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Previous to this release calling <code>myArchive.addAllDependencies()</code> would include the WildFly Swarm dependencies
 into WEB-INF/lib, as well as any other Maven dependencies of the project.</p>
@@ -57,8 +62,10 @@ included. It is still possible to replicate the previous behavior, if desired,
 by calling <code>myArchive.addAllDependencies(true)</code>.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_health_endpoints">Health Endpoints</h3>
+</div>
+<div class="sect1">
+<h2 id="_health_endpoints">Health Endpoints</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can now add health checks to your endpoints!</p>
 </div>
@@ -91,14 +98,18 @@ public class HealthCheckResource {
 <p>For further on information on the API, security, etc, please consult <a href="https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/advanced/monitoring.html">the userguide</a></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_project_generator">Project Generator</h3>
+</div>
+<div class="sect1">
+<h2 id="_project_generator">Project Generator</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Thanks to George Gastaldi, we now provide a Web UI for generating Swarm projects on-the-fly! You can generate a Maven project and choose the fractions (if you don&#8217;t want fractions to be auto-detected) to be added in your build descriptor. Check it out at <a href="http://wildfly-swarm.io/generator" class="bare">http://wildfly-swarm.io/generator</a></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_changelog">Changelog</h3>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Release notes for 1.0.0.Beta7 are available <a href="https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330156&amp;versions=12329794&amp;versions=12329900&amp;versions=12329901&amp;versions=12329791&amp;versions=12329975&amp;versions=12329902&amp;versions=12329796&amp;versions=12330153&amp;versions=12330152&amp;versions=12329789&amp;versions=12330151&amp;versions=12330076&amp;sections=all&amp;style=html&amp;selectedProjectId=12317020&amp;reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&amp;Next=Next">here</a>.</p>
 </div>
@@ -148,8 +159,10 @@ public class HealthCheckResource {
   <li>[ <a href="https://issues.jboss.org/browse/SWARM-413">SWARM-413</a> ] JSF fraction detection does not work for subpackages </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_resources">Resources</h3>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
 </div>
@@ -163,8 +176,10 @@ public class HealthCheckResource {
 <p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1-0-0-Beta7">available</a>.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_thank_you_contributors">Thank you, Contributors!</h3>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>We appreciate all of our contributors since the last release:</p>
 </div>
@@ -282,6 +297,7 @@ public class HealthCheckResource {
 <p>Harald Wellmann</p>
 </li>
 </ul>
+</div>
 </div>
 </div></div></article></div><div class="col-sm-3 col-sm-offset-1"></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -1,0 +1,280 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcement 1.0.0.CR1 | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><article id="article"><h1>Announcement 1.0.0.CR1</h1><div class="post-meta">By The WildFly Swarm Team | Published Yesterday,  May 25th</div><div><div class="sect1">
+<h2 id="_what_s_new">What&#8217;s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>CLI Support</p>
+</li>
+<li>
+<p>Enhanced <code>standalone.xml</code> support</p>
+</li>
+<li>
+<p>SwarmTool</p>
+</li>
+<li>
+<p>Resource Adapter archives</p>
+</li>
+<li>
+<p>JPA fraction with PostgreSQL</p>
+</li>
+<li>
+<p>Examples with WildFly Camel</p>
+</li>
+<li>
+<p>Datasource configuration settable by properties</p>
+</li>
+</ul>
+</div>
+<!-- more -->
+<div class="sect2">
+<h3 id="_cli_support">CLI Support</h3>
+<div class="paragraph">
+<p>Your <code>-swarm.jar`s now support basic command-line options to make on-the-go
+changes easier.  In the event you&#8217;re already using `org.wildfly.swarm.Swarm</code>
+as your main entry-point (or otherwise haven&#8217;t specified a <code>main(&#8230;&#8203;)</code>), you
+can see what&#8217;s available by</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>java -jar myapp-swarm.jar --help</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have a custom <code>main(&#8230;&#8203;)</code>, just start passing your <code>String&#8230;&#8203;args</code>
+to the constructor of <code>Swarm</code> (or <code>Container</code>) and your application will
+gain access to things like <code>-D</code>, <code>-c</code> and <code>-b</code> among others.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhanced_code_standalone_xml_code_support">Enhanced <code>standalone.xml</code> support</h3>
+<div class="paragraph">
+<p>On the heels of the CLI support above, which gives you the ability
+to pass a <code>standalone.xml</code> using the <code>-c</code> option, WildFly Swarm now
+also supports passing a <em>partial</em> <code>standalone.xml</code>.  Previously, you
+had to decide if you were using <code>standalone.xml</code> or configuration
+through the Java API.</p>
+</div>
+<div class="paragraph">
+<p>Now, if you pass a <code>standalone.xml</code>, its configuration will win, but
+anything not configured through XML can still be configured through
+the normal Java API, or through the defaults provided by WildFly Swarm
+fractions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_swarmtool">SwarmTool</h3>
+<div class="paragraph">
+<p>SwarmTool provides a command-line tool for turning an existing WAR
+into a <code>-swarm.jar</code> without requiring Maven or Gradle, only Java. For
+installation and usage instructions, see the
+<a href="https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/getting-started/tooling/swarmtool.html">User&#8217;s
+Guide</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 1.0.0.CR1 are available <a href="https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329397&amp;versions=12329891&amp;versions=12330676&amp;versions=12330158&amp;versions=12330160&amp;versions=12330161&amp;versions=12330154&amp;versions=12330163&amp;versions=12330162&amp;versions=12330411&amp;versions=12329788&amp;versions=12330164&amp;versions=12329787&amp;versions=12330405&amp;versions=12330155&amp;versions=12330159&amp;versions=12330410&amp;versions=12330404&amp;versions=12329897&amp;sections=all&amp;style=html&amp;selectedProjectId=12317020&amp;reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&amp;Next=Next">here</a>.</p>
+</div>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-6">SWARM-6</a> ] swarmtool should support setting fully-qualified fractions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-8">SWARM-8</a> ] swarmtool should be documented in gitbooks</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-178">SWARM-178</a> ] add tests to swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-230">SWARM-230</a> ] Static content not reloaded on local change when running org.wildfly.swarm.Swarm</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-265">SWARM-265</a> ] Add resource-adapters subsystem from WildFly</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-289">SWARM-289</a> ] JavaFX as a dependency with scope=runtime fails to work</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-294">SWARM-294</a> ] Tool that can take an existing WAR and Swarmify it</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-299">SWARM-299</a> ] Missing dependency causes XmlPullParserException</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-302">SWARM-302</a> ] Expose maven plugin configuration as -D'able properties</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-304">SWARM-304</a> ] Ability to set all parts of module definition in jboss-deployment-structure.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-312">SWARM-312</a> ] JPA Fraction for PostgreSQL</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-342">SWARM-342</a> ] Create a DatasourceArchive so that examples don't need to use JARArchive directly.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-349">SWARM-349</a> ] The two flavors of getImplicitDeployments() in the ServerConfiguration SPI is error-prone and confusing</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-354">SWARM-354</a> ] Consider having our main pass along sysprops</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-364">SWARM-364</a> ] Ability to use a custom datasource without a custom Main()</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-391">SWARM-391</a> ] Support for RAR archive deployments</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-405">SWARM-405</a> ] mvn wildfly-swarm:run should gracefully shutdown when interrupted from an embedded maven runtime</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-425">SWARM-425</a> ] Add examples for wildfly-camel</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-431">SWARM-431</a> ] Add example for camel-mail</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-434">SWARM-434</a> ] Allow Swarmed JARs to be executable</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-460">SWARM-460</a> ] NoClassDefFoundError: io/undertow/servlet/ServletExtension in Beta7 and Beta8</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-463">SWARM-463</a> ] Allow standalone.xml to represent partial configuration of the container</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-464">SWARM-464</a> ] addPackage() on JAXRSArchive doesn't seem to add the classes in that package</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-466">SWARM-466</a> ] Keycloak v1.9.4.Final</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-468">SWARM-468</a> ] Expose setting main from swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-469">SWARM-469</a> ] Expose adding module dirs to swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-470">SWARM-470</a> ] Expose setting additional repos in swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-471">SWARM-471</a> ] Expose option to create executable jar in swarmtool</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-472">SWARM-472</a> ] Incorrect service teardown order</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-473">SWARM-473</a> ] Support more CLI options to default Swarm jars</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-476">SWARM-476</a> ] Expose remaining jackson libraries from resteasy</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-483">SWARM-483</a> ] camel-cdi throws NCDFE with WAR deployment</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-484">SWARM-484</a> ] Show external configuration of a datasource</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR1" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR1</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1-0-0-CR1">available</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>emag</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>John D. Ament</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Martin Kouba</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Non Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ralf Battenfeld</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>James Netherton</p>
+</li>
+<li>
+<p>Tomas Remes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+
+</script><script src="//www.redhat.com/j/s_code.js"></script><script>(function() {
+
+  // Load the path name, without it's inital /
+  var arr = location.pathname.substr(1, location.pathname.length)
+      .toLowerCase().split('/');
+
+  // If the path ends in index.html or whitespace, trim the array
+  if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
+     arr.pop();
+  }
+
+  /*
+  * Assign values to Adobe Analytics properties
+  */
+  s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
+  s.server = "wildflyswarm" // The server is ???
+  s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+  s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
+  s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
+
+  // Pad the array as needed, so we can shift away later
+  for (var i = arr.length; i < 3; i++) {
+      arr[i] = "";
+  }
+
+  s.prop14 = s.eVar27 = arr.shift(); // prop14/eVar27 is the first minor section (normally /{minor_section_1})
+  s.prop15 = s.eVar28 = arr.shift(); // prop15/eVar28 is the second minor section (normally /a/{minor_section_2})
+  s.prop16 = s.eVar29 = arr.shift(); // prop16/eVar29 is the third minor section (normally /a/b/{minor_section_3})
+  s.prop21 = s.eVar18 = encodeURI(location.hostname+location.pathname).toLowerCase(); // prop21/eVar18 is the URL, less any query strings or fragments
+
+  })();
+</script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script></body></html>

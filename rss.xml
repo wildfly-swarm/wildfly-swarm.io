@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 28 Apr 2016 16:36:34 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 28 Apr 2016 16:36:31 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.Beta8]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 26 May 2016 14:25:38 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 26 May 2016 14:25:36 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.CR1]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_s_new">What’s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>CLI Support</p>
+</li>
+<li>
+<p>Enhanced <code>standalone.xml</code> support</p>
+</li>
+<li>
+<p>SwarmTool</p>
+</li>
+<li>
+<p>Resource Adapter archives</p>
+</li>
+<li>
+<p>JPA fraction with PostgreSQL</p>
+</li>
+<li>
+<p>Examples with WildFly Camel</p>
+</li>
+<li>
+<p>Datasource configuration settable by properties</p>
+</li>
+</ul>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-cr1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-cr1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Wed, 25 May 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta8]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_what_s_new">What’s New?</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -20,8 +47,9 @@
 <p>Introduce a MySQL JPA fraction</p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 28 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_what_s_new">What’s New?</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 28 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta7]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_s_new">What’s New?</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -52,8 +80,9 @@
 <p>We now publish <a href="http://wildfly-swarm.github.io/wildfly-swarm/1.0.0.Beta7/apidocs/index.html">consolidated javadocs</a></p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 12 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_impact_of_the_repository_reorganization">Impact of the repository reorganization</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 12 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_impact_of_the_repository_reorganization">Impact of the repository reorganization</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Continuing in our trend of announcing versions that are arbitrarily
 larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</strong>.</p>
@@ -115,8 +144,9 @@ traffic inspection".</p>
 <p>If this is your first encounter with Swagger, I suggest you head on
 over to the <a href="http://swagger.io/">Swagger website</a> to learn more about
 Swagger itself, and what it can do for you.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</guid><dc:creator><![CDATA[Lance Ball]]></dc:creator><pubDate>Thu, 04 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha8]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_what_s_new">What’s New?</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</guid><dc:creator><![CDATA[Lance Ball]]></dc:creator><pubDate>Thu, 04 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha8]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_s_new">What’s New?</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>There’s slightly less stuf in this release since 1.0.0.Alpha6, but then
 again, it marks our new trend of fortnightly releases.</p>
