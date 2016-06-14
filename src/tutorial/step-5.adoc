@@ -1,0 +1,68 @@
+---
+layout: tutorial.jade
+---
+
+= Step 5: Fault tolerance and resilience
+
+= Step 5: Fault tolerance and resilience
+
+=== Turn the web frontend into a service
+At this point the web frontend still resides with WildFly. So we turn it into a Swarm service before we proceed,
+to be able to run it locally. Make sure to also advertise it as a service, similar to the step taken in Step 3.
+Once this is done we don’t need WildFly anymore. It’s good to terminate the process to avoid port conflicts.
+
+NOTE: When you turn the everest module into a swarm service,
+you change the packaging of `war` to `jar`. This also requires you to move the web resources from `src/main/webapp` to `src/main/resources`.
+
+=== Introducing fault-injection techniques and hystrix for resilience.
+As a first step it might actually be useful to inject faults to demonstrate the need for hystrix. After that we implement a circuit breaker using hystrix and finally install the hystrix dashboard to monitor the system state.
+
+We migrated the web frontend to swarm, so we run and launch it like the other services ( using java -jar).
+
+NOTE: Hystrix runs the command in it’s own thread pool. Doing that in a EE environment requires you to think twice about what that demarcation actually means.
+
+To inject faults you may consider using things like the Toxy proxy (See Appendix C)
+
+image::../img/step-5.png[title="Fault detection and handling"]
+
+== Concepts
+* Bulkheads and circuit breaking (hystrix)
+* Fault injection techniques
+
+== Tasks
+* Start each service, but this time include the web frontend that moved from WildFly:
+ `java -Dswarm.project.stage=production -Dswarm.bind.address=<PUBLIC_IP> -Dconsul.host=<CONSUL_IP> -jar target/everest-web-swarm.jar`
+* Focus on a single service, for instance the order service and it’s client invocation. (The client to the order service is the web frontend)
+* Redirect traffic through the fault injection proxy. For the sake of simplicity you may just change the service lookup URL in `ConsulDiscovery.java`
+* Prepare the Toxy proxy to introduce random errors (i.e. HTTP 503, see Appendix C)
+* Use the web frontend to order books and watch it fail randomly
+* Add the hystrix dependency to the maven pom.xml (`everest` module)
+* Add a hystrix command to the order client that can handle (i.e. compensate) the faults
+
+== Outcome
+* You can run the web frontend using java -jar (no need for WildFly deployment anymore)
+* After adding the circuit breaker, your service client you handle the faults gracefully
+* The web frontend remains operational, the service doesn’t cascade through the system
+
+== Documentation
+* https://github.com/Netflix/Hystrix/wiki[Hystrix Overview]
+* https://github.com/Netflix/Hystrix/wiki/Getting-Started[Hystrix API]
+* https://github.com/ReactiveX/RxJava/wiki/Observable[Observable API]
+* http://docs.couchbase.com/developer/java-2.0/observables.html[A good intro to Observables]
+
+== Alternative Activities
+* Caching of the catalog service responses to fallback gracefully
+* Examine possible circuit thresholds (i.e. at what point do we permanently open the circuit)?
+* Replace the home baked service lookup for the frontend with the topology service. It’s bound to JNDI (see WildFly Swarm documentation)
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-4" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i>Step 4: Environment abstractions</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-6" class="btn btn-primary">Step 6: Load balancing and failover
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

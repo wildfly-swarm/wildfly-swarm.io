@@ -1,0 +1,55 @@
+---
+layout: tutorial.jade
+---
+
+= Toxy
+
+= Fault-injection using Toxy
+
+A HTTP proxy to simulate server failure scenarios and network conditions.
+Can be retrieved from https://github.com/h2non/toxy, but does requires NodeJS.
+
+== Latency & Random faults
+
+Injecting latency and random errors into the HTTP processing:
+
+```
+const toxy = require('..')
+
+const proxy = toxy()
+const rules = proxy.rules
+const poisons = proxy.poisons
+
+proxy
+  .forward('<SERVICE_ADDRESS>')
+  .poison(poisons.latency({ max: 1000, min: 10 }))
+  .withRule(rules.method('GET'))
+  .withRule(rules.probability(60))
+
+proxy
+  .forward('<SERVICE_ADDRESS>')
+  .poison(poisons.inject({
+      code: 503,
+      body: '{"error": "toxy injected error"}',
+      headers: {'Content-Type': 'application/json'}
+  }))
+  .withRule(rules.method('GET'))
+  .withRule(rules.probability(10))
+
+proxy.all('/*')
+
+proxy.listen(3000)
+console.log('Server listening on port:', 3000)
+
+```
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-6" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 6: Load-balancing and Failover</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/hystrix" class="btn btn-primary">Hystrix Dashboard <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

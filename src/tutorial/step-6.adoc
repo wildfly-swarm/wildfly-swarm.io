@@ -1,0 +1,50 @@
+---
+layout: tutorial.jade
+---
+
+= Step 6: Load balancing and failover
+
+= Step 6: Load balancing and failover
+
+Now that we’ve got circuit breakers in place it’s time to revisit the failover strategies
+in case a service becomes unresponsive or permanently unavailable. This introduces client side load balancing using Netflix Ribbon.
+
+In this activity we change the service client code to use Ribbon instead of the JAX-RS.
+We launch two service instances of the same kind (i.e. Catalogue Service).
+Then we kill one and verify the failover to the remaining instance works.
+In a last step we introduce a cache handler that serves cached values if the catalog service becomes permanently unavailable available (fallback).
+
+image::../img/step-6.png[title="Load-balancing and failover"]
+
+== Concepts
+* Load balancing
+* Failover
+
+== Tasks
+* Add the ribbon dependencies to your maven pom.xml (`everest` module)
+* Focus on a single service client, for instance the catalog client
+* Change the service client invocation from JAX-RS to using ribbon instead
+* Launch two services of the same kind (i.e. catalog) and see it failover (to the second instance)
+  and fallback (to cached values if no instance is available)
+
+== Outcome
+* The services clients use the ribbon API to invoke on services
+* You can use the web frontend as expected, but if you terminate a dependent service instance, the ribbon based client does failover
+
+== Documentation
+* https://github.com/Netflix/ribbon[Ribbon RPC]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/common/netflixoss.html[Ribbon Swarm Fractions]
+* https://github.com/ReactiveX/RxJava/wiki/Observable[Observable API]
+* http://docs.couchbase.com/developer/java-2.0/observables.html[A good intro to Observables]
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-5" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 5: Fault tolerance and resilience</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/toxy" class="btn btn-primary">Fault-Injection Proxy
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++
