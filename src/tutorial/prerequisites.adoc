@@ -1,0 +1,96 @@
+---
+layout: tutorial.jade
+---
+
+= Prerequisites
+
+= Prerequisites
+
+== Minimum System Requirements
+These are expected on every developer laptop:
+
+* JDK 8
+* Maven 3.3.x
+* IDE (Intellij/Eclipse)
+* Git
+
+== Additional Software
+The lab uses the WildFly application server for running the monolith
+and parts of it and the Consul for service registration and discovery.
+WildFly can be run as simple java process, just download, unzip and run it
+(standalone.sh/standalone.bat). Consul is written in go and you would either need to install the native binary or use docker for hosting the registry.
+
+* https://www.consul.io/downloads.html[Consul Service Registry]
+* http://wildfly.org/downloads/[WildFly Application Server 10]
+
+=== Consul Service Registry
+Installing consul and running it
+Download the consul agents for your OS and the web UI:
+
+https://www.consul.io/downloads.html
+
+Run it in developer mode (i.e. with CONSUL_IP=127.0.0.1):
+
+```
+./consul agent --ui-dir=<UI_DIR> --data-dir=/tmp/consul -bind <CONSUL_IP> -server -bootstrap
+```
+
+Before you proceed make sure consul is running and accessible at
+
+```
+http://<CONSUL_IP>:8500/ui/
+```
+
+NOTE: Make note of the registry address `http://<CONSUL_IP>:8500`. It’s the address of the registry that the services need to advertise their presenceyes.
+
+=== WildFly Application Server
+
+We use WildFly to host the monolith in the beginning and parts of it,
+when we extract services one after the other.
+Towards the end, WildFly becomes obsolete once all services have been replaced by WildFly Swarm.
+
+==== Download and install WildFly
+
+WildFLy can be downloaded from the http://wildfly.org/downloads/[WildFly Homepage].
+Simply follow the instructions in the https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide[Getting Started Guide], on how to install, configure and start the application server.
+
+NOTE: Make note of the `<WILDFLY_IP>`, which by default is localhost. Without further configuration the HTTP server listens on port 8080. However we need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which is not reachable from within docker.
+
+NOTE: When you start WildFly make sure to provide the `consul.host` system property. This tells any service deployed to WildFly, where to find consul: ```./bin/standalone.sh -Dconsul.host=<CONSUL_IP>```
+
+== Before you get started
+Make sure you have written down the main network addresses
+that we use throughout the activities:
+
+.Network Addresses In Use
+[width="100%"]
+|===
+| Component | Referred to as | Address
+
+|Consul
+|`<CONSUL_IP>`
+|?
+
+|WildFly
+|`<WILDFLY_IP>`
+|?
+
+|Public IP
+|`<PUBLIC_IP>`
+|?
+|===
+
+To run the activities you need the software listed in section “Additional Software”.
+Both WildFly and Consul must be running.
+
+
++++
+<div class="row">
+  <div class="col-md-6">
+  <p><a href="/tutorial/example-app" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Example Application</a></p>
+  </div>
+  <div class="col-md-6">
+  <p><a href="/tutorial/step-0" class="btn btn-primary">Step 0: Running the monolith <i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>
+  </div>
+</div>
++++

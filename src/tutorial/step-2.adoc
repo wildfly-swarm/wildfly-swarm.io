@@ -1,0 +1,51 @@
+---
+layout: tutorial.jade
+---
+
+= Step 2: Right-size your runtime
+
+= Step 2: Right-size your runtime
+
+Bringing Swarm to the table.  Basic concepts. How do I build it and run it?
+Basic configuration options (address, port, logging) .  Moving all service to their own VM.
+
+image::../img/step-2.png[title="Each service within a separate JVM"]
+
+== Concepts
+* Swarm plugin
+* Uberjar
+* Fraction auto discovery
+
+== Tasks
+* Add a dependency to the Swarm BOM  to the top level pom.xml, so all modules inherit the Swarm dependencies if needed.
+ This includes the Swarm maven plugin.
+* Prepare the relevant maven pom.xml to include the Swarm plugin (i.e. order, user, catalog)
+* Do a top level build (`mvn clean install`). This will create the `-swarm.jar` artifacts in all modules that you’ve added the Swarm plugin.
+
+== Outcome
+* Swarm packages the required runtime components and your service into a distinct .jar file
+* You can each run service separately, without deploying it on WildFly.
+* The user interface, remaining on WildFly, still works as expe
+
+NOTE: Make sure you explicitly bind the services to `<PUBLIC_IP>`, i.e.:
+`java -jar <service-name>-swarm.jar -Dswarm.bind.address=<PUBLIC_IP> -Dswarm.port.offset=50`
+
+== Documentation
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/basics.html[Swarm Basics]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/war-applications.html[WAR Packaging]
+
+== Alternative activities
+* `mvn -Dswarm.bind.address=<PUBLIC_IP> wildfly-swarm:run`
+* Inspect the build process or resulting jar to see what things get packaged
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-0" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i>Step 1: Services the 'old' way</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-2" class="btn btn-primary">Step 3: Container API, Fractions and Deployments 
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

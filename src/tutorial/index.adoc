@@ -1,0 +1,45 @@
+---
+layout: tutorial.jade
+---
+
+= Tutorial Introduction
+
+= Introduction
+
+== Target Audience
+The anticipated target audience are users with a Java EE background that haven't touched on many of the microservice topics. They are expected to have solid EE expertise throughout common used API’s like JPA, JAX-RS and CDI.
+
+== Guiding Principles
+The tutorial is intended to provide guidance throughout the majority of the activities,
+to allow for a positive experience. However there we will provide room for adding
+your own ideas and experiment with the technologies in use .
+
+We focus on new concepts and technologies that complement Java EE, but
+intentionally leave out cloud deployments, continuous integration and other,
+related topics due to the conceptual overhead and technical complexity
+it would add to the material.
+
+== Learning Outcomes
+The goal is to learn about common concepts in a microservice architecture,
+the challenges when migration from a monolith to microservices
+and practical examples for crafting a solution using WildFly Swarm.
+
+== Source for the tutorial
+
+The source code for the activities can be found in the WildFly Swarm github repository.
+It contains the sources for the monolith and the codebase for the microservices.
+
+https://github.com/wildfly-swarm/tutorial
+
+A number of branches (step_1 … step_n) are provided to quickly jump between
+the possible solutions to the different steps (see below) in case you get stuck or want to jump ahead to topics that are more interesting to you. These solutions
+may look slightly different to your implementation, that’s ok and anticipated.
+
++++
+<div class="row">
+  <div class="col-md-6">&nbsp;</div>
+  <div class="col-md-6">
+  <a href="/tutorial/example-app" class="btn btn-primary">The Example Application <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

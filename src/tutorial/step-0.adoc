@@ -1,0 +1,28 @@
+---
+layout: tutorial.jade
+---
+
+= Step 0: Creating a manageable codebase
+
+= Step 0: Creating a manageable codebase
+
+== Overview
+To get started it might a good to first look at the monolith.
+See what components exists, what Java EE API’s are used and how it spreads across the conceptual layers.
+Before we tackle our microservices architecture, we would  need to decouple the components,
+separate the responsibilities and provide a build system that allows you to begin working on the separate services.
+
+This part has been done already on your behalf to save time and allow the you to focus on more interesting topics.
+
+NOTE: The resulting module structure can be found in the folder `microservice`, which is what we operate on throughout the following activities.
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/prerequisites" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Prerequisites</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-1" class="btn btn-primary">Step 1: <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

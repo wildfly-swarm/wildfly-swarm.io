@@ -1,0 +1,48 @@
+---
+layout: tutorial.jade
+---
+
+= Step 1: Services the old way
+
+= Step 1: Services the old way
+
+The “default” way of installing the services as regular war’s on WildFly, with two exceptions:
+* we already use Consul for lookup and registration of services
+* all services interact over REST/HTTP, despite being deployed on the same JVM
+
+This step is intended to provide an overview of code that exists,
+possible service boundaries, dependencies and to make yourself familiar with the possible use cases using the web interface
+(which is something we want to retain)
+
+image::../img/step-1.png[title="Components within single JVM"]
+
+== Concepts
+* Moving from In-VM communication to remote invocations (REST)
+* Service as single .war deployments
+* Service registration and discovery
+
+== Tasks
+* Build the whole project. This results in several .war files
+* Deploy each .war file (order,catalog,user & everest) to WildFly. This can be achieved using `mvn wildfly:<deploy|undeploy>` in each respective module directory or through the WildFLy admin console.
+* Access the everest web interface running on WildFly (`http://<WILDFLY_IP>:8080/everest-web`) and make yourself familiar with the application. Try to browse books, put one in your cart and checkout to complete the “purchase”.
+
+== Outcome
+* The whole application, previously installed as a single deployment now runs on WildFly and it works as expected (chose books, add to cart, checkout, etc)
+* Although deployed to a single VM, the services already use the service registry (consul) to for lookup (opposed to let’s say JNDI).
+* Once all services are deployed, you can invoke the REST interfaces as well (i.e. using cUrl), i.e. `http://<WILDFLY_IP>:8080/catalog/resources/catalog/`
+
+== Documentation
+* The existing sources, in particular the order, user, catalog for the services. Furthermore the services module for the consul integration and the “everest” module that contains the frontend.
+* https://www.consul.io/intro/
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-0" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i>Step 0: A manageable codebase</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-2" class="btn btn-primary">Step 2: Right-size your runtime
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++
