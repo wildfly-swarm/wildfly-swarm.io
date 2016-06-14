@@ -1,0 +1,71 @@
+---
+layout: tutorial.jade
+---
+
+= Step 4: Environment specific configuration
+
+= Step 4: Environment specific configuration
+
+This might be a good opportunity to get away from command line options and system properties.
+There are just too many at this point. Project stages could be used to differentiate between local,
+staged development (i.e consul URL, etc) or the integration with the course wide service ensemble (simulates production).
+
+This step can be considered as a prerequisite to simplify the fault-injection techniques in the next step.
+
+image::../img/step-4.png[title="Stage specific configuration"]
+
+Here's an example for for service “user”
+
+[project-stages.yml]
+```
+service:
+   user:
+       service-name: "user-SNAPSHOT"
+swarm:
+   port:
+       offset: 0
+   consul:
+       url: "http://<CONSUL_IP>:8500"
+---
+project:
+   stage: production
+service:
+   user:
+       service-name: "user"
+swarm:
+   port:
+       offset: 50
+   consul:
+       url: "http://<CONSUL_IP>:8500"
+```
+
+== Concepts
+* Environment specific changes: configuration: `project-stages.yml`
+* Continuous delivery (in a wider context)
+
+== Tasks
+* Add a `project-stages.yml` to your sources (`src/main/resources`)
+* Use it to configure the service-name, port and consul-url
+* Make it to properly set the `<CONSUL_IP>` for property `swarm.consul.url`
+* Introduce a default stage and one called “production”
+* Remove any remaining configuration from the Swarm plugin
+
+== Outcome
+* You can run each service using different configurations, i.e.
+`java -Dswarm.project.stage=<STAGE_NAME> -jar target/order-swarm.jar`
+* The service name in `project-stages.yml` allows you to easily advertise a service that’s currently in development (i.e. for testing. Canary, A/B)
+
+== Documentation
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/configuration/index.html[Project Stages]
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-3" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 3: Container API, Fractions and Deployments</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-5" class="btn btn-primary">Step 5: Fault-injection and resilience
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

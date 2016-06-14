@@ -1,0 +1,54 @@
+---
+layout: tutorial.jade
+---
+
+= Step 3: Container API, Fractions and Deployments
+
+= Step 3: Container API, Fractions and Deployments
+
+Fractions and custom Main().  JAR deployment instead of WAR. Basically leaving the auto-detection realm.
+A good opportunity to replace the simple service registration implementation with the Swarm Topology fraction. This allows to discover the fraction concept along the way.
+
+image::../img/step-3.png[title="Uberjar Packaging"]
+
+== Concepts
+* Container, Config-API
+* Explicit fraction dependencies
+* Introduction to Shrinkwrap and it’s utility methods
+
+
+== Tasks
+* Add the maven dependencies for fractions your application requires
+(`jaxrs-jaxb`, `jaxrs-jsonp`, `jpa`, `jaxrs-cdi`, `ejb`)
+* Add the maven dependency for the Swarm topology (`topology-consul`)
+* Provide a custom `Main()` to configure the Swarm runtime
+* Within Main() explicitly register the consul fraction and make sure it is configured to point to `http://<CONSUL_IP:8500”`.
+* Deploy your service code using Shrinkwrap
+* Advertise your service using the Swarm topology layer (`topology-consul`)
+  (Allows for removal of the custom service registration code in the `services` module)
+
+== Outcome
+* You can still start the services as before (java -jar)
+* Each service you start will be appear in Consul as before
+* The user interface that remained on WildFly still works as expected
+
+== Documentation
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/jar-applications.html[JAR Packaging]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/container.html[Container, Fraction, etc]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/shrinkwrap.html[Deployment using shrinkwrap]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/advanced/topology.html[Topology]
+
+== Alternative activities
+* Add and configure logging fraction, i.e. to enable level DEBUG
+
++++
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-2" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 2: Right-size your runtime</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-4" class="btn btn-primary">Step 4: Environment specific configuration
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++

@@ -41,10 +41,10 @@ NOTE: Make sure you explicitly bind the services to `<PUBLIC_IP>`, i.e.:
 +++
 <div class="row">
   <div class="col-md-6">
-<a href="/tutorial/step-0" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i>Step 1: Services the 'old' way</a>
+<a href="/tutorial/step-1" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 1: Services the 'old' way</a>
   </div>
   <div class="col-md-6">
-  <a href="/tutorial/step-2" class="btn btn-primary">Step 3: Container API, Fractions and Deployments 
+  <a href="/tutorial/step-3" class="btn btn-primary">Step 3: Container API, Fractions and Deployments
 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
   </div>
 </div>
