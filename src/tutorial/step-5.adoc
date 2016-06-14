@@ -34,7 +34,7 @@ image::../img/step-5.png[title="Fault detection and handling"]
  `java -Dswarm.project.stage=production -Dswarm.bind.address=<PUBLIC_IP> -Dconsul.host=<CONSUL_IP> -jar target/everest-web-swarm.jar`
 * Focus on a single service, for instance the order service and it’s client invocation. (The client to the order service is the web frontend)
 * Redirect traffic through the fault injection proxy. For the sake of simplicity you may just change the service lookup URL in `ConsulDiscovery.java`
-* Prepare the Toxy proxy to introduce random errors (i.e. HTTP 503, see Appendix C)
+* Prepare the link:/tutorial/toxy[Fault-injection proxy] to introduce random errors (i.e. HTTP 503, see Appendix C)
 * Use the web frontend to order books and watch it fail randomly
 * Add the hystrix dependency to the maven pom.xml (`everest` module)
 * Add a hystrix command to the order client that can handle (i.e. compensate) the faults

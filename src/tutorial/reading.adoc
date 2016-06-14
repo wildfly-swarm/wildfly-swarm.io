@@ -1,0 +1,32 @@
+---
+layout: tutorial.jade
+---
+
+= Reading
+
+= Reading on microservices concepts
+
+We will cover general microservice concepts during the tutorial to some extend,
+but cannot fully cover the wide range of concepts and ideas that relate to it without sacrificing time for practical activities.
+
+It's therefore recommended that you read up about microservices concepts to some degree and relate this information
+to a situation that concerns you, like a recent software project or upcoming architectural discussions with your peers.
+
+Your feedback and questions during the workshop will help to drive the direction of the activities and and make it valuable experience for everybody attending.
+
+The following is a list of resources that we can recommend to get you started.
+
+== Online articles
+* https://leanpub.com/microservices-primer[Eberhard Wolff, "Microservices Primer"]
+* https://www.thoughtworks.com/de/insights/blog/microservices-nutshell[Martin Fowler, "Microservices in a Nutshell"]
+
+== Microservice Books
+* http://shop.oreilly.com/product/0636920033158.do[Sam Newman. "Building Microservices"]
+* http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215[Eric Evans, "Domain Driven Design"]
+
+== WildFly Swarm
+* http://wildfly-swarm.io/[Homepage]
+* https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/[User Guide]
+
+== OpenShift
+* https://www.openshift.org/[OpenShift Origin]

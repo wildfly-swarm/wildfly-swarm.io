@@ -6,10 +6,17 @@ layout: tutorial.jade
 
 = Introduction
 
-== Target Audience
-The anticipated target audience are users with a Java EE background that haven't touched on many of the microservice topics. They are expected to have solid EE expertise throughout common used API’s like JPA, JAX-RS and CDI.
+This tutorial will introduce the developer to WildFly Swarm through the migration of a Java EE monolith application
+to microservices for parts of the stack. The services will be discoverable, provide failover with Netflix Ribbon
+and utilize Netflix Hystrix for circuit breaking amongst other things.
 
-== Guiding Principles
+=== Target Audience
+The anticipated target audience are users with a Java EE background that haven't touched on many of the microservice topics.
+They are expected to have solid EE expertise throughout common used API’s like JPA, JAX-RS and CDI.
+
+NOTE: The section on link:/tutorial/reading[readings] contains links to resources that cover microservice concepts 
+
+=== Guiding Principles
 The tutorial is intended to provide guidance throughout the majority of the activities,
 to allow for a positive experience. However there we will provide room for adding
 your own ideas and experiment with the technologies in use .
@@ -19,7 +26,7 @@ intentionally leave out cloud deployments, continuous integration and other,
 related topics due to the conceptual overhead and technical complexity
 it would add to the material.
 
-== Learning Outcomes
+=== Learning Outcomes
 The goal is to learn about common concepts in a microservice architecture,
 the challenges when migration from a monolith to microservices
 and practical examples for crafting a solution using WildFly Swarm.
