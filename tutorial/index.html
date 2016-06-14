@@ -1,15 +1,30 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><h1 id="_introduction" class="sect0">Introduction</h1>
-<div class="sect1">
-<h2 id="_target_audience">Target Audience</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>The anticipated target audience are users with a Java EE background that haven&#8217;t touched on many of the microservice topics. They are expected to have solid EE expertise throughout common used API’s like JPA, JAX-RS and CDI.</p>
+<p>This tutorial will introduce the developer to WildFly Swarm through the migration of a Java EE monolith application
+to microservices for parts of the stack. The services will be discoverable, provide failover with Netflix Ribbon
+and utilize Netflix Hystrix for circuit breaking amongst other things.</p>
+</div>
+<div class="sect2">
+<h3 id="_target_audience">Target Audience</h3>
+<div class="paragraph">
+<p>The anticipated target audience are users with a Java EE background that haven&#8217;t touched on many of the microservice topics.
+They are expected to have solid EE expertise throughout common used API’s like JPA, JAX-RS and CDI.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The section on <a href="/tutorial/reading">readings</a> contains links to resources that cover microservice concepts
+</td>
+</tr>
+</table>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_guiding_principles">Guiding Principles</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_guiding_principles">Guiding Principles</h3>
 <div class="paragraph">
 <p>The tutorial is intended to provide guidance throughout the majority of the activities,
 to allow for a positive experience. However there we will provide room for adding
@@ -22,10 +37,8 @@ related topics due to the conceptual overhead and technical complexity
 it would add to the material.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_learning_outcomes">Learning Outcomes</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_learning_outcomes">Learning Outcomes</h3>
 <div class="paragraph">
 <p>The goal is to learn about common concepts in a microservice architecture,
 the challenges when migration from a monolith to microservices
@@ -41,8 +54,7 @@ and practical examples for crafting a solution using WildFly Swarm.</p>
 </div>
 </p>
 </div>
-</div>
-</div></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="/tutorial">Introduction</a></li><li><a href="/tutorial/sources">Source Code</a></li><li><a href="/tutorial/example-app">Example Application</a></li><li><a href="/tutorial/prerequisites">Prerequisites</a></li><li><a href="/tutorial/step-0">Step 0: A manageable codebase</a></li><li><a href="/tutorial/step-1">Step 1: Services the old way</a></li><li><a href="/tutorial/step-2">Step 2: Right-size your runtime</a></li><li><a href="/tutorial/step-3">Step 3: Container API, Fractions and Deployments</a></li><li><a href="/tutorial/step-4">Step 4: Environment specific configuration</a></li><li><a href="/tutorial/step-5">Step 5: Fault tolerance and resilience</a></li><li><a href="/tutorial/step-6">Step 6: Load balancing and failover</a></li><li><a href="/tutorial/step-6">Appendix A: Fault-injection proxy</a></li><li><a href="/tutorial/step-6">Appendix B: Hystrix Dashboard</a></li></ul></div></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</div></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="/tutorial">Introduction</a></li><li><a href="/tutorial/sources">Source Code</a></li><li><a href="/tutorial/example-app">Example Application</a></li><li><a href="/tutorial/prerequisites">Prerequisites</a></li><li><a href="/tutorial/step-0">Step 0: A manageable codebase</a></li><li><a href="/tutorial/step-1">Step 1: Services the old way</a></li><li><a href="/tutorial/step-2">Step 2: Right-size your runtime</a></li><li><a href="/tutorial/step-3">Step 3: Container API, Fractions and Deployments</a></li><li><a href="/tutorial/step-4">Step 4: Environment specific configuration</a></li><li><a href="/tutorial/step-5">Step 5: Fault tolerance and resilience</a></li><li><a href="/tutorial/step-6">Step 6: Load balancing and failover</a></li><li><a href="/tutorial/toxy">Appendix A: Fault-injection proxy</a></li><li><a href="/tutorial/hystrix">Appendix B: Hystrix Dashboard</a></li><li class="last"><a href="/tutorial/reading">Reading on Microservices </a></li></ul></div></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
