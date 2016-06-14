@@ -1,0 +1,207 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><h1 id="_step_5_fault_tolerance_and_resilience" class="sect0">Step 5: Fault tolerance and resilience</h1>
+<div class="sect2">
+<h3 id="_turn_the_web_frontend_into_a_service">Turn the web frontend into a service</h3>
+<div class="paragraph">
+<p>At this point the web frontend still resides with WildFly. So we turn it into a Swarm service before we proceed,
+to be able to run it locally. Make sure to also advertise it as a service, similar to the step taken in Step 3.
+Once this is done we don’t need WildFly anymore. It’s good to terminate the process to avoid port conflicts.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When you turn the everest module into a swarm service,
+you change the packaging of <code>war</code> to <code>jar</code>. This also requires you to move the web resources from <code>src/main/webapp</code> to <code>src/main/resources</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_introducing_fault_injection_techniques_and_hystrix_for_resilience">Introducing fault-injection techniques and hystrix for resilience.</h3>
+<div class="paragraph">
+<p>As a first step it might actually be useful to inject faults to demonstrate the need for hystrix. After that we implement a circuit breaker using hystrix and finally install the hystrix dashboard to monitor the system state.</p>
+</div>
+<div class="paragraph">
+<p>We migrated the web frontend to swarm, so we run and launch it like the other services ( using java -jar).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Hystrix runs the command in it’s own thread pool. Doing that in a EE environment requires you to think twice about what that demarcation actually means.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To inject faults you may consider using things like the Toxy proxy (See Appendix C)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/step-5.png" alt="step 5.png">
+</div>
+<div class="title">Figure 1. Fault detection and handling</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_concepts">Concepts</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Bulkheads and circuit breaking (hystrix)</p>
+</li>
+<li>
+<p>Fault injection techniques</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tasks">Tasks</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Start each service, but this time include the web frontend that moved from WildFly:
+<code>java -Dswarm.project.stage=production -Dswarm.bind.address=&lt;PUBLIC_IP&gt; -Dconsul.host=&lt;CONSUL_IP&gt; -jar target/everest-web-swarm.jar</code></p>
+</li>
+<li>
+<p>Focus on a single service, for instance the order service and it’s client invocation. (The client to the order service is the web frontend)</p>
+</li>
+<li>
+<p>Redirect traffic through the fault injection proxy. For the sake of simplicity you may just change the service lookup URL in <code>ConsulDiscovery.java</code></p>
+</li>
+<li>
+<p>Prepare the Toxy proxy to introduce random errors (i.e. HTTP 503, see Appendix C)</p>
+</li>
+<li>
+<p>Use the web frontend to order books and watch it fail randomly</p>
+</li>
+<li>
+<p>Add the hystrix dependency to the maven pom.xml (<code>everest</code> module)</p>
+</li>
+<li>
+<p>Add a hystrix command to the order client that can handle (i.e. compensate) the faults</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_outcome">Outcome</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>You can run the web frontend using java -jar (no need for WildFly deployment anymore)</p>
+</li>
+<li>
+<p>After adding the circuit breaker, your service client you handle the faults gracefully</p>
+</li>
+<li>
+<p>The web frontend remains operational, the service doesn’t cascade through the system</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_documentation">Documentation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/Netflix/Hystrix/wiki">Hystrix Overview</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Netflix/Hystrix/wiki/Getting-Started">Hystrix API</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ReactiveX/RxJava/wiki/Observable">Observable API</a></p>
+</li>
+<li>
+<p><a href="http://docs.couchbase.com/developer/java-2.0/observables.html">A good intro to Observables</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_alternative_activities">Alternative Activities</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Caching of the catalog service responses to fallback gracefully</p>
+</li>
+<li>
+<p>Examine possible circuit thresholds (i.e. at what point do we permanently open the circuit)?</p>
+</li>
+<li>
+<p>Replace the home baked service lookup for the frontend with the topology service. It’s bound to JNDI (see WildFly Swarm documentation)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>
+<div class="row">
+  <div class="col-md-6">
+<a href="/tutorial/step-4" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i>Step 4: Environment abstractions</a>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/step-6" class="btn btn-primary">Step 6: Load balancing and failover
+<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
+</p>
+</div>
+</div>
+</div></div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="/tutorial">Introduction</a></li><li><a href="/tutorial/sources">Source Code</a></li><li><a href="/tutorial/example-app">Example Application</a></li><li><a href="/tutorial/prerequisites">Prerequisites</a></li><li><a href="/tutorial/step-0">Step 0: A manageable codebase</a></li><li><a href="/tutorial/step-1">Step 1: Services the old way</a></li><li><a href="/tutorial/step-2">Step 2: Right-size your runtime</a></li><li><a href="/tutorial/step-3">Step 3: Container API, Fractions and Deployments</a></li><li><a href="/tutorial/step-4">Step 4: Environment specific configuration</a></li><li><a href="/tutorial/step-5">Step 5: Fault tolerance and resilience</a></li><li><a href="/tutorial/step-6">Step 6: Load balancing and failover</a></li><li><a href="/tutorial/step-6">Appendix A: Fault-injection proxy</a></li><li><a href="/tutorial/step-6">Appendix B: Hystrix Dashboard</a></li></ul></div></div></div></div></section><footer id="footer"><div class="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+
+</script><script src="//www.redhat.com/j/s_code.js"></script><script>(function() {
+
+  // Load the path name, without it's inital /
+  var arr = location.pathname.substr(1, location.pathname.length)
+      .toLowerCase().split('/');
+
+  // If the path ends in index.html or whitespace, trim the array
+  if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
+     arr.pop();
+  }
+
+  /*
+  * Assign values to Adobe Analytics properties
+  */
+  s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
+  s.server = "wildflyswarm" // The server is ???
+  s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+  s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
+  s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
+
+  // Pad the array as needed, so we can shift away later
+  for (var i = arr.length; i < 3; i++) {
+      arr[i] = "";
+  }
+
+  s.prop14 = s.eVar27 = arr.shift(); // prop14/eVar27 is the first minor section (normally /{minor_section_1})
+  s.prop15 = s.eVar28 = arr.shift(); // prop15/eVar28 is the second minor section (normally /a/{minor_section_2})
+  s.prop16 = s.eVar29 = arr.shift(); // prop16/eVar29 is the third minor section (normally /a/b/{minor_section_3})
+  s.prop21 = s.eVar18 = encodeURI(location.hostname+location.pathname).toLowerCase(); // prop21/eVar18 is the URL, less any query strings or fragments
+
+  })();
+</script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script></body></html>
