@@ -1,0 +1,67 @@
+---
+layout: tutorial.jade
+---
+
+= Source Code
+
+= Source Code
+
+== Repository Layout
+
+The source code for the activities can be found in the WildFly Swarm github repository.
+It contains the sources for the `monolith` and the codebase for the `microservices`.
+
+https://github.com/wildfly-swarm/tutorial
+
+As a first step you need to clone that git repository:
+
+```
+git clone https://github.com/wildfly-swarm/tutorial.git
+```
+
+== Solutions to the activities
+A number of branches (`step_1` … `step_n`) are provided to quickly jump between
+the possible solutions to the different steps (see below) in case you get stuck or want to jump ahead to topics that are more interesting to you. These solutions
+may look slightly different to your implementation, that’s ok and anticipated.
+
+.Available branches with solutions
+[width="100%"]
+|===
+| Branch | Sources | Compare on github
+
+|Step 1
+|https://github.com/wildfly-swarm/tutorial/tree/step_1[tree/step_1]
+|http://bit.ly/28C8Abx[Compare]
+
+|Step 2
+|https://github.com/wildfly-swarm/tutorial/tree/step_2[tree/step_2]
+|http://bit.ly/1UO1p8A[Compare]
+
+|Step 3
+|https://github.com/wildfly-swarm/tutorial/tree/step_3[tree/step_3]
+|http://bit.ly/1XUUGhx[Compare]
+
+|Step 4
+|https://github.com/wildfly-swarm/tutorial/tree/step_4[tree/step_4]
+|http://bit.ly/1toILet[Compare]
+
+|Step 5
+|https://github.com/wildfly-swarm/tutorial/tree/step_5[tree/step_5]
+|http://bit.ly/1XUUoag[Compare]
+
+|Step 6
+|https://github.com/wildfly-swarm/tutorial/tree/step_6[tree/step_6]
+|http://bit.ly/1URBji8[Compare]
+|===
+
+
++++
+<div class="row">
+  <div class="col-md-6">
+  <p><a href="/tutorial" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Introduction</a></p>
+  </div>
+  <div class="col-md-6">
+  <a href="/tutorial/example-app" class="btn btn-primary">The Example Application <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+</div>
++++
