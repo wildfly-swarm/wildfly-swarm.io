@@ -42,13 +42,16 @@
 <p>Add the maven dependency for the Swarm topology (<code>topology-consul</code>)</p>
 </li>
 <li>
+<p>Change the maven packaging from <code>war</code> to <code>jar</code></p>
+</li>
+<li>
 <p>Provide a custom <code>Main()</code> to configure the Swarm runtime</p>
 </li>
 <li>
 <p>Within Main() explicitly register the consul fraction and make sure it is configured to point to <code><a href="http://&lt;CONSUL_IP:8500”" class="bare">http://&lt;CONSUL_IP:8500”</a></code>.</p>
 </li>
 <li>
-<p>Deploy your service code using Shrinkwrap</p>
+<p>Deploy your application code using Shrinkwrap</p>
 </li>
 <li>
 <p>Advertise your service using the Swarm topology layer (<code>topology-consul</code>)
