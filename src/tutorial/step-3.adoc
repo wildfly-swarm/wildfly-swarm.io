@@ -8,7 +8,7 @@ layout: tutorial.jade
 
 In the previous step, we used the Swarm maven plugin to build the Uberjar's. The plugin added the required fractions to enable your application. In some cases however that's not possible, i.e. for API's beyond Java EE or when you need to configure the fraction explicitly. In these cases you would need to provide a custom `Main()` to configure and bootstrap Swarm.
 
-To explain the the fraction concept and it's usage within `Main()`, we replace the simple service registration implementation that we used until now, with the Swarm Topology fraction.
+To explain the the fraction concept and it's usage within `Main()`, we replace the current service registration code with the Swarm Topology fraction.
 
 image::../img/step-3.png[title="Uberjar Packaging"]
 
@@ -24,7 +24,7 @@ image::../img/step-3.png[title="Uberjar Packaging"]
 * Add the maven dependency for the Swarm topology (`topology-consul`)
 * Change the maven packaging from `war` to `jar`
 * Provide a custom `Main()` to configure the Swarm runtime
-* Within Main() explicitly register the consul fraction and make sure it is configured to point to `http://<CONSUL_IP:8500”`.
+* Within `Main()` explicitly register the consul fraction and make sure it is configured to point to `http://<CONSUL_IP:8500”`.
 * Deploy your application code using Shrinkwrap
 * Advertise your service using the Swarm topology layer (`topology-consul`)
   (Allows for removal of the custom service registration code in the `services` module)

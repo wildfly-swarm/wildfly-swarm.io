@@ -6,7 +6,7 @@ layout: tutorial.jade
 
 = Step 4: Environment specific configuration
 
-Now that you know about fractions and ways to explicitly configure Swarm, it's a good to revisit the configuration options. We are using quiet a number of system properties already (i.e. bind address, port, etc) and some values are hard coded within your custom `Main()` (i.e. service names, log level, etc). Let's move all this into a separate file to make it more manageable.
+Now that you know about fractions and ways to explicitly configure Swarm, it's a good to revisit the configuration options. We are already using a large number of system properties (i.e. bind address, port, etc) and some configuration values are hard coded within your custom `Main()` (i.e. service names, log level, etc). Let's move all this into a separate file to make it more manageable.
 
 In Swarm we use project stages (`project-stages.yml`) to differentiate
 between environments (i.e consul URL, etc) and to capture configuration values that change when moving from one environment to the next (i.e. from local development > continuous integration > production)

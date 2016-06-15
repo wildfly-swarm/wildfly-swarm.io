@@ -9,8 +9,8 @@ layout: tutorial.jade
 Now that we’ve got circuit breakers in place it’s time to revisit the failover strategies
 in case a service becomes unresponsive, erroneous or permanently unavailable. This introduces client side load balancing using Netflix Ribbon.
 
-In this activity we change the service client code to use Ribbon instead of the JAX-RS.
-We launch two service instances of the same kind (i.e. Catalogue Service) and terminate one to verify the failover to the remaining instance. In a last step we introduce a cache handler that serves cached values if the catalog service becomes permanently unavailable available (fallback).
+In this activity we change the client code to use Ribbon instead of the JAX-RS.
+We launch two service instances of the same kind (i.e. Catalog) and terminate one, then verify that Ribbon does failover to the other instance. In a last step we introduce a cache handler that serves cached values if the catalog service becomes permanently unavailable.
 
 image::../img/step-6.png[title="Load-balancing and failover"]
 
