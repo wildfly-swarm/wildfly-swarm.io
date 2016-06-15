@@ -22,9 +22,10 @@ image::../img/step-3.png[title="Uberjar Packaging"]
 * Add the maven dependencies for fractions that your application requires to each service module
 (`jaxrs-jaxb`, `jaxrs-jsonp`, `jpa`, `jaxrs-cdi`, `ejb`)
 * Add the maven dependency for the Swarm topology (`topology-consul`)
+* Change the maven packaging from `war` to `jar`
 * Provide a custom `Main()` to configure the Swarm runtime
 * Within Main() explicitly register the consul fraction and make sure it is configured to point to `http://<CONSUL_IP:8500”`.
-* Deploy your service code using Shrinkwrap
+* Deploy your application code using Shrinkwrap
 * Advertise your service using the Swarm topology layer (`topology-consul`)
   (Allows for removal of the custom service registration code in the `services` module)
 

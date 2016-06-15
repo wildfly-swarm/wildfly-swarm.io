@@ -8,7 +8,7 @@ layout: tutorial.jade
 
 In this activity we bring Swarm to the table. We look the basic concepts for building Swarm services and discover how to build and run it. This includes basic configuration options, like bind address, ports and logging.
 
-In the previous step all services have been deployed to a single JVM. Once you extracted the `order`, `catalog` and `user` services, these run in their own JVM (corresponds to a another host).
+In the previous step all services have been deployed to a single JVM (WildFly). Now we separate the `order`, `catalog` and `user` services and run each in their own JVM (could be thought of as another  another host).
 
 image::../img/step-2.png[title="Each service within a separate JVM"]
 
