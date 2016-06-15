@@ -27,10 +27,11 @@
 <h2 id="_additional_software">Additional Software</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The lab uses the WildFly application server for running the monolith
-and parts of it and the Consul for service registration and discovery.
-WildFly can be run as simple java process, just download, unzip and run it
-(standalone.sh/standalone.bat). Consul is written in go and you would either need to install the native binary or use docker for hosting the registry.</p>
+<p>The tutorial uses the WildFly application server for running the monolith
+and the Consul for service registration and discovery. WildFly can be run as simple java process, just download, unzip and run it (standalone.sh/standalone.bat).</p>
+</div>
+<div class="paragraph">
+<p>Consul is written in Go and you would need to install the native binary for running the registry.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -45,14 +46,13 @@ WildFly can be run as simple java process, just download, unzip and run it
 <div class="sect2">
 <h3 id="_consul_service_registry">Consul Service Registry</h3>
 <div class="paragraph">
-<p>Installing consul and running it
-Download the consul agents for your OS and the web UI:</p>
+<p>Download Consul for your OS, including the web UI, which is a separate artifact:</p>
 </div>
 <div class="paragraph">
 <p><a href="https://www.consul.io/downloads.html" class="bare">https://www.consul.io/downloads.html</a></p>
 </div>
 <div class="paragraph">
-<p>Run it in developer mode (i.e. with CONSUL_IP=127.0.0.1):</p>
+<p>You can start it like this (i.e. with CONSUL_IP=127.0.0.1):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -60,7 +60,7 @@ Download the consul agents for your OS and the web UI:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Before you proceed make sure consul is running and accessible at</p>
+<p>To verify that it&#8217;s successfully started you can visit the consul web interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -74,7 +74,7 @@ Download the consul agents for your OS and the web UI:</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Make note of the registry address <code><a href="http://&lt;CONSUL_IP&gt;:8500" class="bare">http://&lt;CONSUL_IP&gt;:8500</a></code>. It’s the address of the registry that the services need to advertise their presenceyes.
+Make note of the registry address <code><a href="http://&lt;CONSUL_IP&gt;:8500" class="bare">http://&lt;CONSUL_IP&gt;:8500</a></code>. It’s the address that the services need to advertise their presence.
 </td>
 </tr>
 </table>
@@ -83,27 +83,17 @@ Make note of the registry address <code><a href="http://&lt;CONSUL_IP&gt;:8500" 
 <div class="sect2">
 <h3 id="_wildfly_application_server">WildFly Application Server</h3>
 <div class="paragraph">
-<p>We use WildFly to host the monolith in the beginning and parts of it,
-when we extract services one after the other.
-Towards the end, WildFly becomes obsolete once all services have been replaced by WildFly Swarm.</p>
+<p>WildFly will be used to host the monolith and remaining parts of it
+when we extract each service one after the other. Towards the end of the tutorial, WildFly becomes obsolete and all services will be replaced by WildFly Swarm.</p>
 </div>
 <div class="sect3">
 <h4 id="_download_and_install_wildfly">Download and install WildFly</h4>
 <div class="paragraph">
-<p>WildFLy can be downloaded from the <a href="http://wildfly.org/downloads/">WildFly Homepage</a>.
+<p>WildFly can be downloaded from the <a href="http://wildfly.org/downloads/">WildFly Homepage</a>.
 Simply follow the instructions in the <a href="https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide">Getting Started Guide</a>, on how to install, configure and start the application server.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Make note of the <code>&lt;WILDFLY_IP&gt;</code>, which by default is localhost. Without further configuration the HTTP server listens on port 8080. However we need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which is not reachable from within docker.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Make note of the <code>&lt;WILDFLY_IP&gt;</code>, which by default&#8217;s <code>localhost</code>. Without further configuration the HTTP server listens on port 8080. We do however need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which makes them inaccessible in some cases (docker, remote host, etc)</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -112,7 +102,7 @@ Make note of the <code>&lt;WILDFLY_IP&gt;</code>, which by default is localhost.
 <div class="title">Note</div>
 </td>
 <td class="content">
-When you start WildFly make sure to provide the <code>consul.host</code> system property. This tells any service deployed to WildFly, where to find consul: <code><code>./bin/standalone.sh -Dconsul.host=&lt;CONSUL_IP&gt;</code></code>
+When you start WildFly make sure to provide the <code>consul.host</code> system property. This tells any service deployed to WildFly, where to find consul: <code><code>./bin/standalone.sh -Dconsul.host=&lt;CONSUL_IP&gt;</code></code>. Take a look at the <code>services</code> module to see how it&#8217;s implemented.
 </td>
 </tr>
 </table>
@@ -126,7 +116,7 @@ When you start WildFly make sure to provide the <code>consul.host</code> system 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Make sure you have written down the main network addresses
-that we use throughout the activities:</p>
+that we will use throughout the activities:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Network Addresses In Use</caption>
@@ -161,7 +151,7 @@ that we use throughout the activities:</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>To run the activities you need the software listed in section “Additional Software”.
+<p>For the activities you need the software listed in section “Additional Software”.
 Both WildFly and Consul must be running.</p>
 </div>
 <div class="paragraph">

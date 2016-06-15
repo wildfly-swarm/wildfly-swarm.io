@@ -23,10 +23,10 @@ you change the packaging of <code>war</code> to <code>jar</code>. This also requ
 <div class="sect2">
 <h3 id="_introducing_fault_injection_techniques_and_hystrix_for_resilience">Introducing fault-injection techniques and hystrix for resilience.</h3>
 <div class="paragraph">
-<p>As a first step it might actually be useful to inject faults to demonstrate the need for hystrix. After that we implement a circuit breaker using hystrix and finally install the hystrix dashboard to monitor the system state.</p>
+<p>Before thinking about resilience it&#8217;s actually be useful to inject faults to demonstrate the need for enhanced fault handling capabilities. <a href="/tutorial/toxy">Appendix A</a> contains some information on how to use a fault-injection proxy to easily achieve this.</p>
 </div>
 <div class="paragraph">
-<p>We migrated the web frontend to swarm, so we run and launch it like the other services ( using java -jar).</p>
+<p>Once we can simulate faults, we implement a circuit breaker using Hystrix and complete this acticity by installing the <a href="/tutorial/hystrix">Hystrix dashboard</a> to monitor IPC interactions and the system state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -39,9 +39,6 @@ Hystrix runs the command in it’s own thread pool. Doing that in a EE environme
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>To inject faults you may consider using things like the Toxy proxy (See Appendix C)</p>
 </div>
 <div class="imageblock">
 <div class="content">
