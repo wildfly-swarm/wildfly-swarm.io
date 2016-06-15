@@ -3,7 +3,7 @@
 <p>In the previous step, we used the Swarm maven plugin to build the Uberjar&#8217;s. The plugin added the required fractions to enable your application. In some cases however that&#8217;s not possible, i.e. for API&#8217;s beyond Java EE or when you need to configure the fraction explicitly. In these cases you would need to provide a custom <code>Main()</code> to configure and bootstrap Swarm.</p>
 </div>
 <div class="paragraph">
-<p>To explain the the fraction concept and it&#8217;s usage within <code>Main()</code>, we replace the simple service registration implementation that we used until now, with the Swarm Topology fraction.</p>
+<p>To explain the the fraction concept and it&#8217;s usage within <code>Main()</code>, we replace the current service registration code with the Swarm Topology fraction.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -48,7 +48,7 @@
 <p>Provide a custom <code>Main()</code> to configure the Swarm runtime</p>
 </li>
 <li>
-<p>Within Main() explicitly register the consul fraction and make sure it is configured to point to <code><a href="http://&lt;CONSUL_IP:8500”" class="bare">http://&lt;CONSUL_IP:8500”</a></code>.</p>
+<p>Within <code>Main()</code> explicitly register the consul fraction and make sure it is configured to point to <code><a href="http://&lt;CONSUL_IP:8500”" class="bare">http://&lt;CONSUL_IP:8500”</a></code>.</p>
 </li>
 <li>
 <p>Deploy your application code using Shrinkwrap</p>
