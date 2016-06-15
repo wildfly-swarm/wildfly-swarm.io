@@ -28,8 +28,8 @@ server runtime to "java -jar" your application. However, it's all much, much coo
     </div>
 ++++
 
-Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need 
-(or don't add anything at all and the plugin will auto-detect for you). 
+Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that you need
+(or don't add anything at all and the plugin will auto-detect for you).
 The following example assumes a simple JAX-RS RESTful application.
 
 [source,xml]
@@ -79,6 +79,9 @@ java -jar MyApp-swarm.jar
     <p>The user guide contains much information to get started and to answer more advanced questions.
     <p><a href="/documentation/HEAD" class="btn btn-primary">View Documentation</a></p>
 
+    <h3>Tutorial</h3>
+    <p>A tutorial that explains how to migrate a monolith to microservices using WildFly Swarm
+    <p><a href="/tutorial" class="btn btn-primary">View Tutorial</a></p>
   </div>
 
   </div>

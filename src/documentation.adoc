@@ -26,10 +26,15 @@ http://wildfly-swarm.github.io/wildfly-swarm/
 
 We provide consolidated documentation for our public API.
 
-
 === Source Code
 
 https://github.com/wildfly-swarm/wildfly-swarm
 
-Sometimes the best documentation is the source code. Read the source
-and become a WildFly Swarm Jedi Master.
+=== Tutorials
+* link:/tutorial[*Monolith to microservices*]
+
+A tutorial that explain how to migrate a monolith to microservices using WildFly Swarm
+
+=== Examples
+
+https://github.com/wildfly-swarm/wildfly-swarm-examples
