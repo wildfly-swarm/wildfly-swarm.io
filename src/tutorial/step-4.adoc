@@ -6,15 +6,16 @@ layout: tutorial.jade
 
 = Step 4: Environment specific configuration
 
-This might be a good opportunity to get away from command line options and system properties.
-There are just too many at this point. Project stages could be used to differentiate between local,
-staged development (i.e consul URL, etc) or the integration with the course wide service ensemble (simulates production).
+Now that you know about fractions and ways to explicitly configure Swarm, it's a good to revisit the configuration options. We using quiet a number of system properties already (i.e. bind address, port, etc) and some values are even hard coded within `Main()` (i.e. service names, log level, etc). Let's move all this into a separate file to make it more manageable.
 
-This step can be considered as a prerequisite to simplify the fault-injection techniques in the next step.
+In Swarm we use project stages (`project-stages.yml`) to differentiate
+between environments (i.e consul URL, etc) and capture configuration values that change when moving from one environment to the next (i.e. from local development to continuous integration to production)
+
+These configurations can then easily be switched by using the system property `-Dswarm.project.stage=<STAGE_NAME>`
 
 image::../img/step-4.png[title="Stage specific configuration"]
 
-Here's an example for for service “user”
+Here's an example for service “user”
 
 [project-stages.yml]
 ```
@@ -28,7 +29,7 @@ swarm:
        url: "http://<CONSUL_IP>:8500"
 ---
 project:
-   stage: production
+   stage: <STAGE_NAME>
 service:
    user:
        service-name: "user"
@@ -64,7 +65,7 @@ swarm:
 <a href="/tutorial/step-3" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Step 3: Container API, Fractions and Deployments</a>
   </div>
   <div class="col-md-6">
-  <a href="/tutorial/step-5" class="btn btn-primary">Step 5: Fault tolerance and resilience 
+  <a href="/tutorial/step-5" class="btn btn-primary">Step 5: Fault tolerance and resilience
 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
   </div>
 </div>

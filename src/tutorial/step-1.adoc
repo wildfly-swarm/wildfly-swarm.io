@@ -6,12 +6,11 @@ layout: tutorial.jade
 
 = Step 1: Services the 'old' way
 
-The “default” way of installing the services as regular war’s on WildFly, with two exceptions:
-* we already use Consul for lookup and registration of services
-* all services interact over REST/HTTP, despite being deployed on the same JVM
+This activity demonstrates the “default” way of installing services as regular war’s on WildFly, with two exceptions:
+* The services already use Consul for lookup and registration
+* All services interact over REST/HTTP, although being deployed on the same JVM
 
-This step is intended to provide an overview of code that exists,
-possible service boundaries, dependencies and to make yourself familiar with the possible use cases using the web interface
+This step is intended to provide an overview of code that exists, possible service boundaries, dependencies and allows you yo make yourself familiar with the application use cases using the web interface
 (which is something we want to retain)
 
 image::../img/step-1.png[title="Components within single JVM"]

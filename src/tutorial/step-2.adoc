@@ -6,8 +6,9 @@ layout: tutorial.jade
 
 = Step 2: Right-size your runtime
 
-Bringing Swarm to the table.  Basic concepts. How do I build it and run it?
-Basic configuration options (address, port, logging) .  Moving all service to their own VM.
+In this activity we bring Swarm to the table. We look the basic concepts for building Swarm services and discover how to build and run it. This includes basic configuration options, like bind address, ports and logging.
+
+In the previous step all services have been deployed to a single JVM. Once you extracted the `order`, `catalog` and `user` services, these run in their own JVM (corresponds to a another host).
 
 image::../img/step-2.png[title="Each service within a separate JVM"]
 
@@ -19,16 +20,17 @@ image::../img/step-2.png[title="Each service within a separate JVM"]
 == Tasks
 * Add a dependency to the Swarm BOM  to the top level pom.xml, so all modules inherit the Swarm dependencies if needed.
  This includes the Swarm maven plugin.
-* Prepare the relevant maven pom.xml to include the Swarm plugin (i.e. order, user, catalog)
+* Prepare each service module (pom.xml) to include the Swarm maven plugin (i.e. `order`, `user`, `catalog`)
 * Do a top level build (`mvn clean install`). This will create the `-swarm.jar` artifacts in all modules that you’ve added the Swarm plugin.
+* Run each service from the command-line `java -jar <service-name>-swarm.jar -Dswarm.bind.address=<PUBLIC_IP> -Dswarm.port.offset=<PORT_OFFSET>`
+
+NOTE: Make sure you explicitly bind the services to `<PUBLIC_IP>`, i.e.:
+`java -jar <service-name>-swarm.jar -Dswarm.bind.address=<PUBLIC_IP> -Dswarm.port.offset=<PORT_OFFSET>`
 
 == Outcome
 * Swarm packages the required runtime components and your service into a distinct .jar file
 * You can each run service separately, without deploying it on WildFly.
 * The user interface, remaining on WildFly, still works as expe
-
-NOTE: Make sure you explicitly bind the services to `<PUBLIC_IP>`, i.e.:
-`java -jar <service-name>-swarm.jar -Dswarm.bind.address=<PUBLIC_IP> -Dswarm.port.offset=50`
 
 == Documentation
 * https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/basics.html[Swarm Basics]

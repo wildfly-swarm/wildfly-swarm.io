@@ -9,11 +9,11 @@ layout: tutorial.jade
 == Repository Layout
 
 The source code for the activities can be found in the WildFly Swarm github repository.
-It contains the sources for the `monolith` and the codebase for the `microservices`.
+It contains a `monolith`, as well as a `microservices` module. The later is what we use throughout the activities.
 
 https://github.com/wildfly-swarm/tutorial
 
-As a first step you need to clone that git repository:
+As a first step you need to clone the git repository:
 
 ```
 git clone https://github.com/wildfly-swarm/tutorial.git
@@ -21,8 +21,7 @@ git clone https://github.com/wildfly-swarm/tutorial.git
 
 == Solutions to the activities
 A number of branches (`step_1` … `step_n`) are provided to quickly jump between
-the possible solutions to the different steps (see below) in case you get stuck or want to jump ahead to topics that are more interesting to you. These solutions
-may look slightly different to your implementation, that’s ok and anticipated.
+the possible solutions to the different steps (see below). Use this if you get stuck or want to jump ahead to activities that are more interesting to you. These solutions provided may look slightly different to your implementation, but that’s ok and anticipated.
 
 .Available branches with solutions
 [width="100%"]

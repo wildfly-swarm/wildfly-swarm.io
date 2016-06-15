@@ -9,12 +9,12 @@ layout: tutorial.jade
 == A simple e-commerce application
 
 === The monolith
-The example that we use throughout the workshop is a simplified e-commerce application that use a layered architecture commonly found in typical Java EE applications:
+The example that we use throughout the tutorial is a simplified e-commerce application that uses a layered architecture commonly found in Java EE applications:
 
 image::../img/layers.png[]
 
 === The desired microservice architecture
-The result that we want to get to after running through all the steps, is a microservice architecture that has most of the business logic broken up into several distinct services that provide a high degree of cohesion, yet are loosely coupled so they can be released with a minimum impact on the other services:
+Our goal is to build a microservice architecture, that has most of the business logic broken up into several services which provide a high degree of cohesion, yet are loosely coupled so they can be released with a minimum impact on each other:
 
 image::../img/services.png[]
 

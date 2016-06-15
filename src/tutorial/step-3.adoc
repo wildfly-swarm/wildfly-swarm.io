@@ -6,8 +6,9 @@ layout: tutorial.jade
 
 = Step 3: Container API, Fractions and Deployments
 
-Fractions and custom Main().  JAR deployment instead of WAR. Basically leaving the auto-detection realm.
-A good opportunity to replace the simple service registration implementation with the Swarm Topology fraction. This allows to discover the fraction concept along the way.
+In the previous step, we used the Swarm maven plugin to build the Uberjar's. The plugin added the required fractions to enable your application. In some cases however that's not possible, i.e. for API's beyond Java EE or when you need to configure the fraction explicitly. In these cases you would need to provide a custom `Main()` to configure and bootstrap Swarm.
+
+To explain the the fraction concept and it's usage within `Main()`, we replace the simple service registration implementation that we used until now, with the Swarm Topology fraction.
 
 image::../img/step-3.png[title="Uberjar Packaging"]
 
@@ -18,7 +19,7 @@ image::../img/step-3.png[title="Uberjar Packaging"]
 
 
 == Tasks
-* Add the maven dependencies for fractions your application requires
+* Add the maven dependencies for fractions that your application requires to each service module
 (`jaxrs-jaxb`, `jaxrs-jsonp`, `jpa`, `jaxrs-cdi`, `ejb`)
 * Add the maven dependency for the Swarm topology (`topology-consul`)
 * Provide a custom `Main()` to configure the Swarm runtime

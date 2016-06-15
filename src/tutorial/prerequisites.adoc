@@ -15,52 +15,51 @@ These are expected on every developer laptop:
 * Git
 
 == Additional Software
-The lab uses the WildFly application server for running the monolith
-and parts of it and the Consul for service registration and discovery.
-WildFly can be run as simple java process, just download, unzip and run it
-(standalone.sh/standalone.bat). Consul is written in go and you would either need to install the native binary or use docker for hosting the registry.
+The tutorial uses the WildFly application server for running the monolith
+and the Consul for service registration and discovery. WildFly can be run as simple java process, just download, unzip and run it (standalone.sh/standalone.bat).
+
+Consul is written in Go and you would need to install the native binary for running the registry.
 
 * https://www.consul.io/downloads.html[Consul Service Registry]
 * http://wildfly.org/downloads/[WildFly Application Server 10]
 
 === Consul Service Registry
-Installing consul and running it
-Download the consul agents for your OS and the web UI:
+
+Download Consul for your OS, including the web UI, which is a separate artifact:
 
 https://www.consul.io/downloads.html
 
-Run it in developer mode (i.e. with CONSUL_IP=127.0.0.1):
+You can start it like this (i.e. with CONSUL_IP=127.0.0.1):
 
 ```
 ./consul agent --ui-dir=<UI_DIR> --data-dir=/tmp/consul -bind <CONSUL_IP> -server -bootstrap
 ```
 
-Before you proceed make sure consul is running and accessible at
+To verify that it's successfully started you can visit the consul web interface:
 
 ```
 http://<CONSUL_IP>:8500/ui/
 ```
 
-NOTE: Make note of the registry address `http://<CONSUL_IP>:8500`. It’s the address of the registry that the services need to advertise their presenceyes.
+NOTE: Make note of the registry address `http://<CONSUL_IP>:8500`. It’s the address that the services need to advertise their presence.
 
 === WildFly Application Server
 
-We use WildFly to host the monolith in the beginning and parts of it,
-when we extract services one after the other.
-Towards the end, WildFly becomes obsolete once all services have been replaced by WildFly Swarm.
+WildFly will be used to host the monolith and remaining parts of it
+when we extract each service one after the other. Towards the end of the tutorial, WildFly becomes obsolete and all services will be replaced by WildFly Swarm.
 
 ==== Download and install WildFly
 
-WildFLy can be downloaded from the http://wildfly.org/downloads/[WildFly Homepage].
+WildFly can be downloaded from the http://wildfly.org/downloads/[WildFly Homepage].
 Simply follow the instructions in the https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide[Getting Started Guide], on how to install, configure and start the application server.
 
-NOTE: Make note of the `<WILDFLY_IP>`, which by default is localhost. Without further configuration the HTTP server listens on port 8080. However we need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which is not reachable from within docker.
+Make note of the `<WILDFLY_IP>`, which by default's `localhost`. Without further configuration the HTTP server listens on port 8080. We do however need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which makes them inaccessible in some cases (docker, remote host, etc)
 
-NOTE: When you start WildFly make sure to provide the `consul.host` system property. This tells any service deployed to WildFly, where to find consul: ```./bin/standalone.sh -Dconsul.host=<CONSUL_IP>```
+NOTE: When you start WildFly make sure to provide the `consul.host` system property. This tells any service deployed to WildFly, where to find consul: ```./bin/standalone.sh -Dconsul.host=<CONSUL_IP>```. Take a look at the `services` module to see how it's implemented.
 
 == Before you get started
 Make sure you have written down the main network addresses
-that we use throughout the activities:
+that we will use throughout the activities:
 
 .Network Addresses In Use
 [width="100%"]
@@ -80,7 +79,7 @@ that we use throughout the activities:
 |?
 |===
 
-To run the activities you need the software listed in section “Additional Software”.
+For the activities you need the software listed in section “Additional Software”.
 Both WildFly and Consul must be running.
 
 

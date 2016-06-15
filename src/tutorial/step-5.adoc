@@ -15,13 +15,11 @@ NOTE: When you turn the everest module into a swarm service,
 you change the packaging of `war` to `jar`. This also requires you to move the web resources from `src/main/webapp` to `src/main/resources`.
 
 === Introducing fault-injection techniques and hystrix for resilience.
-As a first step it might actually be useful to inject faults to demonstrate the need for hystrix. After that we implement a circuit breaker using hystrix and finally install the hystrix dashboard to monitor the system state.
+Before thinking about resilience it's actually be useful to inject faults to demonstrate the need for enhanced fault handling capabilities. link:/tutorial/toxy[Appendix A] contains some information on how to use a fault-injection proxy to easily achieve this.
 
-We migrated the web frontend to swarm, so we run and launch it like the other services ( using java -jar).
+Once we can simulate faults, we implement a circuit breaker using Hystrix and complete this acticity by installing the link:/tutorial/hystrix[Hystrix dashboard] to monitor IPC interactions and the system state.
 
 NOTE: Hystrix runs the command in it’s own thread pool. Doing that in a EE environment requires you to think twice about what that demarcation actually means.
-
-To inject faults you may consider using things like the Toxy proxy (See Appendix C)
 
 image::../img/step-5.png[title="Fault detection and handling"]
 
