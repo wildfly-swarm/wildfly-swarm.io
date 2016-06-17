@@ -13,3 +13,8 @@ block content
       if modifyDate && moment(publishDate).isBefore(modifyDate)
         span  | Updated #{moment(modifyDate).calendar()}
     div!= contents
+
+block disqus
+  #disqus_thread
+    script
+        include disqus.js
