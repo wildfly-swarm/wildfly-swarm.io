@@ -17,6 +17,7 @@ what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
 
 * link:/documentation/HEAD[LATEST]
+* link:/documentation/1-0-0-CR2[1.0.0.CR2]
 * link:/documentation/1-0-0-CR1[1.0.0.CR1]
 * link:/documentation/1-0-0-Beta8[1.0.0.Beta8]
 

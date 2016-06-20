@@ -1,0 +1,90 @@
+---
+title: Announcement 1.0.0.CR2
+publishDate: 2016-06-20
+modifyDate: 2016-06-20
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== What's New?
+* Drools KIE Server
+
+++++
+<!-- more -->
+++++
+
+=== Drools KIE Server
+
+Though it's not currently part of the BOM, you can try out the Drools KIE
+Server by including the following dependency:
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>drools-server</artifactId>
+  <version>1.0.0.Alpha1</version>
+</dependency>
+----
+
+and packaging it into a WF Swarm jar to execute!
+
+
+== Changelog
+
+Release notes for 1.0.0.CR2 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329397&versions=12329891&versions=12330676&versions=12330158&versions=12330160&versions=12330161&versions=12330154&versions=12330163&versions=12330162&versions=12330411&versions=12329788&versions=12330164&versions=12329787&versions=12330405&versions=12330155&versions=12330159&versions=12330410&versions=12330404&versions=12329897&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
+
+++++
+<ul>
+</ul>
+++++
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR2.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-CR2[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+*Core*
+
+- emag
+- Heiko Braun
+- Toby Crawley
+- John D. Ament
+- Ken Finnigan
+- George Gastaldi
+- Martin Kouba
+- Bob McWhirter
+
+*Non Core*
+
+- Heiko Braun
+- Ken Finnigan
+- George Gastaldi
+- Bob McWhirter
+
+*Examples*
+
+- Ralf Battenfeld
+- Heiko Braun
+- Thomas Diesler
+- Ken Finnigan
+- Bob McWhirter
+- James Netherton
+- Tomas Remes
+
+*Documentation*
+
+- George Gastaldi
+- Heiko Braun
+- Ken Finnigan
+- Toby Crawley
