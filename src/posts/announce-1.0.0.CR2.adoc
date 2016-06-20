@@ -9,6 +9,7 @@ draft: true
 
 == What's New?
 * Drools KIE Server
+* Vert.x
 
 ++++
 <!-- more -->
@@ -30,6 +31,20 @@ Server by including the following dependency:
 
 and packaging it into a WF Swarm jar to execute!
 
+=== Vert.x
+
+Though it's not currently part of the BOM, you can try out the Vert.x integration by including the following dependency:
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>vertx</artifactId>
+  <version>1.0.0.Alpha1</version>
+</dependency>
+----
+
+See https://github.com/wildfly-swarm/wildfly-swarm-vertx/blob/master/README.md[the vert.x README notes] for more information
 
 == Changelog
 
