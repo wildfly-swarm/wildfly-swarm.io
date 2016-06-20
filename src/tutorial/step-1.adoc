@@ -9,7 +9,7 @@ layout: tutorial.jade
 This activity demonstrates the “default” way of installing services as regular war’s on WildFly, with two exceptions:
 
 * The services already use Consul for lookup and registration
-* All services interact over REST/HTTP, although being deployed on the same JVM
+* All services interact over REST/HTTP, although being deployed to the same JVM
 
 This step provides an overview of code that exists, possible service boundaries, module dependencies and allows you to make yourself familiar with the application use cases using the web frontend
 (which is something we want to retain)

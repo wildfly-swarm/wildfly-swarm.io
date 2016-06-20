@@ -19,6 +19,15 @@ As a first step you need to clone the git repository:
 git clone https://github.com/wildfly-swarm/tutorial.git
 ```
 
+To start the tutorial, checkout branch `step_1`:
+
+```
+cd tutorial
+git checkout step_1
+```
+
+NOTE: Why not begin with `step_0`? This step just contains the sources for the monolith. It's just there for comparison purposes.
+
 == Solutions to the activities
 A number of branches (`step_1` … `step_n`) are provided to quickly jump between
 the possible solutions to the different steps (see below). Use this if you get stuck or want to jump ahead to activities that are more interesting to you. These solutions provided may look slightly different to your implementation, but that’s ok and anticipated.

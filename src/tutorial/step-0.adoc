@@ -13,7 +13,7 @@ See what components exists, what Java EE API’s are used and how it spreads acr
 Before we tackle the microservices architecture, we would need to decouple the components,
 separate the responsibilities and provide a build system that allows you to begin working on the separate services. *This part has been done already on your behalf to save time and allow the you to focus on more interesting topics*.
 
-NOTE: The resulting module structure can be found in the folder `microservice`, which is what we operate on throughout the following activities.
+NOTE: The resulting module structure can be found in the folder `microservice` of `step_1`, which is what we operate on throughout the following activities.
 
 +++
 <div class="row">
