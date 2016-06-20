@@ -44,6 +44,60 @@ Though it's not currently part of the BOM, you can try out the Vert.x integratio
 </dependency>
 ----
 
+The fraction deploys a JCA adapter providing both outbound and inbound connectivy with a Vert.x instance.
+An application component (e.g Servlet, EJB), can send messages to a Vert.x instance using the Vert.x EventBus.
+
+Usage:
+
+[source,java]
+----
+@Resource(mappedName="java:/eis/VertxConnectionFactory")
+VertxConnectionFactory connFactory;
+
+public void sendMessage() throws Exception { 
+    try (VertxConnection conn = connFactory.getVertxConnection()) {
+        conn.vertxEventBus().send("tacos", "Hello from JCA");
+    }
+}
+----
+
+Inbound connectivity is provided via a listener interface which can be implemented by a Java EE Message Driven Bean (MDB). As opposed to the default JMS listener type, the Vert.x JCA listener interface allows an MDB to receive messages from a Vert.x address.
+
+Usage: 
+
+[source,java]
+----
+package io.vertx.resourceadapter.examples.mdb;
+
+import io.vertx.resourceadapter.inflow.VertxListener;
+import io.vertx.core.eventbus.Message;
+
+import java.util.logging.Logger;
+
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+
+import org.jboss.ejb3.annotation.ResourceAdapter;
+
+@MessageDriven(name = "VertxMonitor",
+        messageListenerInterface = VertxListener.class,
+        activationConfig = {
+                @ActivationConfigProperty(propertyName = "address", propertyValue = "tacos")
+        }
+)
+@ResourceAdapter("vertx-ra")
+public class VertxMonitor implements VertxListener {
+
+   private static final Logger logger = Logger.getLogger(VertxMonitor.class.getName());
+
+   @Override
+   public <String> void onMessage(Message<String> message) {
+      logger.info("Get a message from Vert.x at address: " + message.address());
+      logger.info("Body of the message: " + message.body());
+   }
+}
+----
+
 See https://github.com/wildfly-swarm/wildfly-swarm-vertx/blob/master/README.md[the vert.x README notes] for more information
 
 == Changelog
