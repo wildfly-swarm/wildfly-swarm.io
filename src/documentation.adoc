@@ -23,7 +23,7 @@ Microservice.
 
 === API Documentation
 
-http://wildfly-swarm.github.io/wildfly-swarm/
+http://wildfly-swarm.github.io/wildfly-swarm-javadocs/
 
 We provide consolidated documentation for our public API.
 
