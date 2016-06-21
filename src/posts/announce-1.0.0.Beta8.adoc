@@ -25,6 +25,7 @@ This prevents the situation that did lead to a 404 when you've try to access the
 === Environment specific properties
 It's now possible to extract environment specific properties into an external file:
 
+[source,yml]
 .project-stages.yml
 ----
 logger:
@@ -44,6 +45,7 @@ swarm:
 The properties can be accessed from subsystem, fraction and application level configuration and allow you
 to bootstrap the container with a flag indicating which properties should be used in a specific environment (`-Dswarm.project.stage=<name>`).
 
+[source,java]
 .JaxrsResource.java
 ----
 @ApplicationScoped

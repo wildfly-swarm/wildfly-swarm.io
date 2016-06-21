@@ -4,7 +4,7 @@ publishDate: 2016-06-20
 modifyDate: 2016-06-20
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
+draft:true
 ---
 
 == What's New?
@@ -13,6 +13,7 @@ draft: true
 * Logging enhancements
 * Drools KIE Server
 * Vert.x
+* Tutorial: Monolith to microservices
 
 
 ++++
@@ -179,6 +180,16 @@ public class VertxMonitor implements VertxListener {
 ----
 
 See https://github.com/wildfly-swarm/wildfly-swarm-vertx/blob/master/README.md[the vert.x README notes] for more information
+
+=== Tutorial: Monolith to microservices
+
+The workshop contents from the Devoxx UK lab are available now.
+In this lab we will introduce you to WildFly Swarm through the migration of a Java EE monolith application
+to microservices for parts of the stack.
+The services will be discoverable, provide failover with Netflix Ribbon and utilize Netflix Hystrix
+for circuit breaking amongst other things.
+
+Visit link:/tutorial[Tutorial]
 
 == Changelog
 
