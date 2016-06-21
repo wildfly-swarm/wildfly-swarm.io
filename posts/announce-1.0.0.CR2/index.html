@@ -1,0 +1,387 @@
+<div class="sect1">
+<h2 id="_what_s_new">What&#8217;s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Welcome Yoshimasa Tanabe (emag) as project committer</p>
+</li>
+<li>
+<p>Arquillian Testing improvement</p>
+</li>
+<li>
+<p>Logging enhancements</p>
+</li>
+<li>
+<p>Drools KIE Server</p>
+</li>
+<li>
+<p>Vert.x</p>
+</li>
+<li>
+<p>Tutorial: Monolith to microservices</p>
+</li>
+</ul>
+</div>
+<!-- more -->
+<div class="sect2">
+<h3 id="_welcome_yoshimasa_tanabe_emag_as_project_committer">Welcome Yoshimasa Tanabe (emag) as project committer</h3>
+<div class="paragraph">
+<p>The WildFly Swarm team is pleased to announce that <a href="https://github.com/emag">Yoshimasa Tanabe</a>
+has been added as a core committer to the project.</p>
+</div>
+<div class="paragraph">
+<p>Thanks for your continued contribution Yoshimasa, keep up the great work!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_arquillian_testing_improvements">Arquillian Testing improvements</h3>
+<div class="paragraph">
+<p>Previously it was necessary for your test to implement the <code>ContainerFactory</code>
+interface and provide an implementation that returns the <code>Container</code> that
+you want to be run for the test.</p>
+</div>
+<div class="paragraph">
+<p>With this release there is an alternative. A class that implements <code>ContainerFactory</code>
+can be independent of the test class using it, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RunWith(Arquillian.class)
+public class MyTest {
+  @Deployment
+  public static Archive create Deployment() {
+    ..
+  }
+
+  @org.wildfly.swarm.arquillian.adapter.ContainerFactory
+  public static Class&lt;? extends ContainerFactory&gt; newFactory() throws Exception {
+    return MyFactory.class;
+  }
+}
+
+public class MyFactory implements ContainerFactory {
+  public Container newContainer(String... args) throws Exception {
+    return new Container().fraction(myFraction.createDefaultFraction());
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve also added support for system properties being set in <code>arquillian.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;property name="javaVmArguments"&gt;-Dsome.property=a&lt;/property&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging_enhancements">Logging enhancements</h3>
+<div class="paragraph">
+<p>System property <code>swarm.logging</code> now supports all logging levels, not just
+<code>DEBUG</code> and <code>TRACE</code>.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s now possible to set your own handlers in a main() for a logger:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">public static void main(String[] args) throws Exception {
+  Container container = new Container();
+
+  LoggingFraction loggingFraction = new LoggingFraction()
+      .defaultFormatter()
+      .consoleHandler(Level.INFO, "PATTERN")
+      .fileHandler(FILE_HANDLER_KEY, "sql-file.log", Level.FINE, "%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
+      .rootLogger(Level.INFO, "CONSOLE")
+      .logger("wildflyswarm.filelogger", l -&gt; l
+          .level(Level.FINE)
+          .handler(FILE_HANDLER_KEY)
+          .useParentHandlers(false));
+
+  container.fraction(loggingFraction);
+
+  JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
+  deployment.addPackage(App.class.getPackage());
+
+  container.start().deploy(deployment);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drools_kie_server">Drools KIE Server</h3>
+<div class="paragraph">
+<p>Though it&#8217;s not currently part of the BOM, you can try out the Drools KIE
+Server by including the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;drools-server&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0.Alpha1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and packaging it into a WF Swarm jar to execute!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vert_x">Vert.x</h3>
+<div class="paragraph">
+<p>Though it&#8217;s not currently part of the BOM, you can try out the Vert.x integration by including the following dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+  &lt;artifactId&gt;vertx&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0.Alpha1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fraction deploys a JCA adapter providing both outbound and inbound connectivity with a Vert.x instance.
+An application component (e.g Servlet, EJB), can send messages to a Vert.x instance using the Vert.x EventBus.</p>
+</div>
+<div class="paragraph">
+<p>Usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Resource(mappedName="java:/eis/VertxConnectionFactory")
+VertxConnectionFactory connFactory;
+
+public void sendMessage() throws Exception {
+    try (VertxConnection conn = connFactory.getVertxConnection()) {
+        conn.vertxEventBus().send("tacos", "Hello from JCA");
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inbound connectivity is provided via a listener interface which can be implemented by a Java EE Message Driven Bean (MDB). As opposed to the default JMS listener type, the Vert.x JCA listener interface allows an MDB to receive messages from a Vert.x address.</p>
+</div>
+<div class="paragraph">
+<p>Usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">package io.vertx.resourceadapter.examples.mdb;
+
+import io.vertx.resourceadapter.inflow.VertxListener;
+import io.vertx.core.eventbus.Message;
+
+import java.util.logging.Logger;
+
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+
+import org.jboss.ejb3.annotation.ResourceAdapter;
+
+@MessageDriven(name = "VertxMonitor",
+        messageListenerInterface = VertxListener.class,
+        activationConfig = {
+                @ActivationConfigProperty(propertyName = "address", propertyValue = "tacos")
+        }
+)
+@ResourceAdapter("vertx-ra")
+public class VertxMonitor implements VertxListener {
+
+   private static final Logger logger = Logger.getLogger(VertxMonitor.class.getName());
+
+   @Override
+   public &lt;String&gt; void onMessage(Message&lt;String&gt; message) {
+      logger.info("Get a message from Vert.x at address: " + message.address());
+      logger.info("Body of the message: " + message.body());
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/wildfly-swarm/wildfly-swarm-vertx/blob/master/README.md">the vert.x README notes</a> for more information</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tutorial_monolith_to_microservices">Tutorial: Monolith to microservices</h3>
+<div class="paragraph">
+<p>The workshop contents from the Devoxx UK lab are available now.
+In this lab we will introduce you to WildFly Swarm through the migration of a Java EE monolith application
+to microservices for parts of the stack.
+The services will be discoverable, provide failover with Netflix Ribbon and utilize Netflix Hystrix
+for circuit breaking amongst other things.</p>
+</div>
+<div class="paragraph">
+<p>Visit <a href="/tutorial">Tutorial</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 1.0.0.CR2 are available <a href="https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330371&amp;versions=12330896&amp;versions=12330886&amp;versions=12330885&amp;versions=12330704&amp;versions=12330675&amp;versions=12330884&amp;versions=12330674&amp;versions=12330412&amp;versions=12330673&amp;versions=12330859&amp;versions=12330750&amp;versions=12330575&amp;sections=all&amp;style=html&amp;selectedProjectId=12317020&amp;reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&amp;Next=Next">here</a>.</p>
+</div>
+<ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-237">SWARM-237</a> ] Document the programmatic configuration of the DataSources</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-477">SWARM-477</a> ] Allow user control of default binding java:jboss/DefaultJMSConnectionFactory</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-479">SWARM-479</a> ] Hot Swap of static content for JAXRSArchive doesn't work</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-480">SWARM-480</a> ] Upgrade to wildfly-swarm-camel-1.0.4</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-485">SWARM-485</a> ] Using a JAX-RS provider that extends JacksonJaxbJsonProvider throws a  java.lang.NoClassDefFoundError Link Error</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-487">SWARM-487</a> ] Configure Container in Arquillan tests using annotation</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-488">SWARM-488</a> ] CLI Support with Maven</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-489">SWARM-489</a> ] Simplify dependency requires for fraction modules</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-490">SWARM-490</a> ] Add @ContainerFactory annotation for Arquillian</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-493">SWARM-493</a> ] Default configuration of ConsulTopologyFraction does not include default URL.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-496">SWARM-496</a> ] Upgrade to ShrinkWrap 1.2.4</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-497">SWARM-497</a> ] NPE when closing TempFileManager</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-498">SWARM-498</a> ] container.createDefaultDeployment().as(JAXRSArchive.class) does not package classes in WEB-INF/classes</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-500">SWARM-500</a> ] Can't Run javaee7-samples Stateless EJB Example</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-501">SWARM-501</a> ] system property swarm.logging supports more levels</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-502">SWARM-502</a> ] JAAS Security Form examples fail when running -uber examples</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-503">SWARM-503</a> ] Stages Configuration should fall back to default property if there is not a stage property</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-504">SWARM-504</a> ] Support passing system properties to the Wildfly Swarm Arquillian Container using arquillian.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-505">SWARM-505</a> ] Attributes cannot be added to HealthStatus within a HealthResource </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-507">SWARM-507</a> ] Autodiscover external configuration files</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-510">SWARM-510</a> ] javax.resource.* classes are not resolved during compile time from resource-adapter fraction </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-511">SWARM-511</a> ] Shrinkwrap UnknownExtensionTypeException for ExplodedExporter</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-512">SWARM-512</a> ] Failure in -uber-examples to find main() in a WAR</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-515">SWARM-515</a> ] Can't set handlers for a logger</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-516">SWARM-516</a> ] Auto detection scans transitive dependencies of fractions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-517">SWARM-517</a> ] Jandex class missing when overriding method in org.wildfly.swarm.spi.runtime.ServerConfiguration</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-518">SWARM-518</a> ] Upgrade to Keycloak 1.9.8.Final</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-519">SWARM-519</a> ] @ResourceAdapter is not available with EJB fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-520">SWARM-520</a> ] Auto Detection to support Class as well as Package</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-522">SWARM-522</a> ] Cannot pass jvmArguments to multistart process configuration</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR2" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR2</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="http://wildfly-swarm.io/documentation/1-0-0-CR2">available</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Marco Hofstetter</p>
+</li>
+<li>
+<p>Richard Lucas</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Alex Soto</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe (emag)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Non Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Alessio Soldano</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe (emag)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Toby Crawley</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Marco Hofstetter</p>
+</li>
+<li>
+<p>Thomas Wölfle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
