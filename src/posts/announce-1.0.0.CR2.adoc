@@ -4,7 +4,6 @@ publishDate: 2016-06-20
 modifyDate: 2016-06-20
 author: The WildFly Swarm Team
 layout: post.jade
-draft:true
 ---
 
 == What's New?
