@@ -124,7 +124,7 @@ Though it's not currently part of the BOM, you can try out the Vert.x integratio
 </dependency>
 ----
 
-The fraction deploys a JCA adapter providing both outbound and inbound connectivy with a Vert.x instance.
+The fraction deploys a JCA adapter providing both outbound and inbound connectivity with a Vert.x instance.
 An application component (e.g Servlet, EJB), can send messages to a Vert.x instance using the Vert.x EventBus.
 
 Usage:
