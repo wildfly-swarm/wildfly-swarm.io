@@ -54,7 +54,7 @@ Usage:
 @Resource(mappedName="java:/eis/VertxConnectionFactory")
 VertxConnectionFactory connFactory;
 
-public void sendMessage() throws Exception { 
+public void sendMessage() throws Exception {
     try (VertxConnection conn = connFactory.getVertxConnection()) {
         conn.vertxEventBus().send("tacos", "Hello from JCA");
     }
@@ -63,7 +63,7 @@ public void sendMessage() throws Exception {
 
 Inbound connectivity is provided via a listener interface which can be implemented by a Java EE Message Driven Bean (MDB). As opposed to the default JMS listener type, the Vert.x JCA listener interface allows an MDB to receive messages from a Vert.x address.
 
-Usage: 
+Usage:
 
 [source,java]
 ----
@@ -102,10 +102,40 @@ See https://github.com/wildfly-swarm/wildfly-swarm-vertx/blob/master/README.md[t
 
 == Changelog
 
-Release notes for 1.0.0.CR2 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12329397&versions=12329891&versions=12330676&versions=12330158&versions=12330160&versions=12330161&versions=12330154&versions=12330163&versions=12330162&versions=12330411&versions=12329788&versions=12330164&versions=12329787&versions=12330405&versions=12330155&versions=12330159&versions=12330410&versions=12330404&versions=12329897&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
+Release notes for 1.0.0.CR2 are available https://issues.jboss.org/secure/ConfigureReport.jspa?versions=12330371&versions=12330896&versions=12330886&versions=12330885&versions=12330704&versions=12330675&versions=12330884&versions=12330674&versions=12330412&versions=12330673&versions=12330859&versions=12330750&versions=12330575&sections=all&style=html&selectedProjectId=12317020&reportKey=org.jboss.labs.jira.plugin.release-notes-report-plugin%3Areleasenotes&Next=Next[here].
 
 ++++
 <ul>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-237">SWARM-237</a> ] Document the programmatic configuration of the DataSources</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-477">SWARM-477</a> ] Allow user control of default binding java:jboss/DefaultJMSConnectionFactory</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-479">SWARM-479</a> ] Hot Swap of static content for JAXRSArchive doesn't work</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-480">SWARM-480</a> ] Upgrade to wildfly-swarm-camel-1.0.4</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-485">SWARM-485</a> ] Using a JAX-RS provider that extends JacksonJaxbJsonProvider throws a  java.lang.NoClassDefFoundError Link Error</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-487">SWARM-487</a> ] Configure Container in Arquillan tests using annotation</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-488">SWARM-488</a> ] CLI Support with Maven</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-489">SWARM-489</a> ] Simplify dependency requires for fraction modules</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-490">SWARM-490</a> ] Add @ContainerFactory annotation for Arquillian</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-493">SWARM-493</a> ] Default configuration of ConsulTopologyFraction does not include default URL.</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-496">SWARM-496</a> ] Upgrade to ShrinkWrap 1.2.4</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-497">SWARM-497</a> ] NPE when closing TempFileManager</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-498">SWARM-498</a> ] container.createDefaultDeployment().as(JAXRSArchive.class) does not package classes in WEB-INF/classes</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-500">SWARM-500</a> ] Can't Run javaee7-samples Stateless EJB Example</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-501">SWARM-501</a> ] system property swarm.logging supports more levels</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-502">SWARM-502</a> ] JAAS Security Form examples fail when running -uber examples</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-503">SWARM-503</a> ] Stages Configuration should fall back to default property if there is not a stage property</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-504">SWARM-504</a> ] Support passing system properties to the Wildfly Swarm Arquillian Container using arquillian.xml</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-505">SWARM-505</a> ] Attributes cannot be added to HealthStatus within a HealthResource </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-507">SWARM-507</a> ] Autodiscover external configuration files</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-510">SWARM-510</a> ] javax.resource.* classes are not resolved during compile time from resource-adapter fraction </li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-511">SWARM-511</a> ] Shrinkwrap UnknownExtensionTypeException for ExplodedExporter</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-512">SWARM-512</a> ] Failure in -uber-examples to find main() in a WAR</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-515">SWARM-515</a> ] Can't set handlers for a logger</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-516">SWARM-516</a> ] Auto detection scans transitive dependencies of fractions</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-517">SWARM-517</a> ] Jandex class missing when overriding method in org.wildfly.swarm.spi.runtime.ServerConfiguration</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-518">SWARM-518</a> ] Upgrade to Keycloak 1.9.8.Final</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-519">SWARM-519</a> ] @ResourceAdapter is not available with EJB fraction</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-520">SWARM-520</a> ] Auto Detection to support Class as well as Package</li>
+  <li>[ <a href="https://issues.jboss.org/browse/SWARM-522">SWARM-522</a> ] Cannot pass jvmArguments to multistart process configuration</li>
 </ul>
 ++++
 
