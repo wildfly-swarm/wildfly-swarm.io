@@ -8,12 +8,92 @@ draft: true
 ---
 
 == What's New?
+* Welcome Yoshimasa Tanabe (emag) as project committer
+* Arquillian Testing improvement
+* Logging enhancements
 * Drools KIE Server
 * Vert.x
+
 
 ++++
 <!-- more -->
 ++++
+
+=== Welcome Yoshimasa Tanabe (emag) as project committer
+
+The WildFly Swarm team is pleased to announce that https://github.com/emag[Yoshimasa Tanabe]
+has been added as a core committer to the project.
+
+Thanks for your continued contribution Yoshimasa, keep up the great work!
+
+=== Arquillian Testing improvements
+
+Previously it was necessary for your test to implement the `ContainerFactory`
+interface and provide an implementation that returns the `Container` that
+you want to be run for the test.
+
+With this release there is an alternative. A class that implements `ContainerFactory`
+can be independent of the test class using it, such as:
+
+[source,java]
+----
+@RunWith(Arquillian.class)
+public class MyTest {
+  @Deployment
+  public static Archive create Deployment() {
+    ..
+  }
+
+  @org.wildfly.swarm.arquillian.adapter.ContainerFactory
+  public static Class<? extends ContainerFactory> newFactory() throws Exception {
+    return MyFactory.class;
+  }
+}
+
+public class MyFactory implements ContainerFactory {
+  public Container newContainer(String... args) throws Exception {
+    return new Container().fraction(myFraction.createDefaultFraction());
+  }
+}
+----
+
+We've also added support for system properties being set in `arquillian.xml`:
+
+[source,xml]
+----
+<property name="javaVmArguments">-Dsome.property=a</property>
+----
+
+=== Logging enhancements
+
+System property `swarm.logging` now supports all logging levels, not just
+`DEBUG` and `TRACE`.
+
+It's now possible to set your own handlers in a main() for a logger:
+
+[source,java]
+----
+public static void main(String[] args) throws Exception {
+  Container container = new Container();
+
+  LoggingFraction loggingFraction = new LoggingFraction()
+      .defaultFormatter()
+      .consoleHandler(Level.INFO, "PATTERN")
+      .fileHandler(FILE_HANDLER_KEY, "sql-file.log", Level.FINE, "%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
+      .rootLogger(Level.INFO, "CONSOLE")
+      .logger("wildflyswarm.filelogger", l -> l
+          .level(Level.FINE)
+          .handler(FILE_HANDLER_KEY)
+          .useParentHandlers(false));
+
+  container.fraction(loggingFraction);
+
+  JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
+  deployment.addPackage(App.class.getPackage());
+
+  container.start().deploy(deployment);
+}
+----
 
 === Drools KIE Server
 
@@ -155,14 +235,16 @@ We appreciate all of our contributors since the last release:
 
 *Core*
 
-- emag
 - Heiko Braun
 - Toby Crawley
-- John D. Ament
+- Thomas Diesler
 - Ken Finnigan
 - George Gastaldi
-- Martin Kouba
+- Marco Hofstetter
+- Richard Lucas
 - Bob McWhirter
+- Alex Soto
+- Yoshimasa Tanabe (emag)
 
 *Non Core*
 
@@ -173,17 +255,16 @@ We appreciate all of our contributors since the last release:
 
 *Examples*
 
-- Ralf Battenfeld
 - Heiko Braun
 - Thomas Diesler
 - Ken Finnigan
 - Bob McWhirter
-- James Netherton
-- Tomas Remes
+- Alessio Soldano
+- Yoshimasa Tanabe (emag)
 
 *Documentation*
 
-- George Gastaldi
-- Heiko Braun
-- Ken Finnigan
 - Toby Crawley
+- Ken Finnigan
+- Marco Hofstetter
+- Thomas Wölfle
