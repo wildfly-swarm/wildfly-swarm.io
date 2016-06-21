@@ -1,4 +1,30 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Archive | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><div class="page-header"><h2>Blog</h2></div><div class="posts"><h2 class="page-header"><a href="/posts/announcement-1-0-0-alpha8">Announcement 1.0.0.Alpha8</a><div style="text-transform:none!important" class="small"><time datetime="Sun Jan 31 2016 19:00:00 GMT-0500 (EST)" class="timestamp">January 31, 2016</time></div></h2><div><div class="sect1">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Archive | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator" class="hidden-xs hidden-sm hidden-md">Generator<span class="badge">new!</span></a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><div class="page-header"><h2>Blog</h2></div><div class="posts"><h2 class="page-header"><a href="/posts/wildfly-swarm-s-got-swagger">WildFly Swarm's Got Swagger</a><div style="text-transform:none!important" class="small"><time datetime="Wed Feb 03 2016 19:00:00 GMT-0500 (EST)" class="timestamp">February 3, 2016</time></div></h2><div><div class="sect2">
+<h3 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h3>
+<div class="paragraph">
+<p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
+for Swagger, a simple but powerful JSON representation of your REST
+APIs.</p>
+</div>
+<div class="paragraph">
+<p>In simple terms, Swagger is a JSON representation of a RESTful API,
+typically made available over HTTP at <code>/swagger.json</code>. This JSON
+document contains information about your APIs, including names, paths,
+endpoints, parameters, descriptions, keywords, expected responses, and
+more.</p>
+</div>
+<div class="paragraph">
+<p>Per the <a href="https://github.com/OAI/OpenAPI-Specification">Open API
+Specification</a>, the goal of Swagger is to "define a standard,
+language-agnostic interface to REST APIs which allows both humans and
+computers to discover and understand the capabilities of the service
+without access to source code, documentation, or through network
+traffic inspection".</p>
+</div>
+<div class="paragraph">
+<p>If this is your first encounter with Swagger, I suggest you head on
+over to the <a href="http://swagger.io/">Swagger website</a> to learn more about
+Swagger itself, and what it can do for you.</p>
+</div></div><p><a href="/posts/wildfly-swarm-s-got-swagger" class="btn btn-default">Read More</a></p><hr class="noshade"><h2 class="page-header"><a href="/posts/announcement-1-0-0-alpha8">Announcement 1.0.0.Alpha8</a><div style="text-transform:none!important" class="small"><time datetime="Sun Jan 31 2016 19:00:00 GMT-0500 (EST)" class="timestamp">January 31, 2016</time></div></h2><div><div class="sect1">
 <h2 id="_what_s_new">What’s New?</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -35,18 +61,7 @@ from your custom <code>main()</code> as a basis for a custom deployment.</p>
 <div class="paragraph">
 <p>The common and only way to configure wildfly-swarm nodes was to use the Java API.
 With the inclusion of <a href="https://issues.jboss.org/browse/SWARM-14">SWARM-14</a>, external, declarative configuration of wildfly-swarm nodes becomes possible.</p>
-</div></div><p><a href="/posts/initial-support-for-declarative-configuration" class="btn btn-default">Read More</a></p><hr class="noshade"><h2 class="page-header"><a href="/posts/announcement-1-0-0-alpha6">Announcement 1.0.0.Alpha6</a><div style="text-transform:none!important" class="small"><time datetime="Sun Jan 17 2016 19:00:00 GMT-0500 (EST)" class="timestamp">January 17, 2016</time></div></h2><div><div class="sect2">
-<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
-<div class="paragraph">
-<p>WildFly Swarm is the decomposition and reconstitution of the popular
-WildFly Java Application Server in order to support <em>just enough app-server</em>
-for microservice type applications.</p>
-</div>
-<div class="paragraph">
-<p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
-maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
-of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div></div><p><a href="/posts/announcement-1-0-0-alpha6" class="btn btn-default">Read More</a></p><hr class="noshade"><nav class="navigation cf"><a href="/archive/2" class="btn pull-right btn-primary">Newer <i class="fa fa-chevron-right" aria-hidden="true"></i><i class="icon-right-dir"></i></a><a href="/archive/4" class="btn pull-left btn-primary"><i class="icon-left-dir"></i>  <i class="fa fa-chevron-left" aria-hidden="true"></i> Older</a></nav></div></div><div class="col-sm-3 col-sm-offset-1"></div></div><div class="row"><div class="col-sm-8"></div></div></div></section><footer id="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</div></div><p><a href="/posts/initial-support-for-declarative-configuration" class="btn btn-default">Read More</a></p><hr class="noshade"><nav class="navigation cf"><a href="/archive/2" class="btn pull-right btn-primary">Newer <i class="fa fa-chevron-right" aria-hidden="true"></i><i class="icon-right-dir"></i></a><a href="/archive/4" class="btn pull-left btn-primary"><i class="icon-left-dir"></i>  <i class="fa fa-chevron-left" aria-hidden="true"></i> Older</a></nav></div></div><div class="col-sm-3 col-sm-offset-1"></div></div><div class="row"><div class="col-sm-8"></div></div></div></section><footer id="footer"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

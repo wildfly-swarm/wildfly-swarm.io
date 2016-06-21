@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 21 Jun 2016 14:03:23 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 21 Jun 2016 14:03:20 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.CR1]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 21 Jun 2016 14:05:58 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 21 Jun 2016 14:05:55 GMT</pubDate><item><title><![CDATA[Announcement 1.0.0.CR2]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_s_new">What’s New?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Welcome Yoshimasa Tanabe (emag) as project committer</p>
+</li>
+<li>
+<p>Arquillian Testing improvement</p>
+</li>
+<li>
+<p>Logging enhancements</p>
+</li>
+<li>
+<p>Drools KIE Server</p>
+</li>
+<li>
+<p>Vert.x</p>
+</li>
+<li>
+<p>Tutorial: Monolith to microservices</p>
+</li>
+</ul>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-cr2</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-cr2</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 20 Jun 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.CR1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_what_s_new">What’s New?</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -192,28 +216,4 @@ for microservice type applications.</p>
 <p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 18 Jan 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[No title]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_what_s_new">What’s New?</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Welcome Yoshimasa Tanabe (emag) as project committer</p>
-</li>
-<li>
-<p>Arquillian Testing improvement</p>
-</li>
-<li>
-<p>Logging enhancements</p>
-</li>
-<li>
-<p>Drools KIE Server</p>
-</li>
-<li>
-<p>Vert.x</p>
-</li>
-<li>
-<p>Tutorial: Monolith to microservices</p>
-</li>
-</ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announce-1.0.0.CR2</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announce-1.0.0.CR2</guid></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 18 Jan 2016 05:00:00 GMT</pubDate></item></channel></rss>
