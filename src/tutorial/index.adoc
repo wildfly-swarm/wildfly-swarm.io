@@ -15,8 +15,8 @@ The target audience are users with a Java EE background that haven't touched on 
 NOTE: The section on link:/tutorial/reading[readings] contains links to resources that cover microservice concepts
 
 === Guiding Principles
-The tutorial is provides guidance throughout the majority of the activities,
-but expect's you to actually code and get your head around the concepts presented.
+The tutorial provides guidance throughout the majority of the activities,
+but we expect you to actually code and get your head around the concepts presented. 
 
 We focus on new ideas and technologies that complement Java EE and
 intentionally leave out cloud deployments, continuous integration and other topics that would increase the conceptual overhead and technical complexity of the material.
