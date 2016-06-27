@@ -1,5 +1,5 @@
 ---
-title: Announcement 1.0.0.Final
+title: Announcing WildFly Swarm 1.0.0.Final
 publishDate: 2016-06-27
 modifyDate: 2016-06-27
 author: The WildFly Swarm Team
@@ -10,14 +10,14 @@ draft: true
 === What is WildFly Swarm?
 
 WildFly Swarm is the decomposition and reconstitution of the popular
-WildFly Java Application Server in order to support _just enough app-server_
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough app-server_
 for microservice type applications.
 
 Each portion of the app-server is referred to as a _fraction_, which many times
 maps to a `subsystem` from WildFly, but also may include other discrete chunks
 of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
 
-== We've reached 1.0: Hooray, Fireworks!
+== We've reached 1.0.0.Final: Hooray, Fireworks!
 ++++
 <img src="http://www.netanimations.net/4th-of-july-flag-fireworks-animation.gif"/>
 ++++
