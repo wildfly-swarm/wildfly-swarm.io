@@ -4,7 +4,6 @@ publishDate: 2016-06-27
 modifyDate: 2016-06-27
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 === What is WildFly Swarm?
@@ -62,9 +61,9 @@ Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
 All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
 
-Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.CR2.
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/1.0.0.Final.
 
-Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-CR2[available].
+Documentation for this release is http://wildfly-swarm.io/documentation/1-0-0-Final[available].
 
 == Thank you, Contributors!
 
