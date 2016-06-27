@@ -35,7 +35,7 @@ This includes, mostly, making the Jolokia fraction once again work.
 
 === Update Camel
 
-We've push the Camel fractoin from 1.0.4 to 1.1.0.
+We've push the Camel fraction from 1.0.4 to 1.1.0.
 
 == Changelog
 
