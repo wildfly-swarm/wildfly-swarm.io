@@ -33,7 +33,7 @@ Using WildFly swarm is easy! Add dependencies for just the parts of WildFly that
 
 The following example assumes a simple JAX-RS RESTful application.
 
-Import the "bill of materials""
+Import the BOM (_Bill of Materials_) dependency
 
 [source,xml]
 ----
