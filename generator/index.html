@@ -28,7 +28,11 @@
             <div class="form-group">
                 <label class="control-label">Selected dependencies</label>
                 <br/>
-                <div class="tag" ng-repeat="fraction in model.fractions()">{{fraction.name}}&nbsp;<button aria-label="Close" class="close" type="button" ng-click="fraction.selected = false"><span aria-hidden="true">×</span></button></div>
+                <div class="tag" ng-repeat="fraction in model.fractions()">{{fraction.name}}&nbsp;
+                    <button aria-label="Close" class="close" type="button" ng-click="removeFraction(fraction)">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
             </div><br>        </div><br>    </div>
     <div class="row bg-info">
         <div class="col-sm-12 col-md-12">
