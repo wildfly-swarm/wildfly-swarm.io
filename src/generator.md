@@ -38,7 +38,11 @@ Rightsize your Java EE microservice in a few clicks
 			<div class="form-group">
 				<label class="control-label">Selected dependencies</label>
 				<br/>
-				<div class="tag" ng-repeat="fraction in model.fractions()">{{fraction.name}}&nbsp;<button aria-label="Close" class="close" type="button" ng-click="fraction.selected = false"><span aria-hidden="true">×</span></button></div>
+				<div class="tag" ng-repeat="fraction in model.fractions()">{{fraction.name}}&nbsp;
+					<button aria-label="Close" class="close" type="button" ng-click="removeFraction(fraction)">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
 			</div>						
 		</div>		
 	</div>

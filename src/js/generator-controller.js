@@ -16,11 +16,17 @@ angular.module('swarm-generator-app',[])
         }
     }
 
-    configureSearchEngine(allFractions);
+    var searchEngine = configureSearchEngine(allFractions);
 
     $scope.generate = function(model) {
        saveAs(createZip(model), $scope.getZipFileName(model));
     }
+
+    $scope.removeFraction = function(fraction) {
+      fraction.selected = false;
+      updateSearchEngine(searchEngine, allFractions.filter(function(item){return !item.selected;}));
+    }
+
 
     $scope.getZipFileName = function(model) {
       return (model.artifactId || 'demo') + '.zip';
@@ -75,6 +81,7 @@ configureSearchEngine = function(fractions) {
       // Update AngularJS model
       angular.element($('#search')).scope().$apply();
   });
+  return searchEngine;
 }
 
 updateSearchEngine = function (searchEngine, fractions) {
