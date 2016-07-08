@@ -54,9 +54,19 @@ html
     block main
 
     block footer
-      footer(id='footer')
-
-          p(class='text-center') &copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software
+      .container
+        .footer
+          .col-sm-6
+            p(class='text-center')
+              &copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software
+          .col-sm-6
+            p(class='text-center')
+              span
+                | We rely on the
+                | <a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+                | Java profiler from EJ Technologies
+                | </a><br/>
+                | <img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/>
 
     block scripts
       if devMode
@@ -116,6 +126,6 @@ html
       script.
         (function() {
           hljs.initHighlightingOnLoad();
-        })();  
+        })();
 
     block custom-scripts
