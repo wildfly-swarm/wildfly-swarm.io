@@ -50,7 +50,7 @@ Import the BOM (_Bill of Materials_) dependency
 </dependencyManagement>
 ----
 
-Declare the fractions you need:
+Declare the fractions you need (or not, we'll do our best to auto-detect them for you):
 
 [source,xml]
 ----
@@ -67,6 +67,7 @@ Add the WildFly Swarm maven plugin:
 <plugin>
   <groupId>org.wildfly.swarm</groupId>
   <artifactId>wildfly-swarm-plugin</artifactId>
+  <version>${version.wildfly.swarm}</version>
   <executions>
     <execution>
       <goals>
