@@ -26,6 +26,7 @@ and here we are releasing the first in the line of new naming.
 And yes, there was a problem with the original 2016.8, hence 2016.8.1!
 
 Going forward we will be doing releases by month, unless we deem a month unworthy of a release.
+Of course, the JBoss Forge WildFly Swarm addon is also updated, so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.asciidoc[give it a try]!
 
 == What's New?
 
