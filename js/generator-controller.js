@@ -3,12 +3,16 @@ angular.module('swarm-generator-app',[])
 
     // From https://projectodd.ci.cloudbees.com/job/wildfly-swarm/ws/fraction-list/target/classes/fraction-list.js
     var allFractions = fractionList.filter(function(f){return !f.internal;});
+    // Add stability badge URL
+    allFractions.forEach(function(f) {
+      f.stabilityBadgeURL = "https://img.shields.io/badge/stability-"+f.stabilityDescription+"-green.svg?style=flat-square";
+    });
     $scope.fractions = allFractions;
     $scope.categories = extractCategories(allFractions);
     $scope.showInstructions = isJAXRSSelected;
 
     $scope.model = {
-        swarmVersion: "1.0.0.Final",
+        swarmVersion: "2016.8",
         groupId: "com.example",
         artifactId: "demo",
         fractions : function(fractions) {
@@ -69,7 +73,10 @@ configureSearchEngine = function(fractions) {
       source: searchEngine,
       templates: {
         suggestion: function (data) {
-          return "<div><strong>" + data.name + "</strong><br/><small>" + data.description + "</small></div>";
+          return "<div>"+
+                    "<strong>" + data.name + "</strong> <img alt='["+data.stabilityDescription+"]' src='"+data.stabilityBadgeURL+"'><br/>"+
+                    "<small>" + data.description + "</small>" +
+                  "</div>";
          }
       }
   });
@@ -141,7 +148,7 @@ createPOM = function(model) {
   pom += '    <dependencies>\n'
   pom += '      <dependency>\n'
   pom += '        <groupId>org.wildfly.swarm</groupId>\n'
-  pom += '        <artifactId>bom</artifactId>\n'
+  pom += '        <artifactId>bom-all</artifactId>\n'
   pom += '        <version>${version.wildfly.swarm}</version>\n'
   pom += '        <scope>import</scope>\n'
   pom += '        <type>pom</type>\n'

@@ -57,6 +57,7 @@
                     <div class="checkbox" ng-repeat="fraction in fractions | filter: category">
                         <label>
                             <input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
+                            <img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
                             <p class="help-block">{{fraction.description}}</p>
                         </label>
                     </div>
@@ -116,4 +117,4 @@ ga('send', 'pageview');
 </script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script><script>(function() {
   hljs.initHighlightingOnLoad();
 })();
-</script><script src="/lib/jszip/jszip.min.js"></script><script src="/lib/jszip/FileSaver.min.js"></script><script src="/lib/typeahead/typeahead.bundle.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script><script src="http://repo2.maven.org/maven2/org/wildfly/swarm/fraction-list/1.0.0.Final/fraction-list-1.0.0.Final.js"></script><script src="/js/generator-controller.js"></script></body></html>
+</script><script src="/lib/jszip/jszip.min.js"></script><script src="/lib/jszip/FileSaver.min.js"></script><script src="/lib/typeahead/typeahead.bundle.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script><script src="http://repo2.maven.org/maven2/org/wildfly/swarm/fraction-list/2016.8/fraction-list-2016.8.js"></script><script src="/js/generator-controller.js"></script></body></html>
