@@ -4,7 +4,7 @@ angular.module('swarm-generator-app',[])
     // From https://projectodd.ci.cloudbees.com/job/wildfly-swarm/ws/fraction-list/target/classes/fraction-list.js
     var allFractions = fractionList.filter(function(f){return !f.internal;});
     // Add stability badge URL + colors. Levels are: DEPRECATED,EXPERIMENTAL,UNSTABLE,STABLE,FROZEN,LOCKED
-    badgeColor = ['red', 'lightgreen','green','blue','lightgrey','orange'];
+    badgeColor = ['c62914', 'dd5f0a','e5ae13','74c614','33c614','14c6c6'];
     allFractions.forEach(function(f) {
       f.stabilityBadgeURL = "https://img.shields.io/badge/stability-"+f.stabilityDescription+"-"+badgeColor[f.stabilityIndex]+".svg?style=flat-square";
     });
