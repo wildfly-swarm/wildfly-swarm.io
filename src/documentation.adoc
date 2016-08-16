@@ -1,6 +1,6 @@
 ---
 title: WildFly Swarm Documentation
-lastUpdate: 2015-11-10
+lastUpdate: 2016-08-16
 layout: page.jade
 ---
 
@@ -17,6 +17,7 @@ what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
 
 * link:/documentation/HEAD[LATEST]
+* link:/documentation/2016.8[2016.8.1]
 * link:/documentation/1-0-0-Final[1.0.0.Final]
 * link:/documentation/1-0-0-CR2[1.0.0.CR2]
 * link:/documentation/1-0-0-CR1[1.0.0.CR1]
@@ -33,6 +34,7 @@ We provide consolidated documentation for our public API.
 https://github.com/wildfly-swarm/wildfly-swarm
 
 === Tutorials
+
 * link:/tutorial[*Monolith to microservices*]
 
 A tutorial that explain how to migrate a monolith to microservices using WildFly Swarm

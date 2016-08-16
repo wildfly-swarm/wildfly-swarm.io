@@ -1,0 +1,161 @@
+---
+title: Announcing WildFly Swarm 2016.8.1
+publishDate: 2016-08-16
+modifyDate: 2016-08-16
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough app-server_
+for microservice type applications.
+
+Each portion of the app-server is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+== We've reached 2016.8.1! Say what?!
+
+Yes, we've released August.1!
+There was a discussion on our Google Group about six weeks ago regarding release naming,
+and here we are releasing the first in the line of new naming.
+
+And yes, there was a problem with the original 2016.8, hence 2016.8.1!
+
+Going forward we will be doing releases by month, unless we deem a month unworthy of a release.
+
+== What's New?
+
+* MicroProfile.io
+* Driver and Datasource handling
+* CDI Configuration injection
+* Fraction authoring changes
+* Bugfixes
+
+++++
+<!-- more -->
+++++
+
+=== Microprofile.io
+
+TODO
+
+=== Driver and Datasource handling
+
+TODO
+
+=== CDI Configuration injection
+
+TODO
+
+=== Fraction authoring changes
+
+TODO
+
+=== Bugfixes
+
+There are quite a few bugs fixed in this release since 1.0.0.Final.
+Check out the full list of them below in the changelog.
+
+== Changelog
+
+Release notes for 2016.8 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12330963[here].
+
+++++
+<ul>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-258'>SWARM-258</a>] Add jdr subsystem from WildFly</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-481'>SWARM-481</a>] Move default DS creation out of jpa</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-482'>SWARM-482</a>] Provide a fraction to serve the admin console static assets</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-486'>SWARM-486</a>] Can&#39;t load project-stages.yml on classpath with Arq</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-524'>SWARM-524</a>] Make the JAX-RS client API available through the jaxrs fraction</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-528'>SWARM-528</a>] swarm.http.port and swarm.port.offset do not work with @ArquillianResource URL baseURL</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-536'>SWARM-536</a>] docker container - WFLYCTL0079: Failed initializing module org.jboss.as.logging</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-538'>SWARM-538</a>] Camel examples do not eager open HTTP port</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-539'>SWARM-539</a>] Add camel-swagger example</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-544'>SWARM-544</a>] swagger-ui error with jaxrs fraction</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-545'>SWARM-545</a>] Slow Startup Since &#39;Final&#39; Release</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-546'>SWARM-546</a>] Fraction does not retain state from Main to Runtime</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-551'>SWARM-551</a>] Infinispan - access default cache - ClassCastException</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-553'>SWARM-553</a>] Error with logging fraction when using PeriodicSizeRotatingFileHandler</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-556'>SWARM-556</a>] Expose stability index (and friendly word) in the fraction-lists</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-563'>SWARM-563</a>] Finer granularity in the @Configuration annotation(s)</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-565'>SWARM-565</a>] Failed to run Main() within IDE</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-566'>SWARM-566</a>] slf4j bindings do not work</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-574'>SWARM-574</a>] Keycloak Fraction fails because of ClassCastException when web.xml is added via Shrinkwrap</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-578'>SWARM-578</a>] Using gradle, the Main method executes differently in IDE and Swarm.jar</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-580'>SWARM-580</a>] Swarm Uber-jar does not work with gradle and a source-jar-task</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-584'>SWARM-584</a>] Upgrade to wildfly-camel-4.2.0</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-586'>SWARM-586</a>] IllegalStateException when accessing monitoring endpoints</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-587'>SWARM-587</a>] Unable to connect to Remote JMS</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-589'>SWARM-589</a>] Running Arquillian Persistence Extension with Wildfly Swarm example throws an exception</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-590'>SWARM-590</a>] keycloak-server fraction is missing an infinispan cache &quot;authorization&quot; entry</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-594'>SWARM-594</a>] Make default deployment factories CDI components</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-595'>SWARM-595</a>] Re-organize container.runtime</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-597'>SWARM-597</a>] Simplify RuntimeServer CDI bootstrap</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-599'>SWARM-599</a>] Attempt to use and configure JMXFraction fails with CNFE</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-600'>SWARM-600</a>] Provide for enabling the legacy remoting port binding</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-602'>SWARM-602</a>] config-api-generator can not recongnize attribute start with number and short string</li>
+  <li>[<a href='https://issues.jboss.org/browse/SWARM-607'>SWARM-607</a>] StringIndexOutOfBoundsException: String index out of range: -1 during plugin JAR build</li>
+</ul>
+++++
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.8.
+
+Documentation for this release is http://wildfly-swarm.io/documentation/2016.8[available].
+
+== Thank you, Contributors!
+
+
+We appreciate all of our contributors since the last release:
+
+*WildFly Swarm*
+
+- Lance Ball
+- Sebastien Blanc
+- Heiko Braun
+- Ben Browning
+- Toby Crawley
+- Jim Crossley
+- Thomas Diesler
+- Stuart Douglas
+- Ken Finnigan
+- George Gastaldi
+- Marco Hofstetter
+- John Hovell
+- Bob McWhirter
+- Riccardo Merolla
+- James Netherton
+- Eric Parton
+- James Perkins
+- Tomas Remes
+- Mauricio Salatino
+- Harald Wellmann
+
+*Examples*
+
+- Heiko Braun
+- Thomas Diesler
+- Ken Finnigan
+- George Gastaldi
+- Bob McWhirter
+- Sayo Oladeji
+- puffybsd
+
+*Documentation*
+
+- Heiko Braun
+- John Clingan
+- Ken Finnigan
+- George Gastaldi
+- Marco Hofstetter
+- Bob McWhirter
+- Rafael Pereira
