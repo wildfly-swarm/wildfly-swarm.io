@@ -69,7 +69,7 @@ We´ve added new fractions to the core, like Vert.x, the management-console and 
 
 You may have noticed in the http://wildfly-swarm.io/generator/[Project Generator] that we now display stability badges that indicate the level of maturity we believe each Fraction has. 
 
-|===================================================================
+|=====================
 |Level | Description
 
 | Deprecated   | Expect no more changes. Avoid using this fraction.                           
@@ -79,7 +79,7 @@ You may have noticed in the http://wildfly-swarm.io/generator/[Project Generator
 | Frozen       | Expect only patches. Please do not make feature requests.                    
 | Locked       | Expect no changes, except serious bugs. Please do not make feature requests. 
 
-|=========================================================
+|=====================
 
 
 === Bugfixes
