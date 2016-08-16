@@ -33,6 +33,9 @@ Going forward we will be doing releases by month, unless we deem a month unworth
 * Driver and Datasource handling
 * CDI Configuration injection
 * Fraction authoring changes
+* Codebase reorganization
+* New Fractions
+* Fraction Stability indicator
 * Bugfixes
 
 ++++
@@ -41,7 +44,7 @@ Going forward we will be doing releases by month, unless we deem a month unworth
 
 === Microprofile.io
 
-TODO
+Developers have a tremendous amount of Java EE and general Enterprise Java knowledge and skill that they want to leverage as they evaluate the adoption of a cloud-native architecture. The MicroProfile is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. The initially planned baseline is JAX-RS + CDI + JSON-P, with the intent of community having an active role in the MicroProfile definition and roadmap. We´re proud to offer a Microprofile fraction that brings you these technologies out-of-the-box, no strings attached! 
 
 === Driver and Datasource handling
 
@@ -54,6 +57,30 @@ TODO
 === Fraction authoring changes
 
 TODO
+
+=== Codebase reorganization
+We´ve been working hard to ensure that our codebase stays in a single, maintainable place: https://github.com/wildfly-swarm/wildfly-swarm. Don´t be afraid to star it! :)
+
+== New Fractions
+
+We´ve added new fractions to the core, like Vert.x, the management-console and many others, check them out in our http://wildfly-swarm.io/generator/[Project Generator] and in our documentation (soon).
+
+== Fraction stability indicators
+
+You may have noticed in the http://wildfly-swarm.io/generator/[Project Generator] that we now display stability badges that indicate the level of maturity we believe each Fraction has. 
+
+|===================================================================
+|Level | Description
+
+| Deprecated   | Expect no more changes. Avoid using this fraction.                           
+| Experimental | Expect the unexpected. Please provide feedback on API and your use-case      
+| Unstable     | Expect patches and features, possible API changes.                           
+| Stable       | Expect patches, possible features additions.                                 
+| Frozen       | Expect only patches. Please do not make feature requests.                    
+| Locked       | Expect no changes, except serious bugs. Please do not make feature requests. 
+
+|=========================================================
+
 
 === Bugfixes
 
