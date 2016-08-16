@@ -3,9 +3,10 @@ angular.module('swarm-generator-app',[])
 
     // From https://projectodd.ci.cloudbees.com/job/wildfly-swarm/ws/fraction-list/target/classes/fraction-list.js
     var allFractions = fractionList.filter(function(f){return !f.internal;});
-    // Add stability badge URL
+    // Add stability badge URL + colors. Levels are: DEPRECATED,EXPERIMENTAL,UNSTABLE,STABLE,FROZEN,LOCKED
+    badgeColor = ['red', 'lightgreen','green','blue','lightgrey','orange'];
     allFractions.forEach(function(f) {
-      f.stabilityBadgeURL = "https://img.shields.io/badge/stability-"+f.stabilityDescription+"-green.svg?style=flat-square";
+      f.stabilityBadgeURL = "https://img.shields.io/badge/stability-"+f.stabilityDescription+"-"+badgeColor[f.stabilityIndex]+".svg?style=flat-square";
     });
     $scope.fractions = allFractions;
     $scope.categories = extractCategories(allFractions);
