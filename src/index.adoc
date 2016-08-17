@@ -8,7 +8,7 @@ layout: index.jade
 <div class="container lead">
 
 <p>
-Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
+WildFly Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
 server runtime to "java -jar" your application. However, it's all much, much cooler than that ...
 </p>
 

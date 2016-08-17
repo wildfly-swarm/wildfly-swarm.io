@@ -26,7 +26,9 @@ and here we are releasing the first in the line of new naming.
 And yes, there was a problem with the original 2016.8, hence 2016.8.1!
 
 Going forward we will be doing releases by month, unless we deem a month unworthy of a release.
-Of course, the JBoss Forge WildFly Swarm addon is also updated, so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.asciidoc[give it a try]!
+
+And the JBoss Forge WildFly Swarm addon is also updated,
+so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.asciidoc[give it a try]!
 
 == What's New?
 
@@ -34,9 +36,9 @@ Of course, the JBoss Forge WildFly Swarm addon is also updated, so feel free to 
 * Driver and Datasource handling
 * CDI Configuration injection
 * Fraction authoring changes
-* Codebase reorganization
 * New Fractions
 * Fraction Stability indicator
+* GitHub reorganization
 * Bugfixes
 
 ++++
@@ -45,43 +47,87 @@ Of course, the JBoss Forge WildFly Swarm addon is also updated, so feel free to 
 
 === Microprofile.io
 
-Developers have a tremendous amount of Java EE and general Enterprise Java knowledge and skill that they want to leverage as they evaluate the adoption of a cloud-native architecture. The MicroProfile is a baseline platform definition that optimizes Enterprise Java for a microservices architecture and delivers application portability across multiple MicroProfile runtimes. The initially planned baseline is JAX-RS + CDI + JSON-P, with the intent of community having an active role in the MicroProfile definition and roadmap. We´re proud to offer a Microprofile fraction that brings you these technologies out-of-the-box, no strings attached! 
+By now you've likely heard about the http://microprofile.io/[MicroProfile.io] initiative that was announced at Red Hat Summit this year.
+The goal of the MicroProfile is to optimize and enhance Java EE for a microservices architecture.
+There are many challenges with microservices architecture that are not solved by Java EE, but the MicroProfile seeks to close that gap.
+
+The initial version of MicroProfile, planned for September, defines it as containing JAX-RS, CDI, and JSON-P.
+With this release WildFly Swarm now has support for the MicroProfile as a fraction.
+To use it, just add the following to `pom.xml`:
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>microprofile</artifactId>
+  <version>2016.8.1</version>
+</dependency>
+----
 
 === Driver and Datasource handling
 
-TODO
+We recognize that the previous means of configuring JDBC drivers, datasources and integrating them with JPA was not the easiest.
+With this release we've split out the JDBC drivers into fractions for `h2`, `mysql` and `postgresql`.
+
+With this change the JPA Fraction has a dependency on `h2` to get up and running quickly, but it doesn't contain any H2 specific configuration.
+This makes it very easy to switch between JDBC drivers by excluding the `h2` dependency from `jpa` and adding a dependency for a different driver.
+
+All the existing configuration properties haven't changed and work as before.
 
 === CDI Configuration injection
 
-TODO
+This change breaks backwards compatibility, unfortunately, as we've renamed `@ConfigValue` to `@ConfigurationValue`.
+Configuration values are also now injectable into Fractions or user application code!
 
 === Fraction authoring changes
 
-TODO
+Developing fractions is now a whole lot simpler!
 
-=== Codebase reorganization
-We´ve been working hard to ensure that our codebase stays in a single, maintainable place: https://github.com/wildfly-swarm/wildfly-swarm. Don´t be afraid to star it! :)
+Only a single Maven module is now required for a Fraction, with any complexity moved into the fraction-plugin for packaging it.
 
-== New Fractions
+Full details are available in the link:/documentation/2016.8/fraction_authoring.html[User Guide].
 
-We´ve added new fractions to the core, like Vert.x, the management-console and many others, check them out in our http://wildfly-swarm.io/generator/[Project Generator] and in our documentation (soon).
+=== New Fractions
 
-== Fraction stability indicators
+We´ve added some new fractions such as Vert.x and management-console,
+come check them out in our http://wildfly-swarm.io/generator/[Project Generator] and the documentation (soon).
 
-You may have noticed in the http://wildfly-swarm.io/generator/[Project Generator] that we now display stability badges that indicate the level of maturity we believe each Fraction has. 
+=== Fraction stability indicators
 
-|=====================
-|Level | Description
-
-| Deprecated   | Expect no more changes. Avoid using this fraction.                           
-| Experimental | Expect the unexpected. Please provide feedback on API and your use-case      
-| Unstable     | Expect patches and features, possible API changes.                           
-| Stable       | Expect patches, possible features additions.                                 
-| Frozen       | Expect only patches. Please do not make feature requests.                    
-| Locked       | Expect no changes, except serious bugs. Please do not make feature requests. 
+You may have noticed in the http://wildfly-swarm.io/generator/[Project Generator] that we now display stability badges
+that indicate the level of maturity for each Fraction.
+The table below outlines what the different stability levels mean:
 
 |=====================
+| Level | Description
 
+| Deprecated
+| Expect no more changes. Avoid using this fraction.
+
+| Experimental
+| Expect the unexpected. Please provide feedback on API and your use-case
+
+| Unstable
+| Expect patches and features, possible API changes.
+
+| Stable
+| Expect patches, possible features additions.
+
+| Frozen
+| Expect only patches. Please do not make feature requests.
+
+| Locked
+| Expect no changes, except serious bugs. Please do not make feature requests.
+|=====================
+
+=== GitHub reorganization
+
+After splitting out the codebase into several repositories a few releases ago, after 1.0.0.Final we've merged them all together again!
+
+There are still a couple of repositories, fraction-plugin and spi, that are still separate but the rest is all in https://github.com/wildfly-swarm/wildfly-swarm.
+We've been able to merge them together by simplifying what is required to develop a Fraction, thereby reducing the number of Maven poms required.
+
+Don´t be afraid to star it! :)
 
 === Bugfixes
 
@@ -142,31 +188,20 @@ Documentation for this release is http://wildfly-swarm.io/documentation/2016.8[a
 
 == Thank you, Contributors!
 
-
 We appreciate all of our contributors since the last release:
 
 *WildFly Swarm*
 
-- Lance Ball
 - Sebastien Blanc
 - Heiko Braun
-- Ben Browning
-- Toby Crawley
-- Jim Crossley
 - Thomas Diesler
 - Stuart Douglas
 - Ken Finnigan
 - George Gastaldi
 - Marco Hofstetter
-- John Hovell
 - Bob McWhirter
-- Riccardo Merolla
-- James Netherton
-- Eric Parton
 - James Perkins
 - Tomas Remes
-- Mauricio Salatino
-- Harald Wellmann
 
 *Examples*
 
