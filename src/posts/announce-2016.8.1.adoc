@@ -4,7 +4,6 @@ publishDate: 2016-08-16
 modifyDate: 2016-08-16
 author: The WildFly Swarm Team
 layout: post.jade
-#draft: true
 ---
 
 == We've reached 2016.8.1! Say what?!
