@@ -24,7 +24,7 @@ so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.
 
 == What's New?
 
-* MicroProfile.io
+* MicroProfile
 * Driver and Datasource handling
 * CDI Configuration injection
 * Fraction authoring changes
@@ -47,9 +47,9 @@ of functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
 <!-- more -->
 ++++
 
-=== Microprofile.io
+=== Microprofile
 
-By now you've likely heard about the http://microprofile.io/[MicroProfile.io] initiative that was announced at Red Hat Summit this year.
+By now you've likely heard about the http://microprofile.io/[MicroProfile] initiative that was announced at Red Hat Summit this year.
 The goal of the MicroProfile is to optimize and enhance Java EE for a microservices architecture.
 There are many challenges with microservices architecture that are not solved by Java EE, but the MicroProfile seeks to close that gap.
 
