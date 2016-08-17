@@ -68,7 +68,8 @@ To use it, just add the following to `pom.xml`:
 
 === Driver and Datasource handling
 
-We recognize that the previous means of configuring JDBC drivers, datasources and integrating them with JPA was not the easiest.
+We've completely reworked how JDBC drivers, datasources and JPA interact to simplify it and remove a lot of the interdependencies between them.
+We recognized that the previous means of configuring JDBC drivers, datasources and integrating them with JPA was not the easiest.
 With this release we've split out the JDBC drivers into fractions for `h2`, `mysql` and `postgresql`.
 
 With this change the JPA Fraction has a dependency on `h2` to get up and running quickly, but it doesn't contain any H2 specific configuration.
