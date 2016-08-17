@@ -9,15 +9,15 @@ layout: post.jade
 == We've reached 2016.8.1! Say what?!
 
 Yes, we've released August.1!
-There was a discussion on our Google Group about six weeks ago regarding release naming,
-and here we are releasing the first in the line of new naming.
+There was a discussion on our https://groups.google.com/forum/#!topic/wildfly-swarm/c7X3Rfjng6Q[Google Group] about six weeks ago regarding release naming,
+and here we are releasing the first in the line of that new naming.
 
 And yes, there was a problem with the original 2016.8, hence 2016.8.1!
 
 Going forward we will be doing releases by month, unless we deem a month unworthy of a release.
 
 With this release we've introduced multiple BOMs to signify maturity of the various parts.
-See below for further details.
+See the section on _Fraction Stability indicator_ for further details.
 
 And the JBoss Forge WildFly Swarm addon is also updated,
 so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.asciidoc[give it a try]!
