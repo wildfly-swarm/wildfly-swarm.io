@@ -36,7 +36,7 @@ so feel free to https://github.com/forge/wildfly-swarm-addon/blob/master/README.
 * Driver and Datasource handling
 * CDI Configuration injection
 * Fraction authoring changes
-* New Fractions
+* Arquillian Testing changes
 * Fraction Stability indicator
 * GitHub reorganization
 * Bugfixes
@@ -87,10 +87,20 @@ Only a single Maven module is now required for a Fraction, with any complexity m
 
 Full details are available in the link:/documentation/2016.8/fraction_authoring.html[User Guide].
 
-=== New Fractions
+=== Arquillian Testing changes
 
-We´ve added some new fractions such as Vert.x and management-console,
-come check them out in our http://wildfly-swarm.io/generator/[Project Generator] and the documentation (soon).
+We've simplified how to do testing with Arquillian in this release.
+
+There is no longer a need to have the test implement `ContainerFactory`, etc.
+All you need is to define a `Swarm` instance like this:
+
+[source,java]
+----
+@CreateSwarm
+public static Swarm newContainer() throws Exception {
+    return new Swarm().fraction(EJBFraction.createDefaultFraction());
+}
+----
 
 === Fraction stability indicators
 
