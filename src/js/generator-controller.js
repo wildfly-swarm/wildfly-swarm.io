@@ -13,7 +13,7 @@ angular.module('swarm-generator-app',[])
     $scope.showInstructions = isJAXRSSelected;
 
     $scope.model = {
-        swarmVersion: "2016.8",
+        swarmVersion: "2016.8.1",
         groupId: "com.example",
         artifactId: "demo",
         fractions : function(fractions) {
