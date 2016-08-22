@@ -57,7 +57,7 @@ extractCategories = function(fractions) {
 configureSearchEngine = function(fractions) {
   var searchEngine = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.nonword('name', 'description', 'tags'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.nonword,
     identify: function (obj) {
         return obj.name;
     },
