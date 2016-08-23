@@ -30,7 +30,7 @@ NOTE: Make sure you explicitly bind the services to `<PUBLIC_IP>`, i.e.:
 == Outcome
 * Swarm packages the required runtime components and your service into a distinct .jar file
 * You can each run service separately, without deploying it on WildFly.
-* The user interface, remaining on WildFly, still works as expe
+* The user interface, remaining on WildFly, still works as expected.
 
 == Documentation
 * https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/getting-started/basics.html[Swarm Basics]
