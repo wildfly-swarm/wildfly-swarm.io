@@ -1,8 +1,8 @@
-Subject: 50 chars or less followed by blank line.
+SWARM-xxx: Subject of 50 chars or less followed by blank line.
 
 Motivation
 ----
-What is the purpose of this commit. Reference JIRA issues here.
+What is the purpose of this commit.
 
 Modifications
 ----
