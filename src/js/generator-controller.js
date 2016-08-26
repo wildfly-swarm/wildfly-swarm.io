@@ -115,7 +115,7 @@ isJAXRSSelected = function(model) {
   var selectedFractions = model.fractions();
   var result = (selectedFractions.length == 0);
   for (i=0;i<selectedFractions.length;i++) {
-    if (selectedFractions[i].name === 'JAX-RS') {
+    if (selectedFractions[i].name === 'JAX-RS' || selectedFractions[i].name === 'MicroProfile') {
       result = true;
     }
   }
