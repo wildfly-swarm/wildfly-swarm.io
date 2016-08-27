@@ -1,5 +1,5 @@
 ---
-title: Rightsize your JavaEE Applications
+title: Rightsize your Java EE Applications
 layout: index.jade
 ---
 
@@ -8,7 +8,7 @@ layout: index.jade
 <div class="container lead">
 
 <p>
-WildFly Swarm offers an innovative approach to packaging and running JavaEE applications by packaging them with just enough of the
+WildFly Swarm offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
 server runtime to "java -jar" your application. However, it's all much, much cooler than that ...
 </p>
 
@@ -133,7 +133,7 @@ java -jar <myapp>-swarm.jar
   <div class="well">
   <p>
     <h3><i class="fa fa-industry"></i> Mature</h3>
-    Develop services using the feature richness and maturity of the enterprise Java industry standard - JavaEE
+    Develop services using the feature richness and maturity of the enterprise Java industry standard - Java EE
     </p>
   </div>
   </div>
@@ -141,7 +141,7 @@ java -jar <myapp>-swarm.jar
   <div class="well">
   <p>
     <h3><i class="fa fa-cubes"></i> Flexible</h3>
-    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the JavaEE 7 WildFly application server
+    Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
     that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
     </p>
   </div>
@@ -151,7 +151,7 @@ java -jar <myapp>-swarm.jar
   <div class="well">
     <p>
     <h3><i class="fa fa-check"></i> Straightforward</h3>
-      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any JavaEE compatible application server.
+      Generate uberjar (Ex: java -jar MyApp.jar), or generate a .war and deploy to any Java EE compatible application server.
     </p>
   </div>
   </div>
