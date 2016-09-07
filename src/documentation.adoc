@@ -16,7 +16,8 @@ If you are new to WildFly Swarm, this is the best place to start. Learn
 what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
 
-* link:/documentation/HEAD[LATEST]
+* link:/documentation/HEAD[Latest Development Snapshot]
+* link:/documentation/2016-9[2016.9]
 * link:/documentation/2016-8-1[2016.8.1]
 * link:/documentation/1-0-0-Final[1.0.0.Final]
 * link:/documentation/1-0-0-CR2[1.0.0.CR2]

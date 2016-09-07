@@ -1,0 +1,76 @@
+---
+title: WildFly Swarm Downloads
+lastUpdate: 2016-09-06
+layout: page.jade
+---
+
+++++
+<div class="page-header">
+  <h2>Downloads</a>
+</div>
+++++
+
+=== Generally Speaking
+
+For the most part, WildFly Swarm is consumed through
+Maven artifacts, resembling `pom.xml` entries such as
+
+[code,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>jaxrs</artifactId>
+</dependency>
+----
+
+We highly recommend using one of our BOMs so that you don't
+need to specify versions of each component you bring in:
+
+[code,xml]
+----
+<dependencyManagement>
+  <dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>bom<artifactId>
+    <version>${version.wildfly-swarm}</version>
+    <type>pom</type>
+    <scope>import</scope>
+  </dependency>
+</dependencyManagement>
+----
+
+=== Directly Downloadable
+
+We do provide a few directly downloadable and usable items:
+
+==== SwarmTool
+
+SwarmTool can be used to take an existing `.war` and "swarmify" it.
+
+link:/download/swarmtool[swarmtool.jar]
+
+==== MicroProfile Server
+
+Our MicroProfile server can be used to run an existing MicroProfile-compliant
+`.war` file.
+
+link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar] 
+
+==== Keycloak Server
+
+Our Keycloak standalone server may be used to run your own Keycloak easily.
+
+link:/download/keycloak-swarm[keycloak-swarm.jar] 
+
+==== Management Console Server
+
+Our runnable WildFly Management Console may be used to manage your
+WildFly Swarm application (if they include the `management` fraction).
+
+link:/download/management-console-swarm[management-console-swarm.jar] 
+
+==== Swagger UI
+
+Our runnable Swagger UI server makes it easy to launch the Swagger UI.
+
+link:/download/swagger-ui-swarm[swagger-ui-swarm.jar]

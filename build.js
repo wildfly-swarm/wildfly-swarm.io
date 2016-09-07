@@ -19,6 +19,8 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
+var CURRENT_RELEASE = '2016.9';
+
 moment.locale('en', {
   calendar : {
     lastDay : '[Yesterday, ] MMM Do',
@@ -131,6 +133,11 @@ function build() {
     ))
 
     .use(redirect({
+      '/download/swarmtool': 'http://repo2.maven.org/maven2/org/wildfly/swarm/swarmtool/'+ CURRENT_RELEASE + '/swarmtool-' + CURRENT_RELEASE + '-standalone.jar',
+      '/download/microprofile-hollowswarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/microprofile/' + CURRENT_RELEASE + '/microprofile-' + CURRENT_RELEASE + '-hollowswarm.jar',
+      '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + CURRENT_RELEASE + '/keycloak-' + CURRENT_RELEASE + '-swarm.jar',
+      '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + CURRENT_RELEASE + '/management-console-' + CURRENT_RELEASE + '-swarm.jar',
+      '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + CURRENT_RELEASE + '/swagger-ui-' + CURRENT_RELEASE + '-swarm.jar',
       '/documentation/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/',
       '/documentation/1-0-0-Alpha6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha6/',
       '/documentation/1-0-0-Alpha8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha8/',
@@ -141,6 +148,7 @@ function build() {
       '/documentation/1-0-0-CR2': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/56dc244fbc0061d12d923c3b3f964b6c8d2d7e78/',
       '/documentation/1-0-0-Final': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/6a00bb344527303f784f541ee2fb93abec4a1ef4/',
       '/documentation/2016-8-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/',
+      '/documentation/2016-9': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/',
     }))
 
     .build(function (err) {
