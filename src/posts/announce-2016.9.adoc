@@ -4,7 +4,6 @@ publishDate: 2016-09-07
 modifyDate: 2016-09-07
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == It's September, so that means 2016.9 is out!
