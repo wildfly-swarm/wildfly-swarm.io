@@ -18,6 +18,8 @@ mentioned by Shakespeare in any of his plays.
 
 * WildFly 10.1.0.Final
 * Continued MicroProfile support
+* Cleaner WEB-INF/lib
+* Hollow Uberjars
 
 === What is WildFly Swarm?
 
@@ -46,6 +48,30 @@ a handy-dandy, downloadble server for your existing MicroProfile-complaint
 `.war` applications.  You can link:/download/microprofile-hollowswarm[grab it]
 and https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/server/microprofile.html[read about how to use it].
 
+=== Cleaner `WEB-INF/lib`
+
+A chronic problem we've seen in the past is that various usage scenarios
+result in extraneous items appearing in your `WEB-INF/lib` directory. This
+not only caused bloat, but also could cause errors, particularly regarding CDI.
+
+The Maven plugin now will be smarter about what goes into `WEB-INF/lib`, and
+actively repackages your `.war` file to ensure that it isn't polluted, in
+the case of `compile` scoped transitive dependencies.
+
+=== Hollow Uberjars
+
+This release supports the concept of _hollow_ uberjars, which is a slightly
+contradictory term, of course.  You can perform a build with the property
+of `swarm.hollow` set to true, and the resulting uberjar will be capable
+of running your application.  But it won't actually contain your application.
+
+This is differentiated by the `-hollowswarm.jar` suffix on the resulting output.
+
+This is the mechanism we used to provide the MicroProfile server mentioned above,
+but it's possibly useful for your own purposes.  Simply pass your own `.war`
+files for deployment on the command-line.  If you're using Linux containers, such
+as Docker, this would allow you to put just enough app-server on one layer, while
+stuffing your application `.war` on a higher one.
 
 === Bugfixes
 
