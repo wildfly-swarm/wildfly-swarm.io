@@ -1,0 +1,137 @@
+---
+title: Announcing WildFly Swarm 2016.9
+publishDate: 2016-09-07
+modifyDate: 2016-09-07
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== It's September, so that means 2016.9 is out!
+
+Continuing our trend of monthly releases, as discussed on
+the https://groups.google.com/forum/#!topic/wildfly-swarm/c7X3Rfjng6Q[Google Group], 
+we're pleased to release 2016.9, celebrating September, a month never
+mentioned by Shakespeare in any of his plays.
+
+=== What's New?
+
+* WildFly 10.1.0.Final
+* Continued MicroProfile support
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+++++
+<!-- more -->
+++++
+
+=== WildFly 10.1.0.Final 
+
+This release of WildFly Swarm is now based upon WildFly 10.1.0.Final,
+which brings about easy support for HTTP2, among other interesting things.
+
+
+=== MicroProfile
+
+While we added support for MicroProfile last month, this month we provide
+a handy-dandy, downloadble server for your existing MicroProfile-complaint
+`.war` applications.  You can link:/download/microprofile-hollowswarm[grab it]
+and https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/server/microprofile.html[read about how to use it].
+
+
+=== Bugfixes
+
+There are quite a few bugs fixed in this release since 2016.8.1.
+Check out the full list of them below in the changelog.
+
+== Changelog
+
+Release notes for 2016.9 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12330979[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-657[SWARM-657]] can't run tests using the Arquillian Daemon when another application listens on port 12345
+* [https://issues.jboss.org/browse/SWARM-654[SWARM-654]] Hollow jars are not recognized as such
+* [https://issues.jboss.org/browse/SWARM-651[SWARM-651]] AmbiguousResolutionException when starting uberjar
+* [https://issues.jboss.org/browse/SWARM-650[SWARM-650]] Microprofile example fails to start
+* [https://issues.jboss.org/browse/SWARM-635[SWARM-635]] ExplodedImporter not available in main()
+* [https://issues.jboss.org/browse/SWARM-633[SWARM-633]] Arquillian container is not available in `bom` only `bom-all`
+* [https://issues.jboss.org/browse/SWARM-622[SWARM-622]] Remove reference to Fraction.InitContext in docs
+* [https://issues.jboss.org/browse/SWARM-620[SWARM-620]] Generator search doesn't recognize 'jax-'
+* [https://issues.jboss.org/browse/SWARM-615[SWARM-615]] Manual lookup of CDI-Instance doesn't work since 2016.8.1
+* [https://issues.jboss.org/browse/SWARM-614[SWARM-614]] Container provided dependencies cannot be declared as such for WAR
+* [https://issues.jboss.org/browse/SWARM-613[SWARM-613]] ModuleNotFoundException while run example with 2016.8.1
+* [https://issues.jboss.org/browse/SWARM-611[SWARM-611]] Weld warnings being displayed when starting a swarmed app
+* [https://issues.jboss.org/browse/SWARM-598[SWARM-598]] swarm jmx could be used only with jar packaging
+* [https://issues.jboss.org/browse/SWARM-596[SWARM-596]] @CreateSwarm fails when test class implements interfaces or extends classes
+* [https://issues.jboss.org/browse/SWARM-588[SWARM-588]] HealthCheck endpoint doesn't work when JAX-RS  javax.ws.rs.core.Application @ApplicationPath defined
+* [https://issues.jboss.org/browse/SWARM-579[SWARM-579]] @ConfigValue not working when running as an uberjar
+* [https://issues.jboss.org/browse/SWARM-575[SWARM-575]] swarmtool fails on javaee7 Stateless EJB example
+* [https://issues.jboss.org/browse/SWARM-572[SWARM-572]] BOM does not include version for arquillian-junit-container
+* [https://issues.jboss.org/browse/SWARM-571[SWARM-571]] Arquillian does not include src/main/resource/modules
+* [https://issues.jboss.org/browse/SWARM-564[SWARM-564]] Can't get underlying PostgreSQL database connection from datasource
+* [https://issues.jboss.org/browse/SWARM-549[SWARM-549]] Creating project from generator cannot compile as JARs cannot download
+* [https://issues.jboss.org/browse/SWARM-527[SWARM-527]] jboss-web defined context-root is ignored for health check resources
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-656[SWARM-656]] Stopping WF-Swarm shows ERROR in log: because no Bean Validation provider could be found
+* [https://issues.jboss.org/browse/SWARM-644[SWARM-644]] Change H2 Fraction stability to STABLE
+* [https://issues.jboss.org/browse/SWARM-639[SWARM-639]] Unify and Simplify the various .conf handling
+* [https://issues.jboss.org/browse/SWARM-631[SWARM-631]] @ConfigurationValue should not provide a default empty value()
+* [https://issues.jboss.org/browse/SWARM-621[SWARM-621]] Move :spi into main repository to simplify updating it
+* [https://issues.jboss.org/browse/SWARM-616[SWARM-616]] Filter the core WildFly Swarm jars from a user's WEB-INF/lib if they appear there
+* [https://issues.jboss.org/browse/SWARM-609[SWARM-609]] Add appropriate debug logging in container to provide information about what's happening
+* [https://issues.jboss.org/browse/SWARM-608[SWARM-608]] Display installed fractions with their stabilityLevel at boot
+* [https://issues.jboss.org/browse/SWARM-604[SWARM-604]] Running uber jar introduces redundant temp jar files in user tmp dir
+* [https://issues.jboss.org/browse/SWARM-534[SWARM-534]] Generator fractions selection
+* [https://issues.jboss.org/browse/SWARM-526[SWARM-526]] Define WildFly Swarm as product-name
+* [https://issues.jboss.org/browse/SWARM-492[SWARM-492]] Provide localized error messages and codes for Swarm exceptions
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-653[SWARM-653]] Create a MicroProfile distribution
+* [https://issues.jboss.org/browse/SWARM-628[SWARM-628]] Allow enabling HTTP/S by generating a local keystore for testing purposes
+* [https://issues.jboss.org/browse/SWARM-619[SWARM-619]] Enable HTTP/2 support in the existing HTTP(/S) connectors
+* [https://issues.jboss.org/browse/SWARM-293[SWARM-293]] Pass a WAR to Swarm for deployment
+* [https://issues.jboss.org/browse/SWARM-292[SWARM-292]] Ability to deploy as WAR or java -jar
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-617[SWARM-617]] Upgrade to WildFly 10.1.0.Final
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-562[SWARM-562]] Add swarm.fraction.tags property to camel fraction pom.xml files
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.8.
+
+Documentation for this release is link:/documentation/2016-8-1[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Athou
+* Heiko Braun
+* Toby Crawley
+* Ken Finnigan
+* George Gastaldi
+* Bob McWhirter
+* Ladislav Thon
+* Sebastien Blanc
+
+=== Examples
+* Ken Finnigan
+* Bob McWhirter
+
