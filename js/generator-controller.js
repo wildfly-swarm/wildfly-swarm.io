@@ -106,7 +106,6 @@ createZip = function(model) {
   if (isJAXRSSelected(model)) {
     var restFolder = srcJavaFolder.folder("com").folder("example").folder("rest");
     restFolder.file("HelloWorldEndpoint.java", createRestEndpoint());
-    restFolder.file("RestApplication.java", createRestApplication());
   }
   return zip.generate({type:"blob"});
 }
@@ -215,20 +214,6 @@ createRestEndpoint = function() {
   cls += '  public Response doGet() {\n'
   cls += '    return Response.ok("Hello from WildFly Swarm!").build();\n'
   cls += '  }\n'
-  cls += '}'
-
-  return cls;
-}
-
-createRestApplication = function() {
-  var cls = '';
-  cls += 'package com.example.rest;\n'
-  cls += '\n'
-  cls += 'import javax.ws.rs.core.Application;\n'
-  cls += 'import javax.ws.rs.ApplicationPath;\n'
-  cls += '\n'
-  cls += '@ApplicationPath("/rest")\n'
-  cls += 'public class RestApplication extends Application {\n'
   cls += '}'
 
   return cls;
