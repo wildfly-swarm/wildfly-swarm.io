@@ -64,7 +64,8 @@ Create a regular Maven project with _war_ packaging type and then add the follow
 </dependencyManagement>
 ----
 
-NOTE: We use the `bom-all` dependency as `microprofile` is treated as unstable due to its immaturity.
+NOTE: We use the `bom-all` dependency as `microprofile` is treated as unstable as MicroProfile 1.0 is a limited release,
+by design, as we anticipate rapid expansion of features moving forward.
 In subsequent releases it will become stable and `bom` can be used instead.
 
 .WF Swarm plugin
