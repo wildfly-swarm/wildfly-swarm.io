@@ -114,7 +114,7 @@ mvn wildfly-swarm:run
 This is the quickest way to start the project without needing to build the uber jar first.
 
 If the project was created manually there aren't any endpoints we can test with, but it will have started without error.
-If the generator was used, use a browser to access http://localhost:8080/rest/hello and you will see the Resource return a message.
+If the generator was used, use a browser to access http://localhost:8080/hello and you will see the Resource return a message.
 
 Now lets stop the server with _Ctrl+c_ and we will create a JAX-RS resource.
 
