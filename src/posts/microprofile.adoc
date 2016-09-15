@@ -9,7 +9,7 @@ draft: true
 
 === What is MicroProfile?
 
-http://microprofile.io[MicroProfile] is a new initiative the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
+http://microprofile.io[MicroProfile] is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
 A MicroProfile 1.0 will be announced next week at JavaOne, which contains CDI, JAX-RS and JSON-P.
 For the first release what is present was deliberately kept small.
 Going beyond 1.0 the community will provide valuable ideas and feedback on both the types of technology that should be included within the MicroProfile,
