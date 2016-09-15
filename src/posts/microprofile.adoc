@@ -1,0 +1,262 @@
+---
+title: MicroProfile with WildFly Swarm
+publishDate: 2016-09-15
+modifyDate: 2016-09-15
+author: Ken Finnigan
+layout: post.jade
+draft: true
+---
+
+=== What is MicroProfile?
+
+http://microprofile.io[MicroProfile] is a new initiative from vendors and Java EE community to foster rapid innovation around Microservices and Enterprise Java.
+A 1.0 of the MicroProfile will be announced next week at JavaOne, which contains CDI, JAX-RS and JSON-P.
+For the first release what is present was deliberately kept small.
+Going beyond 1.0 the community will provide valuable ideas and feedback on both the types of technology that should be included within the MicroProfile,
+as well as concepts, such as Service Discovery, that should be addressed.
+
+Though MicroProfile focuses on Java EE specifications for 1.0, Java EE is not a requirement for what is produced from the MicroProfile.
+There will likely be non Java EE frameworks and libraries that the community wishes to include to solve various use cases related to Microservices.
+
+If you'd like to voice your opinions and participate in the community check out the discussions in the https://groups.google.com/forum/#!forum/microprofile[Google Group].
+
+++++
+<!-- more -->
+++++
+
+=== Using MicroProfile
+
+So what do I need to do to create a MicroProfile project you might ask?
+
+With WildFly Swarm there are two options:
+
+. Project Generator
+. Manually
+
+==== Project Generator
+
+Head over to http://wildfly-swarm.io/generator/ and customize the group and artifact ids that are automatically set for you.
+Then start typing _MicroProfile_ into the dependencies box and it will pop up in a list, so select it.
+
+Next we click "Generate Project" and it will provide a zip containing `pom.xml` and a basic JAX-RS resource as a starting point.
+
+==== Manually
+
+Create a regular Maven project with _war_ packaging type and then add the following into `pom.xml`:
+
+.Import WF Swarm BOM
+[source,xml]
+----
+<properties>
+  <version.wildfly.swarm>2016.9</version.wildfly.swarm>
+</properties>
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>bom-all</artifactId>
+      <version>${version.wildfly.swarm}</version>
+      <scope>import</scope>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+----
+
+NOTE: We use the `bom-all` dependency as `microprofile` is treated as unstable due to its immaturity.
+In subsequent releases it will become stable and `bom` can be used instead.
+
+.WF Swarm plugin
+[source,xml]
+----
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-plugin</artifactId>
+      <version>${version.wildfly.swarm}</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>package</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+----
+
+.Dependencies
+[source,xml]
+----
+<dependencies>
+  <!-- Wildfly Swarm Fractions -->
+  <dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>microprofile</artifactId>
+  </dependency>
+</dependencies>
+----
+
+NOTE: We don't need a `provided` dependency on Java EE 7 APIs as they are transitively brought in via `microprofile`.
+
+==== Starting WildFly Swarm
+
+Whichever of the above methods you used to create your project, you are able to run it with:
+
+[source,bash]
+----
+mvn wildfly-swarm:run
+----
+
+This is the quickest way to start the project without needing to build the uber jar first.
+
+If the project was created manually there aren't any endpoints we can test with, but it will have started without error.
+If the generator was used, use a browser to access http://localhost:8080/rest/hello and you will see the Resource return a message.
+
+Now lets stop the server with _Ctrl+c_ and we will create a JAX-RS resource.
+
+NOTE: If you used the generator you can remove the code that was generated for you as we will be creating a new Resource in the next section.
+
+=== JAX-RS Resource
+
+First thing we need is a JAX-RS Resource that provides us with an endpoint we can access in the browser.
+
+Let's create the following class in the `org.example.microprofile` package:
+
+.MyTimeResource
+[source,java]
+----
+@Path("/")
+public class MyTimeResource {
+    @GET
+    @Path("/datetime")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTime() {
+        return LocalDateTime.now().toString();
+    }
+}
+----
+
+Now if we start WildFly Swarm with:
+
+[source,bash]
+----
+mvn wildfly-swarm:run
+----
+
+open http://localhost:8080/datetime in a browser and see a response like:
+
+[source]
+--
+2016-09-14T15:37:22.243
+--
+
+=== Bring in some CDI
+
+We've got a basic JAX-RS Resource, let's add some injection.
+We will keep it simple and create a class to produce a `LocalDateTime` instance for us:
+
+.DateProducer
+[source,java]
+----
+@ApplicationScoped
+public class DateProducer {
+    @Produces
+    LocalDateTime getDateTimeNow() {
+        return LocalDateTime.now();
+    }
+}
+----
+
+Now we can update the `MyTimeResource` to use it:
+
+.MyTimeResource
+[source,java]
+----
+@Path("/")
+public class MyTimeResource {
+    @Inject
+    LocalDateTime dateTime;
+
+    @GET
+    @Path("/datetime")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTime() {
+        return dateTime.toString();
+    }
+}
+----
+
+If we now go to http://localhost:8080/datetime it will give us the same information as before.
+Though without a time machine it will display a different time!
+
+=== JSON Processing (JSON-P)
+
+Now it's time to bring the final piece of MicroProfile in with JSON-P!
+
+Let's add another method to our JAX-RS Resource that returns a `JsonObject` that we construct from the `LocalDateTime` instance we injected:
+
+.MyTimeResource
+[source,java]
+----
+@Path("/")
+public class MyTimeResource {
+    private static final JsonBuilderFactory jsonFactory = Json.createBuilderFactory(null);
+
+    @Inject
+    LocalDateTime dateTime;
+
+    @GET
+    @Path("datetimejson")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonObject getDateTimeJson() {
+        return jsonFactory.createObjectBuilder()
+                .add("date", jsonFactory.createObjectBuilder()
+                        .add("dayOfWeek", dateTime.getDayOfWeek().name())
+                        .add("dayOfMonth", dateTime.getDayOfMonth())
+                        .add("month", dateTime.getMonth().name())
+                        .add("monthNumber", dateTime.getMonthValue())
+                        .add("year", dateTime.getYear())
+                )
+                .add("time", jsonFactory.createObjectBuilder()
+                        .add("hour", dateTime.getHour())
+                        .add("minutes", dateTime.getMinute())
+                        .add("seconds", dateTime.getSecond())
+                        .add("nanoseconds", dateTime.getNano())
+                )
+                .build();
+    }
+}
+----
+
+Fire up WildFly Swarm again and open http://localhost:8080/datetimejson in a browser and we see output similar to:
+
+[source]
+--
+{
+  "date":{
+    "dayOfWeek":"WEDNESDAY",
+    "dayOfMonth":14,
+    "month":"SEPTEMBER",
+    "monthNumber":9,
+    "year":2016
+  },
+  "time":{
+    "hour":22,
+    "minutes":19,
+    "seconds":51,
+    "nanoseconds":229000000
+  }
+}
+--
+
+=== Conclusion
+
+We've now taken a whirlwind tour of what MicroProfile provides for us as developers,
+and created a simple RESTful endpoint service with WildFly Swarm that uses MicroProfile.
+
+As MicroProfile expands to encompass additional technologies and features,
+be sure to come back and check out more posts on MicroProfile.
