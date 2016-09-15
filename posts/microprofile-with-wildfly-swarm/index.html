@@ -1,0 +1,382 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>MicroProfile with WildFly Swarm | WildFly Swarm</title><link rel="stylesheet" media="screen" href="/lib/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" media="screen" href="/css/site.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/images/swarm_icon_32x32.png" class="icon"><span>WildFly Swarm</span></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/generator">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/downloads">Downloads</a></li><li><a href="/community">Community</a></li><li><a href="/resources">Resources</a></li><li><a href="https://github.com/wildfly-swarm/wildfly-swarm" class="hidden-xs hidden-sm hidden-md">GitHub</a></li></ul></div></div></nav><section class="section"><div class="container"><div class="row"><div class="col-sm-8"><article id="article"><h1>MicroProfile with WildFly Swarm</h1><div class="post-meta">By Ken Finnigan | Published Today,  Sep 15th</div><div><div class="sect2">
+<h3 id="_what_is_microprofile">What is MicroProfile?</h3>
+<div class="paragraph">
+<p><a href="http://microprofile.io">MicroProfile</a> is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
+A MicroProfile 1.0 will be announced next week at JavaOne, which contains CDI, JAX-RS and JSON-P.
+For the first release what is present was deliberately kept small.
+Going beyond 1.0 the community will provide valuable ideas and feedback on both the types of technology that should be included within the MicroProfile,
+as well as concepts, such as Service Discovery, that should be addressed.</p>
+</div>
+<div class="paragraph">
+<p>Though MicroProfile focuses on Java EE specifications for 1.0, Java EE is not a requirement for what is produced from the MicroProfile.
+There will likely be non Java EE frameworks and libraries that the community wishes to include to solve various use cases related to Microservices.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;d like to voice your opinions and participate in the community check out the discussions in the <a href="https://groups.google.com/forum/#!forum/microprofile">Google Group</a>.</p>
+</div>
+<!-- more -->
+</div>
+<div class="sect2">
+<h3 id="_using_microprofile">Using MicroProfile</h3>
+<div class="paragraph">
+<p>So what do I need to do to create a MicroProfile project you might ask?</p>
+</div>
+<div class="paragraph">
+<p>With WildFly Swarm there are two options:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Project Generator</p>
+</li>
+<li>
+<p>Manually</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_project_generator">Project Generator</h4>
+<div class="paragraph">
+<p>Head over to <a href="http://wildfly-swarm.io/generator/" class="bare">http://wildfly-swarm.io/generator/</a> and customize the group and artifact ids that are automatically set for you.
+Then start typing <em>MicroProfile</em> into the dependencies box and it will pop up in a list, so select it.</p>
+</div>
+<div class="paragraph">
+<p>Next we click "Generate Project" and it will provide a zip containing <code>pom.xml</code> and a basic JAX-RS resource as a starting point.</p>
+</div>
+<div class="paragraph">
+<p>Once downloaded, unpack the zip and open it in your favorite IDE and check out the RESTful endpoint defined within <code>HelloWorldEndpoint</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manually">Manually</h4>
+<div class="paragraph">
+<p>Create a regular Maven project with <em>war</em> packaging type and then add the following into <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Import WF Swarm BOM</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;properties&gt;
+  &lt;version.wildfly.swarm&gt;2016.9&lt;/version.wildfly.swarm&gt;
+&lt;/properties&gt;
+
+&lt;dependencyManagement&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+      &lt;artifactId&gt;bom-all&lt;/artifactId&gt;
+      &lt;version&gt;${version.wildfly.swarm}&lt;/version&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+We use the <code>bom-all</code> dependency as <code>microprofile</code> is treated as unstable as MicroProfile 1.0 is a limited release,
+by design, as we anticipate rapid expansion of features moving forward.
+In subsequent releases it will become stable and <code>bom</code> can be used instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">WF Swarm plugin</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+      &lt;artifactId&gt;wildfly-swarm-plugin&lt;/artifactId&gt;
+      &lt;version&gt;${version.wildfly.swarm}&lt;/version&gt;
+      &lt;executions&gt;
+        &lt;execution&gt;
+          &lt;goals&gt;
+            &lt;goal&gt;package&lt;/goal&gt;
+          &lt;/goals&gt;
+        &lt;/execution&gt;
+      &lt;/executions&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Dependencies</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependencies&gt;
+  &lt;!-- Wildfly Swarm Fractions --&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+    &lt;artifactId&gt;microprofile&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+We don&#8217;t need a <code>provided</code> dependency on Java EE 7 APIs as API dependencies for CDI, JAX-RS and JSON-P are transitively brought in via <code>microprofile</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now it&#8217;s time to create our first RESTful endpoint:</p>
+</div>
+<div class="listingblock">
+<div class="title">HelloWorldEndpoint</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("/hello")
+public class HelloWorldEndpoint {
+
+  @GET
+  @Produces("text/plain")
+  public Response doGet() {
+    return Response.ok("Hello from WildFly Swarm!").build();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we use the <code>Response</code> object to construct and build an HTTP Response to be returned to the client.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_starting_wildfly_swarm">Starting WildFly Swarm</h4>
+<div class="paragraph">
+<p>Whichever of the above methods you used to create your project both are identical and can be run with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">mvn wildfly-swarm:run</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the quickest way to start the project without needing to build the uber jar first.</p>
+</div>
+<div class="paragraph">
+<p>Use a browser to access <a href="http://localhost:8080/hello" class="bare">http://localhost:8080/hello</a> and you will see the Resource return <em>Hello from WildFly Swarm!</em>.</p>
+</div>
+<div class="paragraph">
+<p>Now lets stop the server with <em>Ctrl+c</em> and we will create a new JAX-RS resource.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jax_rs_resource">JAX-RS Resource</h3>
+<div class="paragraph">
+<p>First thing we need is a JAX-RS Resource that provides us with an endpoint we can access in the browser.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s create the following class in the <code>org.example.microprofile</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="title">MyTimeResource</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("/")
+public class MyTimeResource {
+    @GET
+    @Path("/datetime")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTime() {
+        return LocalDateTime.now().toString();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now if we start WildFly Swarm with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">mvn wildfly-swarm:run</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>open <a href="http://localhost:8080/datetime" class="bare">http://localhost:8080/datetime</a> in a browser and see a response like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>2016-09-14T15:37:22.243</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bring_in_some_cdi">Bring in some CDI</h3>
+<div class="paragraph">
+<p>We&#8217;ve got a basic JAX-RS Resource, let&#8217;s add some injection.
+We will keep it simple and create a class to produce a <code>LocalDateTime</code> instance for us:</p>
+</div>
+<div class="listingblock">
+<div class="title">DateProducer</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
+public class DateProducer {
+    @Produces
+    LocalDateTime getDateTimeNow() {
+        return LocalDateTime.now();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can update the <code>MyTimeResource</code> to use it:</p>
+</div>
+<div class="listingblock">
+<div class="title">MyTimeResource</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("/")
+public class MyTimeResource {
+    @Inject
+    LocalDateTime dateTime;
+
+    @GET
+    @Path("/datetime")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTime() {
+        return dateTime.toString();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we now go to <a href="http://localhost:8080/datetime" class="bare">http://localhost:8080/datetime</a> it will give us the same information as before.
+Though without a time machine it will display a different time!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_json_processing_json_p">JSON Processing (JSON-P)</h3>
+<div class="paragraph">
+<p>Now it&#8217;s time to bring the final piece of MicroProfile in with JSON-P!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s add another method to our JAX-RS Resource that returns a <code>JsonObject</code> that we construct from the <code>LocalDateTime</code> instance we injected:</p>
+</div>
+<div class="listingblock">
+<div class="title">MyTimeResource</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("/")
+public class MyTimeResource {
+    private static final JsonBuilderFactory jsonFactory = Json.createBuilderFactory(null);
+
+    @Inject
+    LocalDateTime dateTime;
+
+    @GET
+    @Path("datetimejson")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonObject getDateTimeJson() {
+        return jsonFactory.createObjectBuilder()
+                .add("date", jsonFactory.createObjectBuilder()
+                        .add("dayOfWeek", dateTime.getDayOfWeek().name())
+                        .add("dayOfMonth", dateTime.getDayOfMonth())
+                        .add("month", dateTime.getMonth().name())
+                        .add("monthNumber", dateTime.getMonthValue())
+                        .add("year", dateTime.getYear())
+                )
+                .add("time", jsonFactory.createObjectBuilder()
+                        .add("hour", dateTime.getHour())
+                        .add("minutes", dateTime.getMinute())
+                        .add("seconds", dateTime.getSecond())
+                        .add("nanoseconds", dateTime.getNano())
+                )
+                .build();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Fire up WildFly Swarm again and open <a href="http://localhost:8080/datetimejson" class="bare">http://localhost:8080/datetimejson</a> in a browser and we see output similar to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+  "date":{
+    "dayOfWeek":"WEDNESDAY",
+    "dayOfMonth":14,
+    "month":"SEPTEMBER",
+    "monthNumber":9,
+    "year":2016
+  },
+  "time":{
+    "hour":22,
+    "minutes":19,
+    "seconds":51,
+    "nanoseconds":229000000
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conclusion">Conclusion</h3>
+<div class="paragraph">
+<p>We&#8217;ve now taken a whirlwind tour of what MicroProfile provides for us as developers,
+and created a simple RESTful endpoint service with WildFly Swarm that uses MicroProfile.</p>
+</div>
+<div class="paragraph">
+<p>As MicroProfile expands to encompass additional technologies and features,
+be sure to come back and check out more posts on MicroProfile.</p>
+</div>
+</div></div></article></div><div class="col-sm-3 col-sm-offset-1"></div></div><div class="row"><div class="col-sm-8"><div id="disqus_thread"><script> var disqus_config = function () { this.page.url = PAGE_URL; this.page.identifier = PAGE_IDENTIFIER;}; (function() { var d = document, s = d.createElement('script'); s.src = '//wildflyswarm.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); 
+</script></div></div></div></div></section><div class="container"><div class="footer"><div class="col-sm-6"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div><div class="col-sm-6"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="/lib/bootstrap/js/bootstrap.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+
+</script><script src="//www.redhat.com/j/s_code.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script><script>(function() {
+
+  // Load the path name, without it's inital /
+  var arr = location.pathname.substr(1, location.pathname.length)
+      .toLowerCase().split('/');
+
+  // If the path ends in index.html or whitespace, trim the array
+  if (arr[arr.length - 1] == "index.html" || arr[arr.length - 1] == "" ) {
+     arr.pop();
+  }
+
+  /*
+  * Assign values to Adobe Analytics properties
+  */
+  s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
+  s.server = "wildflyswarm" // The server is ???
+  s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+  s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
+  s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
+
+  // Pad the array as needed, so we can shift away later
+  for (var i = arr.length; i < 3; i++) {
+      arr[i] = "";
+  }
+
+  s.prop14 = s.eVar27 = arr.shift(); // prop14/eVar27 is the first minor section (normally /{minor_section_1})
+  s.prop15 = s.eVar28 = arr.shift(); // prop15/eVar28 is the second minor section (normally /a/{minor_section_2})
+  s.prop16 = s.eVar29 = arr.shift(); // prop16/eVar29 is the third minor section (normally /a/b/{minor_section_3})
+  s.prop21 = s.eVar18 = encodeURI(location.hostname+location.pathname).toLowerCase(); // prop21/eVar18 is the URL, less any query strings or fragments
+
+  })();
+</script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script><script>(function() {
+  hljs.initHighlightingOnLoad();
+})();
+</script></body></html>
