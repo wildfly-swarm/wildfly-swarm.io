@@ -218,11 +218,10 @@ footer.div {
 }
 
 .tag {
-    background-color: #e9821f;
+    background-color: seagreen;
     border-radius: 0.25em;
     color: #fff;
     display: inline-block;
-    font-weight: 700;
     margin: 0.2em;
     padding: 0.4em 0.7em;
 }
