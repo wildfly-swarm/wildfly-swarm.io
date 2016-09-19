@@ -1,14 +1,8 @@
 ---
-title: WildFly Swarm Downloads
+title: Downloads
 lastUpdate: 2016-09-06
 layout: page.jade
 ---
-
-++++
-<div class="page-header">
-  <h2>Downloads</a>
-</div>
-++++
 
 === Generally Speaking
 
@@ -54,20 +48,20 @@ link:/download/swarmtool[swarmtool.jar]
 Our MicroProfile server can be used to run an existing MicroProfile-compliant
 `.war` file.
 
-link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar] 
+link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar]
 
 ==== Keycloak Server
 
 Our Keycloak standalone server may be used to run your own Keycloak easily.
 
-link:/download/keycloak-swarm[keycloak-swarm.jar] 
+link:/download/keycloak-swarm[keycloak-swarm.jar]
 
 ==== Management Console Server
 
 Our runnable WildFly Management Console may be used to manage your
 WildFly Swarm application (if they include the `management` fraction).
 
-link:/download/management-console-swarm[management-console-swarm.jar] 
+link:/download/management-console-swarm[management-console-swarm.jar]
 
 ==== Swagger UI
 

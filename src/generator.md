@@ -4,22 +4,30 @@ lastUpdate: 2016-03-22
 layout: generator.jade
 ---
 
-# WildFly Swarm Project Generator
-
 Rightsize your Java EE microservice in a few clicks
 
 <form name="form" ng-app="swarm-generator-app" ng-controller="swarm-generator">
-	<div class="row bg-info">
+	<div class="row margin-top-20">
 		<div class="col-sm-12 col-md-12">
-			<h3>Instructions</h3>
-			<ol>
-				<li>Click on the Generate button to download the <i>{{getZipFileName(model)}}</i> file</li>
-				<li>Unzip the file in a directory of your choice</li>
-				<li>Run <code>mvn wildfly-swarm:run</code> in the unzipped directory</li>
-				<li ng-if="showInstructions(model)">Go to <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> and you should see the following message: <pre>Hello from WildFly Swarm!</pre></li>
-			</ol>
+
+		<div class="panel panel-info equal-height-column">
+				<div class="panel-heading">
+					<h3 class="panel-title">Instructions</h3>
+				</div>
+				<p>
+				<ol>					
+					<li>Chose the dependencies you need</li>
+					<li>Click on the Generate button to download the <i>{{getZipFileName(model)}}</i> file</li>
+					<li>Unzip the file in a directory of your choice</li>
+					<li>Run <code>mvn wildfly-swarm:run</code> in the unzipped directory</li>
+					<li ng-if="showInstructions(model)">Go to <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> and you should see the following message:<br/>
+					<code>Hello from WildFly Swarm!</code></li>
+				</ol>
+				</p>
+			</div>		
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-12 col-md-6">
 			<div class="form-group">
@@ -31,7 +39,7 @@ Rightsize your Java EE microservice in a few clicks
 				<label class="control-label" for="artifactId">Artifact ID</label>
 				<input type="text" name="artifactId" ng-model="model.artifactId" class="form-control" id="artifactId" tabindex="2" placeholder="demo">
 			</div>
-				<button role="button" class="btn btn-lg btn-primary" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
+				<button role="button" class="btn btn-primary" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
 			</div><!-- swarm-generator-form -->
 		</div>
 	</div>
@@ -85,7 +93,7 @@ Rightsize your Java EE microservice in a few clicks
 	<div class="row" ng-if="viewDeps">
 		<div class="col-sm-12 col-md-12">
 			<div class="form-group text-center">
-				<button role="button" class="btn btn-lg btn-primary center" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
+				<button role="button" class="btn btn-primary center" name="generate-project" ng-click="generate(model)" tabindex="4">Generate Project</button>
 			</div>
 		</div>				
 	</div>

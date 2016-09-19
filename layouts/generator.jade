@@ -1,6 +1,17 @@
 //- This is the layout for the /generator page
 
-extends page
+extends layout
+
+block main
+  .breadcrumbs
+    .container
+      h1!= title
+
+
+  .container
+    .row
+      .col-md-12
+        != contents
 
 block custom-scripts
   script(src='/lib/typeahead/typeahead.bundle.min.js')

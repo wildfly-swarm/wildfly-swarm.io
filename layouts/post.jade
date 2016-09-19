@@ -1,18 +1,31 @@
 //- Layout for individual blog posts
 
-extends main
+extends layout
 
-block content
+block main
 
-  article#article
-    h1= title
-    - publishDate.setUTCHours(5)
-    - modifyDate.setUTCHours(5)
+  .breadcrumbs
+    .container
+      .pull-left
+        h1 Blog
+      .ul.pull-right.breadcrumb
+        li.active
+          a(href="/archive") Archive
+        li
+          span Post
 
-    div.post-meta By #{author} | Published #{moment(publishDate).calendar()}
-      if modifyDate && moment(publishDate).isBefore(modifyDate)
-        span  | Updated #{moment(modifyDate).calendar()}
-    div!= contents
+  .container
+    .row.margin-top-20
+      .col-md-12
+        article#article
+          h1= title
+          - publishDate.setUTCHours(5)
+          - modifyDate.setUTCHours(5)
+
+          div.post-meta By #{author} | Published #{moment(publishDate).calendar()}
+            if modifyDate && moment(publishDate).isBefore(modifyDate)
+              span  | Updated #{moment(modifyDate).calendar()}
+          div!= contents
 
 block disqus
   #disqus_thread
