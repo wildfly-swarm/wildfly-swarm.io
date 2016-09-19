@@ -1,45 +1,123 @@
 ---
-title: WildFly Swarm Documentation
+title: Documentation
 lastUpdate: 2016-08-16
-layout: page.jade
+layout: plain-page.jade
 ---
 
 ++++
-<div class="page-header">
-  <h2>Documentation</a>
+<div class="breadcrumbs">
+  <div class="container">
+      <h1>Documentation</h1>
+  </div>
 </div>
+
+<section>
+<div class="container">
+<div class="row margin-top-20">
+  <div class="col-md-12">
 ++++
 
-=== User Guide
+== User Guide
 
 If you are new to WildFly Swarm, this is the best place to start. Learn
 what WildFly Swarm is and how to use it to build your first Java EE
 Microservice.
 
-* link:/documentation/HEAD[Latest Development Snapshot]
-* link:/documentation/2016-9[2016.9]
-* link:/documentation/2016-8-1[2016.8.1]
-* link:/documentation/1-0-0-Final[1.0.0.Final]
-* link:/documentation/1-0-0-CR2[1.0.0.CR2]
-* link:/documentation/1-0-0-CR1[1.0.0.CR1]
-* link:/documentation/1-0-0-Beta8[1.0.0.Beta8]
+[pass]
+++++
+  </div>
+</div>
 
-=== API Documentation
+  <div class="row tab-v3 margin-bottom-30">
+    <div class="col-sm-4">
+    		<ul class="nav nav-pills nav-stacked">
+    			<li class="active"><a href="#snapshot" data-toggle="tab"><i class="fa fa-book" aria-hidden="true"></i> Snapshot</a></li>
+    			<li><a href="#released" data-toggle="tab"><i class="fa fa-tags" aria-hidden="true"></i> Latest Release</a></li>
+    			<li><a href="#older" data-toggle="tab"><i class="fa fa-archive" aria-hidden="true"></i> Older</a></li>
+    		</ul>
+    </div>
 
-http://wildfly-swarm.github.io/wildfly-swarm-javadocs/
+    <div class="col-sm-8">
+    	<div class="tab-content">
+    		<div class="tab-pane fade in active" id="snapshot">
+        <p>The documentation of the current development master:<p>
+    			<a href="/documentation/HEAD">Latest Development Snapshot</a>
+    		</div>
+    		<div class="tab-pane fade in" id="released">
+        <p>The documentation of the latest stable release:<p>
+          <a href="/documentation/2016-9">2016.09</a>
+    		</div>
+    		<div class="tab-pane fade in" id="older">
+        <p>The documentation for previous releases:<p>
+    			<ul>
+            <li><a href="/documentation/2016-8-1">2016.8.1</a></li>
+            <li><a href="/documentation/1-0-0-Final">1.0.0.Final</a></li>
+            <li><a href="/documentation/1-0-0-CR2">1.0.0.CR2</a></li>
+          <ul>
+    		</div>
+    	</div>
+    </div>
 
-We provide consolidated documentation for our public API.
+  </div>
 
-=== Source Code
+++++
 
-https://github.com/wildfly-swarm/wildfly-swarm
+[pass]
+++++
 
-=== Tutorials
+<div class="row">
 
-* link:/tutorial[*Monolith to microservices*]
+  <div class="col-md-12">
+    <h2>Related Information</h2>
+</div>
+</div>
 
-A tutorial that explain how to migrate a monolith to microservices using WildFly Swarm
+<div class="row">
 
-=== Examples
+  <div class="col-md-3">
+    <div class="service">
+    <div class="desc">
+      <h3>API Documentation</h3>
+      We provide consolidated documentation for <a href="http://wildfly-swarm.github.io/wildfly-swarm-javadocs/">our public API</a>.
 
-https://github.com/wildfly-swarm/wildfly-swarm-examples
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+  <div class="service">
+  <div class="desc">
+    <h3>Source Code</h3>
+    <i class="fa fa-github" aria-hidden="true"></i> All the source is available on <a href="https://github.com/wildfly-swarm/wildfly-swarm">Github</a>
+    </div>
+  </div>
+</div>
+
+  <div class="col-md-3">
+    <div class="service">
+      <div class="desc">
+        <h3>Tutorials</h3>
+        A tutorial that explains how to <a href="/tutorial">migrate a monolith to microservices</a> using WildFly Swarm
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="service">
+      <div class="desc">
+        <h3>Examples</h3>
+        Technology specific <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples">examples</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+++++
+
+[pass]
+++++
+</div>
+</div>
+</div>
+++++

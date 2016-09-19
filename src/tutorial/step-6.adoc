@@ -1,10 +1,7 @@
 ---
+title: Load balancing and failover
 layout: tutorial.jade
 ---
-
-= Step 6: Load balancing and failover
-
-= Step 6: Load balancing and failover
 
 Now that we’ve got circuit breakers in place it’s time to revisit the failover strategies
 in case a service becomes unresponsive, erroneous or permanently unavailable. This introduces client side load balancing using Netflix Ribbon.

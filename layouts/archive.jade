@@ -1,22 +1,27 @@
-extends main
+extends layout
 
-block content
-  div.page-header
-    h2 Blog
-  .posts
-    each post in collections.posts
-        each file in pagination.files
-          if post.title == file.title
-            h2.page-header
-              a(href='/'+post.path)!= post.title
-              div.small(style='text-transform:none!important')
-                time.timestamp(datetime=post.publishDate)= moment(post.publishDate).format('MMMM D, YYYY')
-            div!=post.excerpt
-            p
-              a.btn.btn-default(href='/'+post.path)!= "Read More"
-            hr.noshade
+block main
+  .breadcrumbs
+    .container
+      h1 Blog
+  .container.posts
 
-    nav.navigation.cf
+    each post, key in collections.posts
+      h2.page-header
+        a(href='/'+post.path)!= post.title
+        div.small(style='text-transform:none!important')
+          i(class="fa fa-clock-o")
+          time.timestamp(datetime=post.publishDate)= moment(post.publishDate).format('MMMM D, YYYY')
+
+      span!= post.excerpt
+
+      p
+        a.btn.btn-default(href='/'+post.path)!= "Read More"
+      hr.noshade
+
+
+  .container
+    .row.margin-bottom-30
       if pagination.previous
         a.btn.pull-right.btn-primary(href='/' + pagination.previous.path)
           | Newer <i class="fa fa-chevron-right" aria-hidden="true"></i>

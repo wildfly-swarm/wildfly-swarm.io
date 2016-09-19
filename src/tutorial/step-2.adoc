@@ -1,10 +1,7 @@
 ---
+title: Right-size your runtime
 layout: tutorial.jade
 ---
-
-= Step 2: Right-size your runtime
-
-= Step 2: Right-size your runtime
 
 In this activity we bring Swarm to the table. We look the basic concepts for building Swarm services and discover how to build and run it. This includes basic configuration options, like bind address, ports and logging.
 

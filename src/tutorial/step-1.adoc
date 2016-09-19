@@ -1,10 +1,7 @@
 ---
+title: Services the old way
 layout: tutorial.jade
 ---
-
-= Step 1: Services the old way
-
-= Step 1: Services the 'old' way
 
 This activity demonstrates the “default” way of installing services as regular war’s on WildFly, with two exceptions:
 

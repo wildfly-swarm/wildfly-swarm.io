@@ -5,12 +5,16 @@ layout: plain-page.jade
 ---
 
 ++++
-<section class="section">
-<div class="container">
-
-<div class="page-header">
-  <h2>Community</h2>
+<div class="breadcrumbs">
+  <div class="container">
+      <h1>Community</h1>
+  </div>
 </div>
+
+<section>
+<div class="container">
+<div class="row">
+  <div class="col-md-12 margin-bottom-20 margin-top-20">
 ++++
 
 WildFly Swarm is open source software with a vibrant community. Our community values
@@ -29,6 +33,8 @@ to the development of the project, or just want to chat with other users and
 developers, join us on Freenode or our Google Group.
 
 ++++
+  </div>
+</div>
 </div>
 </section>
 ++++
@@ -38,7 +44,7 @@ developers, join us on Freenode or our Google Group.
 <section class="section alt">
 <div class="container">
 
-    <div class="page-header">
+    <div class="headline">
       <h2>Get In Touch</h2>
     </div>
 

@@ -1,20 +1,15 @@
 body {
-    padding-top: 20px;
     background-color: #262626;
-    font-family: 'Open Sans';
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-style: normal;
     font-weight: 300;
     font-size:16px;
-    line-height: 22px;
+    line-height: 1.5;
+    color:#333;
 }
 
-a {
-    color: #337ab7;
-}
-
-a:hover {
-    color: #337ab7;
-    text-decoration: underline;
+.header {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 ul {
@@ -36,52 +31,6 @@ ul {
 
 #content td, #content th {
     padding: 3px;
-}
-
-.h1, .h2, .h3, h1, h2, h3, h4, h5 {
-    color: #343434;
-}
-
-h1, h2 {
-  font-weight: 800;
-}
-
-.h1, h1 {
-    font-size: 30px;
-}
-
-.h2, h2 {
-    font-size: 24px;
-}
-
-.h3, h3 {
-    font-size: 18px;
-    margin: 24px 0;
-}
-
-.navbar-default {
-    background-color: #f3f3f3;
-}
-
-.navbar-brand img.icon {
-    display: inline;
-    float: left;
-    padding-right: 6px;
-    margin-top: -6px;
-}
-
-.navbar .nav > li > a {
-    font-weight: bold;
-    text-shadow: none;
-    text-transform: uppercase;
-    color: #343434;
-}
-
-.jumbotron {
-    margin: 40px 0 20px;
-    padding: 10px;
-    text-align: center;
-    background-color: #fff;
 }
 
 .page-header {
@@ -110,50 +59,6 @@ h1, h2 {
 .post-meta {
     font-weight: bold;
     padding: 10px 0;
-}
-
-/*
-	overrides to make the buttons match the logo color scheme
-*/
-
-.btn-primary, .btn-primary:active
-{
-	background-color: #6b6b6b;
-  border-color: #333;
-}
-
-
-.btn-primary:active:hover {
-	    background-color: #4d4d4d;
-}
-
-.btn-primary:active:focus {
-	    background-color: #4d4d4d;
-}
-
-
-.btn-primary:hover {
-	    background-color: #808080;
-}
-
-
-.btn-primary i {
-  color: white!important
-}
-
-
-footer .panel {
-    background-color: #efefef;
-    color: #939393;
-    font-size: 10px;
-}
-
-footer {
-background: #333333 none repeat scroll 0 0;
-  border-top: 1px solid black;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25) inset;
-  color: #e9e9e9;
-  text-shadow: 1px 1px 1px #222222;
 }
 
 .sidebar ul {
@@ -197,24 +102,6 @@ background: #333333 none repeat scroll 0 0;
     background-color: #ffffff !important;
     border: medium none !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-i {
-    color:#666666;
-}
-
-footer.div {
-    margin-top:30px;
-}
-
-.footer {
-    color: #999999;
-    font-size: 14px;
-}
-.footer {
-    background-color: #262626;    
-    border-top: 1px solid #3a3a3a;
-    padding: 30px 0;
 }
 
 .title {
@@ -292,15 +179,16 @@ footer.div {
    gray = #6b6b6b orange = #faa425
 */
 .section.alt {
-   background-color: #ffc266;
-   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
+  background: #f7f7f7;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
 }
 
 .section {
     margin: 0;
-    padding: 30px 0;
     position: relative;
     background-color: white;
+    padding:10px;
 }
 
 .well {

@@ -1,10 +1,7 @@
 ---
+title: Fault tolerance and resilience
 layout: tutorial.jade
 ---
-
-= Step 5: Fault tolerance and resilience
-
-= Step 5: Fault tolerance and resilience
 
 === Turn the web frontend into a service
 At this point the web frontend still resides with WildFly. So we turn it into a Swarm service before we proceed,

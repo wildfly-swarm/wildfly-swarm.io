@@ -1,12 +1,10 @@
 ---
+title: Creating a manageable codebase
 layout: tutorial.jade
 ---
 
-= Step 0: Creating a manageable codebase
-
-= Step 0: Creating a manageable codebase
-
 == Overview
+
 In the beginning you should make yourself familiar with the monolith.
 See what components exists, what Java EE API’s are used and how it spreads across the conceptual layers.
 

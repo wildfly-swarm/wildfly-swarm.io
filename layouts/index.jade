@@ -3,11 +3,41 @@
 extends layout
 
 block main
-  section.section
-    .container
-      div.jumbotron
-        img(src='images/swarm_logo_final.png' alt='WildFly Swarm Logo').img-responsive.center-block
-        p.lead Rightsize Your Services
+  .slider-inner
+    #da-slider.da-slider
+      .da-slide.da-slider-current
+        h2
+          i Rightsize
+          br
+          i your
+          br
+          i services
+        p
+          i Build on mature technologies
+          br
+          i and leverage existing expertise
 
-    div.row-fluid
-      div!= contents
+        .da-img
+          img(src='/images/swarm_logo_final.png' alt='WildFly Swarm Logo').img-responsive
+      .da-slide
+        h2
+          i Evolution
+          br
+          i of
+          br
+          i Enterprise Java
+        p
+          i Optimised for
+          br
+          i microservice architectures
+        .da-img
+          img(src='/images/microprofile.png').img-responsive
+      .da-arrows
+        span.da-arrows-prev
+        span.da-arrows-next
+      .da-dots
+        span.da-dots-current
+        span
+
+
+  != contents

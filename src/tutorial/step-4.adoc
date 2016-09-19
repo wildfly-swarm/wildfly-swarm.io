@@ -1,10 +1,7 @@
 ---
+title: Environment specific configuration
 layout: tutorial.jade
 ---
-
-= Step 4: Environment specific configuration
-
-= Step 4: Environment specific configuration
 
 Now that you know about fractions and ways to explicitly configure Swarm, it's a good to revisit the configuration options. We are already using a large number of system properties (i.e. bind address, port, etc) and some configuration values are hard coded within your custom `Main()` (i.e. service names, log level, etc). Let's move all this into a separate file to make it more manageable.
 

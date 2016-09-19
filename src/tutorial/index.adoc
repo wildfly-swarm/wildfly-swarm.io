@@ -1,4 +1,5 @@
 ---
+title: Tutorial Introduction
 layout: tutorial.jade
 ---
 
@@ -16,7 +17,7 @@ NOTE: The section on link:/tutorial/reading[readings] contains links to resource
 
 === Guiding Principles
 The tutorial provides guidance throughout the majority of the activities,
-but we expect you to actually code and get your head around the concepts presented. 
+but we expect you to actually code and get your head around the concepts presented.
 
 We focus on new ideas and technologies that complement Java EE and
 intentionally leave out cloud deployments, continuous integration and other topics that would increase the conceptual overhead and technical complexity of the material.

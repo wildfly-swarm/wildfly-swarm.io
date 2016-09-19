@@ -1,10 +1,7 @@
 ---
+title: The Example Application
 layout: tutorial.jade
 ---
-
-= Example
-
-= Our Example
 
 == A simple e-commerce application
 

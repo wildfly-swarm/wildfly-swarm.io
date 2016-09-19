@@ -1,8 +1,7 @@
 ---
+title: Recommended Reading
 layout: tutorial.jade
 ---
-
-= Reading
 
 = Reading on microservices concepts
 

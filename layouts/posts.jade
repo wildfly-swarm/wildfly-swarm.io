@@ -3,12 +3,13 @@
 extends main
 
 block content
-  div.page-header
-    h2 Blog
-  .posts
+  div.breadcrumbs
+    .container
+      h1 Blog
+  .container.posts
     each post in collections.posts
       .post-preview
-        h2.page-header
+        h2.title-v2
           a(href='/'+post.path)!= post.title
         div.post-excerpt!= post.excerpt
         p

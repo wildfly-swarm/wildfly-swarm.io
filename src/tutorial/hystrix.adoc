@@ -1,8 +1,7 @@
 ---
+title: Circuit Breaking
 layout: tutorial.jade
 ---
-
-= Hystrix
 
 = Hystrix
 
