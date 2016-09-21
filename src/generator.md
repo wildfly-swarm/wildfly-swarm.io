@@ -47,7 +47,7 @@ Rightsize your Java EE microservice in a few clicks
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? 'Hide' :'View'}} all available dependencies</a>
-			<span>filtered by : <select ng-model="selectedStability" ng-init="selectedStability = options[0]" ng-options="o as o for o in options" ng-change="filterFractions(selectedStability)"></select></span>
+			<span>filtered by : <select class="capitalize" ng-model="selectedStability" ng-options="s for s in stabilities"></select></span>
 			</p>
 		</div>
 	</div>
@@ -70,7 +70,7 @@ Rightsize your Java EE microservice in a few clicks
 				<fieldset>
 					<span ng-show="filtered.length > 0">
 					  <legend>{{category}}</legend>
-					  <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category)">
+					  <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category | filter: stabilityFilter)">
 					  	  <label>
 					  	  	<input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
 					  	  	<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
