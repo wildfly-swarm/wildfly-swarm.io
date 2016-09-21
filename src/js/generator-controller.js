@@ -13,16 +13,19 @@ angular.module('swarm-generator-app',[])
     $scope.showInstructions = isJAXRSSelected;
     $scope.selectedStability;
 
-    $scope.options = [{
-        name: 'All',
-        value: '0'
-    }, {
-        name: 'Stable',
-        value: '3'
-    }, {
-        name: 'Unstable',
-        value: '2'
-    }];
+    // Fetch all the values
+    var vals = fractionList.map(function(d) { return d["stabilityDescription"]; });
+
+    // Filter Unique Stability description
+    var uniqueVals = vals.filter(function(value, index, self) { return self.indexOf(value) === index;});
+    for(var i = 0 ; i < uniqueVals.length ; i++){
+        uniqueVals[i] = uniqueVals[i].charAt(0).toUpperCase() + uniqueVals[i].substr(1);
+    }
+
+    // Add 'All' value as first entry
+    uniqueVals.unshift("All");
+    $scope.options = {};
+    $scope.options = uniqueVals;
 
     $scope.model = {
         swarmVersion: "2016.9",
@@ -39,10 +42,7 @@ angular.module('swarm-generator-app',[])
         var fractions = allFractions;
         var filtered = [];
         for(var i = 0; i < fractions.length; i++){
-            console.log("Fraction : " + fractions[i].name);
-            console.log("Index : " + fractions[i].stabilityIndex);
-            console.log("Selected : " + selected.value);
-            if (fractions[i].stabilityIndex == selected.value) filtered.push(fractions[i]);
+            if (fractions[i].stabilityDescription.toLowerCase() == selected.toLowerCase()) filtered.push(fractions[i]);
         }
         $scope.fractions = filtered.length > 0 ? $scope.fractions = filtered : allFractions;
     }
