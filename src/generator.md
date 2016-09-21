@@ -47,7 +47,7 @@ Rightsize your Java EE microservice in a few clicks
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? 'Hide' :'View'}} all available dependencies</a>
-			<span>filtered by : <select ng-model="selectedStability" ng-init="selectedStability = options[0]" ng-options="option.name for option in options" ng-change="filterFractions(selectedStability)"></select></span>
+			<span>filtered by : <select ng-model="selectedStability" ng-init="selectedStability = options[0]" ng-options="o as o for o in options" ng-change="filterFractions(selectedStability)"></select></span>
 			</p>
 		</div>
 	</div>
