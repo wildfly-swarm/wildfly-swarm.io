@@ -11,18 +11,13 @@ angular.module('swarm-generator-app',[])
     $scope.fractions = allFractions;
     $scope.categories = extractCategories(allFractions);
     $scope.showInstructions = isJAXRSSelected;
-    $scope.selectedStability;
 
-    $scope.options = [{
-        name: 'All',
-        value: '0'
-    }, {
-        name: 'Stable',
-        value: '3'
-    }, {
-        name: 'Unstable',
-        value: '2'
-    }];
+    $scope.selectedStability = "All";
+
+    // Unique stability descriptions
+    $scope.stabilities = fractionList.map(function(d) {return d["stabilityDescription"]; }).filter(function(value, index, self){return self.indexOf(value) === index;});
+    // Add 'All' value as first entry
+    $scope.stabilities.unshift("All");
 
     $scope.model = {
         swarmVersion: "2016.9",
@@ -35,16 +30,8 @@ angular.module('swarm-generator-app',[])
 
     var searchEngine = configureSearchEngine(allFractions);
 
-    $scope.filterFractions = function(selected) {
-        var fractions = allFractions;
-        var filtered = [];
-        for(var i = 0; i < fractions.length; i++){
-            console.log("Fraction : " + fractions[i].name);
-            console.log("Index : " + fractions[i].stabilityIndex);
-            console.log("Selected : " + selected.value);
-            if (fractions[i].stabilityIndex == selected.value) filtered.push(fractions[i]);
-        }
-        $scope.fractions = filtered.length > 0 ? $scope.fractions = filtered : allFractions;
+    $scope.stabilityFilter = function(item) {
+      return $scope.selectedStability == 'All' || item.stabilityDescription === $scope.selectedStability;
     }
 
     $scope.generate = function(model) {

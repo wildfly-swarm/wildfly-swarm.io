@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? &#39;Hide&#39; :&#39;View&#39;}} all available dependencies</a>
-            <span>filtered by : <select ng-model="selectedStability" ng-init="selectedStability = options[0]" ng-options="option.name for option in options" ng-change="filterFractions(selectedStability)"></select></span>
+            <span>filtered by : <select class="capitalize" ng-model="selectedStability" ng-options="s for s in stabilities"></select></span>
             </p>
         </div>
     </div>
@@ -60,7 +60,7 @@
                 <fieldset>
                     <span ng-show="filtered.length > 0">
                       <legend>{{category}}</legend>
-                      <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category)">
+                      <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category | filter: stabilityFilter)">
                             <label>
                                 <input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
                                 <img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
@@ -127,4 +127,4 @@ ga('send', 'pageview');
 </script><script src="//www.redhat.com/assets/js/tracking/rh_omni_footer.js"></script><script>(function() {
   hljs.initHighlightingOnLoad();
 })();
-</script><script src="/lib/typeahead/typeahead.bundle.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script><script src="http://repo2.maven.org/maven2/org/wildfly/swarm/fraction-list/2016.8.1/fraction-list-2016.8.1.js"></script><script src="/js/generator-controller.js"></script></body></html>
+</script><script src="/lib/typeahead/typeahead.bundle.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script><script src="http://repo2.maven.org/maven2/org/wildfly/swarm/fraction-list/2016.9/fraction-list-2016.9.js"></script><script src="/js/generator-controller.js"></script></body></html>
