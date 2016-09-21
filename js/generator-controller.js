@@ -56,14 +56,25 @@ angular.module('swarm-generator-app',[])
 });
 
 extractCategories = function(fractions) {
-  var categories = [];
+  var categories = {"General": []};
   fractions.forEach(function (fraction) {
-    fraction.category = fraction.category || fraction.tags.split(",")[0] || "General";
-    if (fraction.category && categories.indexOf(fraction.category) == -1) {
-      categories.push(fraction.category);
+    if (fraction.tags) {
+      fraction.tags.split(",").forEach(function (tag) {
+        if (!categories[tag]) {
+          categories[tag] = [];
+        }
+        categories[tag].push(fraction);
+      });
+    } else { 
+      categories["General"].push(fraction);
     }
   });
-  return categories.sort();
+  // Convert to array
+  var arrayCat = [];
+  for (i in categories) {
+    arrayCat.push({category: i, fractions: categories[i]});
+  }
+  return arrayCat.sort(function(a,b) {return a.category > b.category; });
 }
 
 configureSearchEngine = function(fractions) {
