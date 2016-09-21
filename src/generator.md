@@ -65,21 +65,21 @@ Rightsize your Java EE microservice in a few clicks
 		</div>		
 	</div>
 	<div class="row">
-		<div class="row" ng-repeat="category in categories" ng-if="viewDeps">
-			<div class="col-sm-12 col-md-12">
-				<fieldset>
-					<span ng-show="filtered.length > 0">
-					  <legend>{{category}}</legend>
-					  <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category | filter: stabilityFilter)">
+		<div class="row" ng-repeat="categoryGroup in categories | orderBy: category" ng-if="viewDeps">
+			<span ng-show="(categoryGroup.fractions | filter: stabilityFilter).length > 0">
+				<div class="col-sm-12 col-md-12">
+					<fieldset>
+					  <legend>{{categoryGroup.category}}</legend>
+					  <div class="checkbox" ng-repeat="fraction in categoryGroup.fractions | filter: stabilityFilter">
 					  	  <label>
 					  	  	<input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
 					  	  	<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
 					  	  	<p class="help-block">{{fraction.description}}</p>
 					  	  </label>
 					  </div>
-					</span>
-				</fieldset>
-			</div>		
+					</fieldset>
+				</div>
+			</span>
 		</div>
 	</div>
 	<div class="row" ng-if="viewDeps">
