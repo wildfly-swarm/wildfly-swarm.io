@@ -11,6 +11,18 @@ angular.module('swarm-generator-app',[])
     $scope.fractions = allFractions;
     $scope.categories = extractCategories(allFractions);
     $scope.showInstructions = isJAXRSSelected;
+    $scope.selectedStability;
+
+    $scope.options = [{
+        name: 'All',
+        value: '0'
+    }, {
+        name: 'Stable',
+        value: '3'
+    }, {
+        name: 'Unstable',
+        value: '2'
+    }];
 
     $scope.model = {
         swarmVersion: "2016.9",
@@ -22,6 +34,18 @@ angular.module('swarm-generator-app',[])
     }
 
     var searchEngine = configureSearchEngine(allFractions);
+
+    $scope.filterFractions = function(selected) {
+        var fractions = allFractions;
+        var filtered = [];
+        for(var i = 0; i < fractions.length; i++){
+            console.log("Fraction : " + fractions[i].name);
+            console.log("Index : " + fractions[i].stabilityIndex);
+            console.log("Selected : " + selected.value);
+            if (fractions[i].stabilityIndex == selected.value) filtered.push(fractions[i]);
+        }
+        $scope.fractions = filtered.length > 0 ? $scope.fractions = filtered : allFractions;
+    }
 
     $scope.generate = function(model) {
       var downloadPath = 'http://swarmgen-forge.rhcloud.com/generator?g='+model.groupId+'&a='+model.artifactId+'&sv='+model.swarmVersion+'&d='+model.fractions().map(function(i){return i.artifactId;}).join('&d=');
