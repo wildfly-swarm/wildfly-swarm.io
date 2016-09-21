@@ -47,6 +47,8 @@ Rightsize your Java EE microservice in a few clicks
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<p>Not sure what you are looking for? <a role="button" ng-click="toggleViewDeps(!viewDeps)">{{viewDeps ? 'Hide' :'View'}} all available dependencies</a>
+			<span>filtered by : <select ng-model="selectedStability" ng-init="selectedStability = options[0]" ng-options="option.name for option in options" ng-change="filterFractions(selectedStability)"></select></span>
+			</p>
 		</div>
 	</div>
 	<div class="row">
@@ -62,18 +64,20 @@ Rightsize your Java EE microservice in a few clicks
 			</div>						
 		</div>		
 	</div>
-	<div class="flex-display">
+	<div class="row">
 		<div class="row" ng-repeat="category in categories" ng-if="viewDeps">
 			<div class="col-sm-12 col-md-12">
 				<fieldset>
-					<legend>{{category}}</legend>
-					<div class="checkbox" ng-repeat="fraction in fractions | filter: category">
-						<label>
-							<input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
-							<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
-							<p class="help-block">{{fraction.description}}</p>
-						</label>
-					</div>
+					<span ng-show="filtered.length > 0">
+					  <legend>{{category}}</legend>
+					  <div class="checkbox" ng-repeat="fraction in filtered = (fractions | filter: category)">
+					  	  <label>
+					  	  	<input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
+					  	  	<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
+					  	  	<p class="help-block">{{fraction.description}}</p>
+					  	  </label>
+					  </div>
+					</span>
 				</fieldset>
 			</div>		
 		</div>
