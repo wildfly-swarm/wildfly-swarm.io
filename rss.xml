@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Wed, 21 Sep 2016 18:22:28 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 21 Sep 2016 18:22:22 GMT</pubDate><item><title><![CDATA[MicroProfile with WildFly Swarm]]></title><description><![CDATA[<div class="sect2">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 27 Sep 2016 17:56:27 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 27 Sep 2016 17:56:14 GMT</pubDate><item><title><![CDATA[MicroProfile with WildFly Swarm]]></title><description><![CDATA[<div class="sect2">
 <h3 id="_what_is_microprofile">What is MicroProfile?</h3>
 <div class="paragraph">
 <p><a href="http://microprofile.io">MicroProfile</a> is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
@@ -130,12 +130,6 @@ for microservice type applications.</p>
 <p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_we_ve_reached_1_0_0_final_hooray_fireworks">We’ve reached 1.0.0.Final: Hooray, Fireworks!</h2>
-<div class="sectionbody">
-<img src="http://www.netanimations.net/4th-of-july-flag-fireworks-animation.gif">
 </div>
 </div>
 <div class="sect1">

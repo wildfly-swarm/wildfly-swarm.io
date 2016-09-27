@@ -1,0 +1,17 @@
+/* Add here all your css styles (customizations) */
+
+.btn-primary {
+    color: #fff;
+    background-color: rgba(65,116,164,1.0)!important;
+    border-color: rgba(65,116,164,1.0)!important;
+}
+
+.purchase span {
+    color: #666;
+    display: block;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    font-family: "Open Sans", Arial, sans-serif;
+}
