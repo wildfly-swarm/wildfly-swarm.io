@@ -1,6 +1,6 @@
 ---
 title: Contributing to WildFly Swarm
-lastUpdate: 2016-03-03
+lastUpdate: 2016-09-28
 layout: page.jade
 ---
 
@@ -50,15 +50,15 @@ wget http://wildfly-swarm.io/community/gitcommit-template.txt -O ~/.wildflyswarm
 
 ### Fork a repository
 
-Fork a WildFly Swarm repository, such as https://github.com/wildfly-swarm/wildfly-swarm-core,
+Fork a WildFly Swarm repository, such as https://github.com/wildfly-swarm/wildfly-swarm,
 or whichever repository contains the code/docs that you wish to change, into
 your GitHub account.
 
 ### Clone your newly forked repository onto your local machine
 
 ```bash
-git clone git@github.com:[your username]/wildfly-swarm-core.git
-cd wildfly-swarm-core
+git clone git@github.com:[your username]/wildfly-swarm.git
+cd wildfly-swarm
 ```
 
 ### Add a remote reference to upstream
@@ -66,7 +66,7 @@ cd wildfly-swarm-core
 This makes it easy to pull down changes in the project over time
 
 ```bash
-git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm-core.git
+git remote add upstream git://github.com/wildfly-swarm/wildfly-swarm.git
 ```
 
 ### Setup commit message template
