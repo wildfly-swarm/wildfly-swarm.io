@@ -163,7 +163,7 @@ java -jar <myapp>-swarm.jar
   <div class="row">
     <div class="col-md-12">
       <div class="headline">
-        <h2>Feaures and Benefits</h2>
+        <h2>Features and Benefits</h2>
       </div>
     </div>
   </div>
