@@ -78,6 +78,7 @@ interface Abba {
 }
 ```
 
+<!--
 ## Checkstyle Rules
 
 These are the checkstyle rules that are currently being used
@@ -190,3 +191,4 @@ Prefers `"someValue".equals(myVar)` over `myVar.equals("someValue")`
 ### [ArrayTypeStyle](http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle)
 
 Prefers `main(String[] args)` over `main(String args[])`
+-->
