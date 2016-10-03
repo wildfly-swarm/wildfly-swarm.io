@@ -1,0 +1,131 @@
+---
+title: Announcing WildFly Swarm 2016.10.0
+publishDate: 2016-10-03
+modifyDate: 2016-10-03
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== It's October, so that means it's time for candy corn. And a WildFly Swarm release!
+
+October, which comes from the Latin of "octo" meaning 8, is obviously the 10th
+month.  We can thank Julius and Augustus Caesar (July and August, respectively)
+for giving us a persistent off-by-two error in how we count months.
+
+Nonetheless, it's time for another WildFly Swarm release.  Enjoy!
+
+=== What's New?
+
+* External ActiveMQ/Artemis broker configuration is simplified.
+* Better SAAJ support.
+* Arquillian supporting Maven profiles.
+* Service/Topology advertisements via API and annotations.
+* Jolokia upgrade and support for `jolokia-access.xml`
+* Much much more!
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+++++
+<!-- more -->
+++++
+
+=== Bugfixes
+
+There are quite a few bugs fixed in this release since 2016.9.
+Check out the full list of them below in the changelog.
+
+== Changelog
+
+Release notes for 2016.10 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12331351[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-742[SWARM-742]] default initial logging format is different from default logging subsystem format
+* [https://issues.jboss.org/browse/SWARM-710[SWARM-710]] ContextNotActiveException - No active contexts for scope type javax.inject.Singleton on shutdown
+* [https://issues.jboss.org/browse/SWARM-705[SWARM-705]] Sporadic build failure on wildfly-swarm-plugin package : Unable to create -swarm.jar
+* [https://issues.jboss.org/browse/SWARM-700[SWARM-700]] "swarm.port.offset" not working
+* [https://issues.jboss.org/browse/SWARM-697[SWARM-697]] StackOverflowError during gradle artifactresolving
+* [https://issues.jboss.org/browse/SWARM-696[SWARM-696]] Transitive dependencies in multi module setups bring back fractions deps WEB-INF/lib
+* [https://issues.jboss.org/browse/SWARM-695[SWARM-695]] Bootstrap fails due to empty default deployment
+* [https://issues.jboss.org/browse/SWARM-690[SWARM-690]] FractionList brings wrong fraction information when a fraction is declared as a dependency of other fraction
+* [https://issues.jboss.org/browse/SWARM-684[SWARM-684]] Add a shutdownHook to stop the RuntimeServer upon ctrl-c
+* [https://issues.jboss.org/browse/SWARM-681[SWARM-681]] health endpoints are available on their original paths, but only if they are not secured
+* [https://issues.jboss.org/browse/SWARM-667[SWARM-667]] Arquillian container fails to find dependencies in active Maven Profile
+* [https://issues.jboss.org/browse/SWARM-662[SWARM-662]] NPE when calling addAllDependencies()
+* [https://issues.jboss.org/browse/SWARM-652[SWARM-652]] management console not running in uberjar
+* [https://issues.jboss.org/browse/SWARM-637[SWARM-637]] Web service InvocationTargetException when using a custom javax.xml.ws.handler.Handler
+* [https://issues.jboss.org/browse/SWARM-592[SWARM-592]] The Wildfly Swarm arquillian framework does not use proxy when resolving artifac
+* [https://issues.jboss.org/browse/SWARM-582[SWARM-582]] org.jboss.modules.ModuleNotFoundException: org.jboss.ws.saaj-impl:main
+* [https://issues.jboss.org/browse/SWARM-558[SWARM-558]] WAR deployment containing CDI beans fails to deploy
+* [https://issues.jboss.org/browse/SWARM-543[SWARM-543]] Cannot send JMS message to external ActiveMQ server when configured via ironjacamar
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-737[SWARM-737]] Use 204 instead of 503 if no healthchecks are defined
+* [https://issues.jboss.org/browse/SWARM-674[SWARM-674]] Review of this class "org.wildfly.swarm.container.ProjectStagesTest" which is commented
+* [https://issues.jboss.org/browse/SWARM-668[SWARM-668]] Remove leftovers from pre-CDI internals
+* [https://issues.jboss.org/browse/SWARM-666[SWARM-666]] Support @Inject @ConfigurationValue Optional<VALUE>
+* [https://issues.jboss.org/browse/SWARM-234[SWARM-234]] JGroups naming needs to be improved
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-735[SWARM-735]] Remove Spring Boot from examples
+* [https://issues.jboss.org/browse/SWARM-728[SWARM-728]] Archive.as(Secured.class) throws exception
+* [https://issues.jboss.org/browse/SWARM-703[SWARM-703]] Add meaningful descriptions for the Camel fractions
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-721[SWARM-721]] Expose capability to set socket-bindings & outbound-socket-bindings
+* [https://issues.jboss.org/browse/SWARM-664[SWARM-664]] Provide API for jolokia-access.xml
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-663[SWARM-663]] Update Jolokia
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-576[SWARM-576]] Create JPA example using Transaction fraction
+* [https://issues.jboss.org/browse/SWARM-438[SWARM-438]] Support topology service advertisement via code
+* [https://issues.jboss.org/browse/SWARM-437[SWARM-437]] Support topology service advertisement via annotation(s)
+
+=== Story
+* [https://issues.jboss.org/browse/SWARM-123[SWARM-123]] Provide more configuration for Jolokia
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.9.
+
+Documentation for this release is link:/documentation/2016-8-1[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* emag
+* Heiko Braun
+* Ken Finnigan
+* George Gastaldi
+* Andy Gumbrecht
+* Marco Hofstetter
+* Claus Ibsen
+* Slobodan Lazarevski
+* Bob McWhirter
+* Charles Moulliard
+* Ladislav Thon
+
+=== Examples
+* John Ament
+* Ken Finnigan
+* Slobodan Lazarevski
+* Bob McWhirter
+* Allon Murienik
+* Rafael Pereira
+* Antoine Sabot-Durand
