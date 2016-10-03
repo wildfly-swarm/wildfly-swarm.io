@@ -1,4 +1,51 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Archive | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"></li><a href="http://jboss.org">JBoss.org</a><li class="topbar-devider"></li><li class="hoverSelector"></li><a href="http://redhat.com">Red Hat</a></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><h1>Blog</h1></div></div><div class="container posts"><h2 class="page-header"><a href="/posts/microprofile-with-wildfly-swarm">MicroProfile with WildFly Swarm</a><div style="text-transform:none!important" class="small"><i class="fa fa-clock-o"></i><time datetime="Wed Sep 14 2016 20:00:00 GMT-0400 (EDT)" class="timestamp">September 14, 2016</time></div></h2><span><div class="sect2">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Archive | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"></li><a href="http://jboss.org">JBoss.org</a><li class="topbar-devider"></li><li class="hoverSelector"></li><a href="http://redhat.com">Red Hat</a></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><h1>Blog</h1></div></div><div class="container posts"><h2 class="page-header"><a href="/posts/announcing-wildfly-swarm-2016-10-0">Announcing WildFly Swarm 2016.10.0</a><div style="text-transform:none!important" class="small"><i class="fa fa-clock-o"></i><time datetime="Sun Oct 02 2016 20:00:00 GMT-0400 (EDT)" class="timestamp">October 2, 2016</time></div></h2><span><div class="sect1">
+<h2 id="_it_s_october_so_that_means_it_s_time_for_candy_corn_and_a_wildfly_swarm_release">It’s October, so that means it’s time for candy corn. And a WildFly Swarm release!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>October, which comes from the Latin of "octo" meaning 8, is obviously the 10th
+month.  We can thank Julius and Augustus Caesar (July and August, respectively)
+for giving us a persistent off-by-two error in how we count months.</p>
+</div>
+<div class="paragraph">
+<p>Nonetheless, it’s time for another WildFly Swarm release.  Enjoy!</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>External ActiveMQ/Artemis broker configuration is simplified.</p>
+</li>
+<li>
+<p>Better SAAJ support.</p>
+</li>
+<li>
+<p>Arquillian supporting Maven profiles.</p>
+</li>
+<li>
+<p>Service/Topology advertisements via API and annotations.</p>
+</li>
+<li>
+<p>Jolokia upgrade and support for <code>jolokia-access.xml</code></p>
+</li>
+<li>
+<p>Much much more!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WIldFly functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
+</div></span><p><a href="/posts/announcing-wildfly-swarm-2016-10-0" class="btn btn-default">Read More</a></p><hr class="noshade"><h2 class="page-header"><a href="/posts/microprofile-with-wildfly-swarm">MicroProfile with WildFly Swarm</a><div style="text-transform:none!important" class="small"><i class="fa fa-clock-o"></i><time datetime="Wed Sep 14 2016 20:00:00 GMT-0400 (EDT)" class="timestamp">September 14, 2016</time></div></h2><span><div class="sect2">
 <h3 id="_what_is_microprofile">What is MicroProfile?</h3>
 <div class="paragraph">
 <p><a href="http://microprofile.io">MicroProfile</a> is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
