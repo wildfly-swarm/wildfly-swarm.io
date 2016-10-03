@@ -4,7 +4,6 @@ publishDate: 2016-10-03
 modifyDate: 2016-10-03
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == It's October, so that means it's time for candy corn. And a WildFly Swarm release!
