@@ -20,7 +20,7 @@ angular.module('swarm-generator-app',[])
     $scope.stabilities.unshift("All");
 
     $scope.model = {
-        swarmVersion: "2016.9",
+        swarmVersion: "2016.10.0",
         groupId: "com.example",
         artifactId: "demo",
         fractions : function(fractions) {
