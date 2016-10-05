@@ -1,9 +1,9 @@
----
+﻿---
 title: Services the old way
 layout: tutorial.jade
 ---
 
-This activity demonstrates the “default” way of installing services as regular war’s on WildFly, with two exceptions:
+This activity demonstrates the “default” way of installing services as regular .wars on WildFly, with two exceptions:
 
 * The services already use Consul for lookup and registration
 * All services interact over REST/HTTP, although being deployed to the same JVM
@@ -20,11 +20,11 @@ image::../img/step-1.png[title="Components within single JVM"]
 
 == Tasks
 * Build the whole project. This results in several .war files
-* Deploy each .war file (order,catalog,user & everest) to WildFly. This can be achieved using `mvn wildfly:<deploy|undeploy>` in each respective module directory or through the WildFLy admin console.
+* Deploy each .war file (order,catalog,user & everest) to WildFly. This can be achieved using `mvn wildfly:<deploy|undeploy>` in each respective module directory or through the WildFly admin console.
 * Access the everest web interface running on WildFly (`http://<WILDFLY_IP>:8080/everest-web`) and make yourself familiar with the application. Try to browse books, put one in your cart and checkout to complete the “purchase”.
 
 == Outcome
-* The whole application, previously installed as a single deployment now runs on WildFly and it works as expected (chose books, add to cart, checkout, etc)
+* The whole application, previously installed as a single deployment now runs on WildFly and it works as expected (choose books, add to cart, checkout, etc)
 * Although deployed to a single VM, the services already use the service registry (consul) to for lookup (opposed to let’s say JNDI).
 * Once all services are deployed, you can invoke the REST interfaces as well (i.e. using cUrl), i.e. `http://<WILDFLY_IP>:8080/catalog/resources/catalog/`
 
