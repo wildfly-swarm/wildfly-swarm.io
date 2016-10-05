@@ -1,4 +1,4 @@
----
+﻿---
 title: Prerequisites
 layout: tutorial.jade
 ---
@@ -50,7 +50,7 @@ when we extract each service one after the other. Towards the end of the tutoria
 WildFly can be downloaded from the http://wildfly.org/downloads/[WildFly Homepage].
 Simply follow the instructions in the https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide[Getting Started Guide], on how to install, configure and start the application server.
 
-Make note of the `<WILDFLY_IP>`, which by default's `localhost`. Without further configuration the HTTP server listens on port 8080. We do however need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which makes them inaccessible in some cases (docker, remote host, etc)
+Make note of the `<WILDFLY_IP>`, which by default is `localhost`. Without further configuration the HTTP server listens on port 8080. We do however need to bind WildFly to a public address (i.e. that of your network card), otherwise the services will advertise “localhost” as their address, which makes them inaccessible in some cases (docker, remote host, etc)
 
 NOTE: When you start WildFly make sure to provide the `consul.host` system property. This tells any service deployed to WildFly, where to find consul: ```./bin/standalone.sh -Dconsul.host=<CONSUL_IP>```. Take a look at the `services` module to see how it's implemented.
 
