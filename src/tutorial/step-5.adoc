@@ -12,9 +12,9 @@ NOTE: When you turn the everest module into a swarm service,
 you change the packaging of `war` to `jar`. This also requires you to move the web resources from `src/main/webapp` to `src/main/resources`.
 
 === Introducing fault-injection techniques and hystrix for resilience.
-Before thinking about resilience it's actually be useful to inject faults to demonstrate the need for enhanced fault handling capabilities. link:/tutorial/toxy[Appendix A] contains some information on how to use a fault-injection proxy to easily achieve this.
+Before thinking about resilience it's actually useful to inject faults to demonstrate the need for enhanced fault handling capabilities. link:/tutorial/toxy[Appendix A] contains some information on how to use a fault-injection proxy to easily achieve this.
 
-Once we can simulate faults, we implement a circuit breaker using Hystrix and complete this acticity by installing the link:/tutorial/hystrix[Hystrix dashboard] to monitor IPC interactions and the system state.
+Once we can simulate faults, we implement a circuit breaker using Hystrix and complete this activity by installing the link:/tutorial/hystrix[Hystrix dashboard] to monitor IPC interactions and the system state.
 
 NOTE: Hystrix runs the command in it’s own thread pool. Doing that in a EE environment requires you to think twice about what that demarcation actually means.
 
@@ -29,7 +29,7 @@ image::../img/step-5.png[title="Fault detection and handling"]
  `java -Dswarm.project.stage=production -Dswarm.bind.address=<PUBLIC_IP> -Dconsul.host=<CONSUL_IP> -jar target/everest-web-swarm.jar`
 * Focus on a single service, for instance the order service and it’s client invocation. (The client to the order service is the web frontend)
 * Redirect traffic through the fault injection proxy. For the sake of simplicity you may just change the service lookup URL in `ConsulDiscovery.java`
-* Prepare the link:/tutorial/toxy[Fault-injection proxy] to introduce random errors (i.e. HTTP 503, see Appendix C)
+* Prepare the link:/tutorial/toxy[Fault-injection proxy] to introduce random errors (i.e. HTTP 503, see link:/tutorial/toxy[Appendix A])
 * Use the web frontend to order books and watch it fail randomly
 * Add the hystrix dependency to the maven pom.xml (`everest` module)
 * Add a hystrix command to the order client that can handle (i.e. compensate) the faults
