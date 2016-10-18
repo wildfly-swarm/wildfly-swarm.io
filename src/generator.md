@@ -16,7 +16,7 @@ Rightsize your Java EE microservice in a few clicks
 				</div>
 				<p>
 				<ol>					
-					<li>Chose the dependencies you need</li>
+					<li>Choose the dependencies you need</li>
 					<li>Click on the Generate button to download the <i>{{getZipFileName(model)}}</i> file</li>
 					<li>Unzip the file in a directory of your choice</li>
 					<li>Run <code>mvn wildfly-swarm:run</code> in the unzipped directory</li>
