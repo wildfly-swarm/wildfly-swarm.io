@@ -150,6 +150,7 @@ function build() {
       '/documentation/2016-8-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/',
       '/documentation/2016-9': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/',
       '/documentation/2016-10-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/34f88c070cc80d697274327282004526316f7851/',
+      '/documentation/2016-11-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.11.0/',
     }))
 
     .build(function (err) {
