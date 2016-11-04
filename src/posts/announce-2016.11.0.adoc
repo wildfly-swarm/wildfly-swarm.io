@@ -51,68 +51,68 @@ test, and removes the need to provide a static method marked `@Deployment`
 constructing your deployment.  It attempts to construct a reasonable default
 deployment so that you don't have to.
 
-== Changelog
 
+== Changelog
 Release notes for 2016.11.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12331463[here].
 
 === Bug
-* [https://issues.jboss.org/browse/SWARM-809[SWARM-809]] wildfly-swarm:start can be fooled by implicit deployments.
-* [https://issues.jboss.org/browse/SWARM-801[SWARM-801]] Missing components in camel-other fraction
-* [https://issues.jboss.org/browse/SWARM-799[SWARM-799]] Arq drones don't work on mac os sierra
-* [https://issues.jboss.org/browse/SWARM-791[SWARM-791]] ArtifactNotFoundException is thrown when resolving dependencies in wildfly-swarm-plugin
-* [https://issues.jboss.org/browse/SWARM-781[SWARM-781]] CDI Fraction should ensure presence of beans.xml
-* [https://issues.jboss.org/browse/SWARM-766[SWARM-766]] Fix Typos on Website Tutorial Step-5
-* [https://issues.jboss.org/browse/SWARM-765[SWARM-765]] Typos on Web Tutorial Step 4
-* [https://issues.jboss.org/browse/SWARM-763[SWARM-763]] Documentation typo on step-3 page of the web tutorial
-* [https://issues.jboss.org/browse/SWARM-762[SWARM-762]] Artifact resolution for wildfly-swarm-plugin ignores <mirrorOf> from settings.xml
-* [https://issues.jboss.org/browse/SWARM-757[SWARM-757]] javax.persistence.PersistenceException: [PersistenceUnit: primary] Unable to build Hibernate SessionFactory when using Infinispan as 2nd level cache for hibernate
-* [https://issues.jboss.org/browse/SWARM-754[SWARM-754]] Documentation typo on step-1 page
-* [https://issues.jboss.org/browse/SWARM-753[SWARM-753]] Documentation typo on Prerequisites page
-* [https://issues.jboss.org/browse/SWARM-733[SWARM-733]] Generator does not honor group/artifact id for package
-* [https://issues.jboss.org/browse/SWARM-691[SWARM-691]] Multiple Archive#as(Secured.class) executions occur ParseError of web.xml
-* [https://issues.jboss.org/browse/SWARM-687[SWARM-687]] jaxrs-validator fraction is not auto-detected by the wildfly-swarm-plugin
-* [https://issues.jboss.org/browse/SWARM-683[SWARM-683]] Adding camel-other as dependencies fail with a ArtifactNotFoundException when executing
-* [https://issues.jboss.org/browse/SWARM-676[SWARM-676]] Running tests inside IDE present java.lang.ClassNotFoundException: org.yaml.snakeyaml.Yaml
-* [https://issues.jboss.org/browse/SWARM-673[SWARM-673]] Weld SE container STATIC_INSTANCE is already running!
-* [https://issues.jboss.org/browse/SWARM-671[SWARM-671]] mvn wildfly-swarm:package fails with "File must be specified"
-* [https://issues.jboss.org/browse/SWARM-661[SWARM-661]] Swarmtool does not work on non-bash shells
-* [https://issues.jboss.org/browse/SWARM-645[SWARM-645]] When parsing standalone.xml, any unrecognized XML elements produce a scary stack trace
-* [https://issues.jboss.org/browse/SWARM-642[SWARM-642]] wildfly-swarm-plugin does not work when running in Gradle 3
-* [https://issues.jboss.org/browse/SWARM-624[SWARM-624]] Add zipkin support to booker
-* [https://issues.jboss.org/browse/SWARM-491[SWARM-491]] Cannot use Arquillian Wildfly Swarm Container with Gradle
+* [https://issues.jboss.org/browse/SWARM-809[SWARM-809]] wildfly-swarm:start can be fooled by implicit deployments. (Done)
+* [https://issues.jboss.org/browse/SWARM-801[SWARM-801]] Missing components in camel-other fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-799[SWARM-799]] Arq drones don't work on mac os sierra (Done)
+* [https://issues.jboss.org/browse/SWARM-791[SWARM-791]] ArtifactNotFoundException is thrown when resolving dependencies in wildfly-swarm-plugin (Done)
+* [https://issues.jboss.org/browse/SWARM-781[SWARM-781]] CDI Fraction should ensure presence of beans.xml (Won't Fix)
+* [https://issues.jboss.org/browse/SWARM-766[SWARM-766]] Fix Typos on Website Tutorial Step-5 (Done)
+* [https://issues.jboss.org/browse/SWARM-765[SWARM-765]] Typos on Web Tutorial Step 4 (Done)
+* [https://issues.jboss.org/browse/SWARM-763[SWARM-763]] Documentation typo on step-3 page of the web tutorial (Done)
+* [https://issues.jboss.org/browse/SWARM-762[SWARM-762]] Artifact resolution for wildfly-swarm-plugin ignores <mirrorOf> from settings.xml (Done)
+* [https://issues.jboss.org/browse/SWARM-757[SWARM-757]] javax.persistence.PersistenceException: [PersistenceUnit: primary] Unable to build Hibernate SessionFactory when using Infinispan as 2nd level cache for hibernate (Done)
+* [https://issues.jboss.org/browse/SWARM-754[SWARM-754]] Documentation typo on step-1 page (Done)
+* [https://issues.jboss.org/browse/SWARM-753[SWARM-753]] Documentation typo on Prerequisites page (Done)
+* [https://issues.jboss.org/browse/SWARM-733[SWARM-733]] Generator does not honor group/artifact id for package (Done)
+* [https://issues.jboss.org/browse/SWARM-691[SWARM-691]] Multiple Archive#as(Secured.class) executions occur ParseError of web.xml (Done)
+* [https://issues.jboss.org/browse/SWARM-687[SWARM-687]] jaxrs-validator fraction is not auto-detected by the wildfly-swarm-plugin (Done)
+* [https://issues.jboss.org/browse/SWARM-683[SWARM-683]] Adding camel-other as dependencies fail with a ArtifactNotFoundException when executing  (Done)
+* [https://issues.jboss.org/browse/SWARM-676[SWARM-676]] Running tests inside IDE present java.lang.ClassNotFoundException: org.yaml.snakeyaml.Yaml (Done)
+* [https://issues.jboss.org/browse/SWARM-673[SWARM-673]] Weld SE container STATIC_INSTANCE is already running! (Done)
+* [https://issues.jboss.org/browse/SWARM-671[SWARM-671]] mvn wildfly-swarm:package fails with "File must be specified" (Done)
+* [https://issues.jboss.org/browse/SWARM-661[SWARM-661]] Swarmtool does not work on non-bash shells (Done)
+* [https://issues.jboss.org/browse/SWARM-645[SWARM-645]] When parsing standalone.xml, any unrecognized XML elements produce a scary stack trace (Done)
+* [https://issues.jboss.org/browse/SWARM-642[SWARM-642]] wildfly-swarm-plugin does not work when running in Gradle 3 (Cannot Reproduce Bug)
+* [https://issues.jboss.org/browse/SWARM-624[SWARM-624]] Add zipkin support to booker (Done)
+* [https://issues.jboss.org/browse/SWARM-491[SWARM-491]] Cannot use Arquillian Wildfly Swarm Container with Gradle (Done)
 
 === Task
-* [https://issues.jboss.org/browse/SWARM-805[SWARM-805]] Move the jdr fraction out of the fractions/javaee path
-* [https://issues.jboss.org/browse/SWARM-760[SWARM-760]] Verify status of unstable fractions and mark as stable where necessary
-* [https://issues.jboss.org/browse/SWARM-756[SWARM-756]] Restructure Maven modules
-* [https://issues.jboss.org/browse/SWARM-755[SWARM-755]] Remove undertow-js fraction
-* [https://issues.jboss.org/browse/SWARM-727[SWARM-727]] plugin:package goals executed twice
-* [https://issues.jboss.org/browse/SWARM-725[SWARM-725]] Update Booker to recent Swarm version
+* [https://issues.jboss.org/browse/SWARM-805[SWARM-805]] Move the jdr fraction out of the fractions/javaee path (Done)
+* [https://issues.jboss.org/browse/SWARM-760[SWARM-760]] Verify status of unstable fractions and mark as stable where necessary (Done)
+* [https://issues.jboss.org/browse/SWARM-756[SWARM-756]] Restructure Maven modules (Done)
+* [https://issues.jboss.org/browse/SWARM-755[SWARM-755]] Remove undertow-js fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-727[SWARM-727]] plugin:package goals executed twice (Done)
+* [https://issues.jboss.org/browse/SWARM-725[SWARM-725]] Update Booker to recent Swarm version (Done)
 
 === Enhancement
-* [https://issues.jboss.org/browse/SWARM-804[SWARM-804]] Enhance Zipkin fraction to accept a service name
-* [https://issues.jboss.org/browse/SWARM-769[SWARM-769]] Fix broken JIRA link in README
-* [https://issues.jboss.org/browse/SWARM-761[SWARM-761]] Upgrade to wildfly-camel-4.3.0
-* [https://issues.jboss.org/browse/SWARM-752[SWARM-752]] ModuleLoader MBeans should be registered when Swarm boots up
-* [https://issues.jboss.org/browse/SWARM-750[SWARM-750]] module-rewrite.conf should support exporting modules
-* [https://issues.jboss.org/browse/SWARM-749[SWARM-749]] module-rewrite.conf should support including modules
-* [https://issues.jboss.org/browse/SWARM-706[SWARM-706]] Improve test coverage of Project Stages
-* [https://issues.jboss.org/browse/SWARM-603[SWARM-603]] Pluggable user space extension method
-* [https://issues.jboss.org/browse/SWARM-531[SWARM-531]] Investigate support for health indicators
+* [https://issues.jboss.org/browse/SWARM-804[SWARM-804]] Enhance Zipkin fraction to accept a service name (Done)
+* [https://issues.jboss.org/browse/SWARM-769[SWARM-769]] Fix broken JIRA link in README (Done)
+* [https://issues.jboss.org/browse/SWARM-761[SWARM-761]] Upgrade to wildfly-camel-4.3.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-752[SWARM-752]] ModuleLoader MBeans should be registered when Swarm boots up (Done)
+* [https://issues.jboss.org/browse/SWARM-750[SWARM-750]] module-rewrite.conf should support exporting modules (Done)
+* [https://issues.jboss.org/browse/SWARM-749[SWARM-749]] module-rewrite.conf should support including modules (Done)
+* [https://issues.jboss.org/browse/SWARM-706[SWARM-706]] Improve test coverage of Project Stages (Done)
+* [https://issues.jboss.org/browse/SWARM-603[SWARM-603]] Pluggable user space extension method (Done)
+* [https://issues.jboss.org/browse/SWARM-531[SWARM-531]] Investigate support for health indicators (Done)
 
 === Component Upgrade
-* [https://issues.jboss.org/browse/SWARM-800[SWARM-800]] Upgrade to Vert.x 3.3.3
+* [https://issues.jboss.org/browse/SWARM-800[SWARM-800]] Upgrade to Vert.x 3.3.3 (Done)
 
 === Sub-task
-* [https://issues.jboss.org/browse/SWARM-787[SWARM-787]] Support a main=MyMain.class on @DefaultDeployment.
-* [https://issues.jboss.org/browse/SWARM-778[SWARM-778]] Make it easier to generate ARQ @Deployment-type of things
-* [https://issues.jboss.org/browse/SWARM-775[SWARM-775]] Turn our Arquillian support into a bonafide fraction.
+* [https://issues.jboss.org/browse/SWARM-787[SWARM-787]] Support a main=MyMain.class on @DefaultDeployment. (Done)
+* [https://issues.jboss.org/browse/SWARM-778[SWARM-778]] Make it easier to generate ARQ @Deployment-type of things (Done)
+* [https://issues.jboss.org/browse/SWARM-775[SWARM-775]] Turn our Arquillian support into a bonafide fraction. (Done)
 
 === Feature Request
-* [https://issues.jboss.org/browse/SWARM-771[SWARM-771]] Provide a zipkin fraction
-* [https://issues.jboss.org/browse/SWARM-768[SWARM-768]] Honor swarm.project.stage as environment variable
-* [https://issues.jboss.org/browse/SWARM-715[SWARM-715]] Enhanced JAX-RS Client API
-* [https://issues.jboss.org/browse/SWARM-478[SWARM-478]] Wildfly Swarm Flyway Integration
+* [https://issues.jboss.org/browse/SWARM-771[SWARM-771]] Provide a zipkin fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-768[SWARM-768]] Honor swarm.project.stage as environment variable (Done)
+* [https://issues.jboss.org/browse/SWARM-715[SWARM-715]] Enhanced JAX-RS Client API (Done)
+* [https://issues.jboss.org/browse/SWARM-478[SWARM-478]] Wildfly Swarm Flyway Integration (Done)
 
 
 == Resources
