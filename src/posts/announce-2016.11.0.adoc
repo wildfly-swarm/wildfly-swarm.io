@@ -128,6 +128,17 @@ Documentation for this release is link:/documentation/2016-8-1[available].
 
 We appreciate all of our contributors since the last release:
 
+=== Core
+* Heiko Braun
+* Thomas Diesler
+* Ken Finnigan
+* George Gastaldi
+* Dimitris Mandalidis
+* Bob McWhirter
+* Charles Moulliard
+* James Netherton
+* Ted Won
+
 === Documentation
 * Ken Finnigan
 * George Gastaldi
