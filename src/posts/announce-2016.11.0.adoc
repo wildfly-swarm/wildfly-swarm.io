@@ -134,7 +134,7 @@ We appreciate all of our contributors since the last release:
 * Bob McWhirter
 
 === Examples
-* olbpetersson
+* Ola Petersson
 * Heiko Braun
 * Thomas Diesler
 * Ken Finnigan
