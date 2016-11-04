@@ -15,7 +15,7 @@ we're happy to announce the release of WildFly Swarm version
 
 === What's New?
 
-* New JAXRS client library
+* Enhanced JAX-RS client library
 * Support for Flyway schema migration for relational databases
 * Improved Arquillian testing (still in progress)
 
@@ -33,9 +33,60 @@ of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _Netfli
 <!-- more -->
 ++++
 
-== JAXRS Client
+== JAX-RS Client
 
-KEN
+If you're developing with JAX-RS and CDI we've just made it a lot easier to call external services!
+
+Say we want to call an external service that returns the time.
+We can define an interface that maps onto the method we want to call, such as:
+
+[source,java]
+----
+@Path("time")
+@Service(baseUrl = "http://localhost:8080/")
+public interface TimeService extends ServiceClient<TimeService> {
+    @GET
+    @Path("default")
+    @Produces(MediaType.TEXT_PLAIN)
+    String getTime();
+}
+----
+
+We specify `@Service` with the url of the service.
+In future enhancements we will integrate this annotation with our topology for service discovery.
+
+We can then `@Inject` an instance of the service and call it as if it was a local method:
+
+[source,java]
+----
+@Path("/messages")
+@ApplicationScoped
+public class MessageResource {
+    @Inject
+    TimeService timeService;
+
+    @GET
+    @Path("/sync")
+    public String getMessageSync() throws Exception {
+        return timeService.getTime();
+    }
+}
+----
+
+If we want the external call to be handled asynchronously we can do the following:
+
+[source,java]
+----
+    @GET
+    @Path("/async")
+    public void getMessageAsync(@Suspended final AsyncResponse asyncResponse) throws Exception {
+        timeService.exec(() -> timeService.getTime(),
+                         s -> asyncResponse.resume(s),
+                         asyncResponse::resume);
+    }
+----
+
+We look forward to hearing your feedback on what we've currently done and what additional features you would like it to support.
 
 == Flyway integration
 
