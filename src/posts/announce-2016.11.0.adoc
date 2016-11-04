@@ -10,7 +10,7 @@ draft: true
 == November means the release of 2016.11.0!
 
 Celebrating National Pepper Month, at least for some nations,
-we're happy to annouce the release of WildFly Swarm version
+we're happy to announce the release of WildFly Swarm version
 2016.11.0.
 
 === What's New?
@@ -39,7 +39,10 @@ KEN
 
 == FlyWay integration
 
-GEORGE
+Flyway is an open-source database migration tool. It strongly favors simplicity and convention over configuration.
+We've introduced a new `flyway` fraction that automatically executes your scripts in your `src/main/resources/db/migration`
+when your microservice starts. Check this https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0/flyway[example]
+and read more about Flyway https://flywaydb.org/documentation/[here].
 
 == Improved Arquillian
 
