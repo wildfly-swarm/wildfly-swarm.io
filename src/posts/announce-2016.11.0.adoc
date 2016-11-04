@@ -16,7 +16,7 @@ we're happy to announce the release of WildFly Swarm version
 === What's New?
 
 * New JAXRS client library
-* Support for FlyWay schema migration for relational databases
+* Support for Flyway schema migration for relational databases
 * Improved Arquillian testing (still in progress)
 
 === What is WildFly Swarm?
@@ -37,7 +37,7 @@ of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _Netfli
 
 KEN
 
-== FlyWay integration
+== Flyway integration
 
 Flyway is an open-source database migration tool. It strongly favors simplicity and convention over configuration.
 We've introduced a new `flyway` fraction that automatically executes your SQL scripts located in `src/main/resources/db/migration` when your microservice starts. Check this https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0/flyway[example] and read more about Flyway https://flywaydb.org/documentation/[here].
