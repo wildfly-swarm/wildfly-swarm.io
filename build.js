@@ -19,7 +19,7 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
-var CURRENT_RELEASE = '2016.10.0';
+var CURRENT_RELEASE = '2016.11.0';
 
 moment.locale('en', {
   calendar : {
