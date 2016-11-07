@@ -4,7 +4,6 @@ publishDate: 2016-11-07
 modifyDate: 2016-11-07
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == November means the release of 2016.11.0!
