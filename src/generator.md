@@ -80,8 +80,8 @@ Rightsize your Java EE microservice in a few clicks
 					  <legend>{{categoryGroup.category}}</legend>
 					  <div class="checkbox" ng-repeat="fraction in categoryGroup.fractions | filter: stabilityFilter">
 					  	  <label>
-					  	  	<input type="checkbox" ng-model="fraction.selected">{{fraction.name}}
-					  	  	<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}">
+					  	  	<input type="checkbox" ng-model="fraction.selected">
+					  	  	<h4>{{fraction.name}}&nbsp;<img alt="[{{fraction.stabilityDescription}}]" ng-src="{{fraction.stabilityBadgeURL}}"></h4>
 					  	  	<p class="help-block">{{fraction.description}}</p>
 					  	  </label>
 					  </div>
