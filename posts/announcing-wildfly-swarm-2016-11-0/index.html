@@ -1,0 +1,458 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcing WildFly Swarm 2016.11.0 | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"></li><a href="http://jboss.org">JBoss.org</a><li class="topbar-devider"></li><li class="hoverSelector"></li><a href="http://redhat.com">Red Hat</a></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><div class="pull-left"><h1>Blog</h1></div><div class="ul pull-right breadcrumb"><li class="active"><a href="/archive">Archive</a></li><li><span>Post</span></li></div></div></div><div class="container"><div class="row margin-top-20"><div class="col-md-12"><article id="article"><h1>Announcing WildFly Swarm 2016.11.0</h1><div class="post-meta">By The WildFly Swarm Team | Published Today,  Nov 7th</div><div><div class="sect1">
+<h2 id="_november_means_the_release_of_2016_11_0">November means the release of 2016.11.0!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Celebrating National Pepper Month, at least for some nations,
+we&#8217;re happy to announce the release of WildFly Swarm version
+2016.11.0.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What&#8217;s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhanced JAX-RS client library</p>
+</li>
+<li>
+<p>Support for Flyway schema migration for relational databases</p>
+</li>
+<li>
+<p>Improved Arquillian testing (still in progress)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WIldFly functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
+</div>
+<!-- more -->
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jax_rs_client">JAX-RS Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re developing with JAX-RS and CDI we&#8217;ve just made it a lot easier to call external services!</p>
+</div>
+<div class="paragraph">
+<p>Say we want to call an external service that returns the time.
+We can define an interface that maps onto the method we want to call, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("time")
+@Service(baseUrl = "http://localhost:8080/")
+public interface TimeService extends ServiceClient&lt;TimeService&gt; {
+    @GET
+    @Path("default")
+    @Produces(MediaType.TEXT_PLAIN)
+    String getTime();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We specify <code>@Service</code> with the url of the service.
+In future enhancements we will integrate this annotation with our topology for service discovery.</p>
+</div>
+<div class="paragraph">
+<p>We can then <code>@Inject</code> an instance of the service and call it as if it was a local method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Path("/messages")
+@ApplicationScoped
+public class MessageResource {
+    @Inject
+    TimeService timeService;
+
+    @GET
+    @Path("/sync")
+    public String getMessageSync() throws Exception {
+        return timeService.getTime();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we want the external call to be handled asynchronously we can do the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    @GET
+    @Path("/async")
+    public void getMessageAsync(@Suspended final AsyncResponse asyncResponse) throws Exception {
+        timeService.exec(() -&gt; timeService.getTime(),
+                         s -&gt; asyncResponse.resume(s),
+                         asyncResponse::resume);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We look forward to hearing your feedback on what we&#8217;ve currently done and what additional features you would like it to support.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_flyway_integration">Flyway integration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flyway is an open-source database migration tool. It strongly favors simplicity and convention over configuration.
+We&#8217;ve introduced a new <code>flyway</code> fraction that automatically executes your SQL scripts located in <code>src/main/resources/db/migration</code> when your microservice starts. Check this <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0/flyway">example</a> and read more about Flyway <a href="https://flywaydb.org/documentation/">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_improved_arquillian">Improved Arquillian</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While we continue to improve our testing story with Arquillian, the biggest
+visible change in this release the availability of <code>@DefaultDeployment</code>
+annotation.  This annotation may be applied at the <em>class</em> level of your
+test, and removes the need to provide a static method marked <code>@Deployment</code>
+constructing your deployment.  It attempts to construct a reasonable default
+deployment so that you don&#8217;t have to.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gradle_sigh">Gradle. Sigh.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We still include the Gradle plugin, but we disavow any knowledge about
+it or expectation that it works. We&#8217;ve removed the Gradle examples
+from the active build of our examples repository.  We have found that
+Gradle does not consistently handle our tree of parent POMs and importation
+of BOMs for version management.  We may completely remove Gradle support
+in a future version, unless some Gradle-loving community member wants to
+volunteer to knock it into shape. The core team is simply lacking the
+resources to improve and maintain it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 2016.11.0 are available <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&amp;version=12331463">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_bug">Bug</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-809">SWARM-809</a>] wildfly-swarm:start can be fooled by implicit deployments. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-801">SWARM-801</a>] Missing components in camel-other fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-799">SWARM-799</a>] Arq drones don&#8217;t work on mac os sierra (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-791">SWARM-791</a>] ArtifactNotFoundException is thrown when resolving dependencies in wildfly-swarm-plugin (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-781">SWARM-781</a>] CDI Fraction should ensure presence of beans.xml (Won&#8217;t Fix)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-766">SWARM-766</a>] Fix Typos on Website Tutorial Step-5 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-765">SWARM-765</a>] Typos on Web Tutorial Step 4 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-763">SWARM-763</a>] Documentation typo on step-3 page of the web tutorial (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-762">SWARM-762</a>] Artifact resolution for wildfly-swarm-plugin ignores &lt;mirrorOf&gt; from settings.xml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-757">SWARM-757</a>] javax.persistence.PersistenceException: [PersistenceUnit: primary] Unable to build Hibernate SessionFactory when using Infinispan as 2nd level cache for hibernate (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-754">SWARM-754</a>] Documentation typo on step-1 page (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-753">SWARM-753</a>] Documentation typo on Prerequisites page (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-733">SWARM-733</a>] Generator does not honor group/artifact id for package (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-691">SWARM-691</a>] Multiple Archive#as(Secured.class) executions occur ParseError of web.xml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-687">SWARM-687</a>] jaxrs-validator fraction is not auto-detected by the wildfly-swarm-plugin (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-683">SWARM-683</a>] Adding camel-other as dependencies fail with a ArtifactNotFoundException when executing  (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-676">SWARM-676</a>] Running tests inside IDE present java.lang.ClassNotFoundException: org.yaml.snakeyaml.Yaml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-673">SWARM-673</a>] Weld SE container STATIC_INSTANCE is already running! (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-671">SWARM-671</a>] mvn wildfly-swarm:package fails with "File must be specified" (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-661">SWARM-661</a>] Swarmtool does not work on non-bash shells (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-645">SWARM-645</a>] When parsing standalone.xml, any unrecognized XML elements produce a scary stack trace (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-642">SWARM-642</a>] wildfly-swarm-plugin does not work when running in Gradle 3 (Cannot Reproduce Bug)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-624">SWARM-624</a>] Add zipkin support to booker (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-491">SWARM-491</a>] Cannot use Arquillian Wildfly Swarm Container with Gradle (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task">Task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-805">SWARM-805</a>] Move the jdr fraction out of the fractions/javaee path (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-760">SWARM-760</a>] Verify status of unstable fractions and mark as stable where necessary (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-756">SWARM-756</a>] Restructure Maven modules (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-755">SWARM-755</a>] Remove undertow-js fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-727">SWARM-727</a>] plugin:package goals executed twice (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-725">SWARM-725</a>] Update Booker to recent Swarm version (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancement">Enhancement</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-804">SWARM-804</a>] Enhance Zipkin fraction to accept a service name (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-769">SWARM-769</a>] Fix broken JIRA link in README (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-761">SWARM-761</a>] Upgrade to wildfly-camel-4.3.0 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-752">SWARM-752</a>] ModuleLoader MBeans should be registered when Swarm boots up (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-750">SWARM-750</a>] module-rewrite.conf should support exporting modules (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-749">SWARM-749</a>] module-rewrite.conf should support including modules (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-706">SWARM-706</a>] Improve test coverage of Project Stages (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-603">SWARM-603</a>] Pluggable user space extension method (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-531">SWARM-531</a>] Investigate support for health indicators (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_component_upgrade">Component Upgrade</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-800">SWARM-800</a>] Upgrade to Vert.x 3.3.3 (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_task">Sub-task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-787">SWARM-787</a>] Support a main=MyMain.class on @DefaultDeployment. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-778">SWARM-778</a>] Make it easier to generate ARQ @Deployment-type of things (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-775">SWARM-775</a>] Turn our Arquillian support into a bonafide fraction. (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_request">Feature Request</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-771">SWARM-771</a>] Provide a zipkin fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-768">SWARM-768</a>] Honor swarm.project.stage as environment variable (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-715">SWARM-715</a>] Enhanced JAX-RS Client API (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-478">SWARM-478</a>] Wildfly Swarm Flyway Integration (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0</a>.</p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is <a href="/documentation/2016-11-0">available</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="sect2">
+<h3 id="_core">Core</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Dimitris Mandalidis</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Charles Moulliard</p>
+</li>
+<li>
+<p>James Netherton</p>
+</li>
+<li>
+<p>Ted Won</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation">Documentation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ola Petersson</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div></article></div></div></div></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center">&copy; Copyright 2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div></div></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+</script><script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script><script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="/assets/plugins/back-to-top.js"></script><script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script><script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script><script type="text/javascript" src="/assets/js/custom.js"></script><script type="text/javascript" src="/assets/js/app.js"></script><script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script><script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script><script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script><script>(function() {
+
+  jQuery(document).ready(function() {
+    App.init();
+    OwlCarousel.initOwlCarousel();
+    StyleSwitcher.initStyleSwitcher();
+    ParallaxSlider.initParallaxSlider();
+
+    hljs.initHighlightingOnLoad();
+  });
+
+})();
+</script></body></html>
