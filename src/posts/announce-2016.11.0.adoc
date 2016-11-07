@@ -102,6 +102,17 @@ test, and removes the need to provide a static method marked `@Deployment`
 constructing your deployment.  It attempts to construct a reasonable default
 deployment so that you don't have to.
 
+== Gradle. Sigh.
+
+We still include the Gradle plugin, but we disavow any knowledge about
+it or expectation that it works. We've removed the Gradle examples
+from the active build of our examples repository.  We have found that
+Gradle does not consistently handle our tree of parent POMs and importation
+of BOMs for version management.  We may completely remove Gradle support
+in a future version, unless some Gradle-loving community member wants to
+volunteer to knock it into shape. The core team is simply lacking the
+resources to improve and maintain it.
+
 
 == Changelog
 Release notes for 2016.11.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12331463[here].
