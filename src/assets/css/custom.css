@@ -15,3 +15,7 @@
     margin-bottom: 12px;
     font-family: "Open Sans", Arial, sans-serif;
 }
+
+.generator-dependency-name {
+    color: #000000;
+}
