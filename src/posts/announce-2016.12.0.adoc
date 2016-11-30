@@ -47,15 +47,15 @@ your application, you'll now see a rather verbose set of output, similar to:
 [source]
 ----
 ...
-swarm.management.http-interface-management-interface.socket-binding                             = management-http
-swarm.management.http.port                                                                      = 9990
-swarm.management.https.port                                                                     = 9993
-swarm.request-controller.active-requests                                                        = (unset)
-swarm.request-controller.max-requests                                                           = (unset)
-swarm.request-controller.track-individual-endpoints                                             = (unset)
-swarm.undertow.alias                                                                            = (unset)
-swarm.undertow.buffer-caches.default.buffer-size                                                = (unset)
-swarm.undertow.buffer-caches.default.buffers-per-region                                         = (unset)
+swarm.management.http-interface-management-interface.socket-binding = management-http
+swarm.management.http.port                                          = 9990
+swarm.management.https.port                                         = 9993
+swarm.request-controller.active-requests                            = (unset)
+swarm.request-controller.max-requests                               = (unset)
+swarm.request-controller.track-individual-endpoints                 = (unset)
+swarm.undertow.alias                                                = (unset)
+swarm.undertow.buffer-caches.default.buffer-size                    = (unset)
+swarm.undertow.buffer-caches.default.buffers-per-region             = (unset)
 ...
 ----
 
