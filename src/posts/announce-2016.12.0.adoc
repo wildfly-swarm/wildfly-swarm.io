@@ -1,0 +1,186 @@
+---
+title: Announcing WildFly Swarm 2016.12.0
+publishDate: 2016-12-01
+modifyDate: 2016-12-01
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== It's December, WildFly Swarm 2016.12.0 swings in like a monkey.
+
+Since December 14th is Monkey Day (look it up!), we're shipping
+WildFly Swarm 2016.12.0 with a side-dish of bananas.  Bananas.
+
+=== What's New?
+
+* More configurability
+* Bring-you-own JDBC driver
+* Improvements to the health/monitoring
+* Improvements to OpenShift support
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+
+++++
+<!-- more -->
+++++
+
+== More Configurability
+
+Some time was spent to make everything more consistently configurable without 
+requiring you to write your own `main(...)` method.  While we've supported
+`project-stages.yml` and Java system properties for a while, the things that
+were configurable using them was hit-or-miss.
+
+Now, through `project-stages.yml` you can accomplish most any configuration
+of fractions that would've normally required a `main(...)`.  When booting up
+your application, you'll now see a rather verbose set of output, similar to:
+
+[source]
+----
+...
+swarm.management.http-interface-management-interface.socket-binding                             = management-http
+swarm.management.http.port                                                                      = 9990
+swarm.management.https.port                                                                     = 9993
+swarm.request-controller.active-requests                                                        = (unset)
+swarm.request-controller.max-requests                                                           = (unset)
+swarm.request-controller.track-individual-endpoints                                             = (unset)
+swarm.undertow.alias                                                                            = (unset)
+swarm.undertow.buffer-caches.default.buffer-size                                                = (unset)
+swarm.undertow.buffer-caches.default.buffers-per-region                                         = (unset)
+...
+----
+
+We currently display all configurable items, even if unset.  If you have a
+`main(...)` with customizations, those customizations will be visible during
+boot.  For those of you who are security-minded, we also redact any configuration item
+that might be a password.
+
+The naming of the configuration items follows the structure of the
+Fraction APIs you may have already been using to configure your application.
+While these names are as dotted properties, and can be ultimately set
+using `-Dkey=value` on the command-line, they also represent the
+YAML tree you can use from within a `project-stages.yml` file.
+
+[source,yaml]
+----
+swarm:
+  management:
+    http:
+      port: 9990
+    https:
+      port: 9993
+----
+
+The general format is
+
+[source,yaml]
+----
+swarm:
+  fraction-name:
+    # fraction attribute
+    attribute-key: value
+    # collection of subresources
+    subresource-type:
+      subresource-key:
+        attribute-key: value
+    # singleton subresource
+    subresource-key:
+      attribute-key: value
+----
+
+Additionally, you now use `project-stages.yml` not only to configure existing
+components, but it may be used to create new configured components.  This is 
+primarily thought to be useful for defining items such as datasources.
+
+[source,yaml]
+----
+swarm:
+  datasources:
+    data-sources:
+      MyDS:
+        driver-name: myh2
+        connection-url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        user-name: sa
+        password: sa
+      MyOtherDS:
+        driver-name: myh2
+        connection-url: jdbc:h2:mem:other-test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        user-name: sa
+        password: sa
+----
+
+== Bring-your-own JDBC driver
+
+*WARNING: Breaking change!*
+
+Previously we provided Maven artifacts that transitively brought in particular
+JDBC drivers to make it easier to integrate them with the underlying WildFly
+datasources subsystem.  This was problematic due to the fact that we had to
+select specific versions of a given driver and also couldn't support non-freely-available
+drivers.
+
+We have completely removed our DB driver fractions.  They are *gone*.  
+
+You now get to bring your own JDBC driver.  In fact, you *must* bring your own
+JDBC driver.  All that's required though is just adding it as a normal
+Maven dependency to your project.
+
+e.g.
+
+[source,xml]
+----
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <version>1.4.187</version>
+</dependency>
+----
+
+That being said, we have replaced our own inclusion of specific versions
+of specific drivers with enough logic to handle the setup of the WildFly
+driver, the creation (at runtime) of the relevant `module.xml` to load it.
+
+We now auto-detect the following databases and attempt to configure them
+correctly:
+
+- H2
+- MySQL
+- PostgreSQL
+- EnterpriseDB
+- Oracle
+- SQLServer
+- Sybase
+- DB2
+
+This includes noticing if you have a DB2 license `jar` because you're 
+connecting to an AS/400 or whatnot. 
+
+That being said, we haven't access to a few of the non-freely-available
+databases, so we welcome reports of any issues discovered.
+
+== Improvements to health/monitoring
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.11.0.
+
+Documentation for this release is link:/documentation/2016-11-0[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
