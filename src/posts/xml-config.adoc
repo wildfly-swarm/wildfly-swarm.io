@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== Programmatic and declarative configuration
+== Programmatic and declarative configuration
 
 The common and only way to configure wildfly-swarm nodes was to use the Java API.
 With the inclusion of https://issues.jboss.org/browse/SWARM-14[SWARM-14], external, declarative configuration of wildfly-swarm nodes becomes possible.

@@ -3,9 +3,9 @@ title: Tutorial Introduction
 layout: tutorial.jade
 ---
 
-= Tutorial Introduction
+== Tutorial Introduction
 
-= Introduction
+=== Introduction
 
 This tutorial will introduce you to WildFly Swarm through the migration of a Java EE monolith application
 to microservices for parts of the stack. The services will be discoverable, provide failover with Netflix Ribbon and utilize Netflix Hystrix for circuit breaking amongst other things.

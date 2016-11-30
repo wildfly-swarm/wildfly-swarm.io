@@ -3,7 +3,7 @@ title: Circuit Breaking
 layout: tutorial.jade
 ---
 
-= Hystrix
+== Hystrix
 
 === Installation of the Hystrix Dashboard
 The hystrix UI can simply be deployed as a .war on WildFly.

@@ -21,7 +21,7 @@ var metalsmith = require('metalsmith'),
 
 var CURRENT_RELEASE = '2016.11.0';
 
-moment.locale('en', {
+moment.updateLocale('en', {
   calendar : {
     lastDay : '[Yesterday, ] MMM Do',
     sameDay : '[Today, ] MMM Do',

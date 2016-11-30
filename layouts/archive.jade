@@ -11,7 +11,7 @@ block main
         a(href='/'+post.path)!= post.title
         div.small(style='text-transform:none!important')
           i(class="fa fa-clock-o")
-          time.timestamp(datetime=post.publishDate)= moment(post.publishDate).format('MMMM D, YYYY')
+          time.timestamp(datetime=post.publishDate.toString())= moment(post.publishDate).format('MMMM D, YYYY')
 
       span!= post.excerpt
 

@@ -6,7 +6,7 @@ author: Ken Finnigan
 layout: post.jade
 ---
 
-=== What is MicroProfile?
+== What is MicroProfile?
 
 http://microprofile.io[MicroProfile] is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
 A MicroProfile 1.0 will be announced next week at JavaOne, which contains CDI, JAX-RS and JSON-P.

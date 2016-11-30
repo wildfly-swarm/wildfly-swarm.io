@@ -15,9 +15,10 @@ WildFly Swarm 2016.12.0 with a side-dish of bananas.  Bananas.
 === What's New?
 
 * More configurability
-* Bring-you-own JDBC driver
+* Bring-You-Own JDBC driver
 * Improvements to the health/monitoring
 * Improvements to OpenShift support
+* Fluentd logging support
 
 === What is WildFly Swarm?
 
@@ -27,7 +28,7 @@ for microservice type applications.
 
 Each portion of the appserver is referred to as a _fraction_, which many times
 maps to a `subsystem` from WildFly, but also may include other discrete chunks
-of non-Java EE or WIldFly functionality, such as _Swagger_, _Jolokia_ or _NetflixOSS Ribbon_.
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
 
 ++++
 <!-- more -->
@@ -149,7 +150,7 @@ That being said, we have replaced our own inclusion of specific versions
 of specific drivers with enough logic to handle the setup of the WildFly
 driver, the creation (at runtime) of the relevant `module.xml` to load it.
 
-We now auto-detect the following databases and attempt to configure them
+We now auto-detect the following database JDBC drivers and attempt to configure them
 correctly:
 
 - H2
@@ -169,6 +170,45 @@ databases, so we welcome reports of any issues discovered.
 
 == Improvements to health/monitoring
 
+
+== Changelog
+Release notes for 2016.12.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12331464[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-864[SWARM-864]] Ensure BYO JDBC works with Windows paths. (Done)
+* [https://issues.jboss.org/browse/SWARM-862[SWARM-862]] Multi Module Api in testsuite is not added to repo, so breaks when doing `mvn dependency:tree` (Done)
+* [https://issues.jboss.org/browse/SWARM-860[SWARM-860]] Health examples fail with NoClassDefFoundError: org/jboss/dmr/ModelNode (Done)
+* [https://issues.jboss.org/browse/SWARM-858[SWARM-858]] additional fractions: unintuitive behavior if the fraction is not found (Done)
+* [https://issues.jboss.org/browse/SWARM-857[SWARM-857]] Secured Ribbon client gets CNFE on KeycloakSecurityContextAssociation when trying to propagate Bearer token (Done)
+* [https://issues.jboss.org/browse/SWARM-854[SWARM-854]] fraction autodetection is hard to debug (Done)
+* [https://issues.jboss.org/browse/SWARM-853[SWARM-853]] @DefaultDeployment bungles paths on Windows (Done)
+* [https://issues.jboss.org/browse/SWARM-850[SWARM-850]] forgotten System.getProperty calls after the @Configurable conversion (Done)
+* [https://issues.jboss.org/browse/SWARM-848[SWARM-848]] ServiceName ClassLoading issue with TopologyWebAppActivator (Done)
+* [https://issues.jboss.org/browse/SWARM-846[SWARM-846]] Topology ProxyService's are never started (Done)
+* [https://issues.jboss.org/browse/SWARM-844[SWARM-844]] Gradle project dependencies with 2 colons are resolved as jar dependencies (Done)
+* [https://issues.jboss.org/browse/SWARM-833[SWARM-833]] bad default mod_cluster multicast address (Done)
+* [https://issues.jboss.org/browse/SWARM-825[SWARM-825]] Container :api and :runtime modules don't include/exclude correct packages (Done)
+* [https://issues.jboss.org/browse/SWARM-744[SWARM-744]] Failed to process logging directory /. Log files cannot be listed (Done)
+* [https://issues.jboss.org/browse/SWARM-698[SWARM-698]] Example README doc code does not match actual code (Done)
+* [https://issues.jboss.org/browse/SWARM-612[SWARM-612]] jboss-cli reload results in 404 / no deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-610[SWARM-610]] The wildfly-self-contained.d directory lingers. (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-851[SWARM-851]] add a test that a custom main method in a WAR project is actually executed (Done)
+* [https://issues.jboss.org/browse/SWARM-739[SWARM-739]] Formalize configuration values (Done)
+* [https://issues.jboss.org/browse/SWARM-714[SWARM-714]] Hide Fractions from developer that are just exposing WF modules, such as `jaxrs-cdi` (Done)
+* [https://issues.jboss.org/browse/SWARM-693[SWARM-693]] Provide one well known default health check entrypoint (Done)
+* [https://issues.jboss.org/browse/SWARM-688[SWARM-688]] Don't show internal Fractions in list at container startup (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-823[SWARM-823]] [spike] Scope & Review the ability to bring your own DB/JBDC (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-810[SWARM-810]] Update to latest OpenShift Client in topology-openshift (Done)
+* [https://issues.jboss.org/browse/SWARM-686[SWARM-686]] Update to WF Core  2.2.1 (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-723[SWARM-723]] Fraction for FluentD to integrate with EFK stack (Done)
 
 == Resources
 

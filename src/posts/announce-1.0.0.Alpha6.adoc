@@ -6,7 +6,7 @@ author: The WildFly Swarm Team
 layout: post.jade
 ---
 
-=== What is WildFly Swarm?
+== What is WildFly Swarm?
 
 WildFly Swarm is the decomposition and reconstitution of the popular
 WildFly Java Application Server in order to support _just enough app-server_

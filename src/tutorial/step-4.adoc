@@ -15,7 +15,8 @@ image::../img/step-4.png[title="Stage specific configuration"]
 Here's an example for service “user”
 
 [project-stages.yml]
-```
+[source,yaml]
+----
 service:
    user:
        service-name: "user-SNAPSHOT"
@@ -35,7 +36,7 @@ swarm:
        offset: 50
    consul:
        url: "http://<CONSUL_IP>:8500"
-```
+----
 
 == Concepts
 * Environment specific changes: configuration: `project-stages.yml`

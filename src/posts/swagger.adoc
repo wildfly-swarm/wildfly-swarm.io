@@ -6,7 +6,7 @@ author: Lance Ball
 layout: post.jade
 ---
 
-=== Swagger Support for JAX-RS Applications
+== Swagger Support for JAX-RS Applications
 
 With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
 for Swagger, a simple but powerful JSON representation of your REST

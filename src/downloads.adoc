@@ -9,7 +9,7 @@ layout: page.jade
 For the most part, WildFly Swarm is consumed through
 Maven artifacts, resembling `pom.xml` entries such as
 
-[code,xml]
+[source,xml]
 ----
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
@@ -20,7 +20,7 @@ Maven artifacts, resembling `pom.xml` entries such as
 We highly recommend using one of our BOMs so that you don't
 need to specify versions of each component you bring in:
 
-[code,xml]
+[source,xml]
 ----
 <dependencyManagement>
   <dependency>

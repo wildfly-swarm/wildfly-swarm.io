@@ -16,18 +16,14 @@ block main
 
   .container
     .row.margin-top-20
-      .col-md-12
+      .col-md-10
         article#article
           h1= title
           - publishDate.setUTCHours(5)
           - modifyDate.setUTCHours(5)
 
-          div.post-meta By #{author} | Published #{moment(publishDate).calendar()}
+          div.post-meta By #{author} | Published #{moment(publishDate).calendar().toString()}
             if modifyDate && moment(publishDate).isBefore(modifyDate)
-              span  | Updated #{moment(modifyDate).calendar()}
+              span  | Updated #{moment(modifyDate).calendar().toString()}
           div!= contents
 
-block disqus
-  #disqus_thread
-    script
-        include disqus.js

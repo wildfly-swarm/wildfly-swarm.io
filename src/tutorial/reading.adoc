@@ -3,7 +3,7 @@ title: Recommended Reading
 layout: tutorial.jade
 ---
 
-= Reading on microservices concepts
+== Reading on microservices concepts
 
 We will cover general microservice concepts during the tutorial to some extend,
 but cannot fully cover the wide range of concepts and ideas that relate to it without sacrificing time for practical activities.

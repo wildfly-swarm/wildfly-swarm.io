@@ -3,14 +3,14 @@ title: Fault-injection
 layout: tutorial.jade
 ---
 
-= Toxy
+== Toxy
 
-= Fault-injection using Toxy
+== Fault-injection using Toxy
 
 A HTTP proxy to simulate server failure scenarios and network conditions.
 Can be retrieved from https://github.com/h2non/toxy, but does requires NodeJS.
 
-== Latency & Random faults
+=== Latency & Random faults
 
 Injecting latency and random errors into the HTTP processing:
 
