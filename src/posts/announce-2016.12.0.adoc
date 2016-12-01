@@ -168,7 +168,6 @@ connecting to an AS/400 or whatnot.
 That being said, we haven't access to a few of the non-freely-available
 databases, so we welcome reports of any issues discovered.
 
-== Improvements to health/monitoring
 
 
 == Changelog
@@ -185,6 +184,7 @@ Release notes for 2016.12.0 are available https://issues.jboss.org/secure/Releas
 * [https://issues.jboss.org/browse/SWARM-850[SWARM-850]] forgotten System.getProperty calls after the @Configurable conversion (Done)
 * [https://issues.jboss.org/browse/SWARM-848[SWARM-848]] ServiceName ClassLoading issue with TopologyWebAppActivator (Done)
 * [https://issues.jboss.org/browse/SWARM-846[SWARM-846]] Topology ProxyService's are never started (Done)
+* [https://issues.jboss.org/browse/SWARM-845[SWARM-845]] Unsatisfied dependencies for type RemotingFraction (Done)
 * [https://issues.jboss.org/browse/SWARM-844[SWARM-844]] Gradle project dependencies with 2 colons are resolved as jar dependencies (Done)
 * [https://issues.jboss.org/browse/SWARM-833[SWARM-833]] bad default mod_cluster multicast address (Done)
 * [https://issues.jboss.org/browse/SWARM-825[SWARM-825]] Container :api and :runtime modules don't include/exclude correct packages (Done)
@@ -192,6 +192,7 @@ Release notes for 2016.12.0 are available https://issues.jboss.org/secure/Releas
 * [https://issues.jboss.org/browse/SWARM-698[SWARM-698]] Example README doc code does not match actual code (Done)
 * [https://issues.jboss.org/browse/SWARM-612[SWARM-612]] jboss-cli reload results in 404 / no deployment (Done)
 * [https://issues.jboss.org/browse/SWARM-610[SWARM-610]] The wildfly-self-contained.d directory lingers. (Done)
+* [https://issues.jboss.org/browse/SWARM-204[SWARM-204]] Exception when connecting Jolokia JVM agent. (Done)
 
 === Enhancement
 * [https://issues.jboss.org/browse/SWARM-851[SWARM-851]] add a test that a custom main method in a WAR project is actually executed (Done)
@@ -209,6 +210,7 @@ Release notes for 2016.12.0 are available https://issues.jboss.org/secure/Releas
 
 === Feature Request
 * [https://issues.jboss.org/browse/SWARM-723[SWARM-723]] Fraction for FluentD to integrate with EFK stack (Done)
+
 
 == Resources
 
