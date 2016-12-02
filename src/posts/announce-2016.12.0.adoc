@@ -177,8 +177,32 @@ all checks and returns a combined response with a single outcome. You would stil
 
 Security has been simplified as well. It's now an all-or-nothing approach. If you define a security realm all endpoints will be secured, as such the attribute `inheritSecurity` on `@Health` has been removed. 
 
-And as a last change, checks now *require* an ID (or name) to identify them in composite responses. Hence the builder API on `HealthStatus` has been modified to reflect this. 
+Checks now *require* an ID (or name) to identify them in composite responses. Hence the builder API on `HealthStatus` has been modified to reflect this. 
 
+Taking everything into account, the wireformat has changed slightly as well. A regular response, now looks like this:
+
+```
+{
+    "checks": [
+        {
+            "data": {
+                "freebytes": 35445936128
+            },
+            "id": "diskspace",
+            "result": "UP"
+        },
+        {
+            "data": {
+                "date": "Fri Dec 02 09:50:12 CET 2016",
+                "time": 1480668612010
+            },
+            "id": "something-else",
+            "result": "UP"
+        }
+    ],
+    "outcome": "UP"
+}
+```
 == Changelog
 Release notes for 2016.12.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12331464[here].
 
