@@ -173,9 +173,9 @@ databases, so we welcome reports of any issues discovered.
 *WARNING: Breaking change!*
 
 The health check API and protocol has been updated to make it easier to use. Unlike the prior version, `/health` now aggregates 
-all checks and returns a combined response with single outcome. You would still expose health checks using JAX-RC resources, but you only need to know `/health` as the entry point for clients to verify the livelyness of your node (i.e. kubernetes). 
+all checks and returns a combined response with a single outcome. You would still expose health checks using JAX-RS resources, but you only need to know `/health` as the entry point for clients to verify the liveliness of your node (i.e. kubernetes). Along these lines, we've removed `CompositeHealthStatus`, because that's implied by the former. 
 
-Along these lines, we've remove `CompositeHealthStatus`, because that implied by the above. Security has been simplified. It's now an all-or-nothing approach. If you define a security realm all endpoints will be secured, as such the attribute @Health(inheritSecurity)` has been removed. 
+Security has been simplified as well. It's now an all-or-nothing approach. If you define a security realm all endpoints will be secured, as such the attribute @Health(inheritSecurity)` has been removed. 
 
 And as a last change, checks now *require* an ID (or name) to identify them in composite responses. Hence the builder API on `HealthStatus` has been modified to reflect this. 
 
