@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 10 Nov 2016 15:48:15 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 10 Nov 2016 15:48:07 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2016.11.0]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Fri, 02 Dec 2016 14:05:17 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 02 Dec 2016 14:05:06 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2016.12.0]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_it_s_december_wildfly_swarm_2016_12_0_swings_in_like_a_monkey">It’s December, WildFly Swarm 2016.12.0 swings in like a monkey.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since December 14th is Monkey Day (look it up!), we’re shipping
+WildFly Swarm 2016.12.0 with a side-dish of bananas.  Bananas.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>More configurability</p>
+</li>
+<li>
+<p>Bring-You-Own JDBC driver</p>
+</li>
+<li>
+<p>Improvements to the health/monitoring</p>
+</li>
+<li>
+<p>Improvements to OpenShift support</p>
+</li>
+<li>
+<p>Fluentd logging support</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Fri, 02 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.11.0]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_november_means_the_release_of_2016_11_0">November means the release of 2016.11.0!</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -81,8 +121,9 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WIldFly functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-10-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-10-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 03 Oct 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[MicroProfile with WildFly Swarm]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_what_is_microprofile">What is MicroProfile?</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-10-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-10-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 03 Oct 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[MicroProfile with WildFly Swarm]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_is_microprofile">What is MicroProfile?</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><a href="http://microprofile.io">MicroProfile</a> is a new initiative in the Enterprise Java community to foster rapid innovation around Microservices and Enterprise Java.
 A MicroProfile 1.0 will be announced next week at JavaOne, which contains CDI, JAX-RS and JSON-P.
@@ -201,8 +242,9 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WIldFly functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-8-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-8-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Aug 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 1.0.0.Final]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-8-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-8-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Aug 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 1.0.0.Final]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>WildFly Swarm is the decomposition and reconstitution of the popular
 <a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough app-server</em>
@@ -212,6 +254,7 @@ for microservice type applications.</p>
 <p>Each portion of the app-server is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -369,8 +412,9 @@ in version numbering.</p>
 <div class="paragraph">
 <p>Since a multitude of versions can certainly make life more difficult for
 consumers, we’ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
 for Swagger, a simple but powerful JSON representation of your REST
@@ -427,13 +471,15 @@ from your custom <code>main()</code> as a basis for a custom deployment.</p>
 <p>Update Keycloak to 1.8.0.Final</p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 01 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Initial support for declarative configuration]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_programmatic_and_declarative_configuration">Programmatic and declarative configuration</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-alpha8</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 01 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Initial support for declarative configuration]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_programmatic_and_declarative_configuration">Programmatic and declarative configuration</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The common and only way to configure wildfly-swarm nodes was to use the Java API.
 With the inclusion of <a href="https://issues.jboss.org/browse/SWARM-14">SWARM-14</a>, external, declarative configuration of wildfly-swarm nodes becomes possible.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 21 Jan 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha6]]></title><description><![CDATA[<div class="sect2">
-<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+</div>]]></description><link>https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/initial-support-for-declarative-configuration</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 21 Jan 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Alpha6]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>WildFly Swarm is the decomposition and reconstitution of the popular
 WildFly Java Application Server in order to support <em>just enough app-server</em>
