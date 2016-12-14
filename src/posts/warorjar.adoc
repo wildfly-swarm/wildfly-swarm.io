@@ -1,0 +1,109 @@
+---
+title: To WAR or JAR
+publishDate: 2016-12-15
+modifyDate: 2016-12-14
+author: Ken Finnigan
+layout: post.jade
+draft: true
+---
+
+== Whether to WAR or JAR with WildFly Swarm?
+
+With most things in life we have choices, sometimes a few and sometimes many.
+When it comes to WildFly Swarm projects with Maven the two choices are
+`war` or `jar` packaging.
+
+Each has different benefits and tradeoffs which we will discuss during this article.
+By the end I hope it's clearer as to the best situations to utilize either
+packaging type.
+
+++++
+<!-- more -->
+++++
+
+=== JAR
+
+There are two ways we end up with `jar` packaging with Maven:
+
+. Don't specify `<packaging>` in `pom.xml`, as `jar` is the default.
+. Explicitly set `jar` packaging:
+
+[source,xml]
+----
+<packaging>jar</packaging>
+----
+
+What are the benefits of this approach:
+
+* Simplified project structure as only deals with classes and resources
+* When using a custom `main()`,
+provides easier construction of a WAR deployment from classpath resources
+
+But what are the downsides:
+
+* Requires a custom `main()` if you want to create a WAR deployment
+* Can't be _deployed_ to regular application servers
+
+=== WAR
+
+The only way to indicate `war` packaging is with:
+
+[source,xml]
+----
+<packaging>war</packaging>
+----
+
+Benefits:
+
+* Deployable to any container/server that accepts `.war` files
+* Don't need a custom `main()` to construct the WAR deployment
+* More common practice for development by those familiar with Enterprise Java,
+such as Java EE and Spring
+
+Drawbacks:
+
+* Slightly more complicated project layout.
+I say that loosely though, especially as most Enterprise Java developers are more
+than familiar with war project structure.
+
+=== What's Best?
+
+As with all things, there isn't one size fits all!
+
+In the below table I will layout in what situations one or the other should be utilized:
+
+[cols=4, options="header"]
+|===
+| Packaging
+| Web Deployment
+| Non Web Deployment
+| Custom main()
+
+| JAR
+| Could be done with a custom main(), but *not recommended*
+| *YES*. _Recommended_ for messaging and scheduled type microservices that don't require
+exposed endpoints.
+| If needed for customizing fractions. _Please raise issues for what's missing for it
+to be configured via yml_.
+
+| WAR
+| *YES*. _Recommended_
+| Would require custom main() to convert WAR structure into JAR deployment.
+| If needed for customizing fractions. _Please raise issues for what's missing for it
+to be configured via yml_. *Not recommended* for creating a web deployment,
+as Maven has already done that for us.
+|===
+
+
+=== Conclusion
+
+From this brief foray into the world of Maven packaging and WildFly Swarm,
+we can see that for most situations sticking with the typical `war` packaging
+is our best option.
+It provides the closest match to regular Enterprise Java development and
+will result in a more seamless transition developing with WildFly Swarm.
+
+Don't be afraid to let us know we've messed up and you're not able to configure
+a fraction with `project-stages.yml` and you needed to create a custom `main()`.
+We are keen on removing all those types of problems such that a custom `main()`
+is only required in the most advanced use cases, and preferably not even then!
