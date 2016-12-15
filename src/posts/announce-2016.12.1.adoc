@@ -1,0 +1,100 @@
+---
+title: Announcing WildFly Swarm 2016.12.1
+publishDate: 2016-12-15
+modifyDate: 2016-12-15
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== You take the good, you take the bad, you take them both, and then you have... version 2016.12.1.
+
+To memorialize the passing of Alan Thicke, we are performing a mid-month release
+of version 2016.12.1
+
+=== What's New?
+
+* Improvements on UberJar constructions and .war cleaning
+* Improvements on fraction auto-detection
+* Safely not enabling HTTP2 if no ciphers are strong enough
+* Support `<resource-root>` in custom `module.xml`
+* Fewer boot-time meaningless warnings
+* Significantly better Windows support
+* JavaDocs!
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2016.12.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333077[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-938[SWARM-938]] Example resolve wrong artifact version (Done)
+* [https://issues.jboss.org/browse/SWARM-916[SWARM-916]] default security subsystem configuration different from WildFly (Done)
+* [https://issues.jboss.org/browse/SWARM-911[SWARM-911]] insufficient rules for fraction autodetection (Done)
+* [https://issues.jboss.org/browse/SWARM-909[SWARM-909]] Not reading project-stages.yml properly with wildfly-swarm:run/Run main from IDE (Done)
+* [https://issues.jboss.org/browse/SWARM-903[SWARM-903]] Avoid always enabling HTTP/2 in HTTP/S connectors (Done)
+* [https://issues.jboss.org/browse/SWARM-884[SWARM-884]] Artifacts with classifiers are not found in ApplicationModuleFinder (Done)
+* [https://issues.jboss.org/browse/SWARM-879[SWARM-879]] Maven plugin is missing authentication for Maven mirrors (Done)
+* [https://issues.jboss.org/browse/SWARM-876[SWARM-876]] Fraction auto-detection is bringing unused fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-863[SWARM-863]] Version 2016.11.0 doesn't stop properly (with custom main class) (Done)
+* [https://issues.jboss.org/browse/SWARM-843[SWARM-843]] Wrong default port number for the legacy remoting connector (Done)
+* [https://issues.jboss.org/browse/SWARM-817[SWARM-817]] mvn wildfly-swarm:run does not work for dependencies added with DependenciesContainer.addAllDependencies() (Done)
+* [https://issues.jboss.org/browse/SWARM-814[SWARM-814]] fraction autodetection: mvn wildfly-swarm:package vs. :start (Done)
+* [https://issues.jboss.org/browse/SWARM-793[SWARM-793]] Cannot add custom modules to WildFly Swarm using <resource-root> instead of <artifact> in the module.xml  (Done)
+* [https://issues.jboss.org/browse/SWARM-779[SWARM-779]] Classes in deployment module show an INFO warning when loaded by Weld (Done)
+* [https://issues.jboss.org/browse/SWARM-751[SWARM-751]] WildFly Swarm System Properties swarm.https.port  and swarm.https.certificate.generate do not work (Done)
+* [https://issues.jboss.org/browse/SWARM-730[SWARM-730]] public API needs javadoc (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-920[SWARM-920]] zipkin-jaxrs example  (Done)
+* [https://issues.jboss.org/browse/SWARM-874[SWARM-874]] end-to-end tests for the Swarm Maven plugin (Done)
+* [https://issues.jboss.org/browse/SWARM-856[SWARM-856]] Clear up Example use of Main (Done)
+* [https://issues.jboss.org/browse/SWARM-784[SWARM-784]] [spike] Difference between KeyCloak and RHSSO implementations (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-849[SWARM-849]] Keycloak fraction needs to read keycloak.json from files external to the -swarm.jar file (Done)
+* [https://issues.jboss.org/browse/SWARM-570[SWARM-570]] Creating datasources using the DatasourcesFraction should be straight forward (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2016.12.1.
+
+Documentation for this release is link:/documentation/2016-12-1[available].
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* philschaller
+* Heiko Braun
+* Ken Finnigan
+* George Gastaldi
+* Bob McWhirter
+* Yoshimasa Tanabe
+* Ladislav Thon
+
+=== Documentation
+* Ken Finnigan
+* Bob McWhirter
+
+=== Examples
+* Heiko Braun
+* Ken Finnigan
+* Pavol Loffay
+* Bob McWhirter
