@@ -233,7 +233,7 @@ pre {
 
 table thead th, table tfoot th { font-weight: bold; }
 
-table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 4px; border-radius: 4px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; }
+table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 4px; border-radius: 4px; }
 
 table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
 
@@ -256,6 +256,10 @@ th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middl
 p.tableblock.header { color: #222222; font-weight: bold; }
 
 td > div.verse { white-space: pre; }
+
+table.tableblock td, table.tableblock th {
+  border-bottom: 1px solid #dddddd;
+}
 
 table.tableblock {
   padding: 10px;
