@@ -15,6 +15,7 @@ image::/images/braille.png[WildFly Swarm]
 
 === What's New?
 
+* @Service and ServiceClient package change
 * Lots of bugfixes
 * Start of a http://howto.wildfly-swarm.io/[HOWTO]
 
@@ -31,6 +32,14 @@ of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
 ++++
 <!-- more -->
 ++++
+
+== @Service and ServiceClient package change
+
+As part of some code restructuring of the JAX-RS enhanced client API, the packages that `@Service` and `ServiceClient` are within changed.
+
+Both classes moved from `org.wildfly.swarm.cdi.jaxrsapi` to `org.wildfly.swarm.client.jaxrs`.
+
+Be sure to update your application code with the change!
 
 == Changelog
 Release notes for 2017.1.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12332051[here].
