@@ -19,7 +19,7 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
-var CURRENT_RELEASE = '2016.12.1';
+var CURRENT_RELEASE = '2017.1.1';
 
 moment.updateLocale('en', {
   calendar : {
@@ -153,6 +153,7 @@ function build() {
       '/documentation/2016-11-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.11.0/',
       '/documentation/2016-12-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.0/',
       '/documentation/2016-12-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.1/',
+      '/documentation/2017-1-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.1.1/',
     }))
 
     .build(function (err) {
