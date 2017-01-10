@@ -19,7 +19,10 @@ var metalsmith = require('metalsmith'),
     moment = require('moment'),
     fs = require('fs');
 
-var CURRENT_RELEASE = '2017.1.1';
+var versions = require('./versions.js')
+
+console.log( "VERSIONS", versions);
+
 
 moment.updateLocale('en', {
   calendar : {
@@ -37,6 +40,8 @@ function build() {
       metadata = JSON.parse(fs.readFileSync('./site.json', 'utf8'));
 
   metadata.devMode = serveAndWatch;
+
+  metadata.CURRENT_RELEASE = versions.CURRENT_RELEASE;
 
   metalsmith(__dirname)
     .metadata(metadata)
@@ -133,11 +138,11 @@ function build() {
     ))
 
     .use(redirect({
-      '/download/swarmtool': 'http://repo2.maven.org/maven2/org/wildfly/swarm/swarmtool/'+ CURRENT_RELEASE + '/swarmtool-' + CURRENT_RELEASE + '-standalone.jar',
-      '/download/microprofile-hollowswarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/microprofile/' + CURRENT_RELEASE + '/microprofile-' + CURRENT_RELEASE + '-hollowswarm.jar',
-      '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + CURRENT_RELEASE + '/keycloak-' + CURRENT_RELEASE + '-swarm.jar',
-      '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + CURRENT_RELEASE + '/management-console-' + CURRENT_RELEASE + '-swarm.jar',
-      '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + CURRENT_RELEASE + '/swagger-ui-' + CURRENT_RELEASE + '-swarm.jar',
+      '/download/swarmtool': 'http://repo2.maven.org/maven2/org/wildfly/swarm/swarmtool/'+ versions.CURRENT_RELEASE + '/swarmtool-' + versions.CURRENT_RELEASE + '-standalone.jar',
+      '/download/microprofile-hollowswarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/microprofile/' + versions.CURRENT_RELEASE + '/microprofile-' + versions.CURRENT_RELEASE + '-hollowswarm.jar',
+      '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-swarm.jar',
+      '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-swarm.jar',
+      '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/documentation/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/',
       '/documentation/1-0-0-Alpha6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha6/',
       '/documentation/1-0-0-Alpha8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha8/',
@@ -155,6 +160,7 @@ function build() {
       '/documentation/2016-12-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.1/',
       '/documentation/2017-1-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.1.1/',
     }))
+
 
     .build(function (err) {
       if (err) {
