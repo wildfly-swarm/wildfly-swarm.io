@@ -21,9 +21,6 @@ var metalsmith = require('metalsmith'),
 
 var versions = require('./versions.js')
 
-console.log( "VERSIONS", versions);
-
-
 moment.updateLocale('en', {
   calendar : {
     lastDay : '[Yesterday, ] MMM Do',
@@ -143,22 +140,21 @@ function build() {
       '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-swarm.jar',
-      '/documentation/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/',
-      '/documentation/1-0-0-Alpha6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha6/',
-      '/documentation/1-0-0-Alpha8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Alpha8/',
-      '/documentation/1-0-0-Beta6': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/1.0.0.Beta6/',
-      '/documentation/1-0-0-Beta7': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/c38f5393fe4313665f197b1f01bc73727e6a21c5/',
-      '/documentation/1-0-0-Beta8': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/eee1f5ba4dd4f13855cbe98addd365ba29033810/',
-      '/documentation/1-0-0-CR1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/7d7ea3560e6b65f673bc76ff7fd65499e28ffca2/',
-      '/documentation/1-0-0-CR2': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/56dc244fbc0061d12d923c3b3f964b6c8d2d7e78/',
-      '/documentation/1-0-0-Final': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/6a00bb344527303f784f541ee2fb93abec4a1ef4/',
-      '/documentation/2016-8-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/',
-      '/documentation/2016-9': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/',
-      '/documentation/2016-10-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/34f88c070cc80d697274327282004526316f7851/',
-      '/documentation/2016-11-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.11.0/',
-      '/documentation/2016-12-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.0/',
-      '/documentation/2016-12-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.1/',
-      '/documentation/2017-1-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.1.1/',
+      '/userguide/HEAD': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/',
+      '/refguide/HEAD': 'https://reference.wildfly-swarm.io/',
+      '/howto/HEAD': 'https://howto.wildfly-swarm.io/',
+      '/userguide/1-0-0-CR2': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/56dc244fbc0061d12d923c3b3f964b6c8d2d7e78/',
+      '/userguide/1-0-0-Final': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/6a00bb344527303f784f541ee2fb93abec4a1ef4/',
+      '/userguide/2016-8-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/',
+      '/userguide/2016-9': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.9/',
+      '/userguide/2016-10-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/34f88c070cc80d697274327282004526316f7851/',
+      '/userguide/2016-11-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.11.0/',
+      '/userguide/2016-12-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.0/',
+      '/userguide/2016-12-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2016.12.1/',
+      '/userguide/2017-1-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.1.1/',
+      '/userguide/2017-2-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.2.0/',
+      '/refguide/2017-2-0': 'https://reference.wildfly-swarm.io/v/2017.2.0/',
+      '/howto/2017-2-0': 'https://howto.wildfly-swarm.io/v/2017.2.0/',
     }))
 
 

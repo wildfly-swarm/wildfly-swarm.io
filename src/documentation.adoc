@@ -1,6 +1,6 @@
 ---
 title: Documentation
-lastUpdate: 2016-08-16
+lastUpdate: 2017-02-02
 layout: plain-page.jade
 ---
 
@@ -42,24 +42,31 @@ Microservice.
     	  <div class="tab-pane fade in active" id="released">
           <p>The documentation of the latest stable release:<p>
           <ul>
-            <li><a href="/documentation/2017-1-1">2017.1.1</a></li>
+            <li><a href="/howto/2017-2-0">How To</a></li>
+            <li><a href="/refguide/2017-2-0">Reference Guide</a></li>
+            <li><a href="/userguide/2017-2-0">User Guide</a></li>
           </ul>
         </div>
         <div class="tab-pane fade in" id="snapshot">
           <p>The documentation of the current development master:<p>
-    	    <a href="/documentation/HEAD">Latest Development Snapshot</a>
+          <ul>
+            <li><a href="/howto/HEAD">How To Snapshot</a></li>
+            <li><a href="/refguide/HEAD">Reference Guide Snapshot</a></li>
+      	    <li><a href="/userguide/HEAD">User Guide Snapshot</a></li>
+          </ul>
         </div>
     	  <div class="tab-pane fade in" id="older">
           <p>The documentation for previous releases:<p>
           <ul>
-            <li><a href="/documentation/2016-12-1">2016.12.1</a></li>
-            <li><a href="/documentation/2016-12-0">2016.12.0</a></li>
-            <li><a href="/documentation/2016-11-0">2016.11.0</a></li>
-            <li><a href="/documentation/2016-10-0">2016.10.0</a></li>
-            <li><a href="/documentation/2016-9">2016.09</a></li>
-            <li><a href="/documentation/2016-8-1">2016.8.1</a></li>
-            <li><a href="/documentation/1-0-0-Final">1.0.0.Final</a></li>
-            <li><a href="/documentation/1-0-0-CR2">1.0.0.CR2</a></li>
+            <li><a href="/userguide/2017-1-1">2017.1.1</a></li>
+            <li><a href="/userguide/2016-12-1">2016.12.1</a></li>
+            <li><a href="/userguide/2016-12-0">2016.12.0</a></li>
+            <li><a href="/userguide/2016-11-0">2016.11.0</a></li>
+            <li><a href="/userguide/2016-10-0">2016.10.0</a></li>
+            <li><a href="/userguide/2016-9">2016.09</a></li>
+            <li><a href="/userguide/2016-8-1">2016.8.1</a></li>
+            <li><a href="/userguide/1-0-0-Final">1.0.0.Final</a></li>
+            <li><a href="/userguide/1-0-0-CR2">1.0.0.CR2</a></li>
           <ul>
       </div>
       </div>

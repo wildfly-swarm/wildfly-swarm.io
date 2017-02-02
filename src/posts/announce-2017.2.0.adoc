@@ -1,0 +1,186 @@
+---
+title: Announcing WildFly Swarm 2017.2.0
+publishDate: 2017-02-02
+modifyDate: 2017-02-02
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== Announcing our lovingly produced release for Valentine's!
+
+To spread the love for Valentine's Day, we're happy to announce
+version 2017.2.0 of WildFly Swarm!
+
+=== What's New?
+
+* New docs and config visibility
+* `@DefaultDeployment` defaults to WAR
+* Fraction auto detection for Arquillian
+* Security Constraints in Yaml
+* Update to Keycloak 2.5.0.Final
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== New docs and config visibility
+
+We've officially released our link:/howto/2017-2-0[How To's] and new link:/refguide/2017-2-0[Reference Guide]!
+
+They both might be a little sparse right now, but we will be working hard to
+fill them with valuable information to make it even easier to develop with WildFly Swarm!
+
+If you have ideas about what should be there, particularly for the link:/howto/2017-2-0[How To's],
+then please get in touch and let us know.
+
+Along with the configuration being present in the link:/refguide/2017-2-0[Reference Guide] for each fraction,
+you can now see what configuration is available for your particular uber jar with:
+
+[source,bash]
+----
+java -jar myapp-swarm.jar --help
+----
+
+== `@DefaultDeployment` defaults to WAR
+
+Previously when annotating an Arquillian test with `@DefaultDeployment` it would default to
+creating a JAR for your test deployment.
+
+After feedback from the community we've switched the default to be WAR,
+which is the far larger use case for our community.
+
+So, be warned that if you have a test with `@DefaultDeployment` without setting the type,
+it will now create a WAR instead of a JAR.
+
+== Fraction auto detection for Arquillian
+
+Previously there was no way for Arquillian to perform auto detection as part of running a test,
+which wasn't great for projects that relied on the plugin doing that as part of a build.
+
+We've now modified our Arquillian process to perform the same auto detection that the
+plugin does when there are no explicit dependencies present in your project.
+Making it possible to test a project relying on auto detection as part of its build.
+
+== Security Constraints in Yaml
+
+It's now possible define your endpoint security within `project-defaults.yml` directly:
+
+[source,yaml]
+----
+  swarm.keycloak.security-constraints:
+    - url-pattern: /endpoint
+      methods: [GET, POST]
+      roles: [admin]
+----
+
+
+== Changelog
+Release notes for 2017.2.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12332959[here].
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1042[SWARM-1042]] Remove deprecated classes (Done)
+* [https://issues.jboss.org/browse/SWARM-1025[SWARM-1025]] Move Camel Arquillian tests into /testsuite (Done)
+* [https://issues.jboss.org/browse/SWARM-1024[SWARM-1024]] Add checkstyle to fraction plugin build (Done)
+* [https://issues.jboss.org/browse/SWARM-999[SWARM-999]] Update Keycloak Document (Done)
+* [https://issues.jboss.org/browse/SWARM-998[SWARM-998]] Add Keycloak Example (Done)
+* [https://issues.jboss.org/browse/SWARM-997[SWARM-997]] Change SNAPSHOT repository to Maven Central (Done)
+* [https://issues.jboss.org/browse/SWARM-977[SWARM-977]] Enabling Logstash Example (Done)
+* [https://issues.jboss.org/browse/SWARM-971[SWARM-971]] Add Code Style verification to build (Done)
+* [https://issues.jboss.org/browse/SWARM-941[SWARM-941]] Use our SWARM_VERSION variable to keep generator and front-page up-to-date (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1028[SWARM-1028]] security-domain modules should support the module attribute (Done)
+* [https://issues.jboss.org/browse/SWARM-986[SWARM-986]] Non main() way to create Keycloak Security Constraints settings (Done)
+* [https://issues.jboss.org/browse/SWARM-981[SWARM-981]] Support List as Configurable (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1023[SWARM-1023]] Arquillian should not be detected for BOM but always included (Done)
+* [https://issues.jboss.org/browse/SWARM-1000[SWARM-1000]] Support parsing fractions-list.json from a different source (Done)
+* [https://issues.jboss.org/browse/SWARM-994[SWARM-994]] Switch @DefaultDeployment to be WAR and not JAR type by default (Done)
+* [https://issues.jboss.org/browse/SWARM-967[SWARM-967]] Improve documentation around project stage configuration (Done)
+* [https://issues.jboss.org/browse/SWARM-958[SWARM-958]] Improve hierarchy of keys for project-stages (Done)
+* [https://issues.jboss.org/browse/SWARM-907[SWARM-907]] Generate configuration api for Keycloak (Done)
+* [https://issues.jboss.org/browse/SWARM-891[SWARM-891]] Swarm's Arquillian container should support fraction autodetection (Done)
+* [https://issues.jboss.org/browse/SWARM-838[SWARM-838]] Config API's version number should be >= 1 (Done)
+* [https://issues.jboss.org/browse/SWARM-672[SWARM-672]] Extend StageConfig to load info from a different Source (Done)
+* [https://issues.jboss.org/browse/SWARM-446[SWARM-446]] Allow to configure hystrix from project-stages.yml (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1017[SWARM-1017]] FileSystemException while attempting to move files in the jaxrs/scala example on Windows (Done)
+* [https://issues.jboss.org/browse/SWARM-992[SWARM-992]] Set modifiable List to fields in var-args mutator method for model of List to enable the fields to mutate (Done)
+* [https://issues.jboss.org/browse/SWARM-990[SWARM-990]] RuntimeDeployer does not put classes into correct location in archive (Done)
+* [https://issues.jboss.org/browse/SWARM-987[SWARM-987]] Can't enable spatial dialect with hibernate (Done)
+* [https://issues.jboss.org/browse/SWARM-982[SWARM-982]] LogstashCustomizer overrides existing root-logger level and handlers (Done)
+* [https://issues.jboss.org/browse/SWARM-980[SWARM-980]] Java EE 7 samples: CDI injection fails in some Arquillian in-container tests (Done)
+* [https://issues.jboss.org/browse/SWARM-979[SWARM-979]] Java EE 7 samples: UserTransaction not found in JNDI (Done)
+* [https://issues.jboss.org/browse/SWARM-975[SWARM-975]] Changing from 2016.12.0 to 2016.12.1 break with "WELD-001408: Unsatisfied dependencies for type SocketBindingGroup" (Done)
+* [https://issues.jboss.org/browse/SWARM-966[SWARM-966]] Not loaded modules located by user with wildfly-swarm:run/Run from IDE (Done)
+* [https://issues.jboss.org/browse/SWARM-919[SWARM-919]] management resources added by Customizers not visible in the Configurables log (Done)
+* [https://issues.jboss.org/browse/SWARM-910[SWARM-910]] HTTPS and CDI in combination  (Out of Date)
+* [https://issues.jboss.org/browse/SWARM-878[SWARM-878]] The /node endpoint returns json with wfs-version = fixme (Done)
+* [https://issues.jboss.org/browse/SWARM-873[SWARM-873]] cdi fraction + remoting fraction + wildfly-swarm:run = deployment failure (Done)
+* [https://issues.jboss.org/browse/SWARM-866[SWARM-866]] Surface new config properties/yaml information via java -jar myapp-swarm.jar --help (Done)
+* [https://issues.jboss.org/browse/SWARM-840[SWARM-840]] CDI / MAIL incompatibility on windows (Done)
+* [https://issues.jboss.org/browse/SWARM-839[SWARM-839]] Swagger unable to set basePath (Done)
+* [https://issues.jboss.org/browse/SWARM-718[SWARM-718]] Adding "jaxrs-validator" fragment causes ClassMate to be contained in resulting WAR (Cannot Reproduce Bug)
+* [https://issues.jboss.org/browse/SWARM-677[SWARM-677]] Not resolving dependencies from local repo in Arquillian integration tests (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-1015[SWARM-1015]] Upgrade Examples to Arquillian Drone 2.0.1.Final and Arquillian 1.1.12.Final (Done)
+* [https://issues.jboss.org/browse/SWARM-689[SWARM-689]] Upgrade Keycloak to 2.4.0 (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.2.0.
+
+Documentation for this release is available:
+
+* link:/howto/2017-2-0[How To's]
+* link:/refguide/2017-2-0[Reference Guide]
+* link:/userguide/2017-2-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Heiko Braun
+* Ken Finnigan
+* George Gastaldi
+* Nelson Graça
+* Harro Lissenberg
+* Bob McWhirter
+* Yoshimasa Tanabe
+
+=== Examples
+* Ken Finnigan
+* George Gastaldi
+* Bob McWhirter
+* Yoshimasa Tanabe
+* Matthias Wessendorf
+
+=== HowTo
+* Ken Finnigan
+* Bob McWhirter
+
+=== UserGuide
+* Ken Finnigan
+* George Gastaldi
+* Bob McWhirter
+* Gunnar Morling
+* Yoshimasa Tanabe

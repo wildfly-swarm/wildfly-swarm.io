@@ -5,6 +5,7 @@
 //
 
 var VERSIONS = [
+  '2017.2.0',
   '2017.1.1'
 ];
 
@@ -18,6 +19,3 @@ module.exports = {
   VERSIONS: VERSIONS,
   CURRENT_RELEASE: CURRENT_RELEASE
 }
-
-
-
