@@ -4,7 +4,6 @@ publishDate: 2017-02-02
 modifyDate: 2017-02-02
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == Announcing our lovingly produced release for Valentine's!
