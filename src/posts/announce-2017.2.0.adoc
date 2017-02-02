@@ -49,8 +49,18 @@ you can now see what configuration is available for your particular uber jar wit
 
 [source,bash]
 ----
-java -jar myapp-swarm.jar --help
+java -jar myapp-swarm.jar --config-help all
 ----
+
+Warning, that will produce a *lot* of output.
+
+If you'd like to see the configuration options for a single fraction, such as Undertow:
+
+[source,bash]
+----
+java -jar myapp-swarm.jar --config-help undertow
+----
+
 
 == `@DefaultDeployment` defaults to WAR
 
