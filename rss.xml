@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 02 Feb 2017 18:08:44 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 02 Feb 2017 18:08:27 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.2.0]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Fri, 03 Feb 2017 14:18:47 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 03 Feb 2017 14:18:39 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.2.0]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_announcing_our_lovingly_produced_release_for_valentine_s">Announcing our lovingly produced release for Valentine’s!</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -18,9 +18,6 @@ version 2017.2.0 of WildFly Swarm!</p>
 </li>
 <li>
 <p>Fraction auto detection for Arquillian</p>
-</li>
-<li>
-<p>Security Constraints in Yaml</p>
 </li>
 <li>
 <p>Update to Keycloak 2.5.0.Final</p>
