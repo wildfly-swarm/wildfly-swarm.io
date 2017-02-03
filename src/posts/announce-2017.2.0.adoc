@@ -16,7 +16,6 @@ version 2017.2.0 of WildFly Swarm!
 * New docs and config visibility
 * `@DefaultDeployment` defaults to WAR
 * Fraction auto detection for Arquillian
-* Security Constraints in Yaml
 * Update to Keycloak 2.5.0.Final
 
 === What is WildFly Swarm?
@@ -80,18 +79,6 @@ which wasn't great for projects that relied on the plugin doing that as part of 
 We've now modified our Arquillian process to perform the same auto detection that the
 plugin does when there are no explicit dependencies present in your project.
 Making it possible to test a project relying on auto detection as part of its build.
-
-== Security Constraints in Yaml
-
-It's now possible define your endpoint security within `project-defaults.yml` directly:
-
-[source,yaml]
-----
-  swarm.keycloak.security-constraints:
-    - url-pattern: /endpoint
-      methods: [GET, POST]
-      roles: [admin]
-----
 
 
 == Changelog
