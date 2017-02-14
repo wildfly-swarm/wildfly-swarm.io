@@ -1,0 +1,250 @@
+---
+title: Running Java EE 7 Samples with WildFly Swarm
+publishDate: 2017-02-14
+modifyDate: 2017-02-14
+author: Ladislav Thon
+layout: post.jade
+draft: true
+---
+
+The https://github.com/javaee-samples/javaee7-samples[Java EE 7 Samples]
+project contains a set of example applications demonstrating various aspects
+of Java EE 7. A lot of these applications also contain automated tests.
+These are built using http://arquillian.org/[Arquillian] and are currently
+set up for running with http://wildfly.org/[WildFly],
+https://glassfish.java.net/[GlassFish], http://tomcat.apache.org/[Tomcat]
+(just a subset), http://tomee.apache.org/[TomEE],
+https://developer.ibm.com/wasdev/websphere-liberty/[WebSphere Liberty] and
+https://www.oracle.com/middleware/weblogic/[WebLogic].
+
+In this post, let's examine how to run Java EE 7 Samples tests with WildFly
+Swarm!
+
+++++
+<!-- more -->
+++++
+
+As it turns out, it's actually fairly easy. The key here is that WildFly
+Swarm has its own Arquillian adapter. Since 2017.2.0, the adapter is able
+to automatically detect which fractions should be included in the uberjar,
+so most Java EE 7 Samples will work without changes. Let's get right into it.
+
+== Intro: setting up a Swarm profile
+
+The project uses Maven profiles to run the tests against various application
+servers. Naturally, we'll add a new profile for WildFly Swarm.
+
+We'll use WildFly Swarm 2017.2.0, as described above. Earlier versions
+would require manually selecting and adding fraction dependencies.
+
+[source,xml]
+----
+<properties>
+    ...
+    <wildfly-swarm.version>2017.2.0</wildfly-swarm.version>
+</properties>
+----
+
+The easiest way to create a correct profile for Swarm is to take one of
+the existing WildFly profiles and create a copy:
+
+[source,xml]
+----
+<profile>
+    <id>wildfly-swarm-arquillian</id>
+    <dependencies>
+        ...
+    </dependencies>
+    <build>
+        ...
+    </build>
+</profile>
+----
+
+Since Swarm directly
+embeds WildFly, we'll only have to do a couple of small changes.
+
+Most importantly, we'll remove the dependency on the WildFly Arquillian
+adapter (e.g. `wildfly-arquillian-container-managed`) and add a dependency
+on Swarm's own Arquillian adapter:
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>arquillian</artifactId>
+    <version>${wildfly-swarm.version}</version>
+    <scope>test</scope>
+</dependency>
+----
+
+The second part is to configure Arquillian. Natural way would be to add
+a new container definition into `test-utils/src/main/resources/arquillian.xml`,
+but that won't work. All containers defined in this file use the so-called
+`Servlet 3.0` Arquillian testing protocol:
+
+[source,xml]
+----
+<defaultProtocol type="Servlet 3.0"/>
+----
+
+But the Swarm Arquillian adapter requires a different one, called
+`DaemonProtocol`. Sadly, Arquillian doesn't allow changing the protocol
+inside the `arquillian.xml` configuration. This is a known deficiency,
+see https://issues.jboss.org/browse/ARQ-579[ARQ-579].
+
+Luckily, there's a simple solution: just create another `arquillian.xml`
+file. Say `arquillian-swarm.xml`:
+
+[source,xml]
+----
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/schema/arquillian" xsi:schemaLocation="http://jboss.org/schema/arquillian
+    http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <!--
+      - must be in a separate file because in-container tests need to use the Swarm's DaemonProtocol,
+      - but arquillian.xml sets the default protocol to "Servlet 3.0" and there's no way to override that
+      -->
+    <container qualifier="wildfly-swarm" default="true">
+        <configuration>
+            <property name="host">localhost</property>
+            <property name="port">${swarm.arquillian.daemon.port:12345}</property>
+        </configuration>
+    </container>
+
+</arquillian>
+----
+
+And then just configure Arquillian to use this file instead of the default
+`arquillian.xml` file. Arquillian accepts a system property, appropriately
+named `arquillian.xml`, so we'll just add that to the configuration of
+the Maven Surefire plugin, which handles all the test executions:
+
+[source,xml]
+----
+<build>
+    ...
+    <plugins>
+        <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+                <systemPropertyVariables>
+                    <arquillian.xml>arquillian-swarm.xml</arquillian.xml>
+                </systemPropertyVariables>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+----
+
+== Are we done yet?
+
+Almost. A big part of the tests will now run just fine.
+
+For example, let's try the Bean Validation module:
+
+[source,bash]
+----
+# some tests expect English error messages
+export LC_ALL=C
+
+mvn -pl .,test-utils,util clean install
+cd validation
+mvn clean test -fae -Pwildfly-swarm-arquillian
+----
+
+All the tests should pass, and the entire build should succeed. However,
+there are some other modules that still need a bit more work.
+
+=== Using a database
+
+Most importantly, some tests require a database. WildFly provides
+an embedded H2 database, so we'll want to use the same thing.
+Since link:/posts/announcing-wildfly-swarm-2016-12-0[2016.12.0],
+it is enough to add a dependency on the JDBC driver. We'll only
+add it to a few selected Maven modules, as not all tests require it.
+
+[source,xml]
+----
+<profiles>
+    <profile>
+        <id>wildfly-swarm-arquillian</id>
+        <dependencies>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.193</version>
+            </dependency>
+        </dependencies>
+    </profile>
+</profiles>
+----
+
+The Maven modules to which we add this snippet are:
+
+- `batch/chunk-csv-database`
+- `jaxrs/angularjs`
+- `jaxrs/db-access`
+- `jms`
+- `jpa`
+- `jta`
+
+=== JSF
+
+Then, there are some tests that require the `jsf` fraction, but no JSF API
+is referenced from the source code. The tests only refer to JSF by defining
+the `FacesServlet` in `web.xml`. Currently, fraction autodetection doesn't
+recognize this situation, but https://issues.jboss.org/browse/SWARM-974[that
+will change soon].
+
+It is possible to add the JSF fraction manually. There's a downside to that,
+though: the Swarm Arquillian adapter only performs fraction autodetection when
+there is no explicit fraction dependency. So when we add the JSF fraction,
+we also have to add all the other required fractions. Fortunately, in all
+cases, it's just CDI. So adding this snippet will be enough:
+
+[source,xml]
+----
+<profile>
+    <id>wildfly-swarm-arquillian</id>
+    <dependencies>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>cdi</artifactId>
+            <version>${wildfly-swarm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>jsf</artifactId>
+            <version>${wildfly-swarm.version}</version>
+        </dependency>
+    </dependencies>
+</profile>
+----
+
+The Maven modules to which we add this snippet are:
+
+- `cdi/nobeans-el-injection`
+- `cdi/nobeans-el-injection-flowscoped`
+- `jsf`
+
+=== And more
+
+There are some other minor changes that I've done, you can see them all in
+my https://github.com/Ladicek/javaee7-samples/commits/wildfly-swarm[branch].
+
+Even after those changes, some tests will still fail. A lot of these failures
+are caused by the fact that the test creates a `.jar`. These tests won't
+fail on other application servers (or at least on WildFly), because
+the `Servlet` Arquillian testing protocol will silently transform
+the deployment to a `.war`, which gets a different treatment.
+Here, the Swarm testing setup is actually more true than others.
+For more information, see the comments
+in https://issues.jboss.org/browse/SWARM-979[SWARM-979]
+and https://issues.jboss.org/browse/SWARM-980[SWARM-980].
+
+== Where's the pull request?
+
+There are still some open bugs in the WildFly Swarm issue tracker that I'd
+like to get fixed before submitting a PR to the Java EE 7 Samples project.
+Stay tuned!
