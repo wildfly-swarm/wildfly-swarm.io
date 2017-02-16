@@ -1,7 +1,7 @@
 ---
 title: Running Java EE 7 Samples with WildFly Swarm
-publishDate: 2017-02-14
-modifyDate: 2017-02-14
+publishDate: 2017-02-16
+modifyDate: 2017-02-16
 author: Ladislav Thon
 layout: post.jade
 draft: true
@@ -61,8 +61,8 @@ the existing WildFly profiles and create a copy:
 </profile>
 ----
 
-Since Swarm directly
-embeds WildFly, we'll only have to do a couple of small changes.
+Since Swarm directly embeds WildFly, the profiles will be very similar
+and we'll only have to do a couple of small changes.
 
 Most importantly, we'll remove the dependency on the WildFly Arquillian
 adapter (e.g. `wildfly-arquillian-container-managed`) and add a dependency
@@ -98,8 +98,7 @@ file. Say `arquillian-swarm.xml`:
 
 [source,xml]
 ----
-<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/schema/arquillian" xsi:schemaLocation="http://jboss.org/schema/arquillian
-    http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/schema/arquillian" xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
     <!--
       - must be in a separate file because in-container tests need to use the Swarm's DaemonProtocol,
@@ -248,3 +247,25 @@ and https://issues.jboss.org/browse/SWARM-980[SWARM-980].
 There are still some open bugs in the WildFly Swarm issue tracker that I'd
 like to get fixed before submitting a PR to the Java EE 7 Samples project.
 Stay tuned!
+
+== What did we learn?
+
+In this case study, I showed a couple of things that are generally useful.
+Let's summarize them.
+
+WildFly Swarm has its own Arquillian adapter, so if you use
+Arquillian for testing, you'll feel right at home. Do note, however,
+that the Swarm Arquillian adapter uses a custom testing protocol.
+
+The Swarm Arquillian adapter now supports fraction autodetection.
+If you're migrating an application from WildFly / JBoss EAP
+to Swarm, it should be fairly easy to setup a testing infrastructure
+that runs tests both on your old application server and with Swarm.
+That should allow the migration to proceed gradually.
+
+Remember that the Swarm Arquillian adapter only performs
+fraction autodetection when no explicit fraction dependency exists.
+
+And finally, if you hit any issue with Swarm testing,
+please https://issues.jboss.org/projects/SWARM/[file an issue].
+Thanks!
