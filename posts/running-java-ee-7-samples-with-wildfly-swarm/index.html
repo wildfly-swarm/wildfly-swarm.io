@@ -1,0 +1,353 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Running Java EE 7 Samples with WildFly Swarm | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"></li><a href="http://jboss.org">JBoss.org</a><li class="topbar-devider"></li><li class="hoverSelector"></li><a href="http://redhat.com">Red Hat</a></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><div class="pull-left"><h1>Blog</h1></div><div class="ul pull-right breadcrumb"><li class="active"><a href="/archive">Archive</a></li><li><span>Post</span></li></div></div></div><div class="container"><div class="row margin-top-20"><div class="col-md-10"><article id="article"><h1>Running Java EE 7 Samples with WildFly Swarm</h1><div class="post-meta">By Ladislav Thon | Published Today,  Feb 28th</div><div><div class="paragraph">
+<p>The <a href="https://github.com/javaee-samples/javaee7-samples">Java EE 7 Samples</a>
+project contains a set of example applications demonstrating various aspects
+of Java EE 7. A lot of these applications also contain automated tests.
+These are built using <a href="http://arquillian.org/">Arquillian</a> and are currently
+set up for running with <a href="http://wildfly.org/">WildFly</a>,
+<a href="https://glassfish.java.net/">GlassFish</a>, <a href="http://tomcat.apache.org/">Tomcat</a>
+(just a subset), <a href="http://tomee.apache.org/">TomEE</a>,
+<a href="https://developer.ibm.com/wasdev/websphere-liberty/">WebSphere Liberty</a> and
+<a href="https://www.oracle.com/middleware/weblogic/">WebLogic</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this post, let&#8217;s examine how to run Java EE 7 Samples tests with WildFly
+Swarm!</p>
+</div>
+<!-- more -->
+<div class="paragraph">
+<p>As it turns out, it&#8217;s actually fairly easy. The key here is that WildFly
+Swarm has its own Arquillian adapter. Since 2017.2.0, the adapter is able
+to automatically detect which fractions should be included in the uberjar,
+so most Java EE 7 Samples will work without changes. Let&#8217;s get right into it.</p>
+</div>
+<div class="sect1">
+<h2 id="_intro_setting_up_a_swarm_profile">Intro: setting up a Swarm profile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The project uses Maven profiles to run the tests against various application
+servers. Naturally, we&#8217;ll add a new profile for WildFly Swarm.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll use WildFly Swarm 2017.2.0, as described above. Earlier versions
+would require manually selecting and adding fraction dependencies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;properties&gt;
+    ...
+    &lt;wildfly-swarm.version&gt;2017.2.0&lt;/wildfly-swarm.version&gt;
+&lt;/properties&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The easiest way to create a correct profile for Swarm is to take one of
+the existing WildFly profiles and create a copy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;profile&gt;
+    &lt;id&gt;wildfly-swarm-arquillian&lt;/id&gt;
+    &lt;dependencies&gt;
+        ...
+    &lt;/dependencies&gt;
+    &lt;build&gt;
+        ...
+    &lt;/build&gt;
+&lt;/profile&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since Swarm directly embeds WildFly, the profiles will be very similar
+and we&#8217;ll only have to do a couple of small changes.</p>
+</div>
+<div class="paragraph">
+<p>Most importantly, we&#8217;ll remove the dependency on the WildFly Arquillian
+adapter (e.g. <code>wildfly-arquillian-container-managed</code>) and add a dependency
+on Swarm&#8217;s own Arquillian adapter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+    &lt;artifactId&gt;arquillian&lt;/artifactId&gt;
+    &lt;version&gt;${wildfly-swarm.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second part is to configure Arquillian. Natural way would be to add
+a new container definition into <code>test-utils/src/main/resources/arquillian.xml</code>,
+but that won&#8217;t work. All containers defined in this file use the so-called
+<code>Servlet 3.0</code> Arquillian testing protocol:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;defaultProtocol type="Servlet 3.0"/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But the Swarm Arquillian adapter requires a different one, called
+<code>DaemonProtocol</code>. Sadly, Arquillian doesn&#8217;t allow changing the protocol
+inside the <code>arquillian.xml</code> configuration. This is a known deficiency,
+see <a href="https://issues.jboss.org/browse/ARQ-579">ARQ-579</a>.</p>
+</div>
+<div class="paragraph">
+<p>Luckily, there&#8217;s a simple solution: just create another <code>arquillian.xml</code>
+file. Say <code>arquillian-swarm.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/schema/arquillian" xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd"&gt;
+
+    &lt;!--
+      - must be in a separate file because in-container tests need to use the Swarm's DaemonProtocol,
+      - but arquillian.xml sets the default protocol to "Servlet 3.0" and there's no way to override that
+      --&gt;
+    &lt;container qualifier="wildfly-swarm" default="true"&gt;
+        &lt;configuration&gt;
+            &lt;property name="host"&gt;localhost&lt;/property&gt;
+            &lt;property name="port"&gt;${swarm.arquillian.daemon.port:12345}&lt;/property&gt;
+        &lt;/configuration&gt;
+    &lt;/container&gt;
+
+&lt;/arquillian&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then just configure Arquillian to use this file instead of the default
+<code>arquillian.xml</code> file. Arquillian accepts a system property, appropriately
+named <code>arquillian.xml</code>, so we&#8217;ll just add that to the configuration of
+the Maven Surefire plugin, which handles all the test executions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;build&gt;
+    ...
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;systemPropertyVariables&gt;
+                    &lt;arquillian.xml&gt;arquillian-swarm.xml&lt;/arquillian.xml&gt;
+                &lt;/systemPropertyVariables&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_are_we_done_yet">Are we done yet?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Almost. A big part of the tests will now run just fine.</p>
+</div>
+<div class="paragraph">
+<p>For example, let&#8217;s try the Bean Validation module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"># some tests expect English error messages
+export LC_ALL=C
+
+mvn -pl .,test-utils,util clean install
+cd validation
+mvn clean test -fae -Pwildfly-swarm-arquillian</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All the tests should pass, and the entire build should succeed. However,
+there are some other modules that still need a bit more work.</p>
+</div>
+<div class="sect2">
+<h3 id="_using_a_database">Using a database</h3>
+<div class="paragraph">
+<p>Most importantly, some tests require a database. WildFly provides
+an embedded H2 database, so we&#8217;ll want to use the same thing.
+Since <a href="/posts/announcing-wildfly-swarm-2016-12-0">2016.12.0</a>,
+it is enough to add a dependency on the JDBC driver. We&#8217;ll only
+add it to a few selected Maven modules, as not all tests require it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;wildfly-swarm-arquillian&lt;/id&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+                &lt;artifactId&gt;h2&lt;/artifactId&gt;
+                &lt;version&gt;1.4.193&lt;/version&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Maven modules to which we add this snippet are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>batch/chunk-csv-database</code></p>
+</li>
+<li>
+<p><code>jaxrs/angularjs</code></p>
+</li>
+<li>
+<p><code>jaxrs/db-access</code></p>
+</li>
+<li>
+<p><code>jms</code></p>
+</li>
+<li>
+<p><code>jpa</code></p>
+</li>
+<li>
+<p><code>jta</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jsf">JSF</h3>
+<div class="paragraph">
+<p>Then, there are some tests that require the <code>jsf</code> fraction, but no JSF API
+is referenced from the source code. The tests only refer to JSF by defining
+the <code>FacesServlet</code> in <code>web.xml</code>. Currently, fraction autodetection doesn&#8217;t
+recognize this situation, but <a href="https://issues.jboss.org/browse/SWARM-974">that
+will change soon</a>.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to add the JSF fraction manually. There&#8217;s a downside to that,
+though: the Swarm Arquillian adapter only performs fraction autodetection when
+there is no explicit fraction dependency. So when we add the JSF fraction,
+we also have to add all the other required fractions. Fortunately, in all
+cases, it&#8217;s just CDI. So adding this snippet will be enough:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;profile&gt;
+    &lt;id&gt;wildfly-swarm-arquillian&lt;/id&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+            &lt;artifactId&gt;cdi&lt;/artifactId&gt;
+            &lt;version&gt;${wildfly-swarm.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+            &lt;artifactId&gt;jsf&lt;/artifactId&gt;
+            &lt;version&gt;${wildfly-swarm.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/profile&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Maven modules to which we add this snippet are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cdi/nobeans-el-injection</code></p>
+</li>
+<li>
+<p><code>cdi/nobeans-el-injection-flowscoped</code></p>
+</li>
+<li>
+<p><code>jsf</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_and_more">And more</h3>
+<div class="paragraph">
+<p>There are some other minor changes that I&#8217;ve done, you can see them all in
+my <a href="https://github.com/Ladicek/javaee7-samples/commits/wildfly-swarm">branch</a>.</p>
+</div>
+<div class="paragraph">
+<p>Even after those changes, some tests will still fail. A lot of these failures
+are caused by the fact that the test creates a <code>.jar</code>. These tests won&#8217;t
+fail on other application servers (or at least on WildFly), because
+the <code>Servlet</code> Arquillian testing protocol will silently transform
+the deployment to a <code>.war</code>, which gets a different treatment.
+Here, the Swarm testing setup is actually more true than others.
+For more information, see the comments
+in <a href="https://issues.jboss.org/browse/SWARM-979">SWARM-979</a>
+and <a href="https://issues.jboss.org/browse/SWARM-980">SWARM-980</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_where_s_the_pull_request">Where&#8217;s the pull request?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are still some open bugs in the WildFly Swarm issue tracker that I&#8217;d
+like to get fixed before submitting a PR to the Java EE 7 Samples project.
+Stay tuned!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_did_we_learn">What did we learn?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this case study, I showed a couple of things that are generally useful.
+Let&#8217;s summarize them.</p>
+</div>
+<div class="paragraph">
+<p>WildFly Swarm has its own Arquillian adapter, so if you use
+Arquillian for testing, you&#8217;ll feel right at home. Do note, however,
+that the Swarm Arquillian adapter uses a custom testing protocol.</p>
+</div>
+<div class="paragraph">
+<p>The Swarm Arquillian adapter now supports fraction autodetection.
+If you&#8217;re migrating an application from WildFly / JBoss EAP
+to Swarm, it should be fairly easy to setup a testing infrastructure
+that runs tests both on your old application server and with Swarm.
+That should allow the migration to proceed gradually.</p>
+</div>
+<div class="paragraph">
+<p>Remember that the Swarm Arquillian adapter only performs
+fraction autodetection when no explicit fraction dependency exists.</p>
+</div>
+<div class="paragraph">
+<p>And finally, if you hit any issue with Swarm testing,
+please <a href="https://issues.jboss.org/projects/SWARM/">file an issue</a>.
+Thanks!</p>
+</div>
+</div>
+</div></div></article></div></div></div></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><Copyright>2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</Copyright></p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div></div></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+</script><script type="text/javascript" src="/assets/js/highlight.pack.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script><script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="/assets/plugins/back-to-top.js"></script><script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script><script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script><script type="text/javascript" src="/assets/js/custom.js"></script><script type="text/javascript" src="/assets/js/app.js"></script><script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script><script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script><script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script><script>(function() {
+
+  jQuery(document).ready(function() {
+    App.init();
+    OwlCarousel.initOwlCarousel();
+    StyleSwitcher.initStyleSwitcher();
+    ParallaxSlider.initParallaxSlider();
+
+    hljs.initHighlightingOnLoad();
+  });
+
+})();
+</script></body></html>
