@@ -155,6 +155,9 @@ function build() {
       '/userguide/2017-2-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.2.0/',
       '/refguide/2017-2-0': 'https://reference.wildfly-swarm.io/v/2017.2.0/',
       '/howto/2017-2-0': 'https://howto.wildfly-swarm.io/v/2017.2.0/',
+	'/userguide/2017-3-2': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.3.2/',
+      '/refguide/2017-3-2': 'https://reference.wildfly-swarm.io/v/2017.3.2/',
+      '/howto/2017-3-2': 'https://howto.wildfly-swarm.io/v/2017.3.2/',
     }))
 
 

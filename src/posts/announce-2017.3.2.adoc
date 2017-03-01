@@ -1,0 +1,142 @@
+---
+title: Announcing WildFly Swarm 2017.3.2
+publishDate: 2017-03-01
+modifyDate: 2017-03-01
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== Foo bar
+
+
+=== What's New?
+
+some has to be new
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+
+
+== Changelog
+Release notes for 2017.3.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333598[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1145[SWARM-1145]] Release fails due to missing parent pom's (standalone-servers, testsuite) (Done)
+* [https://issues.jboss.org/browse/SWARM-1140[SWARM-1140]] Logging and Undertow fractions are not auto-detected anymore for Vaadin (Done)
+* [https://issues.jboss.org/browse/SWARM-1133[SWARM-1133]] fraction autodetection broken for messaging (Done)
+* [https://issues.jboss.org/browse/SWARM-1124[SWARM-1124]] Large number of org/jboss/as modules are present in container /modules (Done)
+* [https://issues.jboss.org/browse/SWARM-1122[SWARM-1122]] CDI fraction has unnecessary dependency on Undertow fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1119[SWARM-1119]] Missing some annotated beans (Done)
+* [https://issues.jboss.org/browse/SWARM-1118[SWARM-1118]] Not working Keycloak example because the project-defaults.yml is invalid (Done)
+* [https://issues.jboss.org/browse/SWARM-1117[SWARM-1117]] run goal chokes on zip dependency (Done)
+* [https://issues.jboss.org/browse/SWARM-1112[SWARM-1112]] Project with just the management-console fails to start (Done)
+* [https://issues.jboss.org/browse/SWARM-1109[SWARM-1109]] IO Workers threads number is different from normal WildFly (Done)
+* [https://issues.jboss.org/browse/SWARM-1104[SWARM-1104]] Revert back to loading the ConfigView/StageConfig before start so user provided mains can configure fractions. (Done)
+* [https://issues.jboss.org/browse/SWARM-1080[SWARM-1080]] Build fails with "GC overhead exceeded" (Done)
+* [https://issues.jboss.org/browse/SWARM-1078[SWARM-1078]] Packaging fat jar fails when using maven mirror that requires authentication (Done)
+* [https://issues.jboss.org/browse/SWARM-1071[SWARM-1071]] Restore support for -Dswarm.project.stage.file and -Dswarm.project.stage (Done)
+* [https://issues.jboss.org/browse/SWARM-1068[SWARM-1068]] StandaloneXmlParser incompatibility (Done)
+* [https://issues.jboss.org/browse/SWARM-1063[SWARM-1063]] Swarm plugin executs when packaging is pom (Done)
+* [https://issues.jboss.org/browse/SWARM-1052[SWARM-1052]] Wrong path is resolved in the HealthAnnotationProcessor.processArchive() (Done)
+* [https://issues.jboss.org/browse/SWARM-1048[SWARM-1048]] Add unit regression tests to Swarm.stageConfig() (Done)
+* [https://issues.jboss.org/browse/SWARM-1047[SWARM-1047]] Not working List of Map Configurable values with yml (Done)
+* [https://issues.jboss.org/browse/SWARM-1041[SWARM-1041]] the configurable name "swarm.http.certificate.alias" is wrong (Done)
+* [https://issues.jboss.org/browse/SWARM-1031[SWARM-1031]] Incorrect handling of transitive dependency with overridden version in dependencyManagement (Done)
+* [https://issues.jboss.org/browse/SWARM-1020[SWARM-1020]] org.wildfly.swarm.cli.Option#parse checks the wrong position of equal when a long arg name with equal  (Done)
+* [https://issues.jboss.org/browse/SWARM-1004[SWARM-1004]] adding CDI fraction results in WARN messages in the log (Done)
+* [https://issues.jboss.org/browse/SWARM-970[SWARM-970]] EJB fraction + forced fraction autodetection = EJB Remote fraction included (Done)
+* [https://issues.jboss.org/browse/SWARM-965[SWARM-965]] Modules Unable to Locate Native Library (Done)
+* [https://issues.jboss.org/browse/SWARM-944[SWARM-944]] META-INF/swarm.swagger.conf is not considered (Done)
+* [https://issues.jboss.org/browse/SWARM-888[SWARM-888]] Gradle Plugin Hardcoded Modules resource directory (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1135[SWARM-1135]] Unable to enable category-specific logging via -Dswarm.logging.category.name=DEBUG (Done)
+* [https://issues.jboss.org/browse/SWARM-1131[SWARM-1131]] Support building wildfly-swarm with user defined settings.xml (mvn -s ...) (Done)
+* [https://issues.jboss.org/browse/SWARM-1107[SWARM-1107]] Should be List<Map<String, Object>> instead of List<String> for representing Keycloak Security Constrains (Done)
+* [https://issues.jboss.org/browse/SWARM-1105[SWARM-1105]] Add HTTPS only configuration, disabling HTTP interface and management HTTP interfaces. (Done)
+* [https://issues.jboss.org/browse/SWARM-1103[SWARM-1103]] Support embedded HTTPS certificate  (Done)
+* [https://issues.jboss.org/browse/SWARM-1100[SWARM-1100]] Swarmtool should support specifying additional dependencies (Done)
+* [https://issues.jboss.org/browse/SWARM-1099[SWARM-1099]] Support maven war overlays in maven plugin run goal (Done)
+* [https://issues.jboss.org/browse/SWARM-1098[SWARM-1098]] Gradle Plugin: Incremental Build (Done)
+* [https://issues.jboss.org/browse/SWARM-1081[SWARM-1081]] Measure and improve boot-time performance. (Done)
+* [https://issues.jboss.org/browse/SWARM-945[SWARM-945]] OpenTracing Hawkular fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-913[SWARM-913]] Improve warning message when HTTP/2 is requested in an unsupported environment (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-1125[SWARM-1125]] Upgrade to Keycloak 2.5.4.Final (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1074[SWARM-1074]] improve MavenPluginTest debuggability (Done)
+* [https://issues.jboss.org/browse/SWARM-1060[SWARM-1060]] Upgrade to wildfly-camel-4.5.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1050[SWARM-1050]] Update all examples and HowTos to use project-defaults.yml instead of project-stages.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-946[SWARM-946]] OpenTracing Hawkular example app (Done)
+* [https://issues.jboss.org/browse/SWARM-912[SWARM-912]] write a blog post about running Java EE 7 Samples with Swarm (Done)
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-1065[SWARM-1065]] Finer-grained logging categories (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1029[SWARM-1029]] Support Keycloak client config though *.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-974[SWARM-974]] scan deployment descriptors during fraction autodetection (Done)
+* [https://issues.jboss.org/browse/SWARM-898[SWARM-898]] Non main() way to add Services and activate them in user deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-897[SWARM-897]] Non main() way to create topics and queues on messaging server (Done)
+* [https://issues.jboss.org/browse/SWARM-894[SWARM-894]] Provide alternatives to SwaggerArchive methods to prevent main() (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.2.0.
+
+Documentation for this release is available:
+
+* link:/howto/2017-3-2[How To's]
+* link:/refguide/2017-3-2[Reference Guide]
+* link:/userguide/2017-3-2[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+== Core
+* sverkera
+* Aaron Anderson
+* Heiko Braun
+* Harry Chan
+* Thomas Diesler
+* Ken Finnigan
+* Adler Fleurant
+* Michael Fraefel
+* George Gastaldi
+* Pavol Loffay
+* Bob McWhirter
+* Falko Modler
+* Tomas Remes
+* Michał Szynkiewicz
+* Yoshimasa Tanabe
+* Ladislav Thon
+* Pascal Wölfle
+* Petr Široký
+
+=== Examples
+* Heiko Braun
+* Ken Finnigan
+* Pavol Loffay
+* Bob McWhirter
+* Falko Modler
+* Yoshimasa Tanabe
