@@ -1,0 +1,508 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcing WildFly Swarm 2017.3.2 | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"></li><a href="http://jboss.org">JBoss.org</a><li class="topbar-devider"></li><li class="hoverSelector"></li><a href="http://redhat.com">Red Hat</a></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><div class="pull-left"><h1>Blog</h1></div><div class="ul pull-right breadcrumb"><li class="active"><a href="/archive">Archive</a></li><li><span>Post</span></li></div></div></div><div class="container"><div class="row margin-top-20"><div class="col-md-10"><article id="article"><h1>Announcing WildFly Swarm 2017.3.2</h1><div class="post-meta">By The WildFly Swarm Team | Published Yesterday,  Mar 1st</div><div><div class="sect1">
+<h2 id="_wildfly_swarm_2017_3_2_is_hot_just_like_the_weather">WildFly Swarm 2017.3.2 is hot, just like the weather!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After a series of unfortunate weather events in which versions 2017.3.0 and 2017.3.1 met their
+early demise, we&#8217;re proud to announce version 2017.3.2.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What&#8217;s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Keycloak Updates</p>
+</li>
+<li>
+<p>Logging noise</p>
+</li>
+<li>
+<p>Auto Detection improvements</p>
+</li>
+<li>
+<p>Performance improvements</p>
+</li>
+<li>
+<p>OpenTracing support</p>
+</li>
+<li>
+<p>Dependency Management</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
+</div>
+<!-- more -->
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keycloak_updates">Keycloak Updates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve got a few things related to Keycloak for this release.
+The first is we&#8217;ve updated to 2.5.4.Final, bringing the latest bug fixes to you!</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve also introduced a Keycloak Client API for our fraction that allows
+you to define the equivalent <code>keycloak.json</code> content in <code>project-defaults.yml</code>!
+The big advantage to this is pulling out environment specific config from inside
+a WAR and into an overridable config file.</p>
+</div>
+<div class="paragraph">
+<p>Full details on what can be set is available <a href="https://reference.wildfly-swarm.io/v/2017.3.2/fractions/keycloak.html">here</a>,
+but here&#8217;s a quick example of what you can do:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">  swarm:
+    keycloak:
+      secure-deployments:
+        my.war:
+          realm: my-relam
+          bearer-only: true
+          auth-server-url: http://localhost:9090/auth
+          ssl-required: external
+          resource: my-service</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging_noise">Logging noise</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve drastically reduced the amount of logging that spews forth by default on startup.</p>
+</div>
+<div class="paragraph">
+<p>You can still see what was there by enabling <code>DEBUG</code> or higher logging,
+but it&#8217;s now hidden away unless you need it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_auto_detection_improvements">Auto Detection improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve altered how auto detection works which provides some significant benefits in how it works.</p>
+</div>
+<div class="paragraph">
+<p>The biggest being that we&#8217;re able to detect fractions based on usage in descriptor files!</p>
+</div>
+<div class="paragraph">
+<p>For instance, we can now detect <code>jsf</code> if you don&#8217;t use any JSF classes in your application,
+but you define the <code>FacesServlet</code> in <code>web.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p>This feature will allow us to more easily improve what is auto detected in the future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_performance_improvements">Performance improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bob spend a good amount of time improving the startup performance and was able to enhance it by 15-20%. Well done, Bob!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_open_tracing_support">Open Tracing Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Hawkular team has contributed a OpenTracing Hawkular fraction. This allows you to trace service invocations using Hawkular as a backend.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency_management">Dependency Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are uisng dependency management section in your pom.xml, these are now properly supported.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 2017.3.0 are available <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&amp;version=12333598">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_bug">Bug</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1145">SWARM-1145</a>] Release fails due to missing parent pom&#8217;s (standalone-servers, testsuite) (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1140">SWARM-1140</a>] Logging and Undertow fractions are not auto-detected anymore for Vaadin (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1133">SWARM-1133</a>] fraction autodetection broken for messaging (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1124">SWARM-1124</a>] Large number of org/jboss/as modules are present in container /modules (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1122">SWARM-1122</a>] CDI fraction has unnecessary dependency on Undertow fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1119">SWARM-1119</a>] Missing some annotated beans (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1118">SWARM-1118</a>] Not working Keycloak example because the project-defaults.yml is invalid (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1117">SWARM-1117</a>] run goal chokes on zip dependency (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1112">SWARM-1112</a>] Project with just the management-console fails to start (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1109">SWARM-1109</a>] IO Workers threads number is different from normal WildFly (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1104">SWARM-1104</a>] Revert back to loading the ConfigView/StageConfig before start so user provided mains can configure fractions. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1080">SWARM-1080</a>] Build fails with "GC overhead exceeded" (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1078">SWARM-1078</a>] Packaging fat jar fails when using maven mirror that requires authentication (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1071">SWARM-1071</a>] Restore support for -Dswarm.project.stage.file and -Dswarm.project.stage (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1068">SWARM-1068</a>] StandaloneXmlParser incompatibility (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1063">SWARM-1063</a>] Swarm plugin executs when packaging is pom (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1052">SWARM-1052</a>] Wrong path is resolved in the HealthAnnotationProcessor.processArchive() (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1048">SWARM-1048</a>] Add unit regression tests to Swarm.stageConfig() (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1047">SWARM-1047</a>] Not working List of Map Configurable values with yml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1041">SWARM-1041</a>] the configurable name "swarm.http.certificate.alias" is wrong (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1031">SWARM-1031</a>] Incorrect handling of transitive dependency with overridden version in dependencyManagement (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1020">SWARM-1020</a>] org.wildfly.swarm.cli.Option#parse checks the wrong position of equal when a long arg name with equal  (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1004">SWARM-1004</a>] adding CDI fraction results in WARN messages in the log (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-970">SWARM-970</a>] EJB fraction + forced fraction autodetection = EJB Remote fraction included (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-965">SWARM-965</a>] Modules Unable to Locate Native Library (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-944">SWARM-944</a>] META-INF/swarm.swagger.conf is not considered (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-888">SWARM-888</a>] Gradle Plugin Hardcoded Modules resource directory (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancement">Enhancement</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1135">SWARM-1135</a>] Unable to enable category-specific logging via -Dswarm.logging.category.name=DEBUG (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1131">SWARM-1131</a>] Support building wildfly-swarm with user defined settings.xml (mvn -s &#8230;&#8203;) (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1107">SWARM-1107</a>] Should be List&lt;Map&lt;String, Object&gt;&gt; instead of List&lt;String&gt; for representing Keycloak Security Constrains (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1105">SWARM-1105</a>] Add HTTPS only configuration, disabling HTTP interface and management HTTP interfaces. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1103">SWARM-1103</a>] Support embedded HTTPS certificate  (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1100">SWARM-1100</a>] Swarmtool should support specifying additional dependencies (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1099">SWARM-1099</a>] Support maven war overlays in maven plugin run goal (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1098">SWARM-1098</a>] Gradle Plugin: Incremental Build (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1081">SWARM-1081</a>] Measure and improve boot-time performance. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-945">SWARM-945</a>] OpenTracing Hawkular fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-913">SWARM-913</a>] Improve warning message when HTTP/2 is requested in an unsupported environment (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_component_upgrade">Component Upgrade</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1125">SWARM-1125</a>] Upgrade to Keycloak 2.5.4.Final (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task">Task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1074">SWARM-1074</a>] improve MavenPluginTest debuggability (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1060">SWARM-1060</a>] Upgrade to wildfly-camel-4.5.0 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1050">SWARM-1050</a>] Update all examples and HowTos to use project-defaults.yml instead of project-stages.yml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-946">SWARM-946</a>] OpenTracing Hawkular example app (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-912">SWARM-912</a>] write a blog post about running Java EE 7 Samples with Swarm (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_task">Sub-task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1065">SWARM-1065</a>] Finer-grained logging categories (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_request">Feature Request</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1029">SWARM-1029</a>] Support Keycloak client config though *.yml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-974">SWARM-974</a>] scan deployment descriptors during fraction autodetection (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-898">SWARM-898</a>] Non main() way to add Services and activate them in user deployment (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-897">SWARM-897</a>] Non main() way to create topics and queues on messaging server (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-894">SWARM-894</a>] Provide alternatives to SwaggerArchive methods to prevent main() (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.2" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.2</a></p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/howto/2017-3-2">How To&#8217;s</a></p>
+</li>
+<li>
+<p><a href="/refguide/2017-3-2">Reference Guide</a></p>
+</li>
+<li>
+<p><a href="/userguide/2017-3-2">User Guide</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_core">Core</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>sverkera</p>
+</li>
+<li>
+<p>Aaron Anderson</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Harry Chan</p>
+</li>
+<li>
+<p>Thomas Diesler</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Adler Fleurant</p>
+</li>
+<li>
+<p>Michael Fraefel</p>
+</li>
+<li>
+<p>George Gastaldi</p>
+</li>
+<li>
+<p>Pavol Loffay</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Falko Modler</p>
+</li>
+<li>
+<p>Tomas Remes</p>
+</li>
+<li>
+<p>Michał Szynkiewicz</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe</p>
+</li>
+<li>
+<p>Ladislav Thon</p>
+</li>
+<li>
+<p>Pascal Wölfle</p>
+</li>
+<li>
+<p>Petr Široký</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Pavol Loffay</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Falko Modler</p>
+</li>
+<li>
+<p>Yoshimasa Tanabe</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_users_guide">Users Guide</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>larmic</p>
+</li>
+<li>
+<p>Alex Soto</p>
+</li>
+<li>
+<p>emag</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div></article></div></div></div></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><Copyright>2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</Copyright></p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div></div></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+</script><script type="text/javascript" src="/assets/js/highlight.pack.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script><script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="/assets/plugins/back-to-top.js"></script><script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script><script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script><script type="text/javascript" src="/assets/js/custom.js"></script><script type="text/javascript" src="/assets/js/app.js"></script><script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script><script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script><script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script><script>(function() {
+
+  jQuery(document).ready(function() {
+    App.init();
+    OwlCarousel.initOwlCarousel();
+    StyleSwitcher.initStyleSwitcher();
+    ParallaxSlider.initParallaxSlider();
+
+    hljs.initHighlightingOnLoad();
+  });
+
+})();
+</script></body></html>
