@@ -4,7 +4,6 @@ publishDate: 2017-03-01
 modifyDate: 2017-03-01
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2017.3.2 is hot, just like the weather!
@@ -18,6 +17,9 @@ early demise, we're proud to announce version 2017.3.2.
 * Keycloak Updates
 * Logging noise
 * Auto Detection improvements
+* Performance improvements
+* OpenTracing support
+* Dependency Management
 
 === What is WildFly Swarm?
 
@@ -76,6 +78,18 @@ For instance, we can now detect `jsf` if you don't use any JSF classes in your a
 but you define the `FacesServlet` in `web.xml`.
 
 This feature will allow us to more easily improve what is auto detected in the future.
+
+== Performance improvements
+
+Bob spend a good amount of time improving the startup performance and was able to enhance it by 15-20%. Well done, Bob!
+
+== Open Tracing Support
+
+The Hawkular team has contributed a OpenTracing Hawkular fraction. This allows you to trace service invocations using Hawkular as a backend.
+
+== Dependency Management
+
+If you are uisng dependency management section in your pom.xml, these are now properly supported.
 
 
 == Changelog
@@ -149,7 +163,7 @@ Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
 All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
 
-Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.2.0.
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.2
 
 Documentation for this release is available:
 
@@ -188,3 +202,10 @@ We appreciate all of our contributors since the last release:
 * Bob McWhirter
 * Falko Modler
 * Yoshimasa Tanabe
+
+=== Users Guide
+* larmic
+* Alex Soto
+* emag
+* Heiko Braun
+* Ken Finnigan
