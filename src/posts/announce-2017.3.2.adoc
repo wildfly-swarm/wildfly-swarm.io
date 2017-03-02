@@ -15,7 +15,9 @@ early demise, we're proud to announce version 2017.3.2.
 
 === What's New?
 
-some has to be new
+* Keycloak Updates
+* Logging noise
+* Auto Detection improvements
 
 === What is WildFly Swarm?
 
@@ -31,6 +33,49 @@ of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
 <!-- more -->
 ++++
 
+== Keycloak Updates
+
+We've got a few things related to Keycloak for this release.
+The first is we've updated to 2.5.4.Final, bringing the latest bug fixes to you!
+
+We've also introduced a Keycloak Client API for our fraction that allows
+you to define the equivalent `keycloak.json` content in `project-defaults.yml`!
+The big advantage to this is pulling out environment specific config from inside
+a WAR and into an overridable config file.
+
+Full details on what can be set is available https://reference.wildfly-swarm.io/v/2017.3.2/fractions/keycloak.html[here],
+but here's a quick example of what you can do:
+
+[source,yaml]
+----
+  swarm:
+    keycloak:
+      secure-deployments:
+        my.war:
+          realm: my-relam
+          bearer-only: true
+          auth-server-url: http://localhost:9090/auth
+          ssl-required: external
+          resource: my-service
+----
+
+== Logging noise
+
+We've drastically reduced the amount of logging that spews forth by default on startup.
+
+You can still see what was there by enabling `DEBUG` or higher logging,
+but it's now hidden away unless you need it.
+
+== Auto Detection improvements
+
+We've altered how auto detection works which provides some significant benefits in how it works.
+
+The biggest being that we're able to detect fractions based on usage in descriptor files!
+
+For instance, we can now detect `jsf` if you don't use any JSF classes in your application,
+but you define the `FacesServlet` in `web.xml`.
+
+This feature will allow us to more easily improve what is auto detected in the future.
 
 
 == Changelog
