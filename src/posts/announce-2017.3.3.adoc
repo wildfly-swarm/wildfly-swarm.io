@@ -1,0 +1,69 @@
+---
+title: Announcing WildFly Swarm 2017.3.3
+publishDate: 2017-03-07
+modifyDate: 2017-03-07
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2017.3.3
+
+...
+
+=== What's New?
+
+* Health API Changes (breaking)
+
+...
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== Health API Changes
+
+The health API moved from org.wildfly.swarm.monitor to org.wildfly.swarm.health.
+Apologies for the changes, but we ran into a bug when health was used with the config-api.
+To mitigate the problem, the health API had to be relocated into it's own module and package.
+
+== Changelog
+
+...
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.2
+
+Documentation for this release is available:
+
+* link:/howto/2017-3-2[How To's]
+* link:/refguide/2017-3-2[Reference Guide]
+* link:/userguide/2017-3-2[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+== Core
+
+...
+
+=== Examples
+
+
+...
