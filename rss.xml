@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Mon, 06 Mar 2017 12:55:43 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 06 Mar 2017 12:55:39 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.3.2]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 09 Mar 2017 20:52:56 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 09 Mar 2017 20:52:49 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.3.3]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_wildfly_swarm_2017_3_3">WildFly Swarm 2017.3.3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since it’s good to beware the ides of March, we’re releasing 2017.3.3 a few days
+prior to it. Et tu, Brute?</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Health API Changes (breaking)</p>
+</li>
+<li>
+<p>Fixing logging bugs introduced in 2017.3.2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-3</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-3</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 09 Mar 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.3.2]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2017_3_2_is_hot_just_like_the_weather">WildFly Swarm 2017.3.2 is hot, just like the weather!</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -603,31 +634,4 @@ in version numbering.</p>
 <div class="paragraph">
 <p>Since a multitude of versions can certainly make life more difficult for
 consumers, we’ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[WildFly Swarm's Got Swagger]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_swagger_support_for_jax_rs_applications">Swagger Support for JAX-RS Applications</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>With the release of 1.0.0-Alpha8, WildFly Swarm has introduced support
-for Swagger, a simple but powerful JSON representation of your REST
-APIs.</p>
-</div>
-<div class="paragraph">
-<p>In simple terms, Swagger is a JSON representation of a RESTful API,
-typically made available over HTTP at <code>/swagger.json</code>. This JSON
-document contains information about your APIs, including names, paths,
-endpoints, parameters, descriptions, keywords, expected responses, and
-more.</p>
-</div>
-<div class="paragraph">
-<p>Per the <a href="https://github.com/OAI/OpenAPI-Specification">Open API
-Specification</a>, the goal of Swagger is to "define a standard,
-language-agnostic interface to REST APIs which allows both humans and
-computers to discover and understand the capabilities of the service
-without access to source code, documentation, or through network
-traffic inspection".</p>
-</div>
-<div class="paragraph">
-<p>If this is your first encounter with Swagger, I suggest you head on
-over to the <a href="http://swagger.io/">Swagger website</a> to learn more about
-Swagger itself, and what it can do for you.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/wildfly-swarm-s-got-swagger</guid><dc:creator><![CDATA[Lance Ball]]></dc:creator><pubDate>Thu, 04 Feb 2016 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item></channel></rss>
