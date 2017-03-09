@@ -1,21 +1,20 @@
 ---
 title: Announcing WildFly Swarm 2017.3.3
-publishDate: 2017-03-07
-modifyDate: 2017-03-07
+publishDate: 2017-03-09
+modifyDate: 2017-03-09
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2017.3.3
 
-...
+Since it's good to beware the ides of March, we're releasing 2017.3.3 a few days 
+prior to it. Et tu, Brute?
 
 === What's New?
 
 * Health API Changes (breaking)
-
-...
+* Fixing logging bugs introduced in 2017.3.2
 
 === What is WildFly Swarm?
 
@@ -38,8 +37,41 @@ Apologies for the changes, but we ran into a bug when health was used with the c
 To mitigate the problem, the health API had to be relocated into it's own module and package.
 
 == Changelog
+Release notes for 2017.3.3 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333599[here].
 
-...
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1167[SWARM-1167]] Remove main() in security/jaas examples (Done)
+* [https://issues.jboss.org/browse/SWARM-1166[SWARM-1166]] Introduce JUnit Test Categories so we can exclude tests from different builds (Done)
+* [https://issues.jboss.org/browse/SWARM-1163[SWARM-1163]] Provide an interface for WF Swarm version, etc (Done)
+* [https://issues.jboss.org/browse/SWARM-1162[SWARM-1162]] -S not correctly selecting activated profiles (Done)
+* [https://issues.jboss.org/browse/SWARM-1059[SWARM-1059]] Specifying an invalid configuration value for an enum should display the allowed values (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1164[SWARM-1164]] -Dswarm.context.path=/my-path not honored after -jar (Done)
+* [https://issues.jboss.org/browse/SWARM-1155[SWARM-1155]] Datasource Test needs to handle non JDK7 connection classes (Done)
+* [https://issues.jboss.org/browse/SWARM-1153[SWARM-1153]] Cannot start the application if we have custom logging configuration (Done)
+* [https://issues.jboss.org/browse/SWARM-1152[SWARM-1152]] double's not suppported in config file (Done)
+* [https://issues.jboss.org/browse/SWARM-1148[SWARM-1148]] -Dswarm.logging=<level> broken, unable to set root log level (Done)
+* [https://issues.jboss.org/browse/SWARM-1147[SWARM-1147]] test-in-container howto fails with exception (Done)
+* [https://issues.jboss.org/browse/SWARM-1146[SWARM-1146]] Not working Logstash example because of its invalid project-defaults.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-1116[SWARM-1116]] Monitor fraction doesn't work with @ConfigurationValue anymore (Done)
+* [https://issues.jboss.org/browse/SWARM-1115[SWARM-1115]] persistence.xml should be located on proper path with @DefaultDeployment  (Done)
+* [https://issues.jboss.org/browse/SWARM-1051[SWARM-1051]] Not working with jboss-deployment-structure.xml (Done)
+* [https://issues.jboss.org/browse/SWARM-1040[SWARM-1040]] can't enable HTTPS without setting swarm.http.certificate.alias (Done)
+* [https://issues.jboss.org/browse/SWARM-1036[SWARM-1036]] management fraction required for HTTPS (Done)
+* [https://issues.jboss.org/browse/SWARM-1035[SWARM-1035]] Swarm Jar executable doesn't start in background (Done)
+* [https://issues.jboss.org/browse/SWARM-790[SWARM-790]] WebServicesFraction should also depend on org.jboss.as.webservices.server.integration module (Done)
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-1143[SWARM-1143]] Keycloak support (Done)
+* [https://issues.jboss.org/browse/SWARM-1142[SWARM-1142]] Basic, Digest, Form Auth Configuration Support (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1128[SWARM-1128]] Support Environment Variables in project-<profile>.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-900[SWARM-900]] Resource security protection outside main() (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-969[SWARM-969]] Document the driver names for auto detected drivers (Done)
 
 == Resources
 
@@ -47,23 +79,36 @@ Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
 All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
 
-Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.2
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.3
 
 Documentation for this release is available:
 
-* link:/howto/2017-3-2[How To's]
-* link:/refguide/2017-3-2[Reference Guide]
-* link:/userguide/2017-3-2[User Guide]
+* link:/howto/2017-3-3[How To's]
+* link:/refguide/2017-3-3[Reference Guide]
+* link:/userguide/2017-3-3[User Guide]
 
 == Thank you, Contributors!
 
 We appreciate all of our contributors since the last release:
 
-== Core
-
-...
+=== HowTo
+* Heiko Braun
+* Bob McWhirter
 
 === Examples
+* Heiko Braun
+* George Gastaldi
+* Bob McWhirter
+* Yoshimasa Tanabe
 
+=== UserGuide
+* Heiko Braun
+* Ken Finnigan
+* Bob McWhirter
+* Peter Palaga
 
-...
+=== Core
+* Heiko Braun
+* Ken Finnigan
+* Nelson Graça
+* Bob McWhirter
