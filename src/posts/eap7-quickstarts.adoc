@@ -1,0 +1,409 @@
+---
+title: Running JBoss EAP 7.0 quickstarts with WildFly Swarm
+publishDate: 2017-03-23
+modifyDate: 2017-03-23
+author: Ladislav Thon
+layout: post.jade
+draft: true
+---
+
+https://github.com/jboss-developer/jboss-eap-quickstarts/tree/EAP_7.0.0.GA[JBoss EAP 7.0 quickstarts]
+is a set of example applications demonstrating various aspects
+of JBoss EAP 7.0. In this post, similarly to the previous post on
+link:/posts/running-java-ee-7-samples-with-wildfly-swarm[running Java EE 7 Samples],
+we'll examine how to run JBoss EAP 7.0 quickstarts with WildFly Swarm.
+
+++++
+<!-- more -->
+++++
+
+Again, it turns out it's pretty easy. In this text, we'll take a look
+at couple of quickstarts, how to build them, create a Swarm uberjar,
+and possibly run some tests.
+
+But before we start, we need two things: the Swarmtool itself, and a clone
+of the JBoss EAP 7.0 quickstarts.
+
+== Intro: Swarmtool
+
+Swarmtool is a standalone Java application that consumes a Java EE
+`.jar` or `.war` and produces a Swarm uberjar. The easiest way to obtain
+its latest release is to use the link on the link:/downloads[Downloads]
+page. That link actually just redirects your browser to download the JAR
+from Maven Central. This is how we'd obtain the Swarmtool for Swarm
+2017.3.3 manually:
+
+[source,bash]
+----
+SWARM_VERSION=2017.3.3
+wget https://repo1.maven.org/maven2/org/wildfly/swarm/swarmtool/${SWARM_VERSION}/swarmtool-${SWARM_VERSION}-standalone.jar
+----
+
+We see that each Swarm version has its own version of Swarmtool. The Swarmtool
+version 2017.3.3 will use Swarm 2017.3.3 to create the uberjar.
+
+You can see some information how to use Swarmtool by just executing the JAR:
+
+[source,bash]
+----
+java -jar swarmtool-2017.3.3-standalone.jar
+----
+
+== Intro: download quickstarts
+
+You can download a quickstarts `.zip` archive together with JBoss EAP 7.0
+distribution, or you can clone the Git repository and checkout the
+corresponding tag. This is what we will do:
+
+[source,bash]
+----
+git clone https://github.com/jboss-developer/jboss-eap-quickstarts.git
+cd jboss-eap-quickstarts
+git checkout -b released EAP_7.0.0.GA
+----
+
+Note that the repository is fairly big.
+
+== `helloworld`
+
+Let's start with a very simple quickstart, the `helloworld` one. It contains
+a simple servlet which injects a CDI bean.
+
+First, let's build the `.war`:
+
+[source,bash]
+----
+cd helloworld
+mvn clean package
+----
+
+The `target` directory now contains `jboss-helloworld.war`, an archive
+that you could just deploy to WildFly / JBoss EAP 7.0. Now let's run
+the Swarmtool over it:
+
+[source,bash]
+----
+java -jar .../swarmtool-2017.3.3-standalone.jar target/jboss-helloworld.war
+----
+
+You'll see that Swarmtool autodetects the `cdi` and `undertow` fractions.
+The `cdi` fraction, obviously, provides CDI, and `undertow` provides
+an HTTP server and a servlet container.
+
+The resulting Swarm uberjar `jboss-helloworld-swarm.jar` is present in the current
+working directory. Let's run it:
+
+[source,bash]
+----
+java -jar jboss-helloworld-swarm.jar
+----
+
+And we can try to access the servlet:
+
+[source,bash]
+----
+curl http://localhost:8080/HelloWorld
+----
+
+Note that, unlike WildFly / JBoss EAP 7.0, the deployment name isn't part of the URL.
+If we wanted to do that, we can use the `swarm.context.path` system property:
+
+[source,bash]
+----
+java -jar jboss-helloworld-swarm.jar -Dswarm.context.path=jboss-helloworld
+curl http://localhost:8080/jboss-helloworld/HelloWorld
+----
+
+And that's it! There's nothing more to this quickstart.
+
+== `hibernate5`
+
+Now, let's follow with a quickstart that uses a database. Naturally, it will
+be the in-memory H2 database, but the steps to use a real database would be
+very similar.
+
+[source,bash]
+----
+cd hibernate5
+mvn clean package
+----
+
+First, let's try the same steps as above:
+
+[source,bash]
+----
+java -jar .../swarmtool-2017.3.3-standalone.jar target/jboss-hibernate5.war
+java -jar jboss-hibernate5-swarm.jar
+----
+
+You will see that the deployment fails:
+
+----
+2017-03-23 13:36:33,307 ERROR [org.jboss.as.controller.management-operation] (main) WFLYCTL0013: Operation ("add") failed - address: (("deployment" => "jboss-hibernate5.war")) - failure description: {
+    "WFLYCTL0412: Required services that are not installed:" => ["jboss.jdbc-driver.h2"],
+    "WFLYCTL0180: Services with missing/unavailable dependencies" => ["jboss.data-source.\"jboss.naming.context.java.jboss.datasources.Hibernate5QuickstartDS\" is missing [jboss.jdbc-driver.h2]"]
+}
+----
+
+Clearly, the H2 driver isn't present. If you consult the
+link:https://howto.wildfly-swarm.io/v/2017.3.3/create-a-datasource/[HOWTO],
+you will learn that it's enough to add a dependency on the JDBC driver.
+
+But how do we do that? Modify the quickstart? That would make the JDBC
+driver part of the deployment, which is of course possible, but it's
+not what the quickstart expects. It expects the JDBC driver to be provided
+by the "application server". What we do here is that we'll specify
+the JDBC driver as an additional dependency when running the Swarmtool,
+using the `-d` parameter:
+
+[source,bash]
+----
+java -jar .../swarmtool-2017.3.3-standalone.jar -d com.h2database:h2:1.4.193 target/jboss-hibernate5.war
+java -jar jboss-hibernate5-swarm.jar
+----
+
+The uberjar now starts just fine and you can open your browser
+at http://localhost:8080/ to play with the application.
+
+== `ejb-security`
+
+Let's get to something more interesting. The `ejb-security` quickstart
+expects some users and roles to be defined in the `application-users.properties`
+and `application-roles.properties` files. Of course, we could create those
+files using WildFly / JBoss EAP 7.0 tools and then instruct Swarm to use them,
+but we'll go for a different solution today.
+
+The preferred way of configuring Swarm applications is
+a https://reference.wildfly-swarm.io/v/2017.3.3/configuration.html#_using_yaml[YAML format].
+Can we create a `project-defaults.yml` file and embed the users/roles definition
+into it?
+
+WildFly / JBoss EAP 7.0 provides solution for defining users directly inside definition
+of a security realm, but a solution for defining user roles as well is missing.
+Therefore, Swarm provides its own solution for defining both users and roles
+inside a definition of the security realm.
+
+The full `project-defaults.yml` file with both users and their roles,
+as described in the quickstart's README, looks like this:
+
+----
+swarm:
+  management:
+    security-realms:
+      ApplicationRealm:
+        plug-in-authentication:
+          name: swarm-in-memory
+          properties:
+            quickstartUser.hash:
+              value: c2d60ae3c894489fa59196c192e351ca
+            user1.hash:
+              value: b802b482f67706cb453ab9294b88a9ea
+        plug-in-authorization:
+          name: swarm-in-memory
+          properties:
+            quickstartUser.roles:
+              value: guest
+            user1.roles:
+              value: app-user
+----
+
+The `plug-in-authorization` part is probably clear; the user `quickstartUser`
+is in the role `guest`, and `user1` is in the role `app-user`. But what about
+the first part, `plug-in-authentication`? What are the values?
+
+They are MD5 hashes of a string in the form `<user name>:<security realm name>:<password>`.
+So, for example:
+
+[source,bash]
+----
+echo -n 'quickstartUser:ApplicationRealm:quickstartPwd1!' | md5sum
+----
+
+In fact, the value is exactly the same as in the `application-users.properties`
+file. So if you already have this file and don't want to configure Swarm to use
+it, you can easily copy all the required pieces to a Swarm YAML file.
+
+Now, let's try to run the quickstart:
+
+[source,bash]
+----
+cd ejb-security
+mvn clean package
+java -jar .../swarmtool-2017.3.3-standalone.jar -f management target/jboss-ejb-security.war
+----
+
+Notice the `-f` parameter, which specifies the `management` fraction.
+Without it, we couldn't define security realms.
+
+[source,bash]
+----
+java -jar jboss-ejb-security-swarm.jar -s project-defaults.yml
+----
+
+Here, notice the `-s` parameter: the `project-defaults.yml` file doesn't exist
+in the original `.war` file; it lives on the filesystem outside of the uberjar.
+
+Now let's try to access a protected URL:
+
+[source,bash]
+----
+curl -v http://localhost:8080/SecuredEJBServlet
+----
+
+We get an error: `401 Unauthorized`. Let's try logging in as the `quickstartUser`:
+
+[source,bash]
+----
+curl -u quickstartUser:quickstartPwd1! -v http://localhost:8080/SecuredEJBServlet
+----
+
+It's `200 OK` now. And the `user1`?
+
+[source,bash]
+----
+curl -u user1:password1! -v http://localhost:8080/SecuredEJBServlet
+----
+
+`403 Forbidden`, exactly as expected.
+
+== `kitchensink-angularjs`
+
+And last but not least, one quickstart that uses Arquillian for testing.
+Here, we'll use a lot of tricks we learned in the post on
+link:/posts/running-java-ee-7-samples-with-wildfly-swarm[running Java EE 7 Samples].
+
+[source,bash]
+----
+cd kitchensink-angularjs
+mvn clean package
+cd functional-tests
+----
+
+The tests live in the `functional-tests` directory. We won't use the Swarmtool
+now, but the tests expect the original `.war` to exist; see the `Deployments` class:
+
+[source,java]
+----
+private static final String KITCHENSINK = "../target/jboss-kitchensink-angularjs.war";
+
+...
+
+public static WebArchive kitchensink() {
+    return ShrinkWrap.createFromZipFile(WebArchive.class, new File(KITCHENSINK));
+}
+----
+
+So, what do we have to do?
+
+Create a Swarm profile in the POM. Similarly to `arq-wildfly-managed`
+and `arq-wildfly-remote` profiles, we'll add `arq-wildfly-swarm`:
+
+[source,xml]
+----
+<profile>
+    <id>arq-wildfly-swarm</id>
+    <dependencies>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>arquillian</artifactId>
+            <version>2017.3.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.193</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${version.surefire.plugin}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <arquillian.xml>arquillian-swarm.xml</arquillian.xml>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</profile>
+----
+
+Here just notice that a dependency on H2 is added, because the application
+uses a database.
+
+Create the `src/test/resources/arquillian-swarm.xml` file:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/schema/arquillian" xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+    <container qualifier="wildfly-swarm" default="true">
+        <configuration>
+            <property name="host">localhost</property>
+            <property name="port">${swarm.arquillian.daemon.port:12345}</property>
+        </configuration>
+    </container>
+    <extension qualifier="webdriver">
+        <property name="browser">firefox</property>
+    </extension>
+</arquillian>
+----
+
+Here, you should notice that we added a `webdriver` section which
+specifies that the Firefox browser will be used for running
+browser-based tests. This is copied from the existing `arquillian.xml`.
+
+Add a dependency exclusion for ASM:
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.jboss.arquillian.graphene</groupId>
+    <artifactId>graphene-webdriver</artifactId>
+    <scope>test</scope>
+    <type>pom</type>
+    <exclusions>
+        <exclusion>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+----
+
+And now we can run the tests:
+
+[source,bash]
+----
+PATH=.../firefox-45.8.0-esr:$PATH mvn clean test -Parq-wildfly-swarm
+----
+
+Another thing to notice here is that we're using Firefox 45 ESR. This is
+because newer versions of Firefox aren't compatible with the `FirefoxDriver`
+implementation brought in by Graphene WebDriver.
+
+All these steps should be familiar, if you read the previous post
+on running Java EE 7 Samples.
+
+== What did we learn?
+
+There's a couple of generally useful things in this case study.
+Let's summarize them.
+
+WildFly Swarm provides a standalone tool to generate uberjars from
+traditional `.jar` or `.war` deployment archives, the Swarmtool.
+
+Swarmtool performs fraction autodetection, but it's possible to specify
+additional fractions and even additional Maven dependencies.
+
+Swarmtool-produced archives can also use the Swarm YAML configuration.
+The YAML file doesn't have to be in the original `.war`, it can live
+on the filesystem just fine.
+
+And finally, if you hit any issue with Swarmtool or generally with
+migrating applications from WildFly / JBoss EAP 7.0 to Swarm, please
+https://issues.jboss.org/projects/SWARM/[file an issue]. Thanks!
