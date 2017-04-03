@@ -1,7 +1,7 @@
 ---
 title: Running Java EE 7 Samples with WildFly Swarm
 publishDate: 2017-02-28
-modifyDate: 2017-02-28
+modifyDate: 2017-03-23
 author: Ladislav Thon
 layout: post.jade
 ---
@@ -225,6 +225,60 @@ The Maven modules to which we add this snippet are:
 - `cdi/nobeans-el-injection`
 - `cdi/nobeans-el-injection-flowscoped`
 - `jsf`
+
+=== Graphene and colliding ASM classes
+
+NOTE: This is an update to the JSF chapter above. This blog post
+generally assumes WildFly Swarm 2017.2.0, but this chapter
+assumes WildFly Swarm 2017.3.3.
+
+The previous chapter on JSF mentions that some modules require
+explicit dependencies on the `jsf` and `cdi` fractions. This is
+no longer necessary with WildFly Swarm 2017.3.3, but when we
+move back to fraction autodetection, another problem emerges.
+
+It's caused by Graphene, an Arquillian extension that provides
+WebDriver integration. It's fairly popular for browser-based
+testing in the Arquillian world, and the `jsf` module uses it
+for its tests.
+
+Unfortunately, the Graphene WebDriver implementation library
+(`org.jboss.arquillian.graphene:graphene-webdriver-impl:2.1.0.Final`)
+has a dependcy on a rather old version of cglib (`cglib:cglib:2.2.2`),
+which in turn depends on a very old version of ASM (`asm:asm:3.3.1`).
+
+WildFly Swarm itself also depends on ASM, but uses a newer version
+(`org.ow2.asm:asm-all:5.0.4`).
+
+Since these two ASM dependencies have different Maven coordinates,
+they are both included. So we have 2 ASM JARs on the classpath,
+which is a recipe for disaster, and indeed this is what happens:
+
+----
+java.lang.IncompatibleClassChangeError: class org.wildfly.swarm.fractions.scanner.ClassAndPackageScanner$PackageCollector has interface org.objectweb.asm.ClassVisitor as super class
+----
+
+Fortunately, it is possible to just exclude the old ASM dependency
+and the tests don't seem to be affected.
+
+So we just add a dependency exclusion to the `jsf` module's
+dependency on `org.jboss.arquillian.graphene:graphene-webdriver`:
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.jboss.arquillian.graphene</groupId>
+    <artifactId>graphene-webdriver</artifactId>
+    <type>pom</type>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+----
 
 === And more
 
