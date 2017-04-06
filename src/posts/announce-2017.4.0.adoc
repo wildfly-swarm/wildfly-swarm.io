@@ -88,13 +88,13 @@ Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
 
 All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
 
-Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.3
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.4.0
 
 Documentation for this release is available:
 
-* link:/howto/2017-3-3[How To's]
-* link:/refguide/2017-3-3[Reference Guide]
-* link:/userguide/2017-3-3[User Guide]
+* link:/howto/2017-4-0[How To's]
+* link:/refguide/2017-4-0[Reference Guide]
+* link:/userguide/2017-4-0[User Guide]
 
 == Thank you, Contributors!
 
