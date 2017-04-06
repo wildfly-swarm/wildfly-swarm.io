@@ -14,6 +14,19 @@ New World.  Oh, and April also gives you 2017.4.0 of WildFly Swarm.
 
 === What's New?
 
+==== Teiid support
+
+We now have a fully-configurable Teiid fraction.
+
+==== Better auto-detection
+
+We've figured out a few more edge-cases of autodetecting fractions.
+
+==== General clean-up
+
+When building WildFly Swarm from source, significantly fewer
+warnings and errors should appear.
+
 
 === What is WildFly Swarm?
 
@@ -59,29 +72,6 @@ Release notes for 2017.4.0 are available https://issues.jboss.org/secure/Release
 * [https://issues.jboss.org/browse/SWARM-1193[SWARM-1193]] HealthCheck Booster Updates (Done)
 * [https://issues.jboss.org/browse/SWARM-1188[SWARM-1188]] ConfigMap Booster Updates (Done)
 * [https://issues.jboss.org/browse/SWARM-1178[SWARM-1178]] Simple REST Booster Updates (Done)
-
-=== Sub-task
-* [https://issues.jboss.org/browse/SWARM-1246[SWARM-1246]] Modify groupId and package name to `io.openshift.boosters` (Done)
-* [https://issues.jboss.org/browse/SWARM-1245[SWARM-1245]] Modify groupId and package name to `io.openshift.boosters` (Done)
-* [https://issues.jboss.org/browse/SWARM-1244[SWARM-1244]] Modify groupId and package name to `io.openshift.boosters` (Done)
-* [https://issues.jboss.org/browse/SWARM-1242[SWARM-1242]] Modify groupId and package name to `io.openshift.boosters` (Done)
-* [https://issues.jboss.org/browse/SWARM-1202[SWARM-1202]] Publish Booster to Launchpad (Done)
-* [https://issues.jboss.org/browse/SWARM-1201[SWARM-1201]] Define Booster Metadata (Done)
-* [https://issues.jboss.org/browse/SWARM-1200[SWARM-1200]] Add Pipeline Support (Done)
-* [https://issues.jboss.org/browse/SWARM-1199[SWARM-1199]] Transfer Repo to WF Swarm org (Done)
-* [https://issues.jboss.org/browse/SWARM-1197[SWARM-1197]] Publish Booster to Launchpad (Done)
-* [https://issues.jboss.org/browse/SWARM-1196[SWARM-1196]] Define Booster Metadata (Done)
-* [https://issues.jboss.org/browse/SWARM-1195[SWARM-1195]] Add Pipeline Support (Done)
-* [https://issues.jboss.org/browse/SWARM-1194[SWARM-1194]] Transfer Repo to WF Swarm org (Done)
-* [https://issues.jboss.org/browse/SWARM-1192[SWARM-1192]] Publish Booster to Launchpad (Done)
-* [https://issues.jboss.org/browse/SWARM-1191[SWARM-1191]] Define Booster Metadata (Done)
-* [https://issues.jboss.org/browse/SWARM-1190[SWARM-1190]] Add Pipeline Support (Done)
-* [https://issues.jboss.org/browse/SWARM-1189[SWARM-1189]] Transfer Repo to WF Swarm org (Done)
-* [https://issues.jboss.org/browse/SWARM-1184[SWARM-1184]] Transfer Repo to WF Swarm org (Done)
-* [https://issues.jboss.org/browse/SWARM-1182[SWARM-1182]] Publish Booster to Launchpad (Done)
-* [https://issues.jboss.org/browse/SWARM-1181[SWARM-1181]] Define Booster Metadata (Done)
-* [https://issues.jboss.org/browse/SWARM-1180[SWARM-1180]] Add Pipeline Support (Done)
-* [https://issues.jboss.org/browse/SWARM-1179[SWARM-1179]] Transfer Repo to WF Swarm org (Done)
 
 === Enhancement
 * [https://issues.jboss.org/browse/SWARM-1236[SWARM-1236]] Multistart goal: make the startup timeout configurable (Done)
