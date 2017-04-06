@@ -1,0 +1,130 @@
+---
+title: Announcing WildFly Swarm 2017.4.0
+publishDate: 2017-04-07
+modifyDate: 2017-04-07
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2017.4.0
+
+April showers bring May flowers.  Mayflowers bring pilgrims to the
+New World.  Oh, and April also gives you 2017.4.0 of WildFly Swarm.
+
+=== What's New?
+
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2017.4.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12334054[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1261[SWARM-1261]] swarm.topology.web-app.expose-topology-endpoint cannot be set. (Done)
+* [https://issues.jboss.org/browse/SWARM-1256[SWARM-1256]] Error running topology-web on minishift (Done)
+* [https://issues.jboss.org/browse/SWARM-1253[SWARM-1253]] NPE when login-config in project-defaults.yml is not present (Done)
+* [https://issues.jboss.org/browse/SWARM-1252[SWARM-1252]] on/off are treated as booleans (Done)
+* [https://issues.jboss.org/browse/SWARM-1249[SWARM-1249]] MavenPluginTest should pass through custom settings.xml setting (Done)
+* [https://issues.jboss.org/browse/SWARM-1247[SWARM-1247]] Simple standalone.xml causes: Duplicate resource [(\"subsystem\" => \"logging\")]" (Cannot Reproduce Bug)
+* [https://issues.jboss.org/browse/SWARM-1240[SWARM-1240]] Keycloak Server wrong event store provider config (Done)
+* [https://issues.jboss.org/browse/SWARM-1239[SWARM-1239]] Error on topology-webapp: WFLYEE0007: Not installing optional component org.wildfly.swarm.topology.webapp.runtime.TopologySSEServlet$1 due to an exception (Done)
+* [https://issues.jboss.org/browse/SWARM-1233[SWARM-1233]] SWARM-1209 broke custom properties in propertiesFile (Cannot Reproduce Bug)
+* [https://issues.jboss.org/browse/SWARM-1228[SWARM-1228]] NPE when deploying additional content via jboss-cli (http remote interface) (Done)
+* [https://issues.jboss.org/browse/SWARM-1221[SWARM-1221]] Test dependencies in m2repo of the fat jar (Rejected)
+* [https://issues.jboss.org/browse/SWARM-1215[SWARM-1215]] EAP quickstart jta-crash-rec: javax.resource.ResourceException: IJ031101: XADataSourceClass is undefined (Done)
+* [https://issues.jboss.org/browse/SWARM-1209[SWARM-1209]] Some $ENV vars should just be ignored. (Done)
+* [https://issues.jboss.org/browse/SWARM-1207[SWARM-1207]] should CDI be autodetected when javax.annotation.* is present? or detect CDI based on presence of beans.xml? (Done)
+* [https://issues.jboss.org/browse/SWARM-1175[SWARM-1175]] topology-webapp missing a dependency on WF naming service: NoInitialContextException (Done)
+* [https://issues.jboss.org/browse/SWARM-1174[SWARM-1174]] -S stage is STILL BROKEN. (Done)
+* [https://issues.jboss.org/browse/SWARM-1173[SWARM-1173]] maven-plugin is trying to download SNAPSHOTs from Maven Central (Done)
+* [https://issues.jboss.org/browse/SWARM-1170[SWARM-1170]] autodetection on .war archive + undertow not detected = can't create default deployment (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1254[SWARM-1254]] Health check returns illegal json (Done)
+* [https://issues.jboss.org/browse/SWARM-1211[SWARM-1211]] Clean up warnings and deprecations. (Done)
+* [https://issues.jboss.org/browse/SWARM-1210[SWARM-1210]] Exclude gradle plugin and gradle arquillian adapter from prod build (Done)
+* [https://issues.jboss.org/browse/SWARM-1193[SWARM-1193]] HealthCheck Booster Updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1188[SWARM-1188]] ConfigMap Booster Updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1178[SWARM-1178]] Simple REST Booster Updates (Done)
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-1246[SWARM-1246]] Modify groupId and package name to `io.openshift.boosters` (Done)
+* [https://issues.jboss.org/browse/SWARM-1245[SWARM-1245]] Modify groupId and package name to `io.openshift.boosters` (Done)
+* [https://issues.jboss.org/browse/SWARM-1244[SWARM-1244]] Modify groupId and package name to `io.openshift.boosters` (Done)
+* [https://issues.jboss.org/browse/SWARM-1242[SWARM-1242]] Modify groupId and package name to `io.openshift.boosters` (Done)
+* [https://issues.jboss.org/browse/SWARM-1202[SWARM-1202]] Publish Booster to Launchpad (Done)
+* [https://issues.jboss.org/browse/SWARM-1201[SWARM-1201]] Define Booster Metadata (Done)
+* [https://issues.jboss.org/browse/SWARM-1200[SWARM-1200]] Add Pipeline Support (Done)
+* [https://issues.jboss.org/browse/SWARM-1199[SWARM-1199]] Transfer Repo to WF Swarm org (Done)
+* [https://issues.jboss.org/browse/SWARM-1197[SWARM-1197]] Publish Booster to Launchpad (Done)
+* [https://issues.jboss.org/browse/SWARM-1196[SWARM-1196]] Define Booster Metadata (Done)
+* [https://issues.jboss.org/browse/SWARM-1195[SWARM-1195]] Add Pipeline Support (Done)
+* [https://issues.jboss.org/browse/SWARM-1194[SWARM-1194]] Transfer Repo to WF Swarm org (Done)
+* [https://issues.jboss.org/browse/SWARM-1192[SWARM-1192]] Publish Booster to Launchpad (Done)
+* [https://issues.jboss.org/browse/SWARM-1191[SWARM-1191]] Define Booster Metadata (Done)
+* [https://issues.jboss.org/browse/SWARM-1190[SWARM-1190]] Add Pipeline Support (Done)
+* [https://issues.jboss.org/browse/SWARM-1189[SWARM-1189]] Transfer Repo to WF Swarm org (Done)
+* [https://issues.jboss.org/browse/SWARM-1184[SWARM-1184]] Transfer Repo to WF Swarm org (Done)
+* [https://issues.jboss.org/browse/SWARM-1182[SWARM-1182]] Publish Booster to Launchpad (Done)
+* [https://issues.jboss.org/browse/SWARM-1181[SWARM-1181]] Define Booster Metadata (Done)
+* [https://issues.jboss.org/browse/SWARM-1180[SWARM-1180]] Add Pipeline Support (Done)
+* [https://issues.jboss.org/browse/SWARM-1179[SWARM-1179]] Transfer Repo to WF Swarm org (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1236[SWARM-1236]] Multistart goal: make the startup timeout configurable (Done)
+* [https://issues.jboss.org/browse/SWARM-1220[SWARM-1220]] Allow propertiesFile to be loaded from Jar dependency (Done)
+* [https://issues.jboss.org/browse/SWARM-1219[SWARM-1219]] Terminate on deployment error (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1212[SWARM-1212]] Allow execution of PackageMojo to be skipped by specifying a property (Done)
+* [https://issues.jboss.org/browse/SWARM-1172[SWARM-1172]] Integrate upstream project Teiid (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.3.3
+
+Documentation for this release is available:
+
+* link:/howto/2017-3-3[How To's]
+* link:/refguide/2017-3-3[Reference Guide]
+* link:/userguide/2017-3-3[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Aaron Anderson
+* Heiko Braun
+* Ken Finnigan
+* George Gastaldi
+* Michael Gerber
+* Bob McWhirter
+* Falko Modler
+* Peter Palaga
+* Kylin Soong
+* Michał Szynkiewicz
+* Ladislav Thon
+* Petr Široký
+
+=== Examples
+* Bob McWhirter
+* Peter Palaga
+
