@@ -1,10 +1,9 @@
 ---
 title: Running JBoss EAP 7.0 quickstarts with WildFly Swarm
-publishDate: 2017-03-23
-modifyDate: 2017-03-23
+publishDate: 2017-04-12
+modifyDate: 2017-04-12
 author: Ladislav Thon
 layout: post.jade
-draft: true
 ---
 
 https://github.com/jboss-developer/jboss-eap-quickstarts/tree/EAP_7.0.0.GA[JBoss EAP 7.0 quickstarts]
@@ -31,22 +30,22 @@ Swarmtool is a standalone Java application that consumes a Java EE
 its latest release is to use the link on the link:/downloads[Downloads]
 page. That link actually just redirects your browser to download the JAR
 from Maven Central. This is how we'd obtain the Swarmtool for Swarm
-2017.3.3 manually:
+2017.4.0 manually:
 
 [source,bash]
 ----
-SWARM_VERSION=2017.3.3
+SWARM_VERSION=2017.4.0
 wget https://repo1.maven.org/maven2/org/wildfly/swarm/swarmtool/${SWARM_VERSION}/swarmtool-${SWARM_VERSION}-standalone.jar
 ----
 
 We see that each Swarm version has its own version of Swarmtool. The Swarmtool
-version 2017.3.3 will use Swarm 2017.3.3 to create the uberjar.
+version 2017.4.0 will use Swarm 2017.4.0 to create the uberjar.
 
 You can see some information how to use Swarmtool by just executing the JAR:
 
 [source,bash]
 ----
-java -jar swarmtool-2017.3.3-standalone.jar
+java -jar swarmtool-2017.4.0-standalone.jar
 ----
 
 == Intro: download quickstarts
@@ -83,7 +82,7 @@ the Swarmtool over it:
 
 [source,bash]
 ----
-java -jar .../swarmtool-2017.3.3-standalone.jar target/jboss-helloworld.war
+java -jar .../swarmtool-2017.4.0-standalone.jar target/jboss-helloworld.war
 ----
 
 You'll see that Swarmtool autodetects the `cdi` and `undertow` fractions.
@@ -132,21 +131,21 @@ First, let's try the same steps as above:
 
 [source,bash]
 ----
-java -jar .../swarmtool-2017.3.3-standalone.jar target/jboss-hibernate5.war
+java -jar .../swarmtool-2017.4.0-standalone.jar target/jboss-hibernate5.war
 java -jar jboss-hibernate5-swarm.jar
 ----
 
 You will see that the deployment fails:
 
 ----
-2017-03-23 13:36:33,307 ERROR [org.jboss.as.controller.management-operation] (main) WFLYCTL0013: Operation ("add") failed - address: (("deployment" => "jboss-hibernate5.war")) - failure description: {
+2017-04-07 15:45:24,569 ERROR [org.jboss.as.controller.management-operation] (main) WFLYCTL0013: Operation ("add") failed - address: (("deployment" => "jboss-hibernate5.war")) - failure description: {
     "WFLYCTL0412: Required services that are not installed:" => ["jboss.jdbc-driver.h2"],
     "WFLYCTL0180: Services with missing/unavailable dependencies" => ["jboss.data-source.\"jboss.naming.context.java.jboss.datasources.Hibernate5QuickstartDS\" is missing [jboss.jdbc-driver.h2]"]
 }
 ----
 
 Clearly, the H2 driver isn't present. If you consult the
-link:https://howto.wildfly-swarm.io/v/2017.3.3/create-a-datasource/[HOWTO],
+link:https://howto.wildfly-swarm.io/v/2017.4.0/create-a-datasource/[HOWTO],
 you will learn that it's enough to add a dependency on the JDBC driver.
 
 But how do we do that? Modify the quickstart? That would make the JDBC
@@ -158,7 +157,7 @@ using the `-d` parameter:
 
 [source,bash]
 ----
-java -jar .../swarmtool-2017.3.3-standalone.jar -d com.h2database:h2:1.4.193 target/jboss-hibernate5.war
+java -jar .../swarmtool-2017.4.0-standalone.jar -d com.h2database:h2:1.4.193 target/jboss-hibernate5.war
 java -jar jboss-hibernate5-swarm.jar
 ----
 
@@ -174,7 +173,7 @@ files using WildFly / JBoss EAP 7.0 tools and then instruct Swarm to use them,
 but we'll go for a different solution today.
 
 The preferred way of configuring Swarm applications is
-a https://reference.wildfly-swarm.io/v/2017.3.3/configuration.html#_using_yaml[YAML format].
+a https://reference.wildfly-swarm.io/v/2017.4.0/configuration.html#_using_yaml[YAML format].
 Can we create a `project-defaults.yml` file and embed the users/roles definition
 into it?
 
@@ -229,7 +228,7 @@ Now, let's try to run the quickstart:
 ----
 cd ejb-security
 mvn clean package
-java -jar .../swarmtool-2017.3.3-standalone.jar -f management target/jboss-ejb-security.war
+java -jar .../swarmtool-2017.4.0-standalone.jar -f management target/jboss-ejb-security.war
 ----
 
 Notice the `-f` parameter, which specifies the `management` fraction.
@@ -306,7 +305,7 @@ and `arq-wildfly-remote` profiles, we'll add `arq-wildfly-swarm`:
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>arquillian</artifactId>
-            <version>2017.3.3</version>
+            <version>2017.4.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
