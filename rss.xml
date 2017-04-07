@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Fri, 07 Apr 2017 13:17:37 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 07 Apr 2017 13:17:31 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.3.3]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Fri, 07 Apr 2017 13:32:02 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 07 Apr 2017 13:31:57 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.4.0]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_wildfly_swarm_2017_4_0">WildFly Swarm 2017.4.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>April showers bring May flowers.  Mayflowers bring pilgrims to the
+New World.  Oh, and April also gives you 2017.4.0 of WildFly Swarm.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="sect3">
+<h4 id="_teiid_support">Teiid support</h4>
+<div class="paragraph">
+<p>We now have a fully-configurable Teiid fraction.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_better_auto_detection">Better auto-detection</h4>
+<div class="paragraph">
+<p>We’ve figured out a few more edge-cases of autodetecting fractions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_clean_up">General clean-up</h4>
+<div class="paragraph">
+<p>When building WildFly Swarm from source, significantly fewer
+warnings and errors should appear.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
+<div class="paragraph">
+<p>WildFly Swarm is the decomposition and reconstitution of the popular
+<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
+for microservice type applications.</p>
+</div>
+<div class="paragraph">
+<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
+maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-4-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-4-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Fri, 07 Apr 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.3.3]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2017_3_3">WildFly Swarm 2017.3.3</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -611,27 +651,4 @@ larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</str
 into discrete chunks, each with its own release cycle.  <em>This</em> release represents
 a released version of the aggregating BOM, which encompasses all of the various
 released components.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 15 Mar 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Reorganization]]></title><description><![CDATA[<div class="paragraph">
-<p>After some hearty discussion at our face-to-face meeting in Newcastle, UK,
-along with continuing that discussion on our <a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a>,
-we’ve decided to split apart our monolithic repository into reasonable slices.</p>
-</div>
-<div class="paragraph">
-<p>Part of the motivation for this split is related to how we version things.  Since
-WildFly Swarm is a fairly quickly-moving project, at least in the near term,
-there would always be some components in <code>alpha</code> or <code>beta</code> phase, preventing
-the entirety from being released as <code>final</code>.  Especially given that WildFly Swarm
-is an integration project, the upstream components we integrate with all have
-varying release schedules, and timing a collective release can be difficult.</p>
-</div>
-<div class="paragraph">
-<p>To that end, each of the repositories below is roughly linked with its
-upstream components and can produce independently-versioned bits of
-WildFly Swarm.  Now, a release of <strong>WildFly Swarm</strong> will actually be composed
-of a matrix of releases of the various sub-components, not necessarily matching
-in version numbering.</p>
-</div>
-<div class="paragraph">
-<p>Since a multitude of versions can certainly make life more difficult for
-consumers, we’ve added a BOM strategy (see <em>Practical Changes</em> below).</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/reorganization</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/reorganization</guid><dc:creator><![CDATA[WildFly Swarm Team]]></dc:creator><pubDate>Tue, 23 Feb 2016 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 15 Mar 2016 05:00:00 GMT</pubDate></item></channel></rss>
