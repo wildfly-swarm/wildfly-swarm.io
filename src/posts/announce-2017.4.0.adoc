@@ -4,7 +4,6 @@ publishDate: 2017-04-07
 modifyDate: 2017-04-07
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2017.4.0
