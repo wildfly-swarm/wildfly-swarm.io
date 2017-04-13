@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Fri, 07 Apr 2017 13:32:02 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 07 Apr 2017 13:31:57 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.4.0]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 13 Apr 2017 12:32:20 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 13 Apr 2017 12:32:15 GMT</pubDate><item><title><![CDATA[Running JBoss EAP 7.0 quickstarts with WildFly Swarm]]></title><description><![CDATA[<div class="paragraph">
+<p><a href="https://github.com/jboss-developer/jboss-eap-quickstarts/tree/EAP_7.0.0.GA">JBoss EAP 7.0 quickstarts</a>
+is a set of example applications demonstrating various aspects
+of JBoss EAP 7.0. In this post, similarly to the previous post on
+<a href="/posts/running-java-ee-7-samples-with-wildfly-swarm">running Java EE 7 Samples</a>,
+we’ll examine how to run JBoss EAP 7.0 quickstarts with WildFly Swarm.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/running-jboss-eap-7-0-quickstarts-with-wildfly-swarm</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/running-jboss-eap-7-0-quickstarts-with-wildfly-swarm</guid><dc:creator><![CDATA[Ladislav Thon]]></dc:creator><pubDate>Wed, 12 Apr 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.4.0]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2017_4_0">WildFly Swarm 2017.4.0</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -203,19 +209,7 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 05 Jan 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[To WAR or JAR]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_whether_to_war_or_jar_with_wildfly_swarm">Whether to WAR or JAR with WildFly Swarm?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>With most things in life we have choices, sometimes a few and sometimes many.
-When it comes to WildFly Swarm projects with Maven the two choices are
-<code>war</code> or <code>jar</code> packaging.</p>
-</div>
-<div class="paragraph">
-<p>Each has different benefits and tradeoffs which we will discuss during this article.
-By the end I hope it’s clearer as to the best situations to utilize either
-packaging type.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/to-war-or-jar</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/to-war-or-jar</guid><dc:creator><![CDATA[Ken Finnigan]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.1]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 05 Jan 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_you_take_the_good_you_take_the_bad_you_take_them_both_and_then_you_have_version_2016_12_1">You take the good, you take the bad, you take them both, and then you have…​ version 2016.12.1.</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -261,7 +255,19 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.0]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[To WAR or JAR]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_whether_to_war_or_jar_with_wildfly_swarm">Whether to WAR or JAR with WildFly Swarm?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With most things in life we have choices, sometimes a few and sometimes many.
+When it comes to WildFly Swarm projects with Maven the two choices are
+<code>war</code> or <code>jar</code> packaging.</p>
+</div>
+<div class="paragraph">
+<p>Each has different benefits and tradeoffs which we will discuss during this article.
+By the end I hope it’s clearer as to the best situations to utilize either
+packaging type.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/to-war-or-jar</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/to-war-or-jar</guid><dc:creator><![CDATA[Ken Finnigan]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.0]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_it_s_december_wildfly_swarm_2016_12_0_swings_in_like_a_monkey">It’s December, WildFly Swarm 2016.12.0 swings in like a monkey.</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -636,19 +642,4 @@ of functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS R
 <p>We now publish <a href="http://wildfly-swarm.github.io/wildfly-swarm/1.0.0.Beta7/apidocs/index.html">consolidated javadocs</a></p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 12 Apr 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcement 1.0.0.Beta6]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_impact_of_the_repository_reorganization">Impact of the repository reorganization</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Continuing in our trend of announcing versions that are arbitrarily
-larger than our last release, we’re happy to announce <strong>1.0.0.Beta6</strong>.</p>
-</div>
-<div class="paragraph">
-<p>As usual, beware the Ides of March.</p>
-</div>
-<div class="paragraph">
-<p>As noted <a href="/posts/reorganization/">previously</a>, we’ve broken the codebase
-into discrete chunks, each with its own release cycle.  <em>This</em> release represents
-a released version of the aggregating BOM, which encompasses all of the various
-released components.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta6</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 15 Mar 2016 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcement-1-0-0-beta7</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 12 Apr 2016 05:00:00 GMT</pubDate></item></channel></rss>
