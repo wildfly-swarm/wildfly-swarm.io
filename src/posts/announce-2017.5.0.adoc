@@ -1,0 +1,157 @@
+---
+title: Announcing WildFly Swarm 2017.5.0
+publishDate: 2017-05-01
+modifyDate: 2017-05-01
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.5.0
+
+To celebrate May Day, we're going to work 8 hours today and give you
+the 2017.5.0 release of WildFly Swarm.
+
+=== What's New?
+
+==== More YAML fixes
+
+We've fixed, we hope, for the last time, loading of `project-<stageName>.yml` with
+correct precedence, plus the ability to specify the current stage(s) through either
+the `-S` command-line argument or through the `-Dswarm.config.stage` property.
+
+Additionally, we should support both the previous `.yml` extension and the seemingly
+more correct `.yaml` extension.  Unless you're on DOS 3.1.  Then you're still limited
+to 8.3 naming, of course.
+
+==== Still better auto-detection
+
+We've attempted to improve the auto-detection of required fractions, accounting
+for `javax.security` and `persistence.xml` among other things.
+
+==== More auto-installed JDBC drivers
+
+We've enhanced the list of detected JDBC drivers that WildFly Swarm can wire up
+for you now, to include:
+
+* PrestoDB
+* MariaDB
+* Derby
+* Hive2
+* Teiid
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2017.5.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333960[here].
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1304[SWARM-1304]] Generator could add some required configuration properties when topology-jgroups is chosen (Done)
+* [https://issues.jboss.org/browse/SWARM-1275[SWARM-1275]] autodetection support for MariaDB JDBC driver (Done)
+* [https://issues.jboss.org/browse/SWARM-1272[SWARM-1272]] The "jaxrs-multipart" fraction must be auto-detected when the resteasy-multipart-provider dependency is present (Done)
+* [https://issues.jboss.org/browse/SWARM-1262[SWARM-1262]] Simple REST Booster - Readiness/Liveness Probes (Done)
+* [https://issues.jboss.org/browse/SWARM-1235[SWARM-1235]] Logging fraction KEY format needs to be documented properly (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1298[SWARM-1298]] enabling debug logging via "swarm.logging.category" system property results in double log messages (Done)
+* [https://issues.jboss.org/browse/SWARM-1296[SWARM-1296]] -S option not working for wildfly swarm (Cannot Reproduce Bug)
+* [https://issues.jboss.org/browse/SWARM-1279[SWARM-1279]] Injecting the resource adapter from the example leads to IllegalArgumentException (Done)
+* [https://issues.jboss.org/browse/SWARM-1273[SWARM-1273]] Stage config file with .yaml extension (Done)
+* [https://issues.jboss.org/browse/SWARM-1271[SWARM-1271]] CRUD Booster on Minishift is unable to activate "openshift" profile (Done)
+* [https://issues.jboss.org/browse/SWARM-1270[SWARM-1270]] Datasources fraction does not interpret xa-datasource-properties (Done)
+* [https://issues.jboss.org/browse/SWARM-1269[SWARM-1269]] Flyaway fraction does not detect migration scripts in /src/main/resources/db/migration (Rejected)
+* [https://issues.jboss.org/browse/SWARM-1259[SWARM-1259]] jaxrs-jsonp not loaded correctly (Done)
+* [https://issues.jboss.org/browse/SWARM-1255[SWARM-1255]] HealthCheck returns 500 - Internal Server Error due to a NPE (Done)
+* [https://issues.jboss.org/browse/SWARM-1250[SWARM-1250]] REGRESSION: FractionUsageAnalyzer does not work with source("target/classes") (Done)
+* [https://issues.jboss.org/browse/SWARM-1241[SWARM-1241]] Cannot disable topology endpoint from project-defaults.yaml (Duplicate Issue)
+* [https://issues.jboss.org/browse/SWARM-1223[SWARM-1223]] The "jpa" fraction should be autodetected based on presence of the persistence.xml file (Done)
+* [https://issues.jboss.org/browse/SWARM-1222[SWARM-1222]] should the "security" fraction be autodetected for javax.annotation.security annotations? (Done)
+* [https://issues.jboss.org/browse/SWARM-1217[SWARM-1217]] EAP quickstart helloworld-html5: JAX-RS Application class gets generated even though JAX-RS is set up in web.xml (Done)
+* [https://issues.jboss.org/browse/SWARM-1150[SWARM-1150]] Fractions Installed Multiple Times During Test (Done)
+* [https://issues.jboss.org/browse/SWARM-1096[SWARM-1096]] Duplicate deps in wildfly-swarm-manifest.yaml (Done)
+* [https://issues.jboss.org/browse/SWARM-1001[SWARM-1001]] Bean not injected with CDI and Aquirlian test failed when SolrServer is used (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1294[SWARM-1294]] Release new versions of all Boosters (Done)
+* [https://issues.jboss.org/browse/SWARM-1290[SWARM-1290]] Ensure all Boosters have readiness and liveness checks defined (Done)
+* [https://issues.jboss.org/browse/SWARM-1286[SWARM-1286]] Updates to list of community fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1285[SWARM-1285]] SwarmExecutor.execute() wrongly references the weld-se-shaded artifact (Done)
+* [https://issues.jboss.org/browse/SWARM-1284[SWARM-1284]] Create a datasource example to demonstrate auto-detect (Done)
+* [https://issues.jboss.org/browse/SWARM-1263[SWARM-1263]] Update boosters to use Swarm 2017.4.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1205[SWARM-1205]] Fraction creation doc updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1198[SWARM-1198]] JDBC REST Booster Updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1193[SWARM-1193]] HealthCheck Booster Updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1188[SWARM-1188]] ConfigMap Booster Updates (Done)
+* [https://issues.jboss.org/browse/SWARM-1079[SWARM-1079]] Upgrade to wildfly-camel-4.6.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1075[SWARM-1075]] Deprecate camel-other in favour of specific fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1032[SWARM-1032]] Add @AttributeDocumentation to all @Configurable usage in fractions (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1278[SWARM-1278]] Add Teiid and more frequent used data sources are auto-detect enable (Done)
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-1243[SWARM-1243]] Modify groupId and package name to `io.openshift.boosters` (Done)
+* [https://issues.jboss.org/browse/SWARM-1187[SWARM-1187]] Publish Booster to Launchpad (Done)
+* [https://issues.jboss.org/browse/SWARM-1186[SWARM-1186]] Define Booster Metadata (Done)
+* [https://issues.jboss.org/browse/SWARM-1185[SWARM-1185]] Add Pipeline Support (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-988[SWARM-988]] Uber JAR contains superfluous dependencies when adding "org.wildfly.swarm:jaxrs-validator" fraction (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.5.0
+
+Documentation for this release is available:
+
+* link:/howto/2017-5-0[How To's]
+* link:/refguide/2017-5-0[Reference Guide]
+* link:/userguide/2017-5-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Heiko Braun
+* Thomas Diesler
+* Ken Finnigan
+* George Gastaldi
+* Martin Kouba
+* Martin Linha
+* Bob McWhirter
+* Falko Modler
+* Tomas Remes
+* Kylin Soong
+* Michał Szynkiewicz
+* Ladislav Thon
+
+=== Examples
+* Thomas Diesler
+* Matthias Lersch
+* Bob McWhirter
+* Kylin Soong
+
+=== User Guide
+* Ken Finnigan
+* Bob McWhirter
+
+=== HOWTO
+* Ken Finnigan
+* Bob McWhirter
+
