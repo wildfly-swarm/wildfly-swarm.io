@@ -4,7 +4,6 @@ publishDate: 2017-06-02
 modifyDate: 2017-06-02
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2017.6.0
@@ -14,6 +13,8 @@ the 2017.6.0 release of WildFly Swarm.
 
 === What's New?
 
+* More YAML less `main()`
+* Update to WF Camel 4.7.0
 
 === What is WildFly Swarm?
 
@@ -28,6 +29,56 @@ of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
 ++++
 <!-- more -->
 ++++
+
+== More YAML less `main()`
+
+In our continued efforts to remove custom `main()` usage,
+we have two further improvements to help.
+
+=== `@Configurable` support for Deployments
+
+We've now made it possible for `@Configurable` to be applied to properties within
+a deployment.
+
+For now we've made these changes in the Swagger fraction,
+but further fractions will come soon. So what do the changes mean?
+
+Instead of needing a custom `main()` to do:
+
+[source,java]
+----
+  archive.setResourcePackages("org.wildfly.swarm.examples.jaxrs.swagger");
+----
+
+it's now possible to use YAML:
+
+[source,yaml]
+----
+  swarm:
+    deployment:
+      example-jaxrs-swagger.war:
+        swagger:
+          packages:
+             - org.wildfly.swarm.examples.jaxrs.swagger
+----
+
+The full list of YAML configuration for Swagger can be found https://reference.wildfly-swarm.io/fractions/swagger.html[here].
+
+=== Deploy Artifacts by GAV
+
+We can now also deploy artifacts that are dependencies in `pom.xml` as well:
+
+[source,yaml]
+----
+  swarm:
+    deployment:
+      net.java.xadisk:xadisk.rar:
+----
+
+In this case the version of the artifact is pulled in from the dependency entry in the `pom.xml`.
+
+A full example can be found https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/master/resource-adapter/resource-adapter-deployment[here].
+
 
 == Changelog
 Release notes for 2017.6.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333961[here].
@@ -54,7 +105,6 @@ Release notes for 2017.6.0 are available https://issues.jboss.org/secure/Release
 * [https://issues.jboss.org/browse/SWARM-1345[SWARM-1345]] HTTPS tests fail to execute (Done)
 * [https://issues.jboss.org/browse/SWARM-1344[SWARM-1344]] Error creating certified bom (Done)
 * [https://issues.jboss.org/browse/SWARM-1341[SWARM-1341]] Monitoring Fraction overwrites FilterConfigurations from other (custom) fractions (Done)
-* [https://issues.jboss.org/browse/SWARM-1333[SWARM-1333]] Openshift service address not provided (Done)
 * [https://issues.jboss.org/browse/SWARM-1322[SWARM-1322]] Swarm's Arquillian container doesn't enable the @EJB enricher (Done)
 * [https://issues.jboss.org/browse/SWARM-1311[SWARM-1311]] Duplicate resource will cause Server boot has failed in an unrecoverable manner (Done)
 * [https://issues.jboss.org/browse/SWARM-1310[SWARM-1310]] NoClassDefFoundError in teiid Driver Auto-detect (Done)
