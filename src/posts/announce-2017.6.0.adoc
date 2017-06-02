@@ -1,0 +1,119 @@
+---
+title: Announcing WildFly Swarm 2017.6.0
+publishDate: 2017-06-02
+modifyDate: 2017-06-02
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2017.6.0
+
+In honor of National Doughnut Day, sink your teeth into
+the 2017.6.0 release of WildFly Swarm.
+
+=== What's New?
+
+
+=== What is WildFly Swarm?
+
+WildFly Swarm is the decomposition and reconstitution of the popular
+http://www.wildfly.org[WildFly Java Application Server] in order to support _just enough appserver_
+for microservice type applications.
+
+Each portion of the appserver is referred to as a _fraction_, which many times
+maps to a `subsystem` from WildFly, but also may include other discrete chunks
+of non-Java EE or WildFly functionality, such as _Swagger_, or _Jolokia_.
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2017.6.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12333961[here].
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1371[SWARM-1371]] Never resolve snapshots from JBoss repository (Done)
+* [https://issues.jboss.org/browse/SWARM-1368[SWARM-1368]] Upgrade to wildfly-camel-4.7.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1366[SWARM-1366]] Remove OpenTracing Hawkular Fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1365[SWARM-1365]] Review UNSTABLE fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1359[SWARM-1359]] Support deploying artifacts via the yaml  (Done)
+* [https://issues.jboss.org/browse/SWARM-1358[SWARM-1358]] Support opentracing-hawkular configuration via YAML (Done)
+* [https://issues.jboss.org/browse/SWARM-1353[SWARM-1353]] Support @Configurable on methods on EnhancedWhatever classes. (Done)
+* [https://issues.jboss.org/browse/SWARM-1351[SWARM-1351]] Prefer @Configurable to @ConfigurableAlias if present (Done)
+* [https://issues.jboss.org/browse/SWARM-1349[SWARM-1349]] Provide for deployment-scoped CDI context (Done)
+* [https://issues.jboss.org/browse/SWARM-1347[SWARM-1347]] convert the jaxrs/zipkin example from custom main to project-defaults.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-1313[SWARM-1313]] Replace usage of META-INF/swagger.conf with project-defaults.yaml (Done)
+* [https://issues.jboss.org/browse/SWARM-1306[SWARM-1306]] Investigate why testsuite-* artifacts are deployed to Maven Central on release (Done)
+* [https://issues.jboss.org/browse/SWARM-1293[SWARM-1293]] Release 1.1.0 of both config-api projects (Done)
+* [https://issues.jboss.org/browse/SWARM-1183[SWARM-1183]] Secured REST Booster Updates (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1369[SWARM-1369]] User projects picks up different dependent versions than WF Swarm build (Done)
+* [https://issues.jboss.org/browse/SWARM-1363[SWARM-1363]] JAX-RS Resources Initialised Erroneously  (Done)
+* [https://issues.jboss.org/browse/SWARM-1345[SWARM-1345]] HTTPS tests fail to execute (Done)
+* [https://issues.jboss.org/browse/SWARM-1344[SWARM-1344]] Error creating certified bom (Done)
+* [https://issues.jboss.org/browse/SWARM-1341[SWARM-1341]] Monitoring Fraction overwrites FilterConfigurations from other (custom) fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1333[SWARM-1333]] Openshift service address not provided (Done)
+* [https://issues.jboss.org/browse/SWARM-1322[SWARM-1322]] Swarm's Arquillian container doesn't enable the @EJB enricher (Done)
+* [https://issues.jboss.org/browse/SWARM-1311[SWARM-1311]] Duplicate resource will cause Server boot has failed in an unrecoverable manner (Done)
+* [https://issues.jboss.org/browse/SWARM-1310[SWARM-1310]] NoClassDefFoundError in teiid Driver Auto-detect (Done)
+* [https://issues.jboss.org/browse/SWARM-1204[SWARM-1204]] EAP quickstart tasks-jsf: one failing test (Done)
+* [https://issues.jboss.org/browse/SWARM-1144[SWARM-1144]] [Camel-cxf]Can't add custom cxf interceptor (Done)
+* [https://issues.jboss.org/browse/SWARM-836[SWARM-836]] Favicon is not shown correctly (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1354[SWARM-1354]] Add FractionDetectMode to Gradle and fix the moduleDirs problem (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1330[SWARM-1330]] Swarm fraction file detection isn't accurate as it should. Doesn't take whole file path in account (Done)
+* [https://issues.jboss.org/browse/SWARM-1324[SWARM-1324]] @Configurable zipkin fraction properties (Done)
+
+=== Sub-task
+* [https://issues.jboss.org/browse/SWARM-1257[SWARM-1257]] Bring in line with approved Mission definition (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.6.0
+
+Documentation for this release is available:
+
+* link:/howto/2017-6-0[How To's]
+* link:/refguide/2017-6-0[Reference Guide]
+* link:/userguide/2017-6-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* SetoKaiba
+* Heiko Braun
+* Thomas Diesler
+* Ken Finnigan
+* Juan G
+* Sven-Torben Janus
+* Martin Kouba
+* Bob McWhirter
+* Kylin Soong
+* Michał Szynkiewicz
+* Ladislav Thon
+
+=== Examples
+* Ken Finnigan
+* Bob McWhirter
+* Ladislav Thon
+
+=== UserGuide
+* Heiko Braun
+* Ken Finnigan
+* Bob McWhirter
+* Marc Savy
+
+=== HowTo
+* Ken Finnigan
+* Bob McWhirter
