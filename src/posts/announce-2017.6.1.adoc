@@ -1,0 +1,68 @@
+---
+title: Announcing WildFly Swarm 2017.6.1
+publishDate: 2017-06-19
+modifyDate: 2017-06-19
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.6.1
+
+"Anyone who has never made a mistake has never tried anything new." (Albert Einstein)
+
+Albert is right. We tried something new. It broke the dependency management, so we changed it again. For the better.
+This is the short story of why we have 2017.6.1.
+
+=== What's New?
+
+* SWARM-1369 caused trouble with project dependencies.
+
+++++
+<!-- more -->
+++++
+
+=== SWARM-1369
+
+A change to the Wildfly Swarm BOM's caused trouble in user projects, for instance the RESTeasy client errors documented in SWARM-1381.
+The BOM dependency management has been changed to fix this.
+
+== Changelog
+Release notes for 2017.6.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12334555[here].
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1394[SWARM-1394]] remove main() from our standalone-servers. (Done)
+* [https://issues.jboss.org/browse/SWARM-1386[SWARM-1386]] Handle Maven mirrors better (Done)
+* [https://issues.jboss.org/browse/SWARM-1380[SWARM-1380]] Investigate Examples CI Failures (Done)
+* [https://issues.jboss.org/browse/SWARM-1373[SWARM-1373]] Print warning when mainClass property set (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1369[SWARM-1369]] User projects picks up different dependent versions than WF Swarm build (Done)
+* [https://issues.jboss.org/browse/SWARM-1384[SWARM-1384]] Keycloak standalone server seems to use deprecated main() (Done)
+* [https://issues.jboss.org/browse/SWARM-1381[SWARM-1381]] RESTEasy Client doesn't work with Swarm 2017.6.0 (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.6.1
+
+Documentation for this release is available:
+
+* link:/howto/2017-6-1[How To's]
+* link:/refguide/2017-6-1[Reference Guide]
+* link:/userguide/2017-6-1[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Heiko Braun
+* Ken Finnigan
+* Bob McWhirter
+* Juraci Paixão Kröhling
+* Yoshimasa Tanabe
+* Ladislav Thon
