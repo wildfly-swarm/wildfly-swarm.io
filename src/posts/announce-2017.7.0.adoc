@@ -1,0 +1,130 @@
+---
+title: Announcing WildFly Swarm 2017.7.0
+publishDate: 2017-07-10
+modifyDate: 2017-07-10
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.7.0
+
+In 1405 Chinese fleet commander Zheng He set sail to explore the world for the first time!
+
+2017.7.0 is your chance to explore WildFly Swarm for the first time,
+or explore it anew with fresh eyes!
+
+=== What's New?
+
+* YAML, YAML, and more YAML!
+* Temp File location
+* Component upgrades
+* Gradle updates
+
+++++
+<!-- more -->
+++++
+
+=== YAML, YAML, and more YAML!
+
+Bob McWhirter was feverishly improving all things YAML for this release!
+
+It's now possible with YAML to:
+
+* Configure socket-binding-groups and socket-bindings.
+* Configure network interfaces
+* Advertise a microservice to Ribbon
+
+Along with fixing some issues with YAML processing for JASPIC modules,
+and improving how configuration handles defaults across a group of configuration items.
+
+=== Temp File location
+
+WildFly Swarm explodes your uber jar into the temp directory at startup so that all classes are available on the classpath.
+Previously those files ended up in whatever temp file location was specified by `java.io.tmpdir` or whatever the JVM chose.
+
+That's fine most of the time, but if you have extremely long running processes, which is the point of microservices,
+you want to be able to clean up any unimportant temp files from storage to keep a running system healthy!
+Unfortunately, until now that also meant removing the files WildFly Swarm needed from under it.
+
+With this release you can set `swarm.io.tmpdir` to be a more permanent temp directory for all jars and classes
+extracted by WildFly Swarm. Ensuring that you or your operating system won't unintentionally remove them when a process
+is using them.
+
+=== Component upgrades
+
+Keycloak was updated to 2.5.5.Final and Teiid to 9.3.0.Final.
+
+=== Gradle updates
+
+Thanks to Michael Fraefel we've seen some improvements in our Gradle support.
+
+When using `gradle run` resources are now included in the default WAR deployment that WildFly Swarm generates.
+
+== Changelog
+Release notes for 2017.7.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12334859[here].
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1433[SWARM-1433]] YAML method for configuring socket-binding-groups and socket-bindings. (Done)
+* [https://issues.jboss.org/browse/SWARM-1430[SWARM-1430]] YAML method for configuring network interfaces. (Done)
+* [https://issues.jboss.org/browse/SWARM-1425[SWARM-1425]] Allow ribbon fraction to be configurable in terms of advertised name (Done)
+* [https://issues.jboss.org/browse/SWARM-1424[SWARM-1424]] Some fractions need all-or-nothing defaults (Done)
+* [https://issues.jboss.org/browse/SWARM-1423[SWARM-1423]] Maintain order of configurables when applying configuration (Done)
+* [https://issues.jboss.org/browse/SWARM-1421[SWARM-1421]] For fractions with attributes and subresources of the same name, prefer the attributes. (Done)
+* [https://issues.jboss.org/browse/SWARM-1418[SWARM-1418]] Remove msc module.xml and version management (Done)
+* [https://issues.jboss.org/browse/SWARM-1412[SWARM-1412]] Upgrade keycloak to 2.5.5.Final (Done)
+* [https://issues.jboss.org/browse/SWARM-1410[SWARM-1410]] Update teiid version in teiid-config-api (Done)
+* [https://issues.jboss.org/browse/SWARM-1374[SWARM-1374]] Fix Weld version mismatch (Done)
+* [https://issues.jboss.org/browse/SWARM-1327[SWARM-1327]] investigate tests that are creating temporary files and not deleting them (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1432[SWARM-1432]] With "gradle run", the resource are not included in the deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1429[SWARM-1429]] User project dependency error with (classmate) (Done)
+* [https://issues.jboss.org/browse/SWARM-1417[SWARM-1417]] JaxrsClientTest fails when custom Maven repos are required for build (Done)
+* [https://issues.jboss.org/browse/SWARM-1409[SWARM-1409]] Hystrix fraction is missing dependency on com.fasterxml.jackson.core.jackson-core (Done)
+* [https://issues.jboss.org/browse/SWARM-1407[SWARM-1407]] JASPIC Module order in YAML not respected (Done)
+* [https://issues.jboss.org/browse/SWARM-1391[SWARM-1391]] Circuit breaker booster breaks with recent master (prep for update 2017.6.1) (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1426[SWARM-1426]] Unable to set location of ws deployment in ws plugin (Done)
+* [https://issues.jboss.org/browse/SWARM-1419[SWARM-1419]] Unable to Set Temp File Location (Done)
+* [https://issues.jboss.org/browse/SWARM-1237[SWARM-1237]] should the config system also support Swarm's custom extensions to the Config API? (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1416[SWARM-1416]] Support older standalone.xml schema versions (v2) (Done)
+* [https://issues.jboss.org/browse/SWARM-1415[SWARM-1415]] Add support for the deployment scanner subsystem  (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.7.0
+
+Documentation for this release is available:
+
+* link:/howto/2017-7-0[How To's]
+* link:/refguide/2017-7-0[Reference Guide]
+* link:/userguide/2017-7-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Heiko Braun
+* Ken Finnigan
+* Michael Fraefel
+* Juan G
+* Martin Kouba
+* Bob McWhirter
+* Juraci Paixão Kröhling
+* Michal Szynkiewicz
+* Ladislav Thon
+
+=== Examples
+* Heiko Braun
+* Michael Fraefel
+* Bob McWhirter
+* Juraci Paixão Kröhling
