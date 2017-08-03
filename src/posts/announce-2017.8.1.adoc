@@ -1,0 +1,84 @@
+---
+title: Announcing WildFly Swarm 2017.8.1
+publishDate: 2017-08-03
+modifyDate: 2017-08-03
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.8.1
+
+On this day in 1914, the first steamer passed through the Panama Canal.
+Cool, eh?
+
+On this day in 2017, we're pleased to announce the 2017.8.1 release of WildFly
+Swarm. 
+
+=== What's New?
+
+* AsciiDoctorJ
+* Jaeger & OpenTracing
+* Bug fixes
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2017.8.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12334835[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1467[SWARM-1467]] "runtime" modules should be marked private (Done)
+* [https://issues.jboss.org/browse/SWARM-1466[SWARM-1466]] fail fast when unable to create default deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1462[SWARM-1462]] Unable to access Swagger webapp UI (Done)
+* [https://issues.jboss.org/browse/SWARM-1460[SWARM-1460]] HttpSecurityPreparer should not ignore unknown auth methods (Done)
+* [https://issues.jboss.org/browse/SWARM-1458[SWARM-1458]] javax.xml.transform.TransformerConfigurationException: Translet class loaded, but unable to create translet instance. (Done)
+* [https://issues.jboss.org/browse/SWARM-1449[SWARM-1449]] Fix ReflectionUtil.getMethodsWithAnnotation() (Done)
+* [https://issues.jboss.org/browse/SWARM-1447[SWARM-1447]] default datasource not set in the EE subsystem (Done)
+* [https://issues.jboss.org/browse/SWARM-1224[SWARM-1224]] Cannot use XSLT: TransformerFactory.newTemplates(...) fails with "Translet class loaded, but unable to create translet instance." (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1456[SWARM-1456]] Remove bom-dependency as it's not needed (Done)
+* [https://issues.jboss.org/browse/SWARM-1441[SWARM-1441]] Update all Boosters to 2017.7.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1440[SWARM-1440]] Separate build profiles (Done)
+* [https://issues.jboss.org/browse/SWARM-1434[SWARM-1434]] Move depMan dependencies into unsupported profile as needed (Done)
+* [https://issues.jboss.org/browse/SWARM-1372[SWARM-1372]] Gather License data for dependencies (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1435[SWARM-1435]] Introduce an AsciidoctorJ fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1411[SWARM-1411]] Add Jaeger fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1404[SWARM-1404]] Add Servlet framework integration to OpenTracing fraction (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.8.1
+
+Documentation for this release is available:
+
+* link:/howto/2017-8-1[How To's]
+* link:/refguide/2017-8-1[Reference Guide]
+* link:/userguide/2017-8-1[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* John Hovell
+* Heiko Braun
+* Ken Finnigan
+* George Gastaldi
+* Martin Kouba
+* Scott M Stark
+* Scott Marlow
+* Bob McWhirter
+* Ladislav Thon
+
+=== Examples
+* Ken Finnigan
+* Juraci Paixão Kröhling
