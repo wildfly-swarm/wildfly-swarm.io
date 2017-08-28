@@ -35,7 +35,8 @@ angular.module('swarm-generator-app',[])
     }
 
     $scope.generate = function(model) {
-      var downloadPath = 'http://swarmgen-forge.rhcloud.com/generator?g='+model.groupId+'&a='+model.artifactId+'&sv='+model.swarmVersion+'&d='+model.fractions().map(function(i){return i.artifactId;}).join('&d=');
+      //var downloadPath = 'http://swarmgen-forge.rhcloud.com/generator?g='+model.groupId+'&a='+model.artifactId+'&sv='+model.swarmVersion+'&d='+model.fractions().map(function(i){return i.artifactId;}).join('&d=');
+      var downloadPath = 'http:///generator.wildfly-swarm.io/generator?g='+model.groupId+'&a='+model.artifactId+'&sv='+model.swarmVersion+'&d='+model.fractions().map(function(i){return i.artifactId;}).join('&d=');
       window.location = downloadPath;  
     }
 
