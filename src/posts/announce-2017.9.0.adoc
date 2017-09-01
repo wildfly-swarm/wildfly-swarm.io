@@ -19,6 +19,35 @@ draft: true
 <!-- more -->
 ++++
 
+== Topology.js Changes
+
+*WARNING: Breaking change!*
+
+Previously, the `topology.js` script provided by the `topology-webapp` fraction
+exposed a simple `topology()` function that you used like this:
+
+[source,js]
+----
+var Topology = topology();
+... code using Topology ...
+----
+
+This was prone to race conditions, because you could start using `Topology` before
+the initial topology was obtained from the server.
+
+Code like this will no longer work. The `topology()` function now returns a promise,
+which is only resolved when initial topology is obtained from the server. The code
+above needs to be transformed to look like this:
+
+[source,js]
+----
+topology().then(function (Topology) {
+    ... code using Topology ...
+});
+----
+
+Now, you only get the `Topology` object when it is ready to be used.
+
 == Changelog
 
 
