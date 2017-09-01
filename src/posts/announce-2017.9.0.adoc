@@ -1,0 +1,46 @@
+---
+title: Announcing WildFly Swarm 2017.9.0
+publishDate: 2017-08-30
+modifyDate: 2017-08-30
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2017.9.0
+
+[...]
+
+=== What's New?
+
+* Topology.js Changes
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+
+
+=== Bug
+[...]
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.8.1
+
+Documentation for this release is available:
+
+* link:/howto/2017-9-0[How To's]
+* link:/refguide/2017-9-0[Reference Guide]
+* link:/userguide/2017-9-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+[...]
