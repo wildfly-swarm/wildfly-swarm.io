@@ -176,11 +176,15 @@ function build() {
 
       '/userguide/2017-7-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/2017.7.0/',
       '/refguide/2017-7-0': 'https://reference.wildfly-swarm.io/v/2017.7.0/',
-      '/howto/2017-7-0': 'https://howto.wildfly-swarm.io/v/2017.7.0/',	    
+      '/howto/2017-7-0': 'https://howto.wildfly-swarm.io/v/2017.7.0/',
 
       '/userguide/2017-8-1': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/v/2017.8.1/',
       '/refguide/2017-8-1': 'https://reference.wildfly-swarm.io/v/2017.8.1/',
       '/howto/2017-8-1': 'https://howto.wildfly-swarm.io/v/8e8237f5711a6ca729f9abd61ededda5ce6b14fb/',
+
+      '/userguide/2017-9-4': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/v/2017.9.4/',
+      '/refguide/2017-9-4': 'https://reference.wildfly-swarm.io/v/2017.9.4/',
+      '/howto/2017-9-4': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-howto/v/2017.9.4/',
 }))
 
 

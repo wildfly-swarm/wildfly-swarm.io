@@ -1,19 +1,25 @@
 ---
-title: Announcing WildFly Swarm 2017.9.0
-publishDate: 2017-08-30
-modifyDate: 2017-08-30
+title: Announcing WildFly Swarm 2017.9.4
+publishDate: 2017-09-06
+modifyDate: 2017-09-06
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
-== WildFly Swarm 2017.9.0
+== WildFly Swarm 2017.9.4
 
-[...]
+What a strange release number. Indeed.
+
+We've been struck by some weird release problems, which forced us to burn a number a versions (x.9.0-x.9.3).
+If you care about the details, here's a description of the issue we ran into: https://issues.sonatype.org/browse/NEXUS-9138
 
 === What's New?
 
 * Topology.js Changes
+* Gradle enhancements
+* Consul Fixes and enhancements
+* Assorted minor bugfixes
+
 
 ++++
 <!-- more -->
@@ -48,11 +54,67 @@ topology().then(function (Topology) {
 
 Now, you only get the `Topology` object when it is ready to be used.
 
+== Gradle enhancements
+
+Gradle introduced seperate output directories for each jvm language in version 4.
+Therefore, when running Swarm from the IDE, resolving the build classes directory did fail before. This should now be fixed.
+
+== Consul Fixes and enhancements
+
+When I trying to shutdown the application (via CTR-C or kill SIGTERM) the server tries to deregister the services from Consul
+ multiple times and after a (seemingly) random number of log entries freezes and hangs. Amongst these fixes, are further enhancements
+ that make the Consul integration more robust.
+
 == Changelog
 
+Release notes for 2017.9.4 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335286[here].
 
 === Bug
-[...]
+* [https://issues.jboss.org/browse/SWARM-1533[SWARM-1533]] Swarm fails to create if path to .m2/repository has spaces (Done)
+* [https://issues.jboss.org/browse/SWARM-1526[SWARM-1526]] topology.js should have a mechanism to wait for initial topology (Done)
+* [https://issues.jboss.org/browse/SWARM-1525[SWARM-1525]] maven -f args are not picked up correctly (Done)
+* [https://issues.jboss.org/browse/SWARM-1524[SWARM-1524]] Make Consul CatalogWatcher more robust (Done)
+* [https://issues.jboss.org/browse/SWARM-1522[SWARM-1522]] Consul TTL service check not recovering from network error etc. (Done)
+* [https://issues.jboss.org/browse/SWARM-1519[SWARM-1519]] GradleResolver is ignoring the classifier for artifact downloads (Done)
+* [https://issues.jboss.org/browse/SWARM-1518[SWARM-1518]] bootstrap fails if ~/.m2/settings.xml contains <localRepository>${user.home}/.mvnrepository</localRepository> (Done)
+* [https://issues.jboss.org/browse/SWARM-1517[SWARM-1517]] Project with static files and JAX-RS dependency => static files result in 404 not found (Done)
+* [https://issues.jboss.org/browse/SWARM-1515[SWARM-1515]] RepositoryBuilderMojo may incorrectly prune a productized artifact directory (Done)
+* [https://issues.jboss.org/browse/SWARM-1496[SWARM-1496]] The process-file method of stopping tests may fail (Done)
+* [https://issues.jboss.org/browse/SWARM-1493[SWARM-1493]] wildfly-swarm-manifest.yaml must be UTF-8 encoded. (Done)
+* [https://issues.jboss.org/browse/SWARM-1492[SWARM-1492]] https://reference.wildfly-swarm.io/ has two chapters called "JGroups", which is confusing (Done)
+* [https://issues.jboss.org/browse/SWARM-1491[SWARM-1491]] https://reference.wildfly-swarm.io/ doesn't contain anything about configuring socket bindings (Done)
+* [https://issues.jboss.org/browse/SWARM-1481[SWARM-1481]] SSO Booster issues (Done)
+* [https://issues.jboss.org/browse/SWARM-1476[SWARM-1476]] topology-webapp formats a service URL with an IPv6 address incorrectly (Done)
+* [https://issues.jboss.org/browse/SWARM-1475[SWARM-1475]] Transformer class used by WF and EAP is different (Done)
+* [https://issues.jboss.org/browse/SWARM-1465[SWARM-1465]] the JAX-RS Multipart fraction doesn't provide the RESTEasy Multipart API (Rejected)
+* [https://issues.jboss.org/browse/SWARM-1459[SWARM-1459]] the JSON-P fraction doesn't provide the JSON-P API (Rejected)
+* [https://issues.jboss.org/browse/SWARM-1427[SWARM-1427]] Swarm hangs on shutdown with Consul Topology (Done)
+* [https://issues.jboss.org/browse/SWARM-1328[SWARM-1328]] DeclaredDependencies lose classifier for maven artifact (Done)
+* [https://issues.jboss.org/browse/SWARM-1203[SWARM-1203]] java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1501[SWARM-1501]] Need to make current version prominent on website somewhere (Done)
+* [https://issues.jboss.org/browse/SWARM-1477[SWARM-1477]] Move jgroups fraction into unsupported profile (Done)
+* [https://issues.jboss.org/browse/SWARM-1448[SWARM-1448]] Update index.html of SSO Booster (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1500[SWARM-1500]] Ignore module-info.class files when running under Java8 (Done)
+* [https://issues.jboss.org/browse/SWARM-1136[SWARM-1136]] Socket Bindings without main (Done)
+* [https://issues.jboss.org/browse/SWARM-1033[SWARM-1033]] Allow adding an instructions file to be displayed after app starts (Done)
+
+=== Patch
+* [https://issues.jboss.org/browse/SWARM-1494[SWARM-1494]] Gradle 4 Filesystem Layout (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-1483[SWARM-1483]] Upgrade parent for all boosters to version 8 (Done)
+* [https://issues.jboss.org/browse/SWARM-1482[SWARM-1482]] Upgrade all Mission Boosters to 2017.8.1 (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1480[SWARM-1480]] Arquillian test classes are always considered for fraction detection, even in client mode (Done)
+* [https://issues.jboss.org/browse/SWARM-1472[SWARM-1472]] Add `arquillian` fraction into BOMs with scope=test to prevent accidentally adding it in compile (Done)
+* [https://issues.jboss.org/browse/SWARM-1350[SWARM-1350]] Database Driver Dependency must be maven "compile" scope even though no classes utilized directly in jpa (Cannot Reproduce Bug)
+
+
 
 == Resources
 
@@ -64,12 +126,37 @@ Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-example
 
 Documentation for this release is available:
 
-* link:/howto/2017-9-0[How To's]
-* link:/refguide/2017-9-0[Reference Guide]
-* link:/userguide/2017-9-0[User Guide]
+* link:/howto/2017-9-4[How To's]
+* link:/refguide/2017-9-4[Reference Guide]
+* link:/userguide/2017-9-4[User Guide]
 
 == Thank you, Contributors!
 
 We appreciate all of our contributors since the last release:
 
-[...]
+*Core*
+
+- Tobias Dittrich
+- Heiko Braun
+- Ken Finnigan
+- Juan G
+- Nelson Graça
+- Martin Kouba
+- Scott Marlow
+- Bob McWhirter
+- Ladislav Thon
+- Maximilian Zellhofer
+
+*Examples*
+
+- Heiko Braun
+- Bob McWhirter
+- Ladislav Thon
+
+*Documentation*
+
+- Heiko Braun
+- Ken Finnigan
+- Bob McWhirter
+- Kohei Saito
+- Ladislav Thon
