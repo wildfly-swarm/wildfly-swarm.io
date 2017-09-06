@@ -10,7 +10,7 @@ layout: post.jade
 
 What a strange release number. Indeed.
 
-We've been struck by some weird release problems, which forced us to burn a number a versions (x.9.0-x.9.3).
+We've been struck by some weird release problems, which forced us to burn a number of versions (x.9.0-x.9.3).
 If you care about the details, here's a description of the issue we ran into: https://issues.sonatype.org/browse/NEXUS-9138
 
 === What's New?
@@ -57,11 +57,11 @@ Now, you only get the `Topology` object when it is ready to be used.
 == Gradle enhancements
 
 Gradle introduced seperate output directories for each jvm language in version 4.
-Therefore, when running Swarm from the IDE, resolving the build classes directory did fail before. This should now be fixed.
+Therefore, when running Swarm from the IDE, resolving the build classes directory did fail. This should now be fixed.
 
 == Consul Fixes and enhancements
 
-When I trying to shutdown the application (via CTR-C or kill SIGTERM) the server tries to deregister the services from Consul
+When trying to shutdown the application (via CTR-C or kill SIGTERM) the server tries to deregister the services from Consul
  multiple times and after a (seemingly) random number of log entries freezes and hangs. Amongst these fixes, are further enhancements
  that make the Consul integration more robust.
 
