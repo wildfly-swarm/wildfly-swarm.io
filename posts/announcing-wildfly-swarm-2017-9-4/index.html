@@ -1,0 +1,376 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcing WildFly Swarm 2017.9.4 | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"><a href="http://jboss.org">JBoss.org</a></li><li class="topbar-devider"></li><li class="hoverSelector"><a href="http://redhat.com">Red Hat</a></li><li class="hoverSelector"><img style="margin-left:10px" src="https://img.shields.io/maven-central/v/org.wildfly.swarm/bom.svg?maxAge=604800"></li></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><div class="pull-left"><h1>Blog</h1></div><div class="ul pull-right breadcrumb"><li class="active"><a href="/archive">Archive</a></li><li><span>Post</span></li></div></div></div><div class="container"><div class="row margin-top-20"><div class="col-md-10"><article id="article"><h1>Announcing WildFly Swarm 2017.9.4</h1><div class="post-meta">By The WildFly Swarm Team | Published Yesterday,  Sep 5th</div><div><div class="sect1">
+<h2 id="_wildfly_swarm_2017_9_4">WildFly Swarm 2017.9.4</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What a strange release number. Indeed.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve been struck by some weird release problems, which forced us to burn a number a versions (x.9.0-x.9.3).
+If you care about the details, here&#8217;s a description of the issue we ran into: <a href="https://issues.sonatype.org/browse/NEXUS-9138" class="bare">https://issues.sonatype.org/browse/NEXUS-9138</a></p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What&#8217;s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Topology.js Changes</p>
+</li>
+<li>
+<p>Gradle enhancements</p>
+</li>
+<li>
+<p>Consul Fixes and enhancements</p>
+</li>
+<li>
+<p>Assorted minor bugfixes</p>
+</li>
+</ul>
+</div>
+<!-- more -->
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_topology_js_changes">Topology.js Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>WARNING: Breaking change!</strong></p>
+</div>
+<div class="paragraph">
+<p>Previously, the <code>topology.js</code> script provided by the <code>topology-webapp</code> fraction
+exposed a simple <code>topology()</code> function that you used like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var Topology = topology();
+... code using Topology ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This was prone to race conditions, because you could start using <code>Topology</code> before
+the initial topology was obtained from the server.</p>
+</div>
+<div class="paragraph">
+<p>Code like this will no longer work. The <code>topology()</code> function now returns a promise,
+which is only resolved when initial topology is obtained from the server. The code
+above needs to be transformed to look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">topology().then(function (Topology) {
+    ... code using Topology ...
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, you only get the <code>Topology</code> object when it is ready to be used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gradle_enhancements">Gradle enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gradle introduced seperate output directories for each jvm language in version 4.
+Therefore, when running Swarm from the IDE, resolving the build classes directory did fail before. This should now be fixed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_consul_fixes_and_enhancements">Consul Fixes and enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When I trying to shutdown the application (via CTR-C or kill SIGTERM) the server tries to deregister the services from Consul
+ multiple times and after a (seemingly) random number of log entries freezes and hangs. Amongst these fixes, are further enhancements
+ that make the Consul integration more robust.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 2017.9.4 are available <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&amp;version=12335286">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_bug">Bug</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1533">SWARM-1533</a>] Swarm fails to create if path to .m2/repository has spaces (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1526">SWARM-1526</a>] topology.js should have a mechanism to wait for initial topology (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1525">SWARM-1525</a>] maven -f args are not picked up correctly (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1524">SWARM-1524</a>] Make Consul CatalogWatcher more robust (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1522">SWARM-1522</a>] Consul TTL service check not recovering from network error etc. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1519">SWARM-1519</a>] GradleResolver is ignoring the classifier for artifact downloads (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1518">SWARM-1518</a>] bootstrap fails if ~/.m2/settings.xml contains &lt;localRepository&gt;${user.home}/.mvnrepository&lt;/localRepository&gt; (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1517">SWARM-1517</a>] Project with static files and JAX-RS dependency &#8658; static files result in 404 not found (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1515">SWARM-1515</a>] RepositoryBuilderMojo may incorrectly prune a productized artifact directory (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1496">SWARM-1496</a>] The process-file method of stopping tests may fail (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1493">SWARM-1493</a>] wildfly-swarm-manifest.yaml must be UTF-8 encoded. (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1492">SWARM-1492</a>] <a href="https://reference.wildfly-swarm.io/" class="bare">https://reference.wildfly-swarm.io/</a> has two chapters called "JGroups", which is confusing (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1491">SWARM-1491</a>] <a href="https://reference.wildfly-swarm.io/" class="bare">https://reference.wildfly-swarm.io/</a> doesn&#8217;t contain anything about configuring socket bindings (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1481">SWARM-1481</a>] SSO Booster issues (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1476">SWARM-1476</a>] topology-webapp formats a service URL with an IPv6 address incorrectly (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1475">SWARM-1475</a>] Transformer class used by WF and EAP is different (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1465">SWARM-1465</a>] the JAX-RS Multipart fraction doesn&#8217;t provide the RESTEasy Multipart API (Rejected)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1459">SWARM-1459</a>] the JSON-P fraction doesn&#8217;t provide the JSON-P API (Rejected)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1427">SWARM-1427</a>] Swarm hangs on shutdown with Consul Topology (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1328">SWARM-1328</a>] DeclaredDependencies lose classifier for maven artifact (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1203">SWARM-1203</a>] java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task">Task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1501">SWARM-1501</a>] Need to make current version prominent on website somewhere (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1477">SWARM-1477</a>] Move jgroups fraction into unsupported profile (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1448">SWARM-1448</a>] Update index.html of SSO Booster (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_request">Feature Request</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1500">SWARM-1500</a>] Ignore module-info.class files when running under Java8 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1136">SWARM-1136</a>] Socket Bindings without main (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1033">SWARM-1033</a>] Allow adding an instructions file to be displayed after app starts (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_patch">Patch</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1494">SWARM-1494</a>] Gradle 4 Filesystem Layout (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_component_upgrade">Component Upgrade</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1483">SWARM-1483</a>] Upgrade parent for all boosters to version 8 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1482">SWARM-1482</a>] Upgrade all Mission Boosters to 2017.8.1 (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancement">Enhancement</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1480">SWARM-1480</a>] Arquillian test classes are always considered for fraction detection, even in client mode (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1472">SWARM-1472</a>] Add <code>arquillian</code> fraction into BOMs with scope=test to prevent accidentally adding it in compile (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1350">SWARM-1350</a>] Database Driver Dependency must be maven "compile" scope even though no classes utilized directly in jpa (Cannot Reproduce Bug)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.8.1" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.8.1</a></p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/howto/2017-9-4">How To&#8217;s</a></p>
+</li>
+<li>
+<p><a href="/refguide/2017-9-4">Reference Guide</a></p>
+</li>
+<li>
+<p><a href="/userguide/2017-9-4">User Guide</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="paragraph">
+<p><strong>Core</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tobias Dittrich</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Juan G</p>
+</li>
+<li>
+<p>Nelson Graça</p>
+</li>
+<li>
+<p>Martin Kouba</p>
+</li>
+<li>
+<p>Scott Marlow</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Ladislav Thon</p>
+</li>
+<li>
+<p>Maximilian Zellhofer</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Ladislav Thon</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Kohei Saito</p>
+</li>
+<li>
+<p>Ladislav Thon</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></article></div></div></div></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><Copyright>2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</Copyright></p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div></div></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+</script><script type="text/javascript" src="/assets/js/highlight.pack.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script><script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="/assets/plugins/back-to-top.js"></script><script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script><script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script><script type="text/javascript" src="/assets/js/custom.js"></script><script type="text/javascript" src="/assets/js/app.js"></script><script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script><script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script><script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script><script>(function() {
+
+  jQuery(document).ready(function() {
+    App.init();
+    OwlCarousel.initOwlCarousel();
+    StyleSwitcher.initStyleSwitcher();
+    ParallaxSlider.initParallaxSlider();
+
+    hljs.initHighlightingOnLoad();
+  });
+
+})();
+</script></body></html>
