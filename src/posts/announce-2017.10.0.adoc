@@ -1,0 +1,95 @@
+---
+title: Announcing WildFly Swarm 2017.10.0
+publishDate: 2017-10-05
+modifyDate: 2017-10-05
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.10.0
+
+October, better known as Pickled Peppers Month, sees the release of WildFly Swarm v2017.10.0.
+
+=== What's New?
+
+* Not a whole lot.
+* "air gap" Maven repositories
+
+++++
+<!-- more -->
+++++
+
+== Air Gap maven repositories
+
+If you're one of those special users who have to have some large security aparatus 
+verify anything that comes into your network and have them pull it across an air gap,
+you might enjoy this.
+
+Each BOM now has a matching `-m2repo.zip` repository which, in theory, contains
+everything you need to build your WildFly Swarm application.
+
+For instance: https://repo.maven.apache.org/maven2/org/wildfly/swarm/bom-all/2017.10.0/bom-all-2017.10.0-m2repo.zip
+
+== Changelog
+Release notes for 2017.10.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335493[here].
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1567[SWARM-1567]] Update community boosters to use S2I workflow  (Done)
+* [https://issues.jboss.org/browse/SWARM-1548[SWARM-1548]] Execute s2i conversion script against Boosters (Done)
+* [https://issues.jboss.org/browse/SWARM-1547[SWARM-1547]] Release new version for community Boosters (Done)
+* [https://issues.jboss.org/browse/SWARM-1485[SWARM-1485]] Update Booster catalog with released versions of Boosters (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1556[SWARM-1556]] Certified fractions not present in bom (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1550[SWARM-1550]] Add support Micropofile Fault Tolerance Implementation to run TCK  (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-1538[SWARM-1538]] Upgrade all boosters to 2017.9.5 (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1451[SWARM-1451]] Implementing core MP fault tolerance with hystrix (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.10.0
+
+Documentation for this release is available:
+
+* link:/howto/2017-10-0[How To's]
+* link:/refguide/2017-10-0[Reference Guide]
+* link:/userguide/2017-10-0[User Guide]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Ken Finnigan
+* Juan G
+* Martin Kouba
+* Scott M Stark
+* Bob McWhirter
+* Juraci Paixão Kröhling
+* Ladislav Thon
+
+=== Examples
+* Heiko Braun
+* Bob McWhirter
+
+=== UserGuide
+* Heiko Braun
+* Ken Finnigan
+* Scott Marlow
+* Bob McWhirter
+* Scott Stark
+
+=== HowTo
+* Heiko Braun
+* Bob McWhirter
