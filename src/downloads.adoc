@@ -23,15 +23,19 @@ need to specify versions of each component you bring in:
 [source,xml]
 ----
 <dependencyManagement>
-  <dependency>
-    <groupId>org.wildfly.swarm</groupId>
-    <artifactId>bom<artifactId>
-    <version>${version.wildfly-swarm}</version>
-    <type>pom</type>
-    <scope>import</scope>
-  </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>bom<artifactId>
+      <version>${version.wildfly-swarm}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
 ----
+
+For more information, please see _How to use a BOM_ in the link:http://docs.wildfly-swarm.io/[documentation].
 
 === Directly Downloadable
 
