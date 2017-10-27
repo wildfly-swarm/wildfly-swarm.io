@@ -19,15 +19,20 @@ need to specify versions of each component you bring in:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependencyManagement&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
-    &lt;artifactId&gt;bom&lt;artifactId&gt;
-    &lt;version&gt;${version.wildfly-swarm}&lt;/version&gt;
-    &lt;type&gt;pom&lt;/type&gt;
-    &lt;scope&gt;import&lt;/scope&gt;
-  &lt;/dependency&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.wildfly.swarm&lt;/groupId&gt;
+      &lt;artifactId&gt;bom&lt;artifactId&gt;
+      &lt;version&gt;${version.wildfly-swarm}&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
 &lt;/dependencyManagement&gt;</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>For more information, please see <em>How to use a BOM</em> in the <a href="http://docs.wildfly-swarm.io/">documentation</a>.</p>
 </div>
 </div>
 <div class="sect2">
