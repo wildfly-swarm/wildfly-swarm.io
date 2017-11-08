@@ -30,7 +30,6 @@ Release notes for 2017.11.0 are available https://issues.jboss.org/secure/Releas
 * [https://issues.jboss.org/browse/SWARM-1108[SWARM-1108]] Keycloak Server Customization impossible (Done)
 
 === Enhancement
-* [https://issues.jboss.org/browse/SWARM-1606[SWARM-1606]] Integrate the MicroProfile 1.2 fractions into the main branch (Done)
 * [https://issues.jboss.org/browse/SWARM-1414[SWARM-1414]] Adding timestamp to hollow jar prevents caching as Docker layer (Done)
 
 === Task
