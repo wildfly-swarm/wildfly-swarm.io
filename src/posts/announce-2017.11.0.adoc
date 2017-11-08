@@ -1,0 +1,76 @@
+---
+title: Announcing WildFly Swarm 2017.11.0
+publishDate: 2017-11-08
+modifyDate: 2017-11-08
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2017.11.0
+
+In Indiana, November is the month where your chances of having a car accident with
+a deer increase. It's also the month where you can enjoy WildFly Swarm 2017.11.0.
+
+=== What's New?
+
+Mostly documentation, which has moved to http://docs.wildfly-swarm.io/2017.11.0.
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2017.11.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335802[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1618[SWARM-1618]] Typos in How To Create A Fraction Documentation (Done)
+* [https://issues.jboss.org/browse/SWARM-1617[SWARM-1617]] License generation executing as part of javadoc and repo generation as well (Done)
+* [https://issues.jboss.org/browse/SWARM-1615[SWARM-1615]] Documentation link is incorrect on MicroProfile example (Done)
+* [https://issues.jboss.org/browse/SWARM-1603[SWARM-1603]] Readme documentation is not available for all Configuration samples (Done)
+* [https://issues.jboss.org/browse/SWARM-1108[SWARM-1108]] Keycloak Server Customization impossible (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1606[SWARM-1606]] Integrate the MicroProfile 1.2 fractions into the main branch (Done)
+* [https://issues.jboss.org/browse/SWARM-1414[SWARM-1414]] Adding timestamp to hollow jar prevents caching as Docker layer (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1593[SWARM-1593]] Update bom-certified version to 2017.10.1 (Done
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.11.0
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2017.11.0/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Examples
+* davidsalter
+* Ken Finnigan
+* Bob McWhirter
+* Tair Sabirgaliev
+* David Salter
+
+=== Core
+* McIntosh
+* Anuraag Bathula
+* Heiko Braun
+* Ken Finnigan
+* Juan Gonzalez
+* Kevin Grüneberg
+* Martin Kouba
+* Bob McWhirter
+* Tomas Radej
+* David Salter
+* Scott Stark
+* Bernard Tison
+* Heiko W. Rupp
+* Frank de Jong
