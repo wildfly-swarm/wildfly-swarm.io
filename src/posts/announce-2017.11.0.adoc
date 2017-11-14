@@ -23,17 +23,23 @@ Mostly documentation, which has moved to http://docs.wildfly-swarm.io/2017.11.0.
 Release notes for 2017.11.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335802[here].
 
 === Bug
-* [https://issues.jboss.org/browse/SWARM-1618[SWARM-1618]] Typos in How To Create A Fraction Documentation (Done)
-* [https://issues.jboss.org/browse/SWARM-1617[SWARM-1617]] License generation executing as part of javadoc and repo generation as well (Done)
-* [https://issues.jboss.org/browse/SWARM-1615[SWARM-1615]] Documentation link is incorrect on MicroProfile example (Done)
-* [https://issues.jboss.org/browse/SWARM-1603[SWARM-1603]] Readme documentation is not available for all Configuration samples (Done)
 * [https://issues.jboss.org/browse/SWARM-1108[SWARM-1108]] Keycloak Server Customization impossible (Done)
+* [https://issues.jboss.org/browse/SWARM-1561[SWARM-1561]] Reference Guide: keycloak-server documentation uses wrong property names (Done)
+* [https://issues.jboss.org/browse/SWARM-1590[SWARM-1590]] project-defaults.yml not detected in hollow jar (Done)
+* [https://issues.jboss.org/browse/SWARM-1603[SWARM-1603]] Readme documentation is not available for all Configuration samples (Done)
+* [https://issues.jboss.org/browse/SWARM-1610[SWARM-1610]] Lack of consistency between the Reference for keycloak-server and the actual parameters (Done)
+* [https://issues.jboss.org/browse/SWARM-1612[SWARM-1612]] Can't set max-post-size on https-listeners (Done)
+* [https://issues.jboss.org/browse/SWARM-1615[SWARM-1615]] Documentation link is incorrect on MicroProfile example (Done)
+* [https://issues.jboss.org/browse/SWARM-1617[SWARM-1617]] License generation executing as part of javadoc and repo generation as well (Done)
+* [https://issues.jboss.org/browse/SWARM-1618[SWARM-1618]] Typos in How To Create A Fraction Documentation (Done)
 
 === Enhancement
 * [https://issues.jboss.org/browse/SWARM-1414[SWARM-1414]] Adding timestamp to hollow jar prevents caching as Docker layer (Done)
 
 === Task
-* [https://issues.jboss.org/browse/SWARM-1593[SWARM-1593]] Update bom-certified version to 2017.10.1 (Done
+* [https://issues.jboss.org/browse/SWARM-1357[SWARM-1357]] Reference uses swarm.messaging instead of swarm.messaging-activemq (Done)
+* [https://issues.jboss.org/browse/SWARM-1413[SWARM-1413]] Update Project Stages doc in User Guide (Done)
+* [https://issues.jboss.org/browse/SWARM-1593[SWARM-1593]] Update bom-certified version to 2017.10.1 (Done)
 
 == Resources
 
