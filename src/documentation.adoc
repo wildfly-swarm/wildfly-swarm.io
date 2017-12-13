@@ -42,45 +42,26 @@ Microservice.
     	  <div class="tab-pane fade in active" id="released">
           <p>The documentation of the latest stable release:<p>
           <ul>
-            <li><a href="http://docs.wildfly-swarm.io/2017.11.0/">2017.11.0 Documentation</a></li>
+            <li><a href="/docs/2017-12-1">2017.12.1 Documentation</a></li>
           </ul>
         </div>
         <div class="tab-pane fade in" id="snapshot">
           <p>The documentation of the current development master:<p>
           <ul>
-            <li><a href="/howto/HEAD">HOWTO Snapshot</a></li>
-            <li><a href="/refguide/HEAD">Reference Guide Snapshot</a></li>
-      	    <li><a href="/userguide/HEAD">User Guide Snapshot</a></li>
+            <li><a href="/docs/HEAD">Documentation Snapshot</a></li>
           </ul>
         </div>
     	  <div class="tab-pane fade in" id="older">
           <p>The documentation for previous releases:<p>
 
           <ul>
+            <li><a href="/docs/2017-11-0">2017.11.0 Documentation</a></li>
+          </ul>
+          <ul>
             <li><a href="/howto/2017-10-0">HOWTO</a></li>
             <li><a href="/refguide/2017-10-0">Reference Guide</a></li>
             <li><a href="/userguide/2017-10-0">User Guide</a></li>
           </ul>
-          <ul>
-            <li><a href="/howto/2017-9-4">HOWTO 2017.9.4</a></li>
-            <li><a href="/refguide/2017-9-4">Reference Guide 2017.9.4</a></li>
-            <li><a href="/userguide/2017-9-4">User Guide 2017.9.4</a></li>
-          </ul>
-          <ul>
-            <li><a href="/howto/2017-8-1">HOWTO 2017.8.1</a></li>
-            <li><a href="/refguide/2017-8-1">Reference Guide 2017.8.1</a></li>
-            <li><a href="/userguide/2017-8-1">User Guide 2017.8.1</a></li>
-          </ul>
-          <ul>
-            <li><a href="/howto/2017-7-0">HOWTO 2017.7.0</a></li>
-            <li><a href="/refguide/2017-7-0">Reference Guide 2017.7.0</a></li>
-            <li><a href="/userguide/2017-7-0">User Guide 2017.7.0</a></li>
-          </ul>
-          <ul>
-            <li><a href="/howto/2017-6-1">HOWTO 2017.6.1</a></li>
-            <li><a href="/refguide/2017-6-1">Reference Guide 2017.6.1</a></li>
-            <li><a href="/userguide/2017-6-1">User Guide 2017.6.1</a></li>
-          <ul>
       </div>
       </div>
     </div>

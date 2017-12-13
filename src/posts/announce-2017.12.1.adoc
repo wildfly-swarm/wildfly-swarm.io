@@ -1,0 +1,169 @@
+---
+title: Announcing WildFly Swarm 2017.12.1
+publishDate: 2017-12-14
+modifyDate: 2017-12-14
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2017.12.1
+
+Seasons greetings and Happy Holidays to all!
+
+In the spirit of celebration, we've got a bumper 2017.12.1 release for,
+so much so that we couldn't just leave it at 2017.12.0!
+
+=== What's New?
+
+* Upgrade to WildFly 11.0.0.Final
+* Upgrade to Keycloak 3.4.0.Final
+* Eclipse MicroProfile 1.2 implementation
+* Reduction in uber jar size with CDI
+
+++++
+<!-- more -->
+++++
+
+== WildFly 11.0.0.Final
+
+We've rung the changes through the code and we're now based on WildFly 11.0.0.Final!
+This is a significant upgrade, bringing additional fixes to all the parts of WildFly that we consume.
+
+== Keycloak 3.4.0.Final
+
+Another big update is Keycloak, jumping from 2.5.x to 3.4.0.Final!
+
+An important point with this update is that our understanding is that 3.x clients/servers are not compatible with 2.x,
+so be sure to upgrade anything that uses Keycloak if you're wanting to use this release with them.
+
+== Eclipse MicroProfile 1.2
+
+We made it!
+
+It took longer than we anticipated.
+Doesn't everything?
+But we now have a full implementation of Eclipse MicroProfile 1.2 available in WildFly Swarm.
+In addition the implementations fully pass all TCK tests from the different specifications.
+
+So what does Eclipse MicroProfile 1.2 bring?
+
+It includes Config 1.1, Fault Tolerance 1.0, JWT Propagation 1.0, Health Metrics 1.0,
+and Health Check 1.0.
+
+== Uber jar size reduction with CDI
+
+With the upgrade to WildFly 11.0.0.Final, it brings with it some updates to the Weld subsystem.
+These updates will result in about a 30% reduction in uber jar size for anything that uses the `cdi` fraction.
+This is particularly beneficial to the uber jar size of anything utilizing the `microprofile` fraction or hollow jar.
+
+== Changelog
+Release notes for 2017.12.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335667[here].
+
+=== Epic
+* [https://issues.jboss.org/browse/SWARM-1177[SWARM-1177]] Any work related to MicroProfile 1.2 impl (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1431[SWARM-1431]] Swarm WAR misses transitive dependencies -> NoClassDefFoundError (Done)
+* [https://issues.jboss.org/browse/SWARM-1619[SWARM-1619]] BOM should not contain internal fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1628[SWARM-1628]] Remove Eclipse repositories (Done)
+* [https://issues.jboss.org/browse/SWARM-1634[SWARM-1634]] MP Config module.conf declares same module twice (Done)
+* [https://issues.jboss.org/browse/SWARM-1636[SWARM-1636]] MP Health has JAX-RS spec jar dependency (Done)
+* [https://issues.jboss.org/browse/SWARM-1637[SWARM-1637]] MP Health renames (Done)
+* [https://issues.jboss.org/browse/SWARM-1638[SWARM-1638]] MP JWT cleanup (Done)
+* [https://issues.jboss.org/browse/SWARM-1640[SWARM-1640]] MP Metrics dependency subsystems (Done)
+* [https://issues.jboss.org/browse/SWARM-1641[SWARM-1641]] MP Metrics shouldn't add Weld to deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1642[SWARM-1642]] MP 1.2 fraction missing sub spec dependencies (Done)
+* [https://issues.jboss.org/browse/SWARM-1643[SWARM-1643]] Maven module present twice in build (Done)
+* [https://issues.jboss.org/browse/SWARM-1650[SWARM-1650]] documentation of datasources should include validation settings (Done)
+* [https://issues.jboss.org/browse/SWARM-1654[SWARM-1654]] Terminate on deployment errors that happen before swarm.server is initialized (Done)
+* [https://issues.jboss.org/browse/SWARM-1662[SWARM-1662]] FaultToleranceDefinitionException not thrown if method annotated with @Asynchronous does not return Future (Done)
+* [https://issues.jboss.org/browse/SWARM-1678[SWARM-1678]] MP FT - fix priorities of overriding config parameters (Done)
+* [https://issues.jboss.org/browse/SWARM-1689[SWARM-1689]] Dependencies with module-info.class fail (Done)
+* [https://issues.jboss.org/browse/SWARM-1694[SWARM-1694]] MPJwtPackageDetector detects obsolete/invalid package (Done)
+* [https://issues.jboss.org/browse/SWARM-1710[SWARM-1710]] Problems with test-jar type (Done)
+* [https://issues.jboss.org/browse/SWARM-1712[SWARM-1712]] Upgrade to WildFly 11 breaks MP config (Done)
+* [https://issues.jboss.org/browse/SWARM-1714[SWARM-1714]] Teiid fraction is not compatible with WF11 (Done)
+* [https://issues.jboss.org/browse/SWARM-1716[SWARM-1716]] `msc` becoming properly internal has broken some examples (Done)
+* [https://issues.jboss.org/browse/SWARM-1718[SWARM-1718]] Metrics must return a 406 for OPTIONS and text/plain (Done)
+* [https://issues.jboss.org/browse/SWARM-1735[SWARM-1735]] Bad dependency on mp-ft-cdi extension (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1463[SWARM-1463]] Create a MicroProfile JWT RBAC fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1609[SWARM-1609]] Upgrade Teiid Fraction for new YAML based configuration (Done)
+* [https://issues.jboss.org/browse/SWARM-1663[SWARM-1663]] Create WF Swarm fraction for Fault Tolerance impl (Done)
+* [https://issues.jboss.org/browse/SWARM-1664[SWARM-1664]] MP Fault tolerance build should trigger TCK by default (Done)
+* [https://issues.jboss.org/browse/SWARM-1668[SWARM-1668]] Change Fault Tolerance package name and artefact id (Done)
+* [https://issues.jboss.org/browse/SWARM-1671[SWARM-1671]] MP FT - improve logging (Done)
+* [https://issues.jboss.org/browse/SWARM-1733[SWARM-1733]] MP Monitor fraction should support CORS headers (Done)
+
+=== Component Upgrade
+* [https://issues.jboss.org/browse/SWARM-1611[SWARM-1611]] Upgrade to WildFly 11.0.0.Final (Done)
+* [https://issues.jboss.org/browse/SWARM-1621[SWARM-1621]] Upgrade to Keycloak 3.4.0.Final (Done)
+* [https://issues.jboss.org/browse/SWARM-1676[SWARM-1676]] Upgrade wildfly-microprofile-config to 1.1.2 (Done)
+* [https://issues.jboss.org/browse/SWARM-1713[SWARM-1713]] upgrade Arquillian to 1.1.15.Final (Done)
+
+=== Library Upgrade
+* [https://issues.jboss.org/browse/SWARM-1614[SWARM-1614]] Upgrade org.objectweb.asm to 6.0+ (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1622[SWARM-1622]] Verify Eclipse MicroProfile 1.2 support (Done)
+* [https://issues.jboss.org/browse/SWARM-1627[SWARM-1627]] Consolidate versions in build-parent (Done)
+* [https://issues.jboss.org/browse/SWARM-1629[SWARM-1629]] Adjust Copyright in files (Done)
+* [https://issues.jboss.org/browse/SWARM-1630[SWARM-1630]] Verify dependencies across new apis and fractions for MicroProfile (Done)
+* [https://issues.jboss.org/browse/SWARM-1631[SWARM-1631]] MP Metrics CDI Extension location (Done)
+* [https://issues.jboss.org/browse/SWARM-1632[SWARM-1632]] Rename MP packages (Done)
+* [https://issues.jboss.org/browse/SWARM-1633[SWARM-1633]] Clean up new MP code (Done)
+* [https://issues.jboss.org/browse/SWARM-1635[SWARM-1635]] Verify all MP Fractions have appropriate Fraction detectors (Done)
+* [https://issues.jboss.org/browse/SWARM-1639[SWARM-1639]] MP Metrics shades SnakeYaml (Done)
+* [https://issues.jboss.org/browse/SWARM-1644[SWARM-1644]] Make it possible to run TCK for each MP fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1669[SWARM-1669]] Sort out duplication of HealthResponseFilter in MicroProfile and client apis (Done)
+* [https://issues.jboss.org/browse/SWARM-1672[SWARM-1672]] MP FT - get rid of FixedHystrixCommand workaround (Done)
+* [https://issues.jboss.org/browse/SWARM-1684[SWARM-1684]] Verify MicroProfile hollow jar with 1.2 (Done)
+* [https://issues.jboss.org/browse/SWARM-1685[SWARM-1685]] MP FT - make sure that SynchronousCircuitBreaker follows HystrixCircuitBreaker contract (Done)
+* [https://issues.jboss.org/browse/SWARM-1692[SWARM-1692]] upgrade NoSQL fractions to use wildfly-nosql 1.0.0.Alpha5 + nosql config-api 1.2.1 (Done)
+* [https://issues.jboss.org/browse/SWARM-1711[SWARM-1711]] Fix MP FT fraction to pass TCK (Done)
+* [https://issues.jboss.org/browse/SWARM-1717[SWARM-1717]] Remove old MP-Metrics testsuite (Done)
+* [https://issues.jboss.org/browse/SWARM-1720[SWARM-1720]] Update MP Fraction stability (Done)
+* [https://issues.jboss.org/browse/SWARM-1721[SWARM-1721]] MP FT CDI extension location (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1673[SWARM-1673]] MP FT - allow to disable SynchronousCircuitBreaker (Done)
+* [https://issues.jboss.org/browse/SWARM-1674[SWARM-1674]] MP FT - allow to cache config parameters (Done)
+* [https://issues.jboss.org/browse/SWARM-1679[SWARM-1679]] MP FT - support annotations added via portable extension (Done)
+* [https://issues.jboss.org/browse/SWARM-1690[SWARM-1690]] MP FT - support non-public fallback methods (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.12.1
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2017.12.1/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Examples
+* Ken Finnigan
+
+=== Core
+* luan-cestari
+* Heiko Braun
+* Ken Finnigan
+* Alin Iacob
+* Martin Kouba
+* Scott Marlow
+* Bob McWhirter
+* Jeff Mesnil
+* Tomas Radej
+* Ramesh Reddy
+* Antoine Sabot-Durand
+* Scott Stark
+* Ladislav Thon
+* Heiko W. Rupp
