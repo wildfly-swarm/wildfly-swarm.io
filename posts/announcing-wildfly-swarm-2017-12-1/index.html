@@ -1,0 +1,441 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WildFly Swarm Official Website"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS Feed for wildfly-swarm.io" href="/rss.xml"><title>Announcing WildFly Swarm 2017.12.1 | WildFly Swarm</title><link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/headers/header-default.css"><link rel="stylesheet" href="/assets/css/footers/footer-v1.css"><link rel="stylesheet" href="/assets/plugins/animate.css"><link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css"><link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css"><link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"><link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color"><link rel="stylesheet" href="/assets/css/theme-skins/dark.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800"><link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"><link rel="stylesheet" href="/css/site.css"></head><body><div class="header"><div class="container"><a href="/" class="logo"><img src="/images/swarm_icon_32x32.png" class="icon"><span style="font-size:20px;vertical-align:middle;color:#555;margin-left:10px">WildFly Swarm</span></a><div class="topbar"><ul class="loginbar pull-right"><li class="hoverSelector"><a href="http://jboss.org">JBoss.org</a></li><li class="topbar-devider"></li><li class="hoverSelector"><a href="http://redhat.com">Red Hat</a></li><li class="hoverSelector"><img style="margin-left:10px" src="https://img.shields.io/maven-central/v/org.wildfly.swarm/bom.svg?maxAge=604800"></li></ul></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="fa fa-bars"></span></button></div><div id="navbar" aria-expanded="false" class="navbar-collapse mega-menu navbar-responsive-collapse collapse"><div class="container"><ul class="nav navbar-nav"><li><a href="/generator" class="dropdown-toggle">Generator</a></li><li><a href="/archive">Blog</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/community">Community</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a><ul class="dropdown-menu"><li><a href="/downloads">Downloads</a></li><li><a href="/resources">Presentations</a></li></ul></li></ul></div></div></div><div class="wrapper"><div class="breadcrumbs"><div class="container"><div class="pull-left"><h1>Blog</h1></div><div class="ul pull-right breadcrumb"><li class="active"><a href="/archive">Archive</a></li><li><span>Post</span></li></div></div></div><div class="container"><div class="row margin-top-20"><div class="col-md-10"><article id="article"><h1>Announcing WildFly Swarm 2017.12.1</h1><div class="post-meta">By The WildFly Swarm Team | Published Yesterday,  Dec 13th</div><div><div class="sect1">
+<h2 id="_wildfly_swarm_2017_12_1">WildFly Swarm 2017.12.1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Seasons greetings and Happy Holidays to all!</p>
+</div>
+<div class="paragraph">
+<p>In the spirit of celebration, we&#8217;ve got a bumper 2017.12.1 release for,
+so much so that we couldn&#8217;t just leave it at 2017.12.0!</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What&#8217;s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to WildFly 11.0.0.Final</p>
+</li>
+<li>
+<p>Upgrade to Keycloak 3.4.0.Final</p>
+</li>
+<li>
+<p>Eclipse MicroProfile 1.2 implementation</p>
+</li>
+<li>
+<p>Reduction in uber jar size with CDI</p>
+</li>
+</ul>
+</div>
+<!-- more -->
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wildfly_11_0_0_final">WildFly 11.0.0.Final</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve rung the changes through the code and we&#8217;re now based on WildFly 11.0.0.Final!
+This is a significant upgrade, bringing additional fixes to all the parts of WildFly that we consume.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keycloak_3_4_0_final">Keycloak 3.4.0.Final</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another big update is Keycloak, jumping from 2.5.x to 3.4.0.Final!</p>
+</div>
+<div class="paragraph">
+<p>An important point with this update is that our understanding is that 3.x clients/servers are not compatible with 2.x,
+so be sure to upgrade anything that uses Keycloak if you&#8217;re wanting to use this release with them.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eclipse_microprofile_1_2">Eclipse MicroProfile 1.2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We made it!</p>
+</div>
+<div class="paragraph">
+<p>It took longer than we anticipated.
+Doesn&#8217;t everything?
+But we now have a full implementation of Eclipse MicroProfile 1.2 available in WildFly Swarm.
+In addition the implementations fully pass all TCK tests from the different specifications.</p>
+</div>
+<div class="paragraph">
+<p>So what does Eclipse MicroProfile 1.2 bring?</p>
+</div>
+<div class="paragraph">
+<p>It includes Config 1.1, Fault Tolerance 1.0, JWT Propagation 1.0, Health Metrics 1.0,
+and Health Check 1.0.</p>
+</div>
+<div class="paragraph">
+<p>Trying to go into more detail about what you can do with Eclipse MicroProfile 1.2 would take up far too much space for this blog.
+But, we&#8217;re planning on putting together a series of blog posts to explain the functionality available that we intend
+to release in the first couple of months in 2018.
+Stay tuned!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uber_jar_size_reduction_with_cdi">Uber jar size reduction with CDI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the upgrade to WildFly 11.0.0.Final, it brings with it some updates to the Weld subsystem.
+These updates will result in about a 30% reduction in uber jar size for anything that uses the <code>cdi</code> fraction.
+This is particularly beneficial to the uber jar size of anything utilizing the <code>microprofile</code> fraction or hollow jar.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Release notes for 2017.12.1 are available <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&amp;version=12335667">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_epic">Epic</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1177">SWARM-1177</a>] Any work related to MicroProfile 1.2 impl (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bug">Bug</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1431">SWARM-1431</a>] Swarm WAR misses transitive dependencies &#8594; NoClassDefFoundError (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1619">SWARM-1619</a>] BOM should not contain internal fractions (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1628">SWARM-1628</a>] Remove Eclipse repositories (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1634">SWARM-1634</a>] MP Config module.conf declares same module twice (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1636">SWARM-1636</a>] MP Health has JAX-RS spec jar dependency (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1637">SWARM-1637</a>] MP Health renames (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1638">SWARM-1638</a>] MP JWT cleanup (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1640">SWARM-1640</a>] MP Metrics dependency subsystems (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1641">SWARM-1641</a>] MP Metrics shouldn&#8217;t add Weld to deployment (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1642">SWARM-1642</a>] MP 1.2 fraction missing sub spec dependencies (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1643">SWARM-1643</a>] Maven module present twice in build (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1650">SWARM-1650</a>] documentation of datasources should include validation settings (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1654">SWARM-1654</a>] Terminate on deployment errors that happen before swarm.server is initialized (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1662">SWARM-1662</a>] FaultToleranceDefinitionException not thrown if method annotated with @Asynchronous does not return Future (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1678">SWARM-1678</a>] MP FT - fix priorities of overriding config parameters (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1689">SWARM-1689</a>] Dependencies with module-info.class fail (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1694">SWARM-1694</a>] MPJwtPackageDetector detects obsolete/invalid package (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1710">SWARM-1710</a>] Problems with test-jar type (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1712">SWARM-1712</a>] Upgrade to WildFly 11 breaks MP config (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1714">SWARM-1714</a>] Teiid fraction is not compatible with WF11 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1716">SWARM-1716</a>] <code>msc</code> becoming properly internal has broken some examples (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1718">SWARM-1718</a>] Metrics must return a 406 for OPTIONS and text/plain (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1735">SWARM-1735</a>] Bad dependency on mp-ft-cdi extension (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancement">Enhancement</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1463">SWARM-1463</a>] Create a MicroProfile JWT RBAC fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1609">SWARM-1609</a>] Upgrade Teiid Fraction for new YAML based configuration (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1663">SWARM-1663</a>] Create WF Swarm fraction for Fault Tolerance impl (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1664">SWARM-1664</a>] MP Fault tolerance build should trigger TCK by default (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1668">SWARM-1668</a>] Change Fault Tolerance package name and artefact id (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1671">SWARM-1671</a>] MP FT - improve logging (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1733">SWARM-1733</a>] MP Monitor fraction should support CORS headers (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_component_upgrade">Component Upgrade</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1611">SWARM-1611</a>] Upgrade to WildFly 11.0.0.Final (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1621">SWARM-1621</a>] Upgrade to Keycloak 3.4.0.Final (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1676">SWARM-1676</a>] Upgrade wildfly-microprofile-config to 1.1.2 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1713">SWARM-1713</a>] upgrade Arquillian to 1.1.15.Final (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_library_upgrade">Library Upgrade</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1614">SWARM-1614</a>] Upgrade org.objectweb.asm to 6.0+ (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task">Task</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1622">SWARM-1622</a>] Verify Eclipse MicroProfile 1.2 support (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1627">SWARM-1627</a>] Consolidate versions in build-parent (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1629">SWARM-1629</a>] Adjust Copyright in files (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1630">SWARM-1630</a>] Verify dependencies across new apis and fractions for MicroProfile (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1631">SWARM-1631</a>] MP Metrics CDI Extension location (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1632">SWARM-1632</a>] Rename MP packages (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1633">SWARM-1633</a>] Clean up new MP code (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1635">SWARM-1635</a>] Verify all MP Fractions have appropriate Fraction detectors (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1639">SWARM-1639</a>] MP Metrics shades SnakeYaml (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1644">SWARM-1644</a>] Make it possible to run TCK for each MP fraction (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1669">SWARM-1669</a>] Sort out duplication of HealthResponseFilter in MicroProfile and client apis (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1672">SWARM-1672</a>] MP FT - get rid of FixedHystrixCommand workaround (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1684">SWARM-1684</a>] Verify MicroProfile hollow jar with 1.2 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1685">SWARM-1685</a>] MP FT - make sure that SynchronousCircuitBreaker follows HystrixCircuitBreaker contract (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1692">SWARM-1692</a>] upgrade NoSQL fractions to use wildfly-nosql 1.0.0.Alpha5 + nosql config-api 1.2.1 (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1711">SWARM-1711</a>] Fix MP FT fraction to pass TCK (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1717">SWARM-1717</a>] Remove old MP-Metrics testsuite (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1720">SWARM-1720</a>] Update MP Fraction stability (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1721">SWARM-1721</a>] MP FT CDI extension location (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_request">Feature Request</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1673">SWARM-1673</a>] MP FT - allow to disable SynchronousCircuitBreaker (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1674">SWARM-1674</a>] MP FT - allow to cache config parameters (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1679">SWARM-1679</a>] MP FT - support annotations added via portable extension (Done)</p>
+</li>
+<li>
+<p>[<a href="https://issues.jboss.org/browse/SWARM-1690">SWARM-1690</a>] MP FT - support non-public fallback methods (Done)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources">Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per usual, we tend to hang out on <code>irc.freenode.net</code> in <code>#wildfly-swarm</code>.</p>
+</div>
+<div class="paragraph">
+<p>All bug and feature-tracking is kept in <a href="http://issues.jboss.org/browse/SWARM">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples are available in <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.12.1" class="bare">https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2017.12.1</a></p>
+</div>
+<div class="paragraph">
+<p>Documentation for this release is available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://docs.wildfly-swarm.io/2017.12.1/">Documentation</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thank_you_contributors">Thank you, Contributors!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate all of our contributors since the last release:</p>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ken Finnigan</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_core">Core</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>luan-cestari</p>
+</li>
+<li>
+<p>Heiko Braun</p>
+</li>
+<li>
+<p>Ken Finnigan</p>
+</li>
+<li>
+<p>Alin Iacob</p>
+</li>
+<li>
+<p>Martin Kouba</p>
+</li>
+<li>
+<p>Scott Marlow</p>
+</li>
+<li>
+<p>Bob McWhirter</p>
+</li>
+<li>
+<p>Jeff Mesnil</p>
+</li>
+<li>
+<p>Tomas Radej</p>
+</li>
+<li>
+<p>Ramesh Reddy</p>
+</li>
+<li>
+<p>Antoine Sabot-Durand</p>
+</li>
+<li>
+<p>Scott Stark</p>
+</li>
+<li>
+<p>Ladislav Thon</p>
+</li>
+<li>
+<p>Heiko W. Rupp</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div></article></div></div></div></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><Copyright>2016 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</Copyright></p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
+<a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
+Java profiler from EJ Technologies
+</a><br/>
+<img src='https://www.ej-technologies.com/images/product_banners/jprofiler_medium.png'/></span></p></div></div></div></div></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83419890-2', 'auto');
+ga('send', 'pageview');
+
+ga('create', 'UA-6435340-8', 'auto');
+ga('send', 'pageview');
+</script><script type="text/javascript" src="/assets/js/highlight.pack.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script><script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script><script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="/assets/plugins/back-to-top.js"></script><script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script><script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script><script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script><script type="text/javascript" src="/assets/js/custom.js"></script><script type="text/javascript" src="/assets/js/app.js"></script><script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script><script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script><script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script><script>(function() {
+
+  jQuery(document).ready(function() {
+    App.init();
+    OwlCarousel.initOwlCarousel();
+    StyleSwitcher.initStyleSwitcher();
+    ParallaxSlider.initParallaxSlider();
+
+    hljs.initHighlightingOnLoad();
+  });
+
+})();
+</script></body></html>
