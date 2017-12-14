@@ -51,6 +51,11 @@ So what does Eclipse MicroProfile 1.2 bring?
 It includes Config 1.1, Fault Tolerance 1.0, JWT Propagation 1.0, Health Metrics 1.0,
 and Health Check 1.0.
 
+Trying to go into more detail about what you can do with Eclipse MicroProfile 1.2 would take up far too much space for this blog.
+But, we're planning on putting together a series of blog posts to explain the functionality available that we intend
+to release in the first couple of months in 2018.
+Stay tuned!
+
 == Uber jar size reduction with CDI
 
 With the upgrade to WildFly 11.0.0.Final, it brings with it some updates to the Weld subsystem.
