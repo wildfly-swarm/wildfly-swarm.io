@@ -61,6 +61,13 @@ With the upgrade to WildFly 11.0.0.Final, it brings with it some updates to the 
 These updates will result in about a 30% reduction in uber jar size for anything that uses the `cdi` fraction.
 This is particularly beneficial to the uber jar size of anything utilizing the `microprofile` fraction or hollow jar.
 
+== Internal fractions removed from the BOMs
+
+Fractions that are marked _internal_ are no longer managed by the BOMs (`org.wildfly.swarm:bom` and others).
+If your project directly depends on these fractions, your builds will start failing.
+As a temporary workaround, you can manually specify the version for these dependencies.
+If that affects you and you need to use these internal fractions, please let us know your usecases.
+
 == Changelog
 Release notes for 2017.12.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335667[here].
 
