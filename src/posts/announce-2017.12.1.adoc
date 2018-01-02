@@ -19,6 +19,7 @@ so much so that we couldn't just leave it at 2017.12.0!
 * Upgrade to Keycloak 3.4.0.Final
 * Eclipse MicroProfile 1.2 implementation
 * Reduction in uber jar size with CDI
+* Internal Fractions removed from BOMs
 
 ++++
 <!-- more -->
@@ -65,7 +66,7 @@ This is particularly beneficial to the uber jar size of anything utilizing the `
 
 Fractions that are marked _internal_ are no longer managed by the BOMs (`org.wildfly.swarm:bom` and others).
 If your project directly depends on these fractions, your builds will start failing.
-As a temporary workaround, you can manually specify the version for these dependencies.
+As a workaround, you can manually specify the version for these dependencies.
 If that affects you and you need to use these internal fractions, please let us know your usecases.
 
 == Changelog
