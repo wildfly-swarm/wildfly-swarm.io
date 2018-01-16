@@ -1,0 +1,62 @@
+---
+title: Announcing WildFly Swarm 2018.1.0
+publishDate: 2018-01-16
+modifyDate: 2018-01-16
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2018.1.0
+
+
+
+== Changelog
+Release notes for 2018.1.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335668[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-842[SWARM-842]] Spring: Could not write content: could not initialize proxy - no Session  (Done)
+* [https://issues.jboss.org/browse/SWARM-1457[SWARM-1457]] Swarmtool unable to resolve undertow artifacts (Done)
+* [https://issues.jboss.org/browse/SWARM-1727[SWARM-1727]] Website uses old MicroProfile logo (Done)
+* [https://issues.jboss.org/browse/SWARM-1737[SWARM-1737]] Keycloak Server fails to start in 2017.12.1 (Done)
+* [https://issues.jboss.org/browse/SWARM-1757[SWARM-1757]] chkconfig does not configure runlevels properly (Done)
+* [https://issues.jboss.org/browse/SWARM-1765[SWARM-1765]] Transitive compile dependencies are not included in Arquillian @DefaultDeployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1775[SWARM-1775]] Modules with custom slots can't be loaded from UberJar deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1784[SWARM-1784]] JPA ignores given JNDI name for datasource in project-defaults.yml and persistence.xml (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1746[SWARM-1746]] Implement MicroProfile Metrics 1.1 (Done)
+* [https://issues.jboss.org/browse/SWARM-1762[SWARM-1762]] Update to MP Config 1.2 impl (Done)
+
+=== Patch
+* [https://issues.jboss.org/browse/SWARM-1779[SWARM-1779]] Remove unused code in microprofile-health HttpContexts (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2018.1.0
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2018.1.0/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Benedikt Biallowons
+* Heiko Braun
+* Ken Finnigan
+* Adler Fleurant
+* Nelson Graça
+* Martin Kouba
+* Sam McCollum
+* Bob McWhirter
+* Tomas Radej
+* Marc Savy
+* Michał Szynkiewicz
+* Heiko W. Rupp

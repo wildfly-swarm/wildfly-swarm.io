@@ -147,8 +147,9 @@ function build() {
 
       '/docs/2017-11-0': 'http://docs.wildfly-swarm.io/2017.11.0/',
       '/docs/2017-12-1': 'http://docs.wildfly-swarm.io/2017.12.1/',
+      '/docs/2017-12-1': 'http://docs.wildfly-swarm.io/2018.1.0/',
 
-      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2018.1.0-SNAPSHOT/',
+      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2018.2.0-SNAPSHOT/',
 }))
 
 
