@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Tue, 16 Jan 2018 12:32:51 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 16 Jan 2018 12:32:44 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2017.12.1]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Wed, 17 Jan 2018 18:35:48 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 17 Jan 2018 18:35:41 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2018.1.0]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_wildfly_swarm_2018_1_0">WildFly Swarm 2018.1.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ringing in the New Year with some minor fixes!</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Eclipse MicroProfile updates</p>
+</li>
+<li>
+<p>Keycloak Server fixed</p>
+</li>
+<li>
+<p>JPA ignoring JNDI name for DataSource</p>
+</li>
+</ul>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Jan 2018 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.12.1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2017_12_1">WildFly Swarm 2017.12.1</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -560,39 +580,4 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Fri, 02 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.11.0]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_november_means_the_release_of_2016_11_0">November means the release of 2016.11.0!</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Celebrating National Pepper Month, at least for some nations,
-we’re happy to announce the release of WildFly Swarm version
-2016.11.0.</p>
-</div>
-<div class="sect2">
-<h3 id="_what_s_new">What’s New?</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Enhanced JAX-RS client library</p>
-</li>
-<li>
-<p>Support for Flyway schema migration for relational databases</p>
-</li>
-<li>
-<p>Improved Arquillian testing (still in progress)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
-<div class="paragraph">
-<p>WildFly Swarm is the decomposition and reconstitution of the popular
-<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
-for microservice type applications.</p>
-</div>
-<div class="paragraph">
-<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
-maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
-of non-Java EE or WIldFly functionality, such as <em>Swagger</em>, <em>Jolokia</em> or <em>NetflixOSS Ribbon</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-11-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-11-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Mon, 07 Nov 2016 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Fri, 02 Dec 2016 05:00:00 GMT</pubDate></item></channel></rss>
