@@ -58,6 +58,9 @@ Microservice.
             <li><a href="/docs/2017-12-1">2017.12.1 Documentation</a></li>
           </ul>
           <ul>
+            <li><a href="/docs/2017-11-0">2017.11.0 Documentation</a></li>
+          </ul>
+          <ul>
             <li><a href="/howto/2017-10-0">HOWTO</a></li>
             <li><a href="/refguide/2017-10-0">Reference Guide</a></li>
             <li><a href="/userguide/2017-10-0">User Guide</a></li>

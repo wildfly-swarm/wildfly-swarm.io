@@ -9,7 +9,37 @@ draft: true
 
 == WildFly Swarm 2018.1.0
 
+Ringing in the New Year with some minor fixes!
 
+=== What's New?
+
+* Eclipse MicroProfile updates
+* Keycloak Server fixed
+* JPA ignoring JNDI name for DataSource
+
+++++
+<!-- more -->
+++++
+
+== Eclipse MicroProfile updates
+
+On the road towards implementing Eclipse MicroProfile 1.3,
+we now include Metrics 1.1 and Config 1.2 as the default implementation versions for these specifications.
+
+== Keycloak Server fixed
+
+2017.12.1 had a major problem in that the Keycloak Server wouldn't even start!
+Big oops on our part there.
+
+With this release that problem is resolved and it starts as before and works well.
+Just remember this server is now based on Keycloak 3.4.0.Final.
+
+== JPA ignoring JNDI name for DataSource
+
+Previously if you created a custom JNDI name for a DataSource it would be ignored,
+as it was expected to match the pattern of `java:jboss/datasources/${dsName}`.
+
+Thanks to Sam McCollum in the community for providing the fix enabling custom JNDI names!
 
 == Changelog
 Release notes for 2018.1.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335668[here].
