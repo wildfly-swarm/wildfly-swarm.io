@@ -1,0 +1,56 @@
+---
+title: Announcing WildFly Swarm 2018.2.0
+publishDate: 2018-01-16
+modifyDate: 2018-01-16
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2018.2.0
+
+TODO
+
+=== What's New?
+
+TODO
+
+++++
+<!-- more -->
+++++
+
+
+
+== Changelog
+TODO Release notes for 2018.2.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335668[here].
+
+TODO
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2018.2.0
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2018.2.0/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Mattias Andersson
+* Heiko Braun
+* Ken Finnigan
+* Martin Kouba
+* Pete MacKinnon
+* Tomas Radej
+* Ramesh Reddy
+* Michał Szynkiewicz
+* Ladislav Thon
+* Heiko W. Rupp
+* Miroslav Zaťko
