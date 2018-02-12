@@ -4,27 +4,63 @@ publishDate: 2018-01-16
 modifyDate: 2018-01-16
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2018.2.0
 
-TODO
+Roman superstition and Math led to the situation that February only has 28 days. We obey to this fact
+and hence our changelog is bit shorter than usual. Nevertheless, this release is crafted with love - as always.
 
 === What's New?
 
-TODO
+==== Microprofile Rest Client
+
+The Eclipse Microprofile Rest CLient provides a type-safe approach to invoke rest services, i.e.
+
+```java
+ @Path("/movies")
+ public interface MovieReviewService {
+     @POST
+     @Path("/{movieId}/reviews")
+     String submitReview( @PathParam("movieId") String movieId, Review review );
+ }
+```
+
+Now we can use this interface as a means to invoke the actual remote review service like this:
+```java
+String apiUrl = "http://localhost:9080/movieReviewService";
+MovieReviewService reviewSvc = RestClientBuilder.newBuilder()
+            .baseUrl(apiUrl)
+            .build(MovieReviewService.class);
+Review review = new Review(3 /* stars */, "This was a delightful comedy, but not terribly realistic.");
+reviewSvc.submitReview( movieId, review );
+```
 
 ++++
 <!-- more -->
 ++++
 
-
-
 == Changelog
-TODO Release notes for 2018.2.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12335668[here].
+Release notes for 2018.2.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12336571[here].
 
-TODO
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1383[SWARM-1383]] Add CI jobs for Mission Boosters (Done)
+* [https://issues.jboss.org/browse/SWARM-1688[SWARM-1688]] Eclipse MP REST Client 1.0 impl (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1553[SWARM-1553]] add "skip" parameter to wildfly-swarm-plugin configuration (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1793[SWARM-1793]] Prometheus exporter provides illegal characters (Done)
+* [https://issues.jboss.org/browse/SWARM-1796[SWARM-1796]] Hystrix Stream Servlet gets CNFE (Done)
+* [https://issues.jboss.org/browse/SWARM-1810[SWARM-1810]] Metrics fraction does not provide metadata for Prometheus output (Done)
+* [https://issues.jboss.org/browse/SWARM-1811[SWARM-1811]] Docker and management  (Done)
+* [https://issues.jboss.org/browse/SWARM-1812[SWARM-1812]] Ribbon examples are outdated and no longer pass integration tests (Done)
+* [https://issues.jboss.org/browse/SWARM-1819[SWARM-1819]] the warning we print for custom main usage points to an old website (Done)
+
+=== Documentation
+* [https://issues.jboss.org/browse/SWARM-1822[SWARM-1822]] Add note about elytron audit.log config (Done)
+
 
 == Resources
 
