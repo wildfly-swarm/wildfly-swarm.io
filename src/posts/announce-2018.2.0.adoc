@@ -15,7 +15,8 @@ and hence our changelog is bit shorter than usual. Nevertheless, this release is
 
 ==== Microprofile Rest Client
 
-The Eclipse Microprofile Rest CLient provides a type-safe approach to invoke rest services, i.e.
+The Eclipse Microprofile Rest Client provides a type-safe approach to invoke rest services,
+i.e. first we define a Java interface
 
 ```java
  @Path("/movies")
@@ -27,6 +28,7 @@ The Eclipse Microprofile Rest CLient provides a type-safe approach to invoke res
 ```
 
 Now we can use this interface as a means to invoke the actual remote review service like this:
+  
 ```java
 String apiUrl = "http://localhost:9080/movieReviewService";
 MovieReviewService reviewSvc = RestClientBuilder.newBuilder()
