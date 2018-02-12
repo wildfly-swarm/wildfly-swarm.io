@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Wed, 17 Jan 2018 18:35:48 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 17 Jan 2018 18:35:41 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2018.1.0]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Mon, 12 Feb 2018 08:21:01 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 12 Feb 2018 08:20:54 GMT</pubDate><item><title><![CDATA[Announcing WildFly Swarm 2018.1.0]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2018_1_0">WildFly Swarm 2018.1.0</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -19,7 +19,43 @@
 <p>JPA ignoring JNDI name for DataSource</p>
 </li>
 </ul>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Jan 2018 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.12.1]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-1-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Jan 2018 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2018.2.0]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_wildfly_swarm_2018_2_0">WildFly Swarm 2018.2.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Roman superstition and Math led to the situation that February only has 28 days. We obey to this fact
+and hence our changelog is bit shorter than usual. Nevertheless, this release is crafted with love - as always.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="sect3">
+<h4 id="_microprofile_rest_client">Microprofile Rest Client</h4>
+<div class="paragraph">
+<p>The Eclipse Microprofile Rest CLient provides a type-safe approach to invoke rest services, i.e.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"> @Path("/movies")
+ public interface MovieReviewService {
+     @POST
+     @Path("/{movieId}/reviews")
+     String submitReview( @PathParam("movieId") String movieId, Review review );
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can use this interface as a means to invoke the actual remote review service like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">String apiUrl = "http://localhost:9080/movieReviewService";
+MovieReviewService reviewSvc = RestClientBuilder.newBuilder()
+            .baseUrl(apiUrl)
+            .build(MovieReviewService.class);
+Review review = new Review(3 /* stars */, "This was a delightful comedy, but not terribly realistic.");
+reviewSvc.submitReview( movieId, review );</code></pre>
+</div>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-2-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2018-2-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Tue, 16 Jan 2018 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2017.12.1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_wildfly_swarm_2017_12_1">WildFly Swarm 2017.12.1</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -482,7 +518,19 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 05 Jan 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.1]]></title><description><![CDATA[<div class="sect1">
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-1-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 05 Jan 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[To WAR or JAR]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_whether_to_war_or_jar_with_wildfly_swarm">Whether to WAR or JAR with WildFly Swarm?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With most things in life we have choices, sometimes a few and sometimes many.
+When it comes to WildFly Swarm projects with Maven the two choices are
+<code>war</code> or <code>jar</code> packaging.</p>
+</div>
+<div class="paragraph">
+<p>Each has different benefits and tradeoffs which we will discuss during this article.
+By the end I hope it’s clearer as to the best situations to utilize either
+packaging type.</p>
+</div>]]></description><link>https://wildfly-swarm.io/posts/to-war-or-jar</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/to-war-or-jar</guid><dc:creator><![CDATA[Ken Finnigan]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.1]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_you_take_the_good_you_take_the_bad_you_take_them_both_and_then_you_have_version_2016_12_1">You take the good, you take the bad, you take them both, and then you have…​ version 2016.12.1.</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -528,56 +576,4 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[To WAR or JAR]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_whether_to_war_or_jar_with_wildfly_swarm">Whether to WAR or JAR with WildFly Swarm?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>With most things in life we have choices, sometimes a few and sometimes many.
-When it comes to WildFly Swarm projects with Maven the two choices are
-<code>war</code> or <code>jar</code> packaging.</p>
-</div>
-<div class="paragraph">
-<p>Each has different benefits and tradeoffs which we will discuss during this article.
-By the end I hope it’s clearer as to the best situations to utilize either
-packaging type.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/to-war-or-jar</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/to-war-or-jar</guid><dc:creator><![CDATA[Ken Finnigan]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing WildFly Swarm 2016.12.0]]></title><description><![CDATA[<div class="sect1">
-<h2 id="_it_s_december_wildfly_swarm_2016_12_0_swings_in_like_a_monkey">It’s December, WildFly Swarm 2016.12.0 swings in like a monkey.</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Since December 14th is Monkey Day (look it up!), we’re shipping
-WildFly Swarm 2016.12.0 with a side-dish of bananas.  Bananas.</p>
-</div>
-<div class="sect2">
-<h3 id="_what_s_new">What’s New?</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>More configurability</p>
-</li>
-<li>
-<p>Bring-You-Own JDBC driver</p>
-</li>
-<li>
-<p>Improvements to the health/monitoring</p>
-</li>
-<li>
-<p>Improvements to OpenShift support</p>
-</li>
-<li>
-<p>Fluentd logging support</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_what_is_wildfly_swarm">What is WildFly Swarm?</h3>
-<div class="paragraph">
-<p>WildFly Swarm is the decomposition and reconstitution of the popular
-<a href="http://www.wildfly.org">WildFly Java Application Server</a> in order to support <em>just enough appserver</em>
-for microservice type applications.</p>
-</div>
-<div class="paragraph">
-<p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
-maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
-of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-0</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Fri, 02 Dec 2016 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2016-12-1</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Thu, 15 Dec 2016 05:00:00 GMT</pubDate></item></channel></rss>
