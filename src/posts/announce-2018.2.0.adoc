@@ -1,7 +1,7 @@
 ---
 title: Announcing WildFly Swarm 2018.2.0
-publishDate: 2018-01-16
-modifyDate: 2018-01-16
+publishDate: 2018-02-08
+modifyDate: 2018-02-08
 author: The WildFly Swarm Team
 layout: post.jade
 ---
