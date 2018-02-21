@@ -34,7 +34,7 @@ layout: index.jade
 
         <div class="col-md-3">
           <h3><i class="fa fa-cogs" aria-hidden="true" style="font-size:24px"></i> Generate Project</h3>
-          <p>The most simple way to get started is by using the project generator.
+          <p>The simplest way to get started is by using the project generator.
             Simply choose the capabilities you need and we'll generate a maven project for you, ready to download and use.
           </p>
           <p><a href="/generator" class="btn btn-primary">Create a Project</a></p>
