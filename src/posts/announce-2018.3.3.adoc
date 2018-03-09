@@ -1,0 +1,96 @@
+---
+title: Announcing WildFly Swarm 2018.3.3
+publishDate: 2018-03-09
+modifyDate: 2018-03-09
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2018.3.3
+
+
+
+=== What's New?
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2018.3.3 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12336572[here].
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-816[SWARM-816]] [Swagger-WebApp] Ability to configure and default the discovery URL (Done)
+* [https://issues.jboss.org/browse/SWARM-1808[SWARM-1808]] Support Environment Variables in project-<profile>.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-1831[SWARM-1831]] Create a "full" fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1833[SWARM-1833]] Improve IndexView index available in DeploymentProcessor (Done)
+* [https://issues.jboss.org/browse/SWARM-1843[SWARM-1843]] In case of error (HTTP status >= 400) JAX-RS client connections can't be closed (Done)
+* [https://issues.jboss.org/browse/SWARM-1846[SWARM-1846]] Provide a way to make microprofile-restclient usable from behind a firewall (Done)
+* [https://issues.jboss.org/browse/SWARM-1871[SWARM-1871]] Add a fraction for MVC 1.0  (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1530[SWARM-1530]] Exploded uber jar temp files are never delted (Done)
+* [https://issues.jboss.org/browse/SWARM-1695[SWARM-1695]] Async JAX-RS with jaeger fraction not working (Done)
+* [https://issues.jboss.org/browse/SWARM-1767[SWARM-1767]] Microprofile Health - Warn with resteasy on startup (Done)
+* [https://issues.jboss.org/browse/SWARM-1768[SWARM-1768]] CDI warning on startup - ServiceLoader could not load service class (Done)
+* [https://issues.jboss.org/browse/SWARM-1794[SWARM-1794]] Microprofile Fault Tolerance Timeout not throwing TimeoutException until method finished (Done)
+* [https://issues.jboss.org/browse/SWARM-1813[SWARM-1813]] Configuring interfaces through YAML doesn't work (Done)
+* [https://issues.jboss.org/browse/SWARM-1829[SWARM-1829]] MP-JWT fraction does not handle injection of Set<String> raw types (Done)
+* [https://issues.jboss.org/browse/SWARM-1838[SWARM-1838]] Favicon is not shown correctly (Done)
+* [https://issues.jboss.org/browse/SWARM-1844[SWARM-1844]] the Maven plugin reference documentation has some system properties wrong (Done)
+* [https://issues.jboss.org/browse/SWARM-1847[SWARM-1847]] Swagger missing basepath but it dependes (Done)
+* [https://issues.jboss.org/browse/SWARM-1879[SWARM-1879]] Fix regression caused by a WIP commit and new failing test since SWARM-1693 (Done)
+* [https://issues.jboss.org/browse/SWARM-1883[SWARM-1883]] JPMS module-info should be ignored when creating a deployment Jandex index (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1665[SWARM-1665]] MP FT - make it possible to configure Hystrix concurrency strategy (Done)
+* [https://issues.jboss.org/browse/SWARM-1683[SWARM-1683]] Add "web" hollow jar (Done)
+* [https://issues.jboss.org/browse/SWARM-1870[SWARM-1870]] Allow hollow packaging mode in gradle plugin (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1693[SWARM-1693]] Eclipse MP OpenAPI spec impl (Done)
+* [https://issues.jboss.org/browse/SWARM-1825[SWARM-1825]] Fraction docs - improve package layout section (Done)
+* [https://issues.jboss.org/browse/SWARM-1826[SWARM-1826]] Remove ArchiveMetadataProcessor from docs (Done)
+* [https://issues.jboss.org/browse/SWARM-1834[SWARM-1834]] Include MicroProfile 1.2 in product build profile (Done)
+* [https://issues.jboss.org/browse/SWARM-1841[SWARM-1841]] Create a fraction that covers all EE related fractions we have (Done)
+* [https://issues.jboss.org/browse/SWARM-1842[SWARM-1842]] Add a full platform hollow jar (Done)
+* [https://issues.jboss.org/browse/SWARM-1848[SWARM-1848]] Minor improvements for security/keycloak example (Done)
+* [https://issues.jboss.org/browse/SWARM-1849[SWARM-1849]] Update security/jaas demos to show that RBAC restrictions are effective (Done)
+* [https://issues.jboss.org/browse/SWARM-1853[SWARM-1853]] Remove swagger_webapp example, update jaxrs/swagger README (Done)
+* [https://issues.jboss.org/browse/SWARM-1854[SWARM-1854]] Replace &ndash; with a UTF entity to allow DocBook validation (Done)
+* [https://issues.jboss.org/browse/SWARM-1868[SWARM-1868]] MP FT TCK - BulkheadAsynchRetryTest fails intermittently (Done)
+* [https://issues.jboss.org/browse/SWARM-1874[SWARM-1874]] update SSO booster to include a workaround for CLOUD-2195 (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2018.3.0
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2018.3.3/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* John
+* Aaron Anderson
+* Heiko Braun
+* Ken Finnigan
+* Juan Gonzalez
+* François JACQUES
+* Martin Kouba
+* Pavol Loffay
+* Scott M Stark
+* Juraci Paixão Kröhling
+* Tomas Radej
+* Michał Szynkiewicz
+* Ladislav Thon
+* Gregor Tudan
+* Eric Wittmann
