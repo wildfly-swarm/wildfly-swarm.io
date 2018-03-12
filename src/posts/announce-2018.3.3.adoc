@@ -9,13 +9,36 @@ draft: true
 
 == WildFly Swarm 2018.3.3
 
-
+Beware the Ides of March, and many failed release attempts!
+But we got there!
 
 === What's New?
+
+* MicroProfile Open API
+* "Web" Hollow jar
+* MVC (Ozark) Fraction
+* Lots of other fixes!
 
 ++++
 <!-- more -->
 ++++
+
+==== MicroProfile Open API
+
+
+
+==== "Web" Hollow jar
+
+We've now added a "Web" Hollow jar to expand the number of Hollow jars we have available.
+It will be available for download from the site along with the existing ones:
+http://wildfly-swarm.io/downloads/
+
+==== MVC (Ozark) Fraction
+
+Thanks to Gregor for bringing us a WF Swarm fraction for MVC that utilizes Ozark as the implementation.
+
+Will be interested to hear everyone's views on UI pieces in WildFly Swarm,
+as that's been a divisive issue in the past.
 
 == Changelog
 Release notes for 2018.3.3 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12336572[here].

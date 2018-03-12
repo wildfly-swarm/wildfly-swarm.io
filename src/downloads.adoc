@@ -54,6 +54,13 @@ Our MicroProfile server can be used to run an existing MicroProfile-compliant
 
 link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar]
 
+==== Web Server
+
+Similar to the MicroProfile server,
+Web provides a Hollow jar that's equivalent to the Web Profile from Java EE.
+
+link:/download/web-swarm[web-swarm.jar]
+
 ==== Keycloak Server
 
 Our Keycloak standalone server may be used to run your own Keycloak easily.
