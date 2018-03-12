@@ -140,7 +140,7 @@ function build() {
       '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-swarm.jar',
-      '/download/web-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/web/' + versions.CURRENT_RELEASE + '/web-' + versions.CURRENT_RELEASE + '-swarm.jar',
+      '/download/web-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/web/' + versions.CURRENT_RELEASE + '/web-' + versions.CURRENT_RELEASE + '-hollowswarm.jar',
 
       '/userguide/2017-10-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/v/2017.10.0/',
       '/refguide/2017-10-0': 'https://reference.wildfly-swarm.io/v/2017.10.0/',
