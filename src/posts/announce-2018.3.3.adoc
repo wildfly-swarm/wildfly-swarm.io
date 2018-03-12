@@ -141,6 +141,7 @@ We appreciate all of our contributors since the last release:
 * Scott M Stark
 * Juraci Paixão Kröhling
 * Tomas Radej
+* Marc Savy
 * Michał Szynkiewicz
 * Ladislav Thon
 * Gregor Tudan
