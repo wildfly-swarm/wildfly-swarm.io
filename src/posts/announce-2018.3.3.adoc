@@ -25,7 +25,36 @@ But we got there!
 
 ==== MicroProfile Open API
 
+We are now providing an implementation of the Microprofile 1.3 OpenAPI specification.  Details of
+this specification can be found here:
 
+https://github.com/eclipse/microprofile-open-api/blob/master/spec/src/main/asciidoc/microprofile-openapi-spec.adoc[Microprofile OpenAPI Specification]
+
+The Microprofile OpenAPI specification defines how a platform should generate and expose an OpenAPI 3.0.x
+definition for any deployed JAX-RS application.  In other words, if you deploy a JAX-RS application to
+WildFly Swarm, an OpenAPI definition will automatically be generated that describes your API.  The
+generated definition can be further enhanced by annotating the JAX-RS application with OpenAPI specific
+annotations (allowing you to add helpful documentation, examples, schema refinements, etc).
+
+Simply enable the OpenAPI fraction for your WildFly Swarm application by including the following in
+your `pom.xml`:
+
+```
+<dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>microprofile-openapi</artifactId>
+</dependency>
+```
+
+Once enabled, you can run your Swarm app as normal and access the OpenAPI definition at the following
+endpoint:
+
+http://localhost:8080/openapi[http://localhost:8080/openapi]
+
+We hope that users find this new feature useful.  Any feedback you might have about the generated
+OpenAPI definition would be very useful, as the specification leaves many choices up to the vendor
+implementation.  So we may have quite a bit of room to improve the implementation while still
+conforming to the specification.
 
 ==== "Web" Hollow jar
 
