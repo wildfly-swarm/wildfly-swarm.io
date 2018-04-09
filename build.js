@@ -151,8 +151,8 @@ function build() {
       '/docs/2018-1-0': 'http://docs.wildfly-swarm.io/2018.1.0/',
       '/docs/2018-2-0': 'http://docs.wildfly-swarm.io/2018.2.0',
       '/docs/2018-3-3': 'http://docs.wildfly-swarm.io/2018.3.3',
-
-      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2018.4.0-SNAPSHOT/',
+      '/docs/2018-4-1': 'http://docs.wildfly-swarm.io/2018.4.1',
+      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2018.5.0-SNAPSHOT/',
 }))
 
 
