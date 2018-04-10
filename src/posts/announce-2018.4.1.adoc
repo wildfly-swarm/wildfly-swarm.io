@@ -1,0 +1,113 @@
+---
+title: Announcing WildFly Swarm 2018.4.1
+publishDate: 2018-04-10
+modifyDate: 2018-04-10
+author: The WildFly Swarm Team
+layout: post.jade
+---
+
+== WildFly Swarm 2018.4.1
+
+Beware the Ides of April, and a failed release attempt!
+But we got there!
+
+=== What's New?
+
+* MicroProfile "JPA" Hollow jar
+* Many MicroProfile related improvements
+* Enhanced Swagger integration
+* Improved KeyCloak integration 
+* Lots of other fixes!
+
+++++
+<!-- more -->
+++++
+
+==== Microprofile "JPA" Hollow jar
+
+We've now added a "JPA" Hollow jar to expand the number of Hollow jars we have available.
+It will be available for download from the site along with the existing ones:
+http://wildfly-swarm.io/downloads/
+
+==== Enhanced Swagger integration
+
+Thanks to Harsha for the help with improving the integration with Swagger. 
+
+==== Improved Keycloak integration
+
+JAX-RS endpoints can now see the content of the tokens validated by Keycloak and use it as required. Check an updated security/keycloak example. 
+
+== Changelog
+Release notes for 2018.4.1 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337171[here].
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1790[SWARM-1790]] MicroProfile + JPA Hollow Jar (Done)
+ 
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1878[SWARM-1878]] Update Jaeger and OpenTracing versions (Done)
+* [https://issues.jboss.org/browse/SWARM-1895[SWARM-1895]] Make the swagger fraction reuse library versions and modules from WF parent. (Done)
+* [https://issues.jboss.org/browse/SWARM-1909[SWARM-1909]] Swagger: Default the context root to JAX-RS context root (Done)
+* [https://issues.jboss.org/browse/SWARM-1925[SWARM-1925]] Swagger: Improve determination of the packages that need to be scanned (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1696[SWARM-1696]] Investigate deprecation of Monitor in favor of MP-Health (Done)
+* [https://issues.jboss.org/browse/SWARM-1769[SWARM-1769]] add a smoke test for the keycloak-server fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1908[SWARM-1908]] Upgrade Teiid Version 10.2.0 (Done)
+* [https://issues.jboss.org/browse/SWARM-1914[SWARM-1914]] Make sure Application is provided for all the examples which depended on its auto-generation (Done)
+* [https://issues.jboss.org/browse/SWARM-1915[SWARM-1915]] Document the scope and contents of new hollow jars (Done)
+* [https://issues.jboss.org/browse/SWARM-1924[SWARM-1924]] Create keycloak fraction test (Done)
+* [https://issues.jboss.org/browse/SWARM-1938[SWARM-1938]] Update keycloak example to show how KC security context can be used (Done)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1326[SWARM-1326]] Swarm brings weird Arquillian versions transitively (Done)
+* [https://issues.jboss.org/browse/SWARM-1471[SWARM-1471]] automatically generate JAX-RS Application class only when swarm.deployment.*.jaxrs.application-path YAML setting is present (Done)
+* [https://issues.jboss.org/browse/SWARM-1667[SWARM-1667]] Swarm swagger module does not generate swagger.json (Done)
+* [https://issues.jboss.org/browse/SWARM-1754[SWARM-1754]] Warn with stacktrace at first call for Microprofile JWT (Done)
+* [https://issues.jboss.org/browse/SWARM-1755[SWARM-1755]] Microprofile JWT - Method not protected (Done)
+* [https://issues.jboss.org/browse/SWARM-1792[SWARM-1792]] Infinispan fraction makes the WildFly Swarm server start with errors (Done)
+* [https://issues.jboss.org/browse/SWARM-1845[SWARM-1845]] Dependencies are missing for Infinispan caches "jpa" and "undertow" (Duplicate Issue)
+* [https://issues.jboss.org/browse/SWARM-1862[SWARM-1862]] Default JavaScript engine not available in the deployment (Done)
+* [https://issues.jboss.org/browse/SWARM-1886[SWARM-1886]] Jandex fails to parse "asm-tree-6.0.jar" (Done)
+* [https://issues.jboss.org/browse/SWARM-1891[SWARM-1891]] NoClassDefFoundError with microprofile-openapi fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1893[SWARM-1893]] Jaeger / OpenTracing remote reporting not working (Done)
+* [https://issues.jboss.org/browse/SWARM-1896[SWARM-1896]] Minor mismatch between README and configuration in the management example (Done)
+* [https://issues.jboss.org/browse/SWARM-1898[SWARM-1898]] MP metrics: "displayName" and "description" parameters of the @Counted annotation are ignored (Done)
+* [https://issues.jboss.org/browse/SWARM-1899[SWARM-1899]] MP metrics: the "unit" parameter of the @Timed annotation is ignored, Prometheus and JSON output disagree (Done)
+* [https://issues.jboss.org/browse/SWARM-1900[SWARM-1900]] MP metrics: useless metric "test" in the "vendor" scope (Done)
+* [https://issues.jboss.org/browse/SWARM-1901[SWARM-1901]] MP metrics: the "mscLoadedModules" metric in the "vendor" scope has a wrong name (Done)
+* [https://issues.jboss.org/browse/SWARM-1904[SWARM-1904]] Gradle plugin does not package archiveTask (Done)
+* [https://issues.jboss.org/browse/SWARM-1905[SWARM-1905]] the MicroProfile TCKs setup requires bom-all (Done)
+* [https://issues.jboss.org/browse/SWARM-1921[SWARM-1921]] Keycloak fraction does not make KeyCloakSecurtyContext available  (Done)
+* [https://issues.jboss.org/browse/SWARM-1927[SWARM-1927]] swarm.resource-adapter.resource-adapters is wrong in documentation (Done)
+* [https://issues.jboss.org/browse/SWARM-1929[SWARM-1929]] MP fault tolerance: circuit breaker never opens if there's a @Fallback (Done)
+* [https://issues.jboss.org/browse/SWARM-1932[SWARM-1932]] MP fault tolerance: circuit breaker doesn't open if there was at least one success (Done)
+ 
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2018.4.1
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2018.4.1/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* John Alstrom
+* Sergey Beryozkin
+* Heiko Braun
+* Andreas Enbohm
+* Ken Finnigan
+* Martin Kouba
+* John O'Hara
+* Tomas Radej
+* Harsha Ramesh
+* Ramesh Reddy
+* Michał Szynkiewicz
+* Ladislav Thon
