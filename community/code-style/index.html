@@ -68,24 +68,24 @@ interface Abba {
 </code></pre>
 <h2 id="checkstyle-rules">Checkstyle Rules</h2>
 <p>These are the checkstyle rules that are currently being used</p>
-<h3 id="-filetabcharacter-http-checkstyle-sourceforge-net-config_whitespace-html-filetabcharacter-"><a href="http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter">FileTabCharacter</a></h3>
+<h3 id="filetabcharacter"><a href="http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter">FileTabCharacter</a></h3>
 <p>Checks that there are no tab characters. &#39;eachLine&#39; is set to true so that every tab character found is reported, not just
 the first one.</p>
-<h3 id="-regexpsingleline-http-checkstyle-sourceforge-net-config_regexp-html-regexpsingleline-"><a href="http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline">RegexpSingleline</a></h3>
+<h3 id="regexpsingleline"><a href="http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline">RegexpSingleline</a></h3>
 <p>Sets a format of <code>\s+$</code> to ensure there are no trailing spaces on lines.</p>
-<h3 id="-avoidstarimport-http-checkstyle-sourceforge-net-config_imports-html-avoidstarimport-"><a href="http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport">AvoidStarImport</a></h3>
+<h3 id="avoidstarimport"><a href="http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport">AvoidStarImport</a></h3>
 <p>Checks for import statements with the <code>*</code> notation. <code>allowStaticMemberImports</code> is set to true so that <code>*</code> is allowed in
 situations such as:</p>
 <pre><code class="lang-java">import static org.junit.Assert.*;
 </code></pre>
-<h3 id="-redundantimport-http-checkstyle-sourceforge-net-config_imports-html-redundantimport-"><a href="http://checkstyle.sourceforge.net/config_imports.html#RedundantImport">RedundantImport</a></h3>
+<h3 id="redundantimport"><a href="http://checkstyle.sourceforge.net/config_imports.html#RedundantImport">RedundantImport</a></h3>
 <p>Checks any import statements that are not necessary for compilation, due to duplication or it being a <code>java.lang</code> class.</p>
-<h3 id="-unusedimports-http-checkstyle-sourceforge-net-config_imports-html-unusedimports-"><a href="http://checkstyle.sourceforge.net/config_imports.html#UnusedImports">UnusedImports</a></h3>
+<h3 id="unusedimports"><a href="http://checkstyle.sourceforge.net/config_imports.html#UnusedImports">UnusedImports</a></h3>
 <p>Checks for import statements that are no longer necessary for code compilation.</p>
-<h3 id="-illegalimport-http-checkstyle-sourceforge-net-config_imports-html-illegalimport-"><a href="http://checkstyle.sourceforge.net/config_imports.html#IllegalImport">IllegalImport</a></h3>
+<h3 id="illegalimport"><a href="http://checkstyle.sourceforge.net/config_imports.html#IllegalImport">IllegalImport</a></h3>
 <p>Checks for imports of illegal packages, such as <code>sun.*</code>. In our case <code>junit.framework</code> has been added as <code>org.junit</code> is the
 newer package naming.</p>
-<h3 id="-modifierorder-http-checkstyle-sourceforge-net-config_modifier-html-modifierorder-"><a href="http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder">ModifierOrder</a></h3>
+<h3 id="modifierorder"><a href="http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder">ModifierOrder</a></h3>
 <p>Checks for modifier order to ensure it conforms with:</p>
 <ol>
 <li>public</li>
@@ -100,37 +100,37 @@ newer package naming.</p>
 <li>native</li>
 <li>strictfp</li>
 </ol>
-<h3 id="-redundantmodifier-http-checkstyle-sourceforge-net-config_modifier-html-redundantmodifier-"><a href="http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier">RedundantModifier</a></h3>
+<h3 id="redundantmodifier"><a href="http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier">RedundantModifier</a></h3>
 <p>Checks for modifiers that are not necessary. For instance, fields on interfaces are automatically <code>public</code>, <code>static</code>, and <code>final</code>.</p>
-<h3 id="-leftcurly-http-checkstyle-sourceforge-net-config_blocks-html-leftcurly-"><a href="http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly">LeftCurly</a></h3>
+<h3 id="leftcurly"><a href="http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly">LeftCurly</a></h3>
 <p>Checks that <code>{</code> is placed at the end of the line for classes, constructors, interfaces, methods, switch statements and static
 initialization blocks.</p>
-<h3 id="-emptystatement-http-checkstyle-sourceforge-net-config_coding-html-emptystatement-"><a href="http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement">EmptyStatement</a></h3>
+<h3 id="emptystatement"><a href="http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement">EmptyStatement</a></h3>
 <p>Looks for <code>;</code> without code prior to it.</p>
-<h3 id="-equalshashcode-http-checkstyle-sourceforge-net-config_coding-html-equalshashcode-"><a href="http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode">EqualsHashCode</a></h3>
+<h3 id="equalshashcode"><a href="http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode">EqualsHashCode</a></h3>
 <p>Checks that classes overriding <code>equals()</code> also override <code>hashcode()</code>.</p>
-<h3 id="-defaultcomeslast-http-checkstyle-sourceforge-net-config_coding-html-defaultcomeslast-"><a href="http://checkstyle.sourceforge.net/config_coding.html#DefaultComesLast">DefaultComesLast</a></h3>
+<h3 id="defaultcomeslast"><a href="http://checkstyle.sourceforge.net/config_coding.html#DefaultComesLast">DefaultComesLast</a></h3>
 <p>Ensure the <code>default</code> is after all <code>case</code> statements in a <code>switch</code>.</p>
-<h3 id="-illegalinstantiation-http-checkstyle-sourceforge-net-config_coding-html-illegalinstantiation-"><a href="http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation">IllegalInstantiation</a></h3>
+<h3 id="illegalinstantiation"><a href="http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation">IllegalInstantiation</a></h3>
 <p>Checks for instantiations where a factory is preferred, such as <code>Boolean.TRUE</code> instead of <code>new Boolean(true)</code>.</p>
-<h3 id="-missingswitchdefault-http-checkstyle-sourceforge-net-config_coding-html-missingswitchdefault-"><a href="http://checkstyle.sourceforge.net/config_coding.html#MissingSwitchDefault">MissingSwitchDefault</a></h3>
+<h3 id="missingswitchdefault"><a href="http://checkstyle.sourceforge.net/config_coding.html#MissingSwitchDefault">MissingSwitchDefault</a></h3>
 <p>Checks that a <code>switch</code> contains a <code>default</code>.</p>
-<h3 id="-upperell-http-checkstyle-sourceforge-net-config_misc-html-upperell-"><a href="http://checkstyle.sourceforge.net/config_misc.html#UpperEll">UpperEll</a></h3>
+<h3 id="upperell"><a href="http://checkstyle.sourceforge.net/config_misc.html#UpperEll">UpperEll</a></h3>
 <p>Check that constants are defined as <code>Long</code> and not <code>long</code>.</p>
-<h3 id="-packageannotation-http-checkstyle-sourceforge-net-config_annotation-html-packageannotation-"><a href="http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation">PackageAnnotation</a></h3>
+<h3 id="packageannotation"><a href="http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation">PackageAnnotation</a></h3>
 <p>Ensures all package annotations are in <code>package-info.java</code></p>
-<h3 id="-hideutilityclassconstructor-http-checkstyle-sourceforge-net-config_design-html-hideutilityclassconstructor-"><a href="http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor">HideUtilityClassConstructor</a></h3>
+<h3 id="hideutilityclassconstructor"><a href="http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor">HideUtilityClassConstructor</a></h3>
 <p>Checks all utility classes, such as those with all <code>static</code> methods, don&#39;t have a public constructor.</p>
-<h3 id="-missingoverride-http-checkstyle-sourceforge-net-config_annotation-html-missingoverride-"><a href="http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride">MissingOverride</a></h3>
+<h3 id="missingoverride"><a href="http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride">MissingOverride</a></h3>
 <p>Ensures <code>java.lang.Override</code> is present when <code>{@inheritDoc}</code> is present.</p>
-<h3 id="-covariantequals-http-checkstyle-sourceforge-net-config_coding-html-covariantequals-"><a href="http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals">CovariantEquals</a></h3>
+<h3 id="covariantequals"><a href="http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals">CovariantEquals</a></h3>
 <p>Checks that a class which defines a Covariant <code>equals(MyClass)</code> method also overrides <code>equals(Object)</code> to prevent
 unexpected behavior.</p>
-<h3 id="-innertypelast-http-checkstyle-sourceforge-net-config_design-html-innertypelast-"><a href="http://checkstyle.sourceforge.net/config_design.html#InnerTypeLast">InnerTypeLast</a></h3>
+<h3 id="innertypelast"><a href="http://checkstyle.sourceforge.net/config_design.html#InnerTypeLast">InnerTypeLast</a></h3>
 <p>Checks that inner classes and interfaces are specified at the bottom of the class file.</p>
-<h3 id="-equalsavoidnull-http-checkstyle-sourceforge-net-config_coding-html-equalsavoidnull-"><a href="http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull">EqualsAvoidNull</a></h3>
+<h3 id="equalsavoidnull"><a href="http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull">EqualsAvoidNull</a></h3>
 <p>Prefers <code>&quot;someValue&quot;.equals(myVar)</code> over <code>myVar.equals(&quot;someValue&quot;)</code></p>
-<h3 id="-arraytypestyle-http-checkstyle-sourceforge-net-config_misc-html-arraytypestyle-"><a href="http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle">ArrayTypeStyle</a></h3>
+<h3 id="arraytypestyle"><a href="http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle">ArrayTypeStyle</a></h3>
 <p>Prefers <code>main(String[] args)</code> over <code>main(String args[])</code></p>
 </div><div class="col-sm-3 col-sm-offset-1"><div class="sidebar panel panel-default"><ul><li><a href="http://twitter.com/wildflyswarm">Follow @wildflyswarm</a></li><li><a href="http://webchat.freenode.net/?channels=wildfly-swarm">#wildfly-swarm on IRC</a></li><li><a href="https://groups.google.com/forum/#!forum/wildfly-swarm">Google Group</a></li><li><a href="https://issues.jboss.org/projects/SWARM/issues?filter=allopenissues">Issue Tracker</a></li><li class="last"><a href="https://projectodd.ci.cloudbees.com/view/WildFly%20Swarm/">Continuous Integration</a></li></ul></div></div></div><div class="row"><div class="col-sm-8"></div></div></div></section></div><div class="footer-v1"><div class="footer"><div class="container"><div class="row"><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><Copyright>2016 - 2018 <a href="http://redhat.com">Red Hat, Inc.</a> | WildFly Swarm is Open Source Software</Copyright></p></div><div class="col-sm-6 md-margin-bottom-40"><p class="text-center"><span>We rely on the
 <a href='http://www.ej-technologies.com/products/jprofiler/overview.html'>
