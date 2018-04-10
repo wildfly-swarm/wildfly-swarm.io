@@ -54,6 +54,13 @@ Our MicroProfile server can be used to run an existing MicroProfile-compliant
 
 link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar]
 
+==== MicroProfile + JPA Server
+
+Our MicroProfile with JPA server can be used to run MicroProfile microservices that require JPA that
+are present in a `war` file.
+
+link:/download/microprofile-jpa-hollowswarm[microprofile-jpa-hollowswarm.jar]
+
 ==== Web Server
 
 Similar to the MicroProfile server,

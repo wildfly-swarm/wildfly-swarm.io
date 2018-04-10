@@ -137,6 +137,7 @@ function build() {
     .use(redirect({
       '/download/swarmtool': 'http://repo2.maven.org/maven2/org/wildfly/swarm/swarmtool/'+ versions.CURRENT_RELEASE + '/swarmtool-' + versions.CURRENT_RELEASE + '-standalone.jar',
       '/download/microprofile-hollowswarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/microprofile/' + versions.CURRENT_RELEASE + '/microprofile-' + versions.CURRENT_RELEASE + '-hollowswarm.jar',
+      '/download/microprofile-jpa-hollowswarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/microprofile-jpa/' + versions.CURRENT_RELEASE + '/microprofile-jpa-' + versions.CURRENT_RELEASE + '-hollowswarm.jar',
       '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/management-console-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-swarm.jar',
       '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-swarm.jar',
