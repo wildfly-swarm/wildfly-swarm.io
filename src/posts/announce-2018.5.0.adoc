@@ -1,0 +1,103 @@
+---
+title: Announcing WildFly Swarm 2018.5.0
+publishDate: 2018-05-02
+modifyDate: 2018-05-02
+author: The WildFly Swarm Team
+layout: post.jade
+draft: true
+---
+
+== WildFly Swarm 2018.5.0
+
+ TODO
+
+=== What's New?
+
+
+
+++++
+<!-- more -->
+++++
+
+== Changelog
+Release notes for 2018.5.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337351[here].
+
+=== Enhancement
+* [https://issues.jboss.org/browse/SWARM-1077[SWARM-1077]] Possibility to blacklist auto-detected fractions (Done)
+* [https://issues.jboss.org/browse/SWARM-1950[SWARM-1950]] MP JWT: have to put the entire literal public key to project-defaults.yml, instead of being able to specify a file name (Done)
+* [https://issues.jboss.org/browse/SWARM-1952[SWARM-1952]] MP JWT: can't use value of the "upn" claim for roles mapping, even though the TCK suggests it's possible (Rejected)
+* [https://issues.jboss.org/browse/SWARM-1967[SWARM-1967]] Provide ability to enable B3 Header Propagation in Jaeger (Done)
+* [https://issues.jboss.org/browse/SWARM-1981[SWARM-1981]] Include the Infinispan fraction in 'full' to enable caching and passivation (Done)
+* [https://issues.jboss.org/browse/SWARM-1992[SWARM-1992]] Provide an example configuration that shows how to enable security for remote EJBs (Done)
+* [https://issues.jboss.org/browse/SWARM-2003[SWARM-2003]] Support loading custom keycloak.json files from the classpath (Done)
+
+=== Documentation
+* [https://issues.jboss.org/browse/SWARM-1238[SWARM-1238]] should the MultiStartMojo.startArtifact require the "swarm" classifier to be configured manually? (Duplicate Issue)
+
+=== Bug
+* [https://issues.jboss.org/browse/SWARM-1670[SWARM-1670]] MP FT - Asynchronous/CircuitBreaker combination does not work (Duplicate Issue)
+* [https://issues.jboss.org/browse/SWARM-1916[SWARM-1916]] need prominently visible documentation of hollow JAR limitations (Done)
+* [https://issues.jboss.org/browse/SWARM-1917[SWARM-1917]] Can't modify default swarm mail attribute through project-defaults.yml (Done)
+* [https://issues.jboss.org/browse/SWARM-1926[SWARM-1926]] Issues with Support of Environment variables in containerized deployments (Done)
+* [https://issues.jboss.org/browse/SWARM-1931[SWARM-1931]] Ribbon demos are failing (Done)
+* [https://issues.jboss.org/browse/SWARM-1937[SWARM-1937]] Stateful session beans don't passivate in wildfly-swarm (Done)
+* [https://issues.jboss.org/browse/SWARM-1944[SWARM-1944]] MP fault tolerance: @Retry doesn't work when the method is @Asynchronous (Done)
+* [https://issues.jboss.org/browse/SWARM-1945[SWARM-1945]] MP fault tolerance: @CircuitBreaker doesn't work when the method is @Asynchronous (Done)
+* [https://issues.jboss.org/browse/SWARM-1946[SWARM-1946]] MP fault tolerance: too many concurrent requests to @Bulkhead @Fallback method can lead to fallback rejection (Done)
+* [https://issues.jboss.org/browse/SWARM-1951[SWARM-1951]] MP JWT: have to specify "rolesProperties" for the "JWTLoginModule" even if I don't need it (Done)
+* [https://issues.jboss.org/browse/SWARM-1953[SWARM-1953]] MP JWT: JAX-RS resource with no @RolesAllowed annotation isn't secured properly (Done)
+* [https://issues.jboss.org/browse/SWARM-1954[SWARM-1954]] MP JWT: unconstrained method denied access if the resource also contains constrained method (Done)
+* [https://issues.jboss.org/browse/SWARM-1963[SWARM-1963]] wildly inconsistent MicroProfile configuration keys (Done)
+* [https://issues.jboss.org/browse/SWARM-1965[SWARM-1965]] Project build directory not being set for StartMojo when invoked from MultiStartMojo (Done)
+* [https://issues.jboss.org/browse/SWARM-1970[SWARM-1970]] Multistart mojo does not detect the classifier (Done)
+* [https://issues.jboss.org/browse/SWARM-1971[SWARM-1971]] MicroProfile OpenAPI fails on resource methods taking parameterized arguments or arrays (Done)
+* [https://issues.jboss.org/browse/SWARM-1974[SWARM-1974]] Fraction plugin does not support repeatable @Configurable (Done)
+* [https://issues.jboss.org/browse/SWARM-1987[SWARM-1987]] Config API doesn't allow composite Lists / Maps, which prevents fully configuring e.g. Elytron (Done)
+* [https://issues.jboss.org/browse/SWARM-1988[SWARM-1988]] NoClassDefFoundError when using wildfly microprofile config through YAML file (Done)
+* [https://issues.jboss.org/browse/SWARM-1990[SWARM-1990]] [Gradle] Package task is not generating artifact with the right name (Done)
+* [https://issues.jboss.org/browse/SWARM-2009[SWARM-2009]] ArtifactDeployer assumes artifactId has no dots in it (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/SWARM-1782[SWARM-1782]] Allow customized uberjar filename via Maven config (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/SWARM-1892[SWARM-1892]] add tests for the Java MVC fraction (Done)
+* [https://issues.jboss.org/browse/SWARM-1934[SWARM-1934]] Try to improve Keycloak SecurityArchivePreparer for it to load keycloak.json better  (Done)
+* [https://issues.jboss.org/browse/SWARM-1943[SWARM-1943]] Mark opentracing as stable (Done)
+* [https://issues.jboss.org/browse/SWARM-1948[SWARM-1948]] MP FT - document HystrixCommandInterceptor.SYNC_CIRCUIT_BREAKER_KEY config property (Done)
+* [https://issues.jboss.org/browse/SWARM-1983[SWARM-1983]] update default fraction configuration to WildFly 11 (Done)
+* [https://issues.jboss.org/browse/SWARM-1984[SWARM-1984]] Remove Ribbon Secured and update Keycloak demo instead (Done)
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#wildfly-swarm`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/SWARM[JIRA].
+
+Examples are available in https://github.com/wildfly-swarm/wildfly-swarm-examples/tree/2018.5.0
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2018.5.0/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* frans
+* John Alström
+* Sergey Beryozkin
+* Heiko Braun
+* Gary Brown
+* Ken Finnigan
+* George Gastaldi
+* François JACQUES
+* Martin Kouba
+* Daniel P
+* Tomas Radej
+* Harsha Ramesh
+* Ramesh Reddy
+* Michał Szynkiewicz
+* Ladislav Thon
+* Gregor Tudan
