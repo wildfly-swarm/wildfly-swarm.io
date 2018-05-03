@@ -24,13 +24,13 @@ draft: true
 
 * MicroProfile JWT
 ** It's now possible to load public keys from JWKS URI using the `swarm.microprofile.jwt.token.jwks-uri` config property
-** Make it possible to use resource-based pub keys referenced by `swarm.microprofile.jwt.token.signer-pub-key` config property
+** It's now possible to specify a `file:` or `classpath:` reference to the public key in `swarm.microprofile.jwt.token.signer-pub-key` config property
 ** Configuration - roles properties file is now optional
 ** A JAX-RS resource with no `@RolesAllowed` annotation is now secured properly
-** By default, if there is no class-level security annotation an unconstrained resource method has always an implicit `DenyAll`, it's now configurable through `swarm.microprofile.jwt.default-missing-method-permissions-deny-access` config property
+** By default, if there is no class-level security annotation, an unconstrained resource method has always an implicit `@DenyAll`. It's now configurable through `swarm.microprofile.jwt.default-missing-method-permissions-deny-access` config property
 * MicroProfile Fault Tolerance
 ** Support `@Asynchronous` `@CircuitBreaker` and `@Asynchronous` `@Retry` combinations
-** Document fraction configuration properties and limitations
+** Fraction configuration properties and limitations are now properly documented
 * MicroProfile OpenAPI
 ** Endpoints that accept arrays and generic types are supported properly
 
