@@ -4,12 +4,11 @@ publishDate: 2018-05-02
 modifyDate: 2018-05-02
 author: The WildFly Swarm Team
 layout: post.jade
-draft: true
 ---
 
 == WildFly Swarm 2018.5.0
 
- TODO
+This _May_ be a good release, but you can be the judge of that!
 
 === What's New?
 
@@ -61,9 +60,11 @@ Default configuration of the Elytron subsystem is now much closer to WildFly's.
 Elytron is the new security subsystem in WildFly, but it hasn't received much attention in WildFly Swarm yet.
 
 == Changelog
+
 Release notes for 2018.5.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337351[here].
 
 === Enhancement
+
 * [https://issues.jboss.org/browse/SWARM-1077[SWARM-1077]] Possibility to blacklist auto-detected fractions (Done)
 * [https://issues.jboss.org/browse/SWARM-1950[SWARM-1950]] MP JWT: have to put the entire literal public key to project-defaults.yml, instead of being able to specify a file name (Done)
 * [https://issues.jboss.org/browse/SWARM-1952[SWARM-1952]] MP JWT: can't use value of the "upn" claim for roles mapping, even though the TCK suggests it's possible (Rejected)
@@ -73,9 +74,11 @@ Release notes for 2018.5.0 are available https://issues.jboss.org/secure/Release
 * [https://issues.jboss.org/browse/SWARM-2003[SWARM-2003]] Support loading custom keycloak.json files from the classpath (Done)
 
 === Documentation
+
 * [https://issues.jboss.org/browse/SWARM-1238[SWARM-1238]] should the MultiStartMojo.startArtifact require the "swarm" classifier to be configured manually? (Duplicate Issue)
 
 === Bug
+
 * [https://issues.jboss.org/browse/SWARM-1670[SWARM-1670]] MP FT - Asynchronous/CircuitBreaker combination does not work (Duplicate Issue)
 * [https://issues.jboss.org/browse/SWARM-1916[SWARM-1916]] need prominently visible documentation of hollow JAR limitations (Done)
 * [https://issues.jboss.org/browse/SWARM-1917[SWARM-1917]] Can't modify default swarm mail attribute through project-defaults.yml (Done)
@@ -99,9 +102,11 @@ Release notes for 2018.5.0 are available https://issues.jboss.org/secure/Release
 * [https://issues.jboss.org/browse/SWARM-2009[SWARM-2009]] ArtifactDeployer assumes artifactId has no dots in it (Done)
 
 === Feature Request
+
 * [https://issues.jboss.org/browse/SWARM-1782[SWARM-1782]] Allow customized uberjar filename via Maven config (Done)
 
 === Task
+
 * [https://issues.jboss.org/browse/SWARM-1892[SWARM-1892]] add tests for the Java MVC fraction (Done)
 * [https://issues.jboss.org/browse/SWARM-1934[SWARM-1934]] Try to improve Keycloak SecurityArchivePreparer for it to load keycloak.json better  (Done)
 * [https://issues.jboss.org/browse/SWARM-1943[SWARM-1943]] Mark opentracing as stable (Done)
@@ -126,6 +131,7 @@ Documentation for this release is available:
 We appreciate all of our contributors since the last release:
 
 === Core
+
 * frans
 * John Alström
 * Sergey Beryozkin
