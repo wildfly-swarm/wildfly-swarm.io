@@ -13,11 +13,52 @@ draft: true
 
 === What's New?
 
-
+* Eclipse MicroProfile fixes and improvements
+* Update fractions to match WildFly 11 configuration
 
 ++++
 <!-- more -->
 ++++
+
+== Eclipse MicroProfile fixes and improvements
+
+* MicroProfile JWT
+** It's now possible to load public keys from JWKS URI using the `swarm.microprofile.jwt.token.jwks-uri` config property
+** It's now possible to specify a `file:` or `classpath:` reference to the public key in `swarm.microprofile.jwt.token.signer-pub-key` config property
+** Configuration - roles properties file is now optional
+** A JAX-RS resource with no `@RolesAllowed` annotation is now secured properly
+** By default, if there is no class-level security annotation, an unconstrained resource method has always an implicit `@DenyAll`. It's now configurable through `swarm.microprofile.jwt.default-missing-method-permissions-deny-access` config property
+* MicroProfile Fault Tolerance
+** Support `@Asynchronous` `@CircuitBreaker` and `@Asynchronous` `@Retry` combinations
+** Fraction configuration properties and limitations are now properly documented
+* MicroProfile OpenAPI
+** Endpoints that accept arrays and generic types are supported properly
+
+== Update fractions to match WildFly 11 configuration
+
+*WARNING: Breaking changes!*
+
+In this release, we updated default configuration of various fractions to better match default `standalone-full.xml` configuration of WildFly 11.
+As part of that, we made sure some more arcane Java EE features are accessible and easily usable.
+
+The `ejb-remote` fraction, which is used to enable EJB remoting, now also enables remote naming and remote messaging.
+
+Enabling stateful EJB passivation is now possible.
+Note that, due to https://issues.jboss.org/browse/WFLY-10280[WFLY-10280], EJB passivation only works if `ejb-remote` is present.
+
+The `infinispan` fraction no longer enables clustered setup when the `jgroups` fraction is present.
+The Infinispan configuration is always local.
+This is to make sure that we don't enable clustered setup when JGroups are brought in transitively, e.g. through the `messaging` fraction.
+It has been the case for quite some time that WildFly Swarm intentionally doesn't support clustering, and this change is part of it.
+
+Previously, queues and topics in messaging were automatically created on demand.
+This is no longer the case.
+You have to create queues and topics explicitly in `project-defaults.yml`, or enable on-demand creation.
+On-demand queues/topics creation was an unintentional consequence of a seemingly innocent configuration difference.
+For more information, see the explanation in https://github.com/wildfly-swarm/wildfly-swarm-examples/pull/180[this pull request].
+
+Default configuration of the Elytron subsystem is now much closer to WildFly's.
+Elytron is the new security subsystem in WildFly, but it hasn't received much attention in WildFly Swarm yet.
 
 == Changelog
 Release notes for 2018.5.0 are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337351[here].
