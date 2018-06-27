@@ -136,12 +136,18 @@ function build() {
 
     .use(redirect({
       '/download/swarmtool': 'http://repo2.maven.org/maven2/io/thorntail/swarmtool/'+ versions.CURRENT_RELEASE + '/swarmtool-' + versions.CURRENT_RELEASE + '-standalone.jar',
-      '/download/microprofile-hollowswarm': 'http://repo2.maven.org/maven2/io/thorntail/servers/microprofile/' + versions.CURRENT_RELEASE + '/microprofile-' + versions.CURRENT_RELEASE + '-hollowswarm.jar',
-      '/download/microprofile-jpa-hollowswarm': 'http://repo2.maven.org/maven2/io/thorntail/servers/microprofile-jpa/' + versions.CURRENT_RELEASE + '/microprofile-jpa-' + versions.CURRENT_RELEASE + '-hollows-thorntail.jar',
-      '/download/keycloak-swarm': 'http://repo2.maven.org/maven2/io/thorntail/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-thorntail.jar',
-      '/download/management-console-swarm': 'http://repo2.maven.org/maven2/io/thorntail/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-thorntail.jar',
-      '/download/swagger-ui-swarm': 'http://repo2.maven.org/maven2/io/thorntail/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-thorntail.jar',
+      '/download/microprofile-hollow-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/microprofile/' + versions.CURRENT_RELEASE + '/microprofile-' + versions.CURRENT_RELEASE + '-hollow-thorntail.jar',
+      '/download/microprofile-hollowswarm': '/download/microprofile-hollow-thorntail',
+      '/download/microprofile-jpa-hollow-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/microprofile-jpa/' + versions.CURRENT_RELEASE + '/microprofile-jpa-' + versions.CURRENT_RELEASE + '-hollow-thorntail.jar',
+      '/download/microprofile-jpa-hollowswarm': '/download/microprofile-jpa-hollow-thorntail',
+      '/download/keycloak-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/keycloak/' + versions.CURRENT_RELEASE + '/keycloak-' + versions.CURRENT_RELEASE + '-thorntail.jar',
+      '/download/keycloak-swarm': '/download/keycloak-thorntail',
+      '/download/management-console-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/management-console/' + versions.CURRENT_RELEASE + '/management-console-' + versions.CURRENT_RELEASE + '-thorntail.jar',
+      '/download/management-console-swarm': '/download/management-console-thorntail',
+      '/download/swagger-ui-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/swagger-ui/' + versions.CURRENT_RELEASE + '/swagger-ui-' + versions.CURRENT_RELEASE + '-thorntail.jar',
+      '/download/swagger-ui-swarm': '/download/swagger-ui-thorntail',
       '/download/web-thorntail': 'http://repo2.maven.org/maven2/io/thorntail/servers/web/' + versions.CURRENT_RELEASE + '/web-' + versions.CURRENT_RELEASE + '-hollow-thorntail.jar',
+      '/download/web-swarm': '/download/web-thorntail',
 
       '/userguide/2017-10-0': 'https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/v/2017.10.0/',
       '/refguide/2017-10-0': 'https://reference.wildfly-swarm.io/v/2017.10.0/',
@@ -154,7 +160,7 @@ function build() {
       '/docs/2018-3-3': 'http://docs.wildfly-swarm.io/2018.3.3',
       '/docs/2018-4-1': 'http://docs.wildfly-swarm.io/2018.4.1',
       '/docs/2018-5-0': 'http://docs.wildfly-swarm.io/2018.5.0',
-      '/docs/2018-5-0': 'http://docs.wildfly-swarm.io/2.0.0.Final',
+      '/docs/2.0.0.Final': 'http://docs.wildfly-swarm.io/2.0.0.Final',
       '/docs/HEAD': 'http://docs.wildfly-swarm.io/2.0.1.Final-SNAPSHOT/',
 }))
 
