@@ -34,7 +34,7 @@ Therefore, you will most likely only need to change the project build configurat
 2. The Maven plugin also has a new `artifactId`: `thorntail-maven-plugin`
 3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow JARs] has changed to `-thorntail.jar`,
 
-==== Five Steps to Migrate You Maven Project
+==== Four Steps to Migrate Your Maven Project
 
 1. Change `groupId` and version of the BOM:
 +
