@@ -13,7 +13,7 @@ The new name of WildFly Swarm is _Thorntail_! Enjoy the freedom of flying high l
 === What's New?
 
 * Did we say we have a new name: Thorntail?
-* We give up the `YYYY.MM.VV` versioning scheme and switched to a more convenient `major.minor.micro` versioning
+* We have left the `YYYY.MM.VV` versioning scheme and switched to a more convenient `major.minor.micro` versioning
 * MicroProfile
 ** Thorntail now provides an implementation of the https://github.com/eclipse/microprofile-opentracing[MicroProfile OpenTracing specification]
 ** Thorntail MicroProfile REST Client implementation introduces a non-portable feature - CDI Interceptors Support, see docs http://docs.wildfly-swarm.io/2.0.0.Final/#_cdi_interceptors_support[for more information and examples]
@@ -25,14 +25,14 @@ The new name of WildFly Swarm is _Thorntail_! Enjoy the freedom of flying high l
 ==== Migration Notes
 
 Migration from WildFly Swarm 2018.5.0 to Thorntail 2.0.0.Final is straightforward.
-Packages and class names have not changed.
+Packages, class names, the set of artifacts and configuration properties did not change.
 Therefore, you will most likely only need to change the project build configuration.
 
 ==== TL;DR
 
 1. `groupId` of all artifacts now starts with `io.thorntail` prefix, replacing the previous value of `org.wildfly.swarm`
 2. The Maven plugin also has a new `artifactId`: `thorntail-maven-plugin`
-3. The suffix of a generated uberjar has changed to `-thorntail.jar`,
+3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow jars] has changed to `-thorntail.jar`,
 
 ==== Five Steps to Migrate You Maven Project
 
