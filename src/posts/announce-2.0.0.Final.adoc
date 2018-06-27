@@ -1,0 +1,115 @@
+---
+title: Announcing Thorntail 2.0.0.Final
+publishDate: 2018-06-27
+modifyDate: 2018-06-27
+author: The Thornail Team
+layout: post.jade
+---
+
+== Thorntail 2.0.0.Final
+
+Bye WildFly Swarm and Hello _Thorntail_! This release brings us new name and versioning but it's only new clothes for the same great project
+
+=== What's New?
+
+* New name: Thorntail
+* New versioning: we give up the old YYYY.MM.VV release number format to go back with a classical version numbering
+
+++++
+<!-- more -->
+++++
+
+
+== Eclipse MicroProfile support enhancement
+
+* This version introduce first step for MicroProfile 1.3
+* Thorntail now provides an implementation for the new Microprofile OpenTracing specification
+* MicroProfile Rest client now support CDI interceptor
+
+
+== Changelog
+Release notes for 2.0.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337750[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/THORN-1473[THORN-1473]] Shrinkwrap High Memory Usage on Startup (Done)
+* [https://issues.jboss.org/browse/THORN-1774[THORN-1774]] Wildfly Swarm Security Constraints configured in YAML behave different than in WEB.XML (Done)
+* [https://issues.jboss.org/browse/THORN-2015[THORN-2015]] old version of org.wildfly.swarm:config-api-runtime gets pulled in transitively in certain situations (Done)
+* [https://issues.jboss.org/browse/THORN-2021[THORN-2021]] Dependencies from a Dependency Tree are not in the classpath (Done)
+* [https://issues.jboss.org/browse/THORN-2050[THORN-2050]] MP metrics: can't inject MetricRegistry for the Base and Vendor scopes (Done)
+* [https://issues.jboss.org/browse/THORN-2051[THORN-2051]] MP metrics: MetricRegistry.getTimers and similar methods don't filter by type, leading to ClassCastExceptions (Done)
+* [https://issues.jboss.org/browse/THORN-2053[THORN-2053]] MP Metrics API module does not declare a dependency on javax.enterprise.api (Done)
+* [https://issues.jboss.org/browse/THORN-2082[THORN-2082]] Thorntail Maven plugin uses wrong classifier name for packaging and multistart (Done)
+
+=== Epic
+* [https://issues.jboss.org/browse/THORN-1687[THORN-1687]] Any work related to MicroProfile 1.3 impl (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/THORN-1691[THORN-1691]] MP OpenTracing impl (Done)
+* [https://issues.jboss.org/browse/THORN-1942[THORN-1942]] Avoid releasing microprofile-tcks to accelerate and also minimize the risk of failing the release process (Done)
+* [https://issues.jboss.org/browse/THORN-2005[THORN-2005]] Support configuring multiple Keycloak realms (Done)
+* [https://issues.jboss.org/browse/THORN-2020[THORN-2020]] add the "jaeger" fraction to the supported profile (Done)
+* [https://issues.jboss.org/browse/THORN-2030[THORN-2030]] MicroProfile Rest Client - CDI interceptors support (Done)
+* [https://issues.jboss.org/browse/THORN-2031[THORN-2031]] Project Rename and Migration (Done)
+* [https://issues.jboss.org/browse/THORN-2035[THORN-2035]] Document MP Rest Client CDI interceptors support (Done)
+* [https://issues.jboss.org/browse/THORN-2039[THORN-2039]] Create Keycloak Multitenancy demo (Done)
+* [https://issues.jboss.org/browse/THORN-2048[THORN-2048]] Project rename - fabric8-maven-plugin updates (Done)
+* [https://issues.jboss.org/browse/THORN-2055[THORN-2055]] Reflect project rename and migration in examples (Done)
+* [https://issues.jboss.org/browse/THORN-2056[THORN-2056]] Rename pre-built hollow JARs (Done)
+* [https://issues.jboss.org/browse/THORN-2057[THORN-2057]] Project rename and migration - deep docs review (Done)
+* [https://issues.jboss.org/browse/THORN-2058[THORN-2058]] Project rename - change the uberjar suffix (Done)
+* [https://issues.jboss.org/browse/THORN-2059[THORN-2059]] Custom KeyCloak theme modules can not be loaded  (Done)
+* [https://issues.jboss.org/browse/THORN-2060[THORN-2060]] Project Rename - replace "WildFly Swarm" in log messages (Done)
+* [https://issues.jboss.org/browse/THORN-2084[THORN-2084]] Investigate if the audit file can be set up at the elytron config level and do not auto-create it if yes (Done)
+
+=== Library Upgrade
+* [https://issues.jboss.org/browse/THORN-1939[THORN-1939]] Update keycloak dependency to 3.4.3.Final (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/THORN-2027[THORN-2027]] MP FT - activate CDI request context during @Asynchronous method invocation (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/THORN-2036[THORN-2036]] Add autodetect to MicroProfile Metrics, OpenApi and RestClient (Done)
+* [https://issues.jboss.org/browse/THORN-2038[THORN-2038]] Keycloak Multitenancy resolver should use 'startsWith' or regex instead of 'equals' checks (Done)
+* [https://issues.jboss.org/browse/THORN-2041[THORN-2041]] Add support for Keycloak for Teiid OData web application (Done)
+* [https://issues.jboss.org/browse/THORN-2068[THORN-2068]] MicroProfile Metrics - support MicroProfile Rest Client proxies interception (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#thorntail`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/THORN[JIRA].
+
+Examples are available in https://github.com/thorntail/thorntail-examples/tree/2.0.0.Final
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2.0.0.Final/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Examples
+* sberyozkin
+* Sergey Beryozkin
+* Martin Kouba
+* Antoine Sabot-Durand
+* Michal Szynkiewicz
+
+=== Core
+* sberyozkin
+* Sergey Beryozkin
+* Ken Finnigan
+* George Gastaldi
+* Martin Kouba
+* Phillip Kruger
+* Pavol Loffay
+* Sam McCollum
+* Bob McWhirter
+* Tomas Radej
+* Ramesh Reddy
+* Antoine Sabot-Durand
+* Dennis Schwarz
+* Michał Szynkiewicz
+* Ladislav Thon
