@@ -32,7 +32,7 @@ Therefore, you will most likely only need to change the project build configurat
 
 1. `groupId` of all artifacts now starts with `io.thorntail` prefix, replacing the previous value of `org.wildfly.swarm`
 2. The Maven plugin also has a new `artifactId`: `thorntail-maven-plugin`
-3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow jars] has changed to `-thorntail.jar`,
+3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow JARs] has changed to `-thorntail.jar`,
 
 ==== Five Steps to Migrate You Maven Project
 
@@ -79,6 +79,30 @@ Therefore, you will most likely only need to change the project build configurat
 4. The suffix of a generated uberjar has changed to `-thorntail.jar` so don't forget to change the command used to run your app, for example:
 +
  java -jar target/myexample-1.0.0-thorntail.jar
+
+==== Fabric8 Maven plugin changes
+
+If you use the Fabric8 Maven plugin to deploy your application to Kubernetes / OpenShift, you need to update to _3.5.40_.
+This is the first version that supports Thorntail v2.
+The feature set is identical to the Fabric8 Maven plugin support for WildFly Swarm.
+Here's a summary of names that you need to change if you refer to them directly:
+
+.Fabric8 Maven plugin changes
+|===
+|Fabric8 Maven plugin concept |WildFly Swarm |Thorntail v2
+
+|Docker image generator
+|`wildfly-swarm`
+|`thorntail-v2`
+
+|Health check enricher name
+|`f8-wildfly-swarm-health-check`
+|`f8-thorntail-v2-health-check`
+
+|Reference to health check enricher in `pom.xml`
+|`<wildfly-swarm-health-check>`
+|`<thorntail-v2-health-check>`
+|===
 
 == Changelog
 Release notes for 2.0.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337750[here].
