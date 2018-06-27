@@ -17,7 +17,7 @@
     "metalsmith-collections": "^0.7.0",
     "metalsmith-pagination": "1.4.0",
     "metalsmith-drafts": "0.0.1",
-    "metalsmith-better-excerpts":"0.1.7",
+    "metalsmith-better-excerpts": "0.1.7",
     "metalsmith-feed": "^0.2.0",
     "metalsmith-gist": "^0.3.0",
     "metalsmith-if": "^0.1.1",
