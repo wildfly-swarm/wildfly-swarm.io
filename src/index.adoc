@@ -8,7 +8,7 @@ layout: index.jade
   <div class="container overflow-h">
     <div class="row">
       <span>
-      WildFly Swarm offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
+      Thorntail offers an innovative approach to packaging and running Java EE applications by packaging them with just enough of the
       server runtime to "java -jar" your application. It's MicroProfile compatible, too. And, it's all much, much cooler than that ...
       </span>
     </div>
@@ -49,7 +49,7 @@ layout: index.jade
         <div class="col-md-4">
           <h3><i class="fa fa-code" aria-hidden="true" style="font-size:24px"></i> Code Examples</h3>
           <p>We provide plenty of examples on how to use existing Java EE API's and components to support microservice architectures.</p>
-          <p><a href="https://github.com/wildfly-swarm/wildfly-swarm-examples" class="btn btn-primary">View Examples</a></p>
+          <p><a href="https://github.com/thorntail/thorntail-examples" class="btn btn-primary">View Examples</a></p>
         </div>
 
       </div>
@@ -74,7 +74,7 @@ layout: index.jade
 
 ++++
 
-Add dependencies for just the parts of WildFly that you need to your maven build.
+Add dependencies for just the parts of WildFly that you need to your Maven build
 (or don't add anything at all and the plugin will auto-detect for you).
 
 The following example assumes a simple JAX-RS RESTful application.
@@ -86,9 +86,9 @@ Import the BOM (_Bill of Materials_) dependency
 <dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>bom</artifactId>
-      <version>${version.wildfly.swarm}</version>
+      <version>${version.thorntail}</version>
       <scope>import</scope>
       <type>pom</type>
     </dependency>
@@ -101,7 +101,7 @@ Declare the fractions you need (or not, we'll do our best to auto-detect them fo
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
 </dependency>
 ----
@@ -115,14 +115,14 @@ Declare the fractions you need (or not, we'll do our best to auto-detect them fo
 
 ++++
 
-Add the WildFly Swarm maven plugin:
+Add the Thorntail Maven plugin:
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
-  <version>${version.wildfly.swarm}</version>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
+  <version>${version.thorntail}</version>
   <executions>
     <execution>
       <goals>
@@ -138,7 +138,7 @@ Generate the uberjar and run it:
 [source,bash]
 ----
 mvn package
-java -jar <myapp>-swarm.jar
+java -jar <myapp>-thorntail.jar
 ----
 
 
@@ -179,7 +179,7 @@ java -jar <myapp>-swarm.jar
     <i class="fa fa-cubes service-icon"></i>
     <div class="desc">
       <h3>Flexible</h3>
-      Simply specify WildFly Swarm maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
+      Simply specify Thorntail Maven dependencies to bundle just the parts of the Java EE 7 WildFly application server
       that you need. Don't use EJBs or JPA? Great, nothing is bundled unless you specify it!
       </div>
     </div>
