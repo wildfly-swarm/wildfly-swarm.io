@@ -6,13 +6,13 @@ layout: page.jade
 
 === Generally Speaking
 
-For the most part, WildFly Swarm is consumed through
+For the most part, Thorntail is consumed through
 Maven artifacts, resembling `pom.xml` entries such as
 
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
 </dependency>
 ----
@@ -25,9 +25,9 @@ need to specify versions of each component you bring in:
 <dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>bom<artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <type>pom</type>
       <scope>import</scope>
     </dependency>
@@ -45,44 +45,44 @@ We do provide a few directly downloadable and usable items:
 
 SwarmTool can be used to take an existing `.war` and "swarmify" it.
 
-link:/download/swarmtool[swarmtool.jar]
+link:/download/swarmtool[swarmtool-standalone.jar]
 
 ==== MicroProfile Server
 
 Our MicroProfile server can be used to run an existing MicroProfile-compliant
 `.war` file.
 
-link:/download/microprofile-hollowswarm[microprofile-hollowswarm.jar]
+link:/download/microprofile-hollow-thorntail[microprofile-hollow-thorntail.jar]
 
 ==== MicroProfile + JPA Server
 
 Our MicroProfile with JPA server can be used to run MicroProfile microservices that require JPA that
 are present in a `war` file.
 
-link:/download/microprofile-jpa-hollowswarm[microprofile-jpa-hollowswarm.jar]
+link:/download/microprofile-jpa-hollow-thorntail[microprofile-jpa-hollow-thorntail.jar]
 
 ==== Web Server
 
 Similar to the MicroProfile server,
-Web provides a Hollow jar that's equivalent to the Web Profile from Java EE.
+Web provides a hollow JAR that's equivalent to the Web Profile from Java EE.
 
-link:/download/web-swarm[web-swarm.jar]
+link:/download/web-hollow-thorntail[web-hollow-thorntail.jar]
 
 ==== Keycloak Server
 
 Our Keycloak standalone server may be used to run your own Keycloak easily.
 
-link:/download/keycloak-swarm[keycloak-swarm.jar]
+link:/download/keycloak-thorntail[keycloak-thorntail.jar]
 
 ==== Management Console Server
 
 Our runnable WildFly Management Console may be used to manage your
-WildFly Swarm application (if they include the `management` fraction).
+Thorntail application (if it includes the `management` fraction).
 
-link:/download/management-console-swarm[management-console-swarm.jar]
+link:/download/management-console-thorntail[management-console-thorntail.jar]
 
 ==== Swagger UI
 
 Our runnable Swagger UI server makes it easy to launch the Swagger UI.
 
-link:/download/swagger-ui-swarm[swagger-ui-swarm.jar]
+link:/download/swagger-ui-thorntail[swagger-ui-thorntail.jar]
