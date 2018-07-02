@@ -12,29 +12,35 @@ The new name of WildFly Swarm is _Thorntail_! Enjoy the freedom of flying high l
 
 === What's New?
 
-* Did we say we have a new name: Thorntail?
-* We have left the `YYYY.MM.VV` versioning scheme and switched to a more convenient `major.minor.micro` versioning
-* MicroProfile
-** Thorntail now provides an implementation of the https://github.com/eclipse/microprofile-opentracing[MicroProfile OpenTracing specification]
-** Thorntail MicroProfile REST Client implementation introduces a non-portable feature - CDI Interceptors Support, see docs http://docs.wildfly-swarm.io/2.0.0.Final/#_cdi_interceptors_support[for more information and examples]
+* Did we say we have a new name? Thorntail!
+* Migration Tips
+* CDI Interceptor support for MicroProfile REST Client
 
 ++++
 <!-- more -->
 ++++
 
-==== Migration Notes
+== New Name - Thorntail!
+
+Yes we finally completed the migration and can provide a release of Thorntail!
+
+As part of the name change we have left the `YYYY.MM.VV` versioning scheme in the past,
+switching to the more sensible `major.minor.micro` versioning.
+This will make it easier to represent stability and large changes in the version number alone.
+
+== Migration Notes
 
 Migration from WildFly Swarm 2018.5.0 to Thorntail 2.0.0.Final is straightforward.
 Packages, class names, the set of artifacts and configuration properties did not change.
 Therefore, you will most likely only need to change the project build configuration.
 
-==== TL;DR
+=== TL;DR
 
 1. `groupId` of all artifacts now starts with `io.thorntail` prefix, replacing the previous value of `org.wildfly.swarm`
 2. The Maven plugin also has a new `artifactId`: `thorntail-maven-plugin`
 3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow JARs] has changed to `-thorntail.jar`,
 
-==== Four Steps to Migrate Your Maven Project
+=== Four Steps to Migrate Your Maven Project
 
 1. Change `groupId` and version of the BOM:
 +
@@ -80,7 +86,7 @@ Therefore, you will most likely only need to change the project build configurat
 +
  java -jar target/myexample-1.0.0-thorntail.jar
 
-==== Fabric8 Maven plugin changes
+=== Fabric8 Maven plugin changes
 
 If you use the Fabric8 Maven plugin to deploy your application to Kubernetes / OpenShift, you need to update to _3.5.40_.
 This is the first version that supports Thorntail v2.
@@ -104,6 +110,12 @@ Here's a summary of names that you need to change if you refer to them directly:
 |`<thorntail-v2-health-check>`
 |===
 
+== CDI Interceptor support for MicroProfile REST Client
+
+We've added a non portable feature to MP REST Client that enables CDI Interceptors to be used on REST Client methods.
+
+Full details on the feature and how it works can be found http://docs.wildfly-swarm.io/2.0.0.Final/#_cdi_interceptors_support[here].
+
 == Changelog
 Release notes for 2.0.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12337750[here].
 
@@ -116,9 +128,6 @@ Release notes for 2.0.0.Final are available https://issues.jboss.org/secure/Rele
 * [https://issues.jboss.org/browse/THORN-2051[THORN-2051]] MP metrics: MetricRegistry.getTimers and similar methods don't filter by type, leading to ClassCastExceptions (Done)
 * [https://issues.jboss.org/browse/THORN-2053[THORN-2053]] MP Metrics API module does not declare a dependency on javax.enterprise.api (Done)
 * [https://issues.jboss.org/browse/THORN-2082[THORN-2082]] Thorntail Maven plugin uses wrong classifier name for packaging and multistart (Done)
-
-=== Epic
-* [https://issues.jboss.org/browse/THORN-1687[THORN-1687]] Any work related to MicroProfile 1.3 impl (Done)
 
 === Task
 * [https://issues.jboss.org/browse/THORN-1691[THORN-1691]] MP OpenTracing impl (Done)
@@ -168,14 +177,12 @@ Documentation for this release is available:
 We appreciate all of our contributors since the last release:
 
 === Examples
-* sberyozkin
 * Sergey Beryozkin
 * Martin Kouba
 * Antoine Sabot-Durand
 * Michal Szynkiewicz
 
 === Core
-* sberyozkin
 * Sergey Beryozkin
 * Ken Finnigan
 * George Gastaldi
