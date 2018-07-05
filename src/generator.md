@@ -19,9 +19,9 @@ Rightsize your Java EE microservice in a few clicks
 					<li>Choose the dependencies you need</li>
 					<li>Click on the Generate button to download the <i>{{getZipFileName(model)}}</i> file</li>
 					<li>Unzip the file in a directory of your choice</li>
-					<li>Run <code>mvn wildfly-swarm:run</code> in the unzipped directory</li>
+					<li>Run <code>mvn thorntail:run</code> in the unzipped directory</li>
 					<li ng-if="showInstructions(model)">Go to <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> and you should see the following message:<br/>
-					<code>Hello from WildFly Swarm!</code></li>
+					<code>Hello from Thorntail!</code></li>
 				</ol>
 				</p>
 			</div>		
