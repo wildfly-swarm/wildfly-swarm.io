@@ -40,7 +40,7 @@ Therefore, you will most likely only need to change the project build configurat
 2. The Maven plugin also has a new `artifactId`: `thorntail-maven-plugin`
 3. The suffix of generated http://docs.wildfly-swarm.io/2.0.0.Final/#uberjar[uberjars] and http://docs.wildfly-swarm.io/2.0.0.Final/#hollow-jar[hollow JARs] has changed to `-thorntail.jar`,
 
-=== Four Steps to Migrate Your Maven Project
+=== Five Steps to Migrate Your Maven Project
 
 1. Change `groupId` and version of the BOM:
 +
@@ -85,6 +85,10 @@ Therefore, you will most likely only need to change the project build configurat
 4. The suffix of a generated uberjar has changed to `-thorntail.jar` so don't forget to change the command used to run your app, for example:
 +
  java -jar target/myexample-1.0.0-thorntail.jar
+
+5. The Maven plugin name has changed, so if you invoke it from command line, don't forget to use the new name as well:
++
+ mvn thorntail:start
 
 === Fabric8 Maven plugin changes
 
