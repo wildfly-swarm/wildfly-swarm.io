@@ -95,7 +95,7 @@ git pull --rebase upstream master
 
 ### Discuss your planned changes (if you want feedback)
 
- * Google Group - https://groups.google.com/forum/#!forum/wildfly-swarm
+ * Google Group - https://groups.google.com/forum/#!forum/thorntail
  * IRC - irc://irc.freenode.org/wildfly-swarm
 
 ### Make sure there is a JIRA for the work

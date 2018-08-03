@@ -217,4 +217,4 @@ So, yeah, it's new and there may be creaks and groans as folks start
 to try it out. Please feel free to provide feedback or ask questions
 if you do. We're always happy to hear about experiences our community
 is having. Talk to us on freenode at \#wildfly-swarm, or in our
-https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group].
+https://groups.google.com/forum/#!forum/thorntail[Google Group].
