@@ -9,7 +9,7 @@ layout: post.jade
 == We've reached 2016.8.1! Say what?!
 
 Yes, we've released August.1!
-There was a discussion on our https://groups.google.com/forum/#!topic/wildfly-swarm/c7X3Rfjng6Q[Google Group] about six weeks ago regarding release naming,
+There was a discussion on our https://groups.google.com/forum/#!topic/thorntail/c7X3Rfjng6Q[Google Group] about six weeks ago regarding release naming,
 and here we are releasing the first in the line of that new naming.
 
 And yes, there was a problem with the original 2016.8, hence 2016.8.1!

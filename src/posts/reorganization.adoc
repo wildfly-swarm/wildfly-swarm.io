@@ -7,7 +7,7 @@ layout: post.jade
 ---
 
 After some hearty discussion at our face-to-face meeting in Newcastle, UK,
-along with continuing that discussion on our https://groups.google.com/forum/#!forum/wildfly-swarm[Google Group],
+along with continuing that discussion on our https://groups.google.com/forum/#!forum/thorntail[Google Group],
 we've decided to split apart our monolithic repository into reasonable slices.
 
 Part of the motivation for this split is related to how we version things.  Since

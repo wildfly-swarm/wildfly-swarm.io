@@ -9,7 +9,7 @@ layout: post.jade
 == It's September, so that means 2016.9 is out!
 
 Continuing our trend of monthly releases, as discussed on
-the https://groups.google.com/forum/#!topic/wildfly-swarm/c7X3Rfjng6Q[Google Group], 
+the https://groups.google.com/forum/#!topic/thorntail/c7X3Rfjng6Q[Google Group],
 we're pleased to release 2016.9, celebrating September, a month never
 mentioned by Shakespeare in any of his plays.
 
