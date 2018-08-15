@@ -1,0 +1,133 @@
+---
+title: Announcing Thorntail 2.1.0.Final
+publishDate: 2018-08-16
+modifyDate: 2018-08-16
+author: The Thornail Team
+layout: post.jade
+---
+
+== Thorntail 2.1.0.Final
+
+On this day in 1896 Gold was first discovered in Klondike, found at Bonanza Creek, Alaska by George Carmack.
+
+And now 122 years later, 2.1.0.Final is released!
+
+=== What's New?
+
+* MicroProfile 1.3 with SmallRye
+* Old config-api-runtime fixed
+* Consul update
+
+++++
+<!-- more -->
+++++
+
+== MicroProfile 1.3 with SmallRye
+
+Though the version of MicroProfile being implemented in Thorntail hasn't changed, where it's coming from has!
+
+With this release we've moved to using implementations from [https://www.smallrye.io/]SmallRye.
+SmallRye intends to provide a shareable MicroProfile implementation across multiple vendors,
+which is why we've moved to utilizing it within Thorntail.
+
+If you'd like to help us implement MicroProfile in SmallRye,
+check out the projects at https://github.com/smallrye/.
+
+== Old config-api-runtime fixed
+
+In the last release there was a problem with older WildFly Swarm config-api-runtime artifacts appearing in the dependency tree,
+causing conflicts with the latest Thorntail ones.
+
+We're happy to say that's now resolved in 2.1.0.Final!
+
+== Consul update
+
+Thanks to Dennis Schwarz from the community for providing a PR to update Consul to 1.2.1 and also fix some issues with Health Checks!
+
+== Changelog
+Release notes for 2.1.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338182[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/THORN-1529[THORN-1529]] Exception mapperfor JsonParseException is ignored (Done)
+* [https://issues.jboss.org/browse/THORN-1531[THORN-1531]] Following instructions at wildfly-swarm-example/ribbon-consul doesn't yield desirable result (Done)
+* [https://issues.jboss.org/browse/THORN-1647[THORN-1647]] Plugin topology-consul is getting error and it does not allow the health checks (Done)
+* [https://issues.jboss.org/browse/THORN-1876[THORN-1876]] Microprofile Health - Warn security (Done)
+* [https://issues.jboss.org/browse/THORN-1955[THORN-1955]] MP JWT: can't use different roles for different methods with the same @Path but different @Produces (Done)
+* [https://issues.jboss.org/browse/THORN-1968[THORN-1968]] MP Health Check /health throws NPE if HealthCheck implementation does not specify state (Done)
+* [https://issues.jboss.org/browse/THORN-1972[THORN-1972]] MP JWT: can't use different roles for different methods with parameterized @Paths that share a common prefix (Done)
+* [https://issues.jboss.org/browse/THORN-2015[THORN-2015]] old version of org.wildfly.swarm:config-api-runtime gets pulled in transitively in certain situations (Done)
+* [https://issues.jboss.org/browse/THORN-2047[THORN-2047]] Startup fail with management-console and openapi fraction (Done)
+* [https://issues.jboss.org/browse/THORN-2083[THORN-2083]] MP FT - Fallback is not called when used with CircuitBreaker and Retry policy (Done)
+* [https://issues.jboss.org/browse/THORN-2087[THORN-2087]] microprofile-fault-tolerance depends on slf4j-simple (wrong scope?) (Done)
+* [https://issues.jboss.org/browse/THORN-2093[THORN-2093]] Injection of MP-Rest-Client fails (Done)
+* [https://issues.jboss.org/browse/THORN-2104[THORN-2104]] 2.0.1.Final-SNAPSHOT build fails if 'swarm.product.build' is enabled (Done)
+* [https://issues.jboss.org/browse/THORN-2110[THORN-2110]] MPJWTProducer's currentPrincipal holding old values (Done)
+
+=== Enhancement
+* [https://issues.jboss.org/browse/THORN-1540[THORN-1540]] Add in JDBC driver auto-detect support for Derby Embedded (Done)
+* [https://issues.jboss.org/browse/THORN-2091[THORN-2091]] Maven plugin for automated migration from WildFly Swarm to Thorntail (Done)
+* [https://issues.jboss.org/browse/THORN-2103[THORN-2103]] Switch to using SmallRye Config as implementation (Done)
+
+=== Task
+* [https://issues.jboss.org/browse/THORN-1941[THORN-1941]] after deprecating the monitor fraction, we should update boosters to use MP health check instead (Done)
+* [https://issues.jboss.org/browse/THORN-2061[THORN-2061]] Migrate MP Metrics implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2062[THORN-2062]] Migrate MP Health implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2063[THORN-2063]] Migrate MP Fault Tolerance implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2064[THORN-2064]] Migrate MP JWT implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2065[THORN-2065]] Migrate MP Opentracing implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2066[THORN-2066]] Migrate MP Open API implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2067[THORN-2067]] Migrate MP REST Client implementation to SmallRye (Done)
+* [https://issues.jboss.org/browse/THORN-2070[THORN-2070]] KeycloakThemeCustomizer does not need to explode keycloak-themes.jar to the local temp folder (Done)
+* [https://issues.jboss.org/browse/THORN-2088[THORN-2088]] Update keycloak-config-api to use 3.4.3.Final Keycloak version (Done)
+* [https://issues.jboss.org/browse/THORN-2089[THORN-2089]] upgrade wildfly-nosql to 1.0.0.Beta1 and nosql-config-api to 1.3.1 (Done)
+* [https://issues.jboss.org/browse/THORN-2092[THORN-2092]] Make Jaeger fraction reusable for any tracing fraction (Done)
+* [https://issues.jboss.org/browse/THORN-2096[THORN-2096]] make sure all Config APIs depend on the same (latest) version of Config API Runtime (Done)
+* [https://issues.jboss.org/browse/THORN-2117[THORN-2117]] upgrade wildfly-nosql to 1.0.0.Final (Done)
+* [https://issues.jboss.org/browse/THORN-2120[THORN-2120]] Examples README files have outdated run instructions (Done)
+* [https://issues.jboss.org/browse/THORN-2132[THORN-2132]] Release thorntail-fraction-plugin 88 and update Thorntail to use it (Done)
+
+=== Documentation
+* [https://issues.jboss.org/browse/THORN-2004[THORN-2004]] Document some fallback internals in Microprofile implementation when using @Asynchronous and @Bulkhead (Done)
+
+=== Feature Request
+* [https://issues.jboss.org/browse/THORN-2034[THORN-2034]] Introduce JOSE Fraction (Done)
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#thorntail`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/THORN[JIRA].
+
+Examples are available in https://github.com/thorntail/thorntail-examples/tree/2.1.0.Final
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2.1.0.Final/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Examples
+* Sergey Beryozkin
+* Ken Finnigan
+* Pavol Loffay
+* Sven Ruppert
+
+=== Core
+* Sergey Beryozkin
+* Tobias Dittrich
+* Ken Finnigan
+* Martin Kouba
+* Pavol Loffay
+* Scott M Stark
+* Bartosz Majsak
+* Scott Marlow
+* Matej Novotny
+* Tomas Radej
+* Antoine Sabot-Durand
+* Dennis Schwarz
+* Michał Szynkiewicz
+* Ladislav Thon
+* Eric Wittmann

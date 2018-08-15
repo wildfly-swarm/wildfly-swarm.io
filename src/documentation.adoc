@@ -1,6 +1,6 @@
 ---
 title: Documentation
-lastUpdate: 2017-06-02
+lastUpdate: 2017-08-16
 layout: plain-page.jade
 ---
 
@@ -19,8 +19,8 @@ layout: plain-page.jade
 
 == User Guide
 
-If you are new to WildFly Swarm, this is the best place to start. Learn
-what WildFly Swarm is and how to use it to build your first Java EE
+If you are new to Thorntail, this is the best place to start. Learn
+what Thorntail is and how to use it to build your first Java EE
 Microservice.
 
 [pass]
@@ -42,7 +42,7 @@ Microservice.
     	  <div class="tab-pane fade in active" id="released">
           <p>The documentation of the latest stable release:<p>
           <ul>
-            <li><a href="/docs/2-0-0-Final">2.0.0.Final Documentation</a></li>
+            <li><a href="/docs/2-1-0-Final">2.1.0.Final Documentation</a></li>
           </ul>
         </div>
         <div class="tab-pane fade in" id="snapshot">
@@ -54,30 +54,10 @@ Microservice.
         <div class="tab-pane fade in" id="older">
           <p>The documentation for previous releases:<p>
           <ul>
+            <li><a href="/docs/2-0-0-Final">2.0.0.Final Documentation</a></li>
+          </ul>
+          <ul>
             <li><a href="/docs/2018-5-0">2018.5.0 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2018-4-1">2018.4.1 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2018-3-3">2018.3.3 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2018-2-0">2018.2.0 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2018-1-0">2018.1.0 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2017-12-1">2017.12.1 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/docs/2017-11-0">2017.11.0 Documentation</a></li>
-          </ul>
-          <ul>
-            <li><a href="/howto/2017-10-0">HOWTO</a></li>
-            <li><a href="/refguide/2017-10-0">Reference Guide</a></li>
-            <li><a href="/userguide/2017-10-0">User Guide</a></li>
           </ul>
       </div>
       </div>
@@ -112,7 +92,7 @@ Microservice.
   <div class="service">
   <div class="desc">
     <h3>Source Code</h3>
-    <i class="fa fa-github" aria-hidden="true"></i> All the source is available on <a href="https://github.com/wildfly-swarm/wildfly-swarm">Github</a>
+    <i class="fa fa-github" aria-hidden="true"></i> All the source is available on <a href="https://github.com/thorntail/thorntail">Github</a>
     </div>
   </div>
 </div>
@@ -121,7 +101,7 @@ Microservice.
     <div class="service">
       <div class="desc">
         <h3>Examples</h3>
-        Technology specific <a href="https://github.com/wildfly-swarm/wildfly-swarm-examples">examples</a>
+        Technology specific <a href="https://github.com/thorntail/thorntail-examples">examples</a>
       </div>
     </div>
   </div>
