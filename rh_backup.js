@@ -20,9 +20,9 @@ script.
     /*
     * Assign values to Adobe Analytics properties
     */
-    s.channel = "wildflyswarm| {{Channel}}" // The channel is our top level classification
-    s.server = "wildflyswarm" // The server is ???
-    s.pageName = "wildflyswarm| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
+    s.channel = "thorntail| {{Channel}}" // The channel is our top level classification
+    s.server = "thorntail" // The server is ???
+    s.pageName = "thorntail| {{Channel}} | " + (arr[arr.length -1] || "homepage"); // pageName is wildflyswarm | <Channel> | {page_name}. {page_name} has index.html removed
     s.prop2 = s.eVar22 = "en"; // prop2/eVar22 is the ISO 639-1 language code
     s.prop4 = s.eVar23 = encodeURI(location.search); //prop4/eVar23 is the query string of the page
 

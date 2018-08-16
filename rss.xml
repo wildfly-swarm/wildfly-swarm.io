@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WildFly Swarm]]></title><description><![CDATA[WildFly Swarm]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 05 Jul 2018 17:38:22 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 05 Jul 2018 17:38:13 GMT</pubDate><item><title><![CDATA[Announcing Thorntail 2.0.0.Final]]></title><description><![CDATA[<div class="sect1">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Thorntail]]></title><description><![CDATA[Thorntail]]></description><link>https://wildfly-swarm.io</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 16 Aug 2018 13:16:13 GMT</lastBuildDate><atom:link href="https://wildfly-swarm.io/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 16 Aug 2018 13:16:03 GMT</pubDate><item><title><![CDATA[Announcing Thorntail 2.1.0.Final]]></title><description><![CDATA[<div class="sect1">
+<h2 id="_thorntail_2_1_0_final">Thorntail 2.1.0.Final</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On this day in 1896 Gold was first discovered in Klondike, found at Bonanza Creek, Alaska by George Carmack.</p>
+</div>
+<div class="paragraph">
+<p>And now 122 years later, 2.1.0.Final is released!</p>
+</div>
+<div class="sect2">
+<h3 id="_what_s_new">What’s New?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MicroProfile 1.3 with SmallRye</p>
+</li>
+<li>
+<p>Automated migration from WildFly Swarm</p>
+</li>
+<li>
+<p>OpenTracing and Jaeger changes</p>
+</li>
+<li>
+<p>New JOSE fraction</p>
+</li>
+<li>
+<p>Old <code>config-api-runtime</code> fixed</p>
+</li>
+<li>
+<p>Consul update</p>
+</li>
+</ul>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-thorntail-2-1-0-final</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-thorntail-2-1-0-final</guid><dc:creator><![CDATA[The Thornail Team]]></dc:creator><pubDate>Thu, 16 Aug 2018 05:00:00 GMT</pubDate></item><item><title><![CDATA[Announcing Thorntail 2.0.0.Final]]></title><description><![CDATA[<div class="sect1">
 <h2 id="_thorntail_2_0_0_final">Thorntail 2.0.0.Final</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -520,18 +552,4 @@ for microservice type applications.</p>
 <p>Each portion of the appserver is referred to as a <em>fraction</em>, which many times
 maps to a <code>subsystem</code> from WildFly, but also may include other discrete chunks
 of non-Java EE or WildFly functionality, such as <em>Swagger</em>, or <em>Jolokia</em>.</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-2</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-2</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Wed, 01 Mar 2017 05:00:00 GMT</pubDate></item><item><title><![CDATA[Running Java EE 7 Samples with WildFly Swarm]]></title><description><![CDATA[<div class="paragraph">
-<p>The <a href="https://github.com/javaee-samples/javaee7-samples">Java EE 7 Samples</a>
-project contains a set of example applications demonstrating various aspects
-of Java EE 7. A lot of these applications also contain automated tests.
-These are built using <a href="http://arquillian.org/">Arquillian</a> and are currently
-set up for running with <a href="http://wildfly.org/">WildFly</a>,
-<a href="https://glassfish.java.net/">GlassFish</a>, <a href="http://tomcat.apache.org/">Tomcat</a>
-(just a subset), <a href="http://tomee.apache.org/">TomEE</a>,
-<a href="https://developer.ibm.com/wasdev/websphere-liberty/">WebSphere Liberty</a> and
-<a href="https://www.oracle.com/middleware/weblogic/">WebLogic</a>.</p>
-</div>
-<div class="paragraph">
-<p>In this post, let’s examine how to run Java EE 7 Samples tests with WildFly
-Swarm!</p>
-</div>]]></description><link>https://wildfly-swarm.io/posts/running-java-ee-7-samples-with-wildfly-swarm</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/running-java-ee-7-samples-with-wildfly-swarm</guid><dc:creator><![CDATA[Ladislav Thon]]></dc:creator><pubDate>Tue, 28 Feb 2017 05:00:00 GMT</pubDate></item></channel></rss>
+</div>]]></description><link>https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-2</link><guid isPermaLink="true">https://wildfly-swarm.io/posts/announcing-wildfly-swarm-2017-3-2</guid><dc:creator><![CDATA[The WildFly Swarm Team]]></dc:creator><pubDate>Wed, 01 Mar 2017 05:00:00 GMT</pubDate></item></channel></rss>
