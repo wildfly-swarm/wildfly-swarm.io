@@ -15,7 +15,9 @@ And now 122 years later, 2.1.0.Final is released!
 === What's New?
 
 * MicroProfile 1.3 with SmallRye
-* Old config-api-runtime fixed
+* Automated migration from WildFly Swarm
+* OpenTracing and Jaeger changes
+* Old `config-api-runtime` fixed
 * Consul update
 
 ++++
@@ -26,17 +28,46 @@ And now 122 years later, 2.1.0.Final is released!
 
 Though the version of MicroProfile being implemented in Thorntail hasn't changed, where it's coming from has!
 
-With this release we've moved to using implementations from [https://www.smallrye.io/]SmallRye.
+With this release we've moved to using implementations from https://www.smallrye.io/[SmallRye].
 SmallRye intends to provide a shareable MicroProfile implementation across multiple vendors,
 which is why we've moved to utilizing it within Thorntail.
 
 If you'd like to help us implement MicroProfile in SmallRye,
 check out the projects at https://github.com/smallrye/.
 
-== Old config-api-runtime fixed
+== Automated migration from WildFly Swarm
 
-In the last release there was a problem with older WildFly Swarm config-api-runtime artifacts appearing in the dependency tree,
-causing conflicts with the latest Thorntail ones.
+The migration process from WildFly Swarm, as described in the link:/posts/announcing-thorntail-2-0-0-final[2.0.0.Final post], can be mostly automated.
+That's exactly what we did in this release!
+
+If you are still on WildFly Swarm 2018.5.0, or one of the previous releases, you can now migrate to Thorntail by running
+
+[source,bash]
+----
+mvn io.thorntail:thorntail-maven-plugin:2.1.0.Final:migrate-from-wildfly-swarm
+----
+
+If you only want to see the migration actions, without actually performing them, add `-DdryRun=true`.
+
+If you want to migrate to the previous 2.0.0.Final version, add `-DtargetVersion=2.0.0.Final`.
+
+And if you encounter any issue, please let us know!
+
+== OpenTracing and Jaeger changes
+
+*WARNING: Breaking changes!*
+
+Previously, the `jaeger` fraction brought in the `opentracing` fraction automatically.
+To better support MicroProfile OpenTracing, we've decoupled these two fractions.
+
+Now, the `jaeger` fraction is only used to provide tracer configuration.
+You are expected to bring in the tracing fraction manually; either the old `opentracing`, or the new `microprofile-opentracing`.
+
+If you previously had a dependency on the `jaeger` fraction and not on the `opentracing` fraction, you have to add an explicit dependency on the `opentracing` fraction to retain the same behavior.
+
+== Old `config-api-runtime` fixed
+
+In the last release, there was a problem with older WildFly Swarm `config-api-runtime` artifacts appearing in the dependency tree, causing conflicts with the latest Thorntail ones.
 
 We're happy to say that's now resolved in 2.1.0.Final!
 
