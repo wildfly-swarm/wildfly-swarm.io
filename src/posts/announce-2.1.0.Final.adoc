@@ -19,6 +19,7 @@ And now 122 years later, 2.1.0.Final is released!
 * OpenTracing and Jaeger changes
 * Old `config-api-runtime` fixed
 * Consul update
+* New JOSE fraction
 
 ++++
 <!-- more -->
@@ -74,6 +75,11 @@ We're happy to say that's now resolved in 2.1.0.Final!
 == Consul update
 
 Thanks to Dennis Schwarz from the community for providing a PR to update Consul to 1.2.1 and also fix some issues with Health Checks!
+
+== JOSE fraction
+
+Have some serious fun with a new https://datatracker.ietf.org/wg/jose/documents/[JOSE] fraction and add a new dimension to your application's security.
+Check out the https://github.com/thorntail/thorntail-examples/tree/master/security/jose[security/jose] example. 
 
 == Changelog
 Release notes for 2.1.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338182[here].
