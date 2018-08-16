@@ -17,9 +17,9 @@ And now 122 years later, 2.1.0.Final is released!
 * MicroProfile 1.3 with SmallRye
 * Automated migration from WildFly Swarm
 * OpenTracing and Jaeger changes
+* New JOSE fraction
 * Old `config-api-runtime` fixed
 * Consul update
-* New JOSE fraction
 
 ++++
 <!-- more -->
@@ -66,6 +66,11 @@ You are expected to bring in the tracing fraction manually; either the old `open
 
 If you previously had a dependency on the `jaeger` fraction and not on the `opentracing` fraction, you have to add an explicit dependency on the `opentracing` fraction to retain the same behavior.
 
+== JOSE fraction
+
+Have some serious fun with a new https://datatracker.ietf.org/wg/jose/documents/[JOSE] fraction and add a new dimension to your application's security.
+Check out the https://github.com/thorntail/thorntail-examples/tree/master/security/jose[security/jose] example.
+
 == Old `config-api-runtime` fixed
 
 In the last release, there was a problem with older WildFly Swarm `config-api-runtime` artifacts appearing in the dependency tree, causing conflicts with the latest Thorntail ones.
@@ -75,11 +80,6 @@ We're happy to say that's now resolved in 2.1.0.Final!
 == Consul update
 
 Thanks to Dennis Schwarz from the community for providing a PR to update Consul to 1.2.1 and also fix some issues with Health Checks!
-
-== JOSE fraction
-
-Have some serious fun with a new https://datatracker.ietf.org/wg/jose/documents/[JOSE] fraction and add a new dimension to your application's security.
-Check out the https://github.com/thorntail/thorntail-examples/tree/master/security/jose[security/jose] example. 
 
 == Changelog
 Release notes for 2.1.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338182[here].
