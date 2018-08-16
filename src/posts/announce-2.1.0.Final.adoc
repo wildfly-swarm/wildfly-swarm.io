@@ -47,7 +47,8 @@ Thanks to Dennis Schwarz from the community for providing a PR to update Consul 
 
 == JOSE fraction
 
-Have some serious fun with a new JOSE (https://datatracker.ietf.org/wg/jose/documents/) fraction and add a new dimension to your application's security. Check out a new security/jose example. 
+Have some serious fun with a new https://datatracker.ietf.org/wg/jose/documents/[JOSE] fraction and add a new dimension to your application's security.
+Check out the https://github.com/thorntail/thorntail-examples/tree/master/security/jose[security/jose] example. 
 
 == Changelog
 Release notes for 2.1.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338182[here].
