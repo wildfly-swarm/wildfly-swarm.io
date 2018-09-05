@@ -1,0 +1,79 @@
+---
+title: Announcing Thorntail 2.2.0.Final
+publishDate: 2018-09-05
+modifyDate: 2018-09-05
+author: The Thornail Team
+layout: post.jade
+---
+
+== Thorntail 2.2.0.Final
+
+Coming through! Make way for Thorntail 2.2.0.Final!
+
+=== What's New?
+
+This release contains a bunch of bugfixes focused mainly around MicroProfile.
+Metrics, JWT, OpenAPI and OpenTracing have all gotten their share of love.
+MicroProfile RestClient is now in supported profile and we have looked into the `Swarm main()` in IDE.
+Below is the full changelog.
+
+== Changelog
+Release notes for 2.2.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338834	[here].
+
+=== Bug
+* [https://issues.jboss.org/browse/THORN-1564[THORN-1564]] Wildfly-Swarm + Logstash formatter-properties costum metadata (Done)
+* [https://issues.jboss.org/browse/THORN-1999[THORN-1999]] The /openapi endpoint needs both query param *and* Accept header to return JSON (Done)
+* [https://issues.jboss.org/browse/THORN-2136[THORN-2136]] Unable to run Swarm main() in IDE (Done)
+* [https://issues.jboss.org/browse/THORN-2137[THORN-2137]] After upgrading to 2.1.0.Final metrics stoped working (Done)
+* [https://issues.jboss.org/browse/THORN-2142[THORN-2142]] MP JWT: resource methods without security annotations are always allowed (Done)
+* [https://issues.jboss.org/browse/THORN-2143[THORN-2143]] MP JWT: using * in @RolesAllowed doesn't work (Done)
+* [https://issues.jboss.org/browse/THORN-2144[THORN-2144]] MP JWT: configuring token expiration grace period via project-defaults.yml doesn't work (Done)
+* [https://issues.jboss.org/browse/THORN-2148[THORN-2148]] Properties file with a properties hierarchy not read consistently correctly if a node has both a value and children (Done)
+* [https://issues.jboss.org/browse/THORN-2154[THORN-2154]] NPE in MetricsHttpHandler.handleRequest (Done)
+* [https://issues.jboss.org/browse/THORN-2155[THORN-2155]] Add PackageFractionDetector to microprofile-opentracing (Done)
+ 
+=== Task
+* [https://issues.jboss.org/browse/THORN-1969[THORN-1969]] investigate switching to RxJava 1.3.0 (Done)
+* [https://issues.jboss.org/browse/THORN-2133[THORN-2133]] Add "resource-adapters" fraction to product (Done)
+* [https://issues.jboss.org/browse/THORN-2139[THORN-2139]] Update messages prefix for logging (Done)
+* [https://issues.jboss.org/browse/THORN-2140[THORN-2140]] Move Microprofile RestClient into the supported profile (Done)
+* [https://issues.jboss.org/browse/THORN-2141[THORN-2141]] Make netflix archaius and hystrix fractions deprecated (Done)
+* [https://issues.jboss.org/browse/THORN-2147[THORN-2147]] Update jaeger.gson version in build-parent pom to 2.8.2 (Done)
+* [https://issues.jboss.org/browse/THORN-2151[THORN-2151]] Update smallrye-config, smallrye-health and smallrye-opentracing versions (Done)
+ 
+=== Component Upgrade
+* [https://issues.jboss.org/browse/THORN-2146[THORN-2146]] Update SmallRye Metrics (Done)
+ 
+=== Enhancement
+* [https://issues.jboss.org/browse/THORN-2153[THORN-2153]] the opentracing-tracerresolver fraction should be internal and stable (Done)
+
+
+
+== Resources
+
+Per usual, we tend to hang out on `irc.freenode.net` in `#thorntail`.
+
+All bug and feature-tracking is kept in http://issues.jboss.org/browse/THORN[JIRA].
+
+Examples are available in https://github.com/thorntail/thorntail-examples/tree/2.2.0.Final
+
+Documentation for this release is available:
+
+* link:http://docs.wildfly-swarm.io/2.2.0.Final/[Documentation]
+
+== Thank you, Contributors!
+
+We appreciate all of our contributors since the last release:
+
+=== Core
+* Sergey Beryozkin
+* Ken Finnigan
+* Michael Kotten
+* Michał Szynkiewicz
+* Ladislav Thon
+
+=== Examples
+* Ken Finnigan
+* Pavol Loffay
+* Matej Novotny
+
