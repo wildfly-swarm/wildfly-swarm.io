@@ -2,7 +2,7 @@
 title: Announcing Thorntail 2.0.0.Final
 publishDate: 2018-06-27
 modifyDate: 2018-06-27
-author: The Thornail Team
+author: The Thorntail Team
 layout: post.jade
 ---
 
