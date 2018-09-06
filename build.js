@@ -156,7 +156,8 @@ function build() {
       '/docs/2018-5-0': 'http://docs.wildfly-swarm.io/2018.5.0',
       '/docs/2-0-0-Final': 'http://docs.wildfly-swarm.io/2.0.0.Final',
       '/docs/2-1-0-Final': 'http://docs.wildfly-swarm.io/2.1.0.Final',
-      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2.2.0.Final-SNAPSHOT',
+      '/docs/2-2-0-Final': 'http://docs.wildfly-swarm.io/2.2.0.Final',
+      '/docs/HEAD': 'http://docs.wildfly-swarm.io/2.3.0.Final-SNAPSHOT',
 }))
 
 

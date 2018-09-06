@@ -42,7 +42,7 @@ Microservice.
     	  <div class="tab-pane fade in active" id="released">
           <p>The documentation of the latest stable release:<p>
           <ul>
-            <li><a href="/docs/2-1-0-Final">2.1.0.Final Documentation</a></li>
+            <li><a href="/docs/2-2-0-Final">2.2.0.Final Documentation</a></li>
           </ul>
         </div>
         <div class="tab-pane fade in" id="snapshot">
@@ -53,6 +53,9 @@ Microservice.
         </div>
         <div class="tab-pane fade in" id="older">
           <p>The documentation for previous releases:<p>
+          <ul>
+            <li><a href="/docs/2-1-0-Final">2.1.0.Final Documentation</a></li>
+          </ul>
           <ul>
             <li><a href="/docs/2-0-0-Final">2.0.0.Final Documentation</a></li>
           </ul>
