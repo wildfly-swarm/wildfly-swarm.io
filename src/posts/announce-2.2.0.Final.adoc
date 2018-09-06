@@ -15,10 +15,26 @@ Coming through! Make way for Thorntail 2.2.0.Final!
 This release contains a bunch of bugfixes focused mainly around MicroProfile.
 Metrics, JWT, OpenAPI and OpenTracing have all gotten their share of love.
 MicroProfile RestClient is now in supported profile and we have looked into the `Swarm main()` in IDE.
-Below is the full changelog.
+We also updated the log message codes to reflect the recent project name change.
+
+++++
+<!-- more -->
+++++
+
+== New log message codes
+
+*WARNING: Breaking changes!*
+
+As a follow-up to the rename from WildFly Swarm to Thorntail, we have now updated all log message codes.
+Previously, log message codes had a form of `WFSWARMnnnnn` or `WFSxxxnnnnn`.
+This has been changed to `THORNnnnnn` or `TTxxxnnnnn`.
+If you parse Thorntail logs, you need to update your parsing code.
+The numeric codes stay intact, the only thing that changes is the prefix.
+See the https://github.com/thorntail/thorntail/pull/1093[pull request] for more details.
+
 
 == Changelog
-Release notes for 2.2.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338834	[here].
+Release notes for 2.2.0.Final are available https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12317020&version=12338834[here].
 
 === Bug
 * [https://issues.jboss.org/browse/THORN-1564[THORN-1564]] Wildfly-Swarm + Logstash formatter-properties costum metadata (Done)
@@ -46,6 +62,9 @@ Release notes for 2.2.0.Final are available https://issues.jboss.org/secure/Rele
  
 === Enhancement
 * [https://issues.jboss.org/browse/THORN-2153[THORN-2153]] the opentracing-tracerresolver fraction should be internal and stable (Done)
+
+== Breaking changes
+* [https://issues.jboss.org/browse/THORN-2139[THORN-2139]] Update messages prefix for logging
 
 
 
